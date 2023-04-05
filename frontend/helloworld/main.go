@@ -37,7 +37,7 @@ func setup(title string) (*frontend.Document, error) {
 	// Load a font, define a font family, and add this font to the family.
 	ff := f.NewFontFamily("text")
 	ff.AddMember(
-		&frontend.FontSource{Source: "../fonts/crimsonpro/CrimsonPro-Regular.ttf"},
+		&frontend.FontSource{Source: "../../fonts/crimsonpro/CrimsonPro-Regular.ttf"},
 		frontend.FontWeight400,
 		frontend.FontStyleNormal,
 	)
@@ -52,7 +52,7 @@ func typesetSample() error {
 
 	// Create a recursive data structure for typesetting initialized with the
 	// text from the top (but with space normalized).
-	para := frontend.NewParagraph()
+	para := frontend.NewText()
 	para.Items = []any{strings.Join(strings.Fields(str), " ")}
 
 	// Format the text into a paragraph. Some of these settings (font family and

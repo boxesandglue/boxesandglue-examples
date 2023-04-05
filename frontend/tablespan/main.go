@@ -25,7 +25,7 @@ func setup(title string) (*frontend.Document, error) {
 	// Load a font, define a font family, and add this font to the family.
 	ff := f.NewFontFamily("text")
 	ff.AddMember(
-		&frontend.FontSource{Source: "../fonts/crimsonpro/CrimsonPro-Regular.ttf"},
+		&frontend.FontSource{Source: "../../fonts/crimsonpro/CrimsonPro-Regular.ttf"},
 		frontend.FontWeight400,
 		frontend.FontStyleNormal,
 	)
@@ -44,37 +44,48 @@ func doCell(input string, f *frontend.Document) *frontend.TableCell {
 		BorderLeftWidth:   borderwidth,
 		BorderRightWidth:  borderwidth,
 		BorderTopWidth:    borderwidth,
-		BorderTopColor:    f.GetColor("black"),
-		BorderBottomColor: f.GetColor("blue"),
-		BorderLeftColor:   f.GetColor("green"),
-		BorderRightColor:  f.GetColor("rebeccapurple"),
 		HAlign:            frontend.HAlignLeft,
-
-		Contents: []*frontend.Paragraph{{
-			Settings: settings,
-			Items:    []any{input},
-		}},
 	}
+	cell.Contents = append(cell.Contents, &frontend.Text{
+		Settings: settings,
+		Items:    []any{input},
+	})
+
 	return cell
 }
 
-func dorow(f *frontend.Document) *frontend.TableRow {
+func dorow(f *frontend.Document, r int) *frontend.TableRow {
 	row := &frontend.TableRow{
 		VAlign: frontend.VAlignTop,
 	}
-	row.Cells = append(row.Cells, doCell("A wonderful serenity has taken possession of my entire soul, like these sweet mornings of spring which I enjoy with my whole heart.", f))
-	row.Cells = append(row.Cells, doCell("Hello nice world", f))
+	for c := 0; c < 3; c++ {
+		cell := doCell(fmt.Sprintf("text at x: %d, y: %d", c+1, r), f)
+		if r == 1 && c == 1 {
+			// don't add because of colspan
+		} else if r == 3 && c == 1 {
+			// don't add because of rowspan
+		} else {
+			if r == 2 && c == 1 {
+				cell.ExtraRowspan = 1
+			} else if r == 1 && c == 0 {
+				cell.ExtraColspan = 1
+			}
+			row.Cells = append(row.Cells, cell)
+		}
+	}
+
 	return row
 }
 
 func typesetSample() error {
 	f, err := setup("Table example")
-	f.Doc.DefaultPageWidth = bag.MustSp("200pt")
-	f.Doc.DefaultPageHeight = bag.MustSp("4cm")
+	f.Doc.DefaultPageWidth = bag.MustSp("240pt")
+	f.Doc.DefaultPageHeight = bag.MustSp("7cm")
 
 	table := &frontend.Table{}
-	table.Rows = append(table.Rows, dorow(f))
-	table.Rows = append(table.Rows, dorow(f))
+	table.Rows = append(table.Rows, dorow(f, 1))
+	table.Rows = append(table.Rows, dorow(f, 2))
+	table.Rows = append(table.Rows, dorow(f, 3))
 	table.MaxWidth = f.Doc.DefaultPageWidth - bag.MustSp("20pt")
 
 	// BuildTable can (in the future) return multiple vertical lists for tables
