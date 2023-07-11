@@ -37,7 +37,7 @@ func setup(title string) (*frontend.Document, error) {
 	// Load a font, define a font family, and add this font to the family.
 	ff := f.NewFontFamily("text")
 	ff.AddMember(
-		&frontend.FontSource{Source: "../../fonts/crimsonpro/CrimsonPro-Regular.ttf"},
+		&frontend.FontSource{Location: "../../fonts/crimsonpro/CrimsonPro-Regular.ttf"},
 		frontend.FontWeight400,
 		frontend.FontStyleNormal,
 	)
