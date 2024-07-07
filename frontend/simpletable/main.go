@@ -5,8 +5,8 @@ import (
 	"log"
 	"time"
 
-	"github.com/speedata/boxesandglue/backend/bag"
-	"github.com/speedata/boxesandglue/frontend"
+	"github.com/boxesandglue/boxesandglue/backend/bag"
+	"github.com/boxesandglue/boxesandglue/frontend"
 )
 
 // common setup for examples
