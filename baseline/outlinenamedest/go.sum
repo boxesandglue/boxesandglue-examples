@@ -1,0 +1,12 @@
+github.com/benoitkugler/textlayout-testdata v0.1.1 h1:AvFxBxpfrQd8v55qH59mZOJOQjtD6K2SFe9/HvnIbJk=
+github.com/benoitkugler/textlayout-testdata v0.1.1/go.mod h1:i/qZl09BbUOtd7Bu/W1CAubRwTWrEXWq6JwMkw8wYxo=
+github.com/boxesandglue/baseline-pdf v0.0.0-20240929173510-09d9762f7b3d h1:gjT6QgdlSix/m65E5VhkHBXj7ix6gOlFHTHrmW56Tdc=
+github.com/boxesandglue/baseline-pdf v0.0.0-20240929173510-09d9762f7b3d/go.mod h1:vHHOX9Wb/F6LvTVhxdOTyRBW6XtM0POP8BjxXkQHag4=
+github.com/boxesandglue/gofpdi v1.0.19 h1:GZX1/akVhVsZgCwjc/jTbJZ6kuoHw7CvwwGzF9Ie37U=
+github.com/boxesandglue/gofpdi v1.0.19/go.mod h1:4wg4byd8re5WDzpSp9F4ODu5UjbeBc0sXXx15HTK4OI=
+github.com/boxesandglue/textlayout v0.0.0-20240707131722-d155d7ceedcd h1:FLN+OITDawCwzY9fpU9651CtmfhR8ej71uSqsl3tV+k=
+github.com/boxesandglue/textlayout v0.0.0-20240707131722-d155d7ceedcd/go.mod h1:lrtUXmtcCKYyPN4V2CSdubXhGI8GzYlA1petPFHD+Tg=
+golang.org/x/image v0.18.0 h1:jGzIakQa/ZXI1I0Fxvaa9W7yP25TqT6cHIHn+6CqvSQ=
+golang.org/x/image v0.18.0/go.mod h1:4yyo5vMFQjVjUcVk4jEQcU9MGy/rulF5WvUILseCM2E=
+golang.org/x/text v0.16.0 h1:a94ExnEXNtEwYLGJSIUxnWoxoRz/ZcCsV63ROupILh4=
+golang.org/x/text v0.16.0/go.mod h1:GhwF1Be+LQoKShO3cGOHzqOgRrGaYc9AvblQOmPVHnI=
