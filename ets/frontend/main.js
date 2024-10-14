@@ -1,5 +1,5 @@
-
 bag = require("bag:backend/bag")
+color = require("bag:backend/color")
 fe = require("bag:frontend")
 
 
@@ -20,6 +20,9 @@ ff.addMember(fe.fontSource("../../fonts/crimsonpro/CrimsonPro-Bold.ttf"), fe.fon
 ff.addMember(fe.fontSource("../../fonts/crimsonpro/CrimsonPro-Regular.ttf"), fe.fontWeight400, fe.fontStyleNormal)
 const para = fe.newText()
 
+const mycolor = new color.color({ space: color.colorRGB, r: 0.03, g:0.37, b: 1 })
+
+para.settings[fe.settingColor] = mycolor
 para.settings[fe.settingSize] = 12 * bag.factor
 para.items.push(str);
 
