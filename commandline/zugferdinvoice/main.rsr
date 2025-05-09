@@ -3,7 +3,9 @@ now := time.now()
 import zugferd
 import document
 
-for i := 0; i < 100; i++ {
+maxdocuments := 1
+
+for i := 0; i < maxdocuments; i++ {
     f := frontend.new('out{i}.pdf')
     backend_doc := f.doc
     colorprofile := f.doc.load_colorprofile("AdobeRGB1998.icc")
