@@ -1,0 +1,162 @@
+func attach_zugferd(backend_doc, filename, conformancelevel = "COMFORT", visiblename = "factur-x.xml", description = "ZUGFeRD invoice") {
+    if type(backend_doc) != "backend.document" {
+        error("attach_zugferd: backend_doc is not a backend.document")
+    }
+    if type(filename) != "string" {
+        printf("attach_zugferd: filename is not a string")
+        return
+    }
+    backend_doc.format = "PDF/A-3b"
+    backend_doc.attachments.append({
+        filename: filename,
+        mimetype: "text/xml",
+        description: description,
+        visiblename: visiblename,
+    })
+    backend_doc.additional_xml_metadata = sprintf(`
+    <rdf:Description xmlns:pdfaExtension="http://www.aiim.org/pdfa/ns/extension/" xmlns:pdfaField="http://www.aiim.org/pdfa/ns/field#" xmlns:pdfaProperty="http://www.aiim.org/pdfa/ns/property#" xmlns:pdfaSchema="http://www.aiim.org/pdfa/ns/schema#" xmlns:pdfaType="http://www.aiim.org/pdfa/ns/type#" rdf:about="">
+    <pdfaExtension:schemas>
+    <rdf:Bag>
+    <rdf:li rdf:parseType="Resource">
+    <pdfaSchema:schema>ZUGFeRD PDFA Extension Schema</pdfaSchema:schema>
+    <pdfaSchema:namespaceURI>urn:ferd:pdfa:CrossIndustryDocument:invoice:1p0#</pdfaSchema:namespaceURI>
+    <pdfaSchema:prefix>zf</pdfaSchema:prefix>
+    <pdfaSchema:property>
+    <rdf:Seq>
+    <rdf:li rdf:parseType="Resource">
+    <pdfaProperty:name>DocumentFileName</pdfaProperty:name>
+    <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+    <pdfaProperty:category>external</pdfaProperty:category>
+    <pdfaProperty:description>name of the embedded XML invoice file</pdfaProperty:description>
+    </rdf:li>
+    <rdf:li rdf:parseType="Resource">
+    <pdfaProperty:name>DocumentType</pdfaProperty:name>
+    <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+    <pdfaProperty:category>external</pdfaProperty:category>
+    <pdfaProperty:description>INVOICE</pdfaProperty:description>
+    </rdf:li>
+    <rdf:li rdf:parseType="Resource">
+    <pdfaProperty:name>Version</pdfaProperty:name>
+    <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+    <pdfaProperty:category>external</pdfaProperty:category>
+    <pdfaProperty:description>The actual version of the ZUGFeRD data</pdfaProperty:description>
+    </rdf:li>
+    <rdf:li rdf:parseType="Resource">
+    <pdfaProperty:name>ConformanceLevel</pdfaProperty:name>
+    <pdfaProperty:valueType>Text</pdfaProperty:valueType>
+    <pdfaProperty:category>external</pdfaProperty:category>
+    <pdfaProperty:description>The conformance level of the ZUGFeRD data</pdfaProperty:description>
+    </rdf:li>
+    </rdf:Seq>
+    </pdfaSchema:property>
+    </rdf:li>
+    </rdf:Bag>
+    </pdfaExtension:schemas>
+    </rdf:Description>
+    <rdf:Description xmlns:zf="urn:ferd:pdfa:CrossIndustryDocument:invoice:1p0#"
+      rdf:about="" zf:ConformanceLevel="%s" zf:DocumentFileName="%s" zf:DocumentType="INVOICE" zf:Version="1.0"/>`,
+      conformancelevel, visiblename)
+}
+
+
+zugferdXML := cxpath.new("zugferd.xml")
+
+zugferdXML.set_namespace("rsm", "urn:un:unece:uncefact:data:standard:CrossIndustryInvoice:100")
+zugferdXML.set_namespace("qdt", "urn:un:unece:uncefact:data:standard:QualifiedDataType:100")
+zugferdXML.set_namespace("ram", "urn:un:unece:uncefact:data:standard:ReusableAggregateBusinessInformationEntity:100")
+zugferdXML.set_namespace("xsi", "http://www.w3.org/2001/XMLSchema-instance")
+zugferdXML.set_namespace("xsd", "http://www.w3.org/2001/XMLSchema")
+zugferdXML.set_namespace("udt", "urn:un:unece:uncefact:data:standard:UnqualifiedDataType:100")
+
+invoiceID := zugferdXML.eval("/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:ID")
+
+rootName := "/rsm:CrossIndustryInvoice"
+supplyChainTradeTransactionName := strings.join([rootName,"rsm:SupplyChainTradeTransaction"],"/")
+applicableHeaderTradeAgreementName := strings.join([supplyChainTradeTransactionName,"ram:ApplicableHeaderTradeAgreement"],"/")
+sellerTradePartyName := strings.join([applicableHeaderTradeAgreementName,"ram:SellerTradeParty"],"/")
+buyerTradePartyName := strings.join([applicableHeaderTradeAgreementName,"ram:BuyerTradeParty"],"/")
+lineItemName := strings.join([supplyChainTradeTransactionName,"ram:IncludedSupplyChainTradeLineItem"],"/")
+
+func get_address(who) {
+    var party = nil
+    if who == "seller" {
+        party = zugferdXML.eval(sellerTradePartyName)
+    } else {
+        party = zugferdXML.eval(buyerTradePartyName)
+    }
+    ret := sprintf("%s\n%s\n",
+        party.eval("ram:Name").string,
+        party.eval("ram:PostalTradeAddress/ram:LineOne").string,
+    )
+
+    linetwo := party.eval("ram:PostalTradeAddress/ram:LineTwo").string
+    if linetwo != "" {
+        ret += sprintf("%s\n", linetwo)
+    }
+
+    ret += sprintf("%s %s",
+        party.eval("ram:PostalTradeAddress/ram:PostcodeCode").string,
+        party.eval("ram:PostalTradeAddress/ram:CityName").string,
+    )
+    return ret
+}
+
+func get_address_short(who) {
+    var party = nil
+    if who == "seller" {
+        party = zugferdXML.eval(sellerTradePartyName)
+    } else {
+        party = zugferdXML.eval(buyerTradePartyName)
+    }
+    ret := sprintf("%s · %s · %s %s",
+        party.eval("ram:Name").string,
+        party.eval("ram:PostalTradeAddress/ram:LineOne").string,
+        party.eval("ram:PostalTradeAddress/ram:PostcodeCode").string,
+        party.eval("ram:PostalTradeAddress/ram:CityName").string,
+    )
+    return ret
+}
+
+func get_date() {
+    rawdate := zugferdXML.eval("/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IssueDateTime/udt:DateTimeString").string
+    return sprintf("%s.%s.%s", rawdate[6:8], rawdate[4:6], rawdate[0:4])
+}
+
+func get_invoice_lines() {
+    invoiceLines := []
+    for _,line := range zugferdXML.each(lineItemName) {
+        invoiceLines.append({
+            pos: line.eval(strings.join(["ram:AssociatedDocumentLineDocument","ram:LineID"],"/")).string,
+            description: line.eval("ram:SpecifiedTradeProduct/ram:Name").string,
+            amount: line.eval("ram:SpecifiedLineTradeAgreement/ram:NetPriceProductTradePrice/ram:ChargeAmount").string,
+            quantity: line.eval("ram:SpecifiedLineTradeDelivery/ram:BilledQuantity").string,
+            unit: line.eval("ram:SpecifiedLineTradeDelivery/ram:BilledQuantity/@unitCode").string,
+            tax: line.eval("ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:RateApplicablePercent").string,
+            taxcode: line.eval("ram:SpecifiedLineTradeSettlement/ram:ApplicableTradeTax/ram:TypeCode").string,
+            totalamount: line.eval("ram:SpecifiedLineTradeSettlement/ram:SpecifiedTradeSettlementLineMonetarySummation/ram:LineTotalAmount").string,
+        })
+    }
+    return invoiceLines
+}
+
+func get_invoice_summation() {
+    invoiceLines := []
+    summation := zugferdXML.eval("/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction/ram:ApplicableHeaderTradeSettlement/ram:SpecifiedTradeSettlementHeaderMonetarySummation")
+    invoiceLines.append(["Summe",summation.eval("ram:LineTotalAmount").string])
+    invoiceLines.append(["Steuerbetrag", summation.eval("ram:TaxTotalAmount").string])
+    invoiceLines.append(["Gesamtbetrag", summation.eval("ram:GrandTotalAmount").string])
+    return invoiceLines
+}
+
+func get_reginfo() {
+    return zugferdXML.eval("/rsm:CrossIndustryInvoice/rsm:ExchangedDocument/ram:IncludedNote[2]/ram:Content").string
+}
+
+func get_invoice_number() {
+    return zugferdXML.eval(strings.join([rootName,"rsm:ExchangedDocument/ram:ID"],"/")).string
+}
+
+
+func get_payment_terms() {
+    return zugferdXML.eval("/rsm:CrossIndustryInvoice/rsm:SupplyChainTradeTransaction[1]/ram:ApplicableHeaderTradeSettlement[1]/ram:SpecifiedTradePaymentTerms[1]/ram:Description[1]").string
+}

@@ -1,0 +1,169 @@
+
+var ff = nil
+
+func setup_fonts(f) {
+    ff = f.new_fontfamily("text")
+
+    regular := frontend.new_fontsource({
+        location: filepath.join("..","..","fonts","crimsonpro","CrimsonPro-Regular.ttf"),
+        features: ["kern","liga"],
+        })
+    bold := frontend.new_fontsource({
+        location: filepath.join("..","..","fonts","crimsonpro","CrimsonPro-Bold.ttf"),
+        features: ["kern","liga"],
+        })
+
+    ff.add_member({source: regular, weight: 400, style: "normal"})
+    ff.add_member({source: bold, weight: 700, style: "normal"})
+    return ff
+}
+
+func render_logo(f,p) {
+    imgfile := f.doc.load_imagefile("img/logo.pdf")
+    imgNode := f.doc.create_image_node_from_imagefile(imgfile, 1, "/MediaBox")
+    imgNode.width = bag.sp("112.8pt")
+    imgNode.height = bag.sp("28.8pt")
+    vl := node.vpack(imgNode)
+    p.output_at(bag.sp("19cm") - imgNode.width, bag.sp("290mm"), vl)
+}
+
+func render_address(f, p, sellershort, buyer) {
+    para := frontend.new_text()
+    para.items = [sellershort]
+    vlist := f.format_paragraph({
+    	text: para,
+    	width: bag.sp("120mm"),
+    	leading: bag.sp("10pt"),
+    	font_size: bag.sp("8pt"),
+    	family: ff,
+    })
+    p.output_at(bag.sp("2cm"), bag.sp("253mm"), vlist)
+
+    para = frontend.new_text()
+    para.items = [buyer]
+    vlist = f.format_paragraph({
+    	text: para,
+    	width: bag.sp("80mm"),
+    	leading: bag.sp("14pt"),
+    	font_size: bag.sp("12pt"),
+    	family: ff,
+    })
+    p.output_at(bag.sp("2cm"), bag.sp("248mm"), vlist)
+}
+
+func render_docinfo(f, p, seller) {
+    para := frontend.new_text()
+    para.settings["SettingHAlign"] = "right"
+    para.items = [seller]
+    vlist := f.format_paragraph({
+    	text: para,
+    	width: bag.sp("170mm"),
+    	font_size: bag.sp("12pt"),
+    	leading: bag.sp("14pt"),
+    	family: ff,
+    })
+    p.output_at(bag.sp("2cm"), bag.sp("253mm"), vlist)
+}
+
+// Returns the new y position
+func render_text(f, p, y, text) {
+    para := frontend.new_text()
+    para.settings["SettingHAlign"] = "left"
+    para.items = [text]
+    vlist := f.format_paragraph({
+    	text: para,
+    	width: bag.sp("165mm"),
+    	leading: bag.sp("14pt"),
+    	font_size: bag.sp("12pt"),
+    	family: ff,
+    })
+    p.output_at(bag.sp("2.5cm"), y, vlist)
+    return y - vlist.height
+}
+
+
+/*
+
+      Build the table
+
+*/
+
+
+// helper functions
+func add_text(tr, text, weight = 400, align = "left") {
+    tdText := frontend.new_text()
+    tdText.settings["SettingFontfamily"] = ff
+    tdText.settings["SettingFontWeight"] = weight
+    tdText.settings["SettingHAlign"] = align
+    tdText.items = [text]
+    td := frontend.new_td()
+    // td.border_top_width = bag.sp("0.5pt")
+    td.append(tdText)
+    tr.append(td)
+    return td
+}
+
+func to_unit(code) {
+    if code == "H87" {
+        return "Stk."
+    }
+}
+
+
+func build_table(frontend_doc, invoice_lines, invoice_summation) {
+    table := frontend.new_table()
+    tr := frontend.new_tr()
+    var td = nil
+    td = add_text(tr, "Pos", 700, "center")
+    td.padding_bottom = bag.sp("1mm")
+    td = add_text(tr, "Menge", 700, "center")
+    td.padding_bottom = bag.sp("1mm")
+    td = add_text(tr, "Einheit", 700, "center")
+    td.padding_bottom = bag.sp("1mm")
+    td = add_text(tr, "Text", 700, "center")
+    td.padding_bottom = bag.sp("1mm")
+    td = add_text(tr, "EP", 700, "center")
+    td.padding_bottom = bag.sp("1mm")
+    td = add_text(tr, "Gesamt", 700, "center")
+    td.padding_bottom = bag.sp("1mm")
+    td = add_text(tr, "Steuer", 700, "center")
+    td.padding_bottom = bag.sp("1mm")
+    table.append(tr)
+
+    for _,line := range invoice_lines {
+        tr := frontend.new_tr()
+        add_text(tr, line.pos,400, "center")
+        add_text(tr, sprintf("%.2f", float(line.quantity)),400, "right")
+        add_text(tr, to_unit(line.unit), 400, "center")
+        add_text(tr, line.description)
+        add_text(tr, sprintf("%.2f €", float(line.amount)), 400, "right")
+        add_text(tr, line.totalamount + " €", 400,"right")
+        add_text(tr, line.tax + "%",400, "right")
+        table.append(tr)
+    }
+
+    for l, line := range invoice_summation {
+        tr := frontend.new_tr()
+        for i := 0; i < 5; i++ {
+            td := frontend.new_td()
+            tr.append(td)
+        }
+        txt_td := add_text(tr, line[0], 400)
+        value_td := add_text(tr, line[1] + " €",400, "right")
+        if l == 0 {
+            txt_td.padding_top = bag.sp("0.5cm")
+            value_td.padding_top = bag.sp("0.5cm")
+        } else {
+            txt_td.padding_top = bag.sp("0.2cm")
+            value_td.padding_top = bag.sp("0.2cm")
+        }
+        value_td.align = "right"
+        table.append(tr)
+    }
+
+    table.max_width = bag.sp("16.5cm")
+    table.stretch = true
+    vls := frontend_doc.build_table(table)
+    return vls[0]
+}
+
