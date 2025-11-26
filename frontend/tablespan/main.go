@@ -37,7 +37,7 @@ func doCell(input string, f *frontend.Document) *frontend.TableCell {
 		frontend.SettingFontFamily: f.FindFontFamily("text"),
 		frontend.SettingSize:       10 * bag.Factor,
 	}
-	borderwidth := bag.MustSp("0.5pt")
+	borderwidth := bag.MustSP("0.5pt")
 
 	cell := &frontend.TableCell{
 		BorderBottomWidth: borderwidth,
@@ -79,14 +79,14 @@ func dorow(f *frontend.Document, r int) *frontend.TableRow {
 
 func typesetSample() error {
 	f, err := setup("Table example")
-	f.Doc.DefaultPageWidth = bag.MustSp("240pt")
-	f.Doc.DefaultPageHeight = bag.MustSp("7cm")
+	f.Doc.DefaultPageWidth = bag.MustSP("240pt")
+	f.Doc.DefaultPageHeight = bag.MustSP("7cm")
 
 	table := &frontend.Table{}
 	table.Rows = append(table.Rows, dorow(f, 1))
 	table.Rows = append(table.Rows, dorow(f, 2))
 	table.Rows = append(table.Rows, dorow(f, 3))
-	table.MaxWidth = f.Doc.DefaultPageWidth - bag.MustSp("20pt")
+	table.MaxWidth = f.Doc.DefaultPageWidth - bag.MustSP("20pt")
 
 	// BuildTable can (in the future) return multiple vertical lists for tables
 	// broken across pages. We are currently only interested in the first entry.
@@ -96,7 +96,7 @@ func typesetSample() error {
 	}
 	// Output the text and finish the page and the PDF file.
 	p := f.Doc.NewPage()
-	p.OutputAt(bag.MustSp("10pt"), p.Height-bag.MustSp("10pt"), vls[0])
+	p.OutputAt(bag.MustSP("10pt"), p.Height-bag.MustSP("10pt"), vls[0])
 	p.Shipout()
 	if err = f.Doc.Finish(); err != nil {
 		return err

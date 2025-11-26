@@ -41,7 +41,7 @@ func dothings() error {
 		data = append(data, fmt.Sprintf("%04x", int(v.Glyph)))
 		codepoints = append(codepoints, int(v.Glyph))
 	}
-	face.RegisterChars(codepoints)
+	face.RegisterCodepoints(codepoints)
 	data = append(data, "> Tj ET")
 	stream := pw.NewObject()
 	stream.Data.WriteString(strings.Join(data, ""))

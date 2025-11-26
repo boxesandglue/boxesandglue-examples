@@ -53,7 +53,7 @@ func render_address(f, p, sellershort, buyer) {
 
 func render_docinfo(f, p, seller) {
     para := frontend.new_text()
-    para.settings["SettingHAlign"] = "right"
+    para.settings["halign"] = "right"
     para.items = [seller]
     vlist := f.format_paragraph({
     	text: para,
@@ -68,7 +68,7 @@ func render_docinfo(f, p, seller) {
 // Returns the new y position
 func render_text(f, p, y, text) {
     para := frontend.new_text()
-    para.settings["SettingHAlign"] = "left"
+    para.settings["halign"] = "left"
     para.items = [text]
     vlist := f.format_paragraph({
     	text: para,
@@ -92,9 +92,9 @@ func render_text(f, p, y, text) {
 // helper functions
 func add_text(tr, text, weight = 400, align = "left") {
     tdText := frontend.new_text()
-    tdText.settings["SettingFontfamily"] = ff
-    tdText.settings["SettingFontWeight"] = weight
-    tdText.settings["SettingHAlign"] = align
+    tdText.settings["fontfamily"] = ff
+    tdText.settings["fontweight"] = weight
+    tdText.settings["halign"] = align
     tdText.items = [text]
     td := frontend.new_td()
     // td.border_top_width = bag.sp("0.5pt")

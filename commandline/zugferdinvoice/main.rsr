@@ -5,49 +5,47 @@ import document
 
 maxdocuments := 1
 
-for i := 0; i < maxdocuments; i++ {
-    f := frontend.new('out{i}.pdf')
-    backend_doc := f.doc
-    colorprofile := f.doc.load_colorprofile("AdobeRGB1998.icc")
-    colorprofile.identifier = "AdobeRGB1998"
-    colorprofile.registry = "Adobe"
-    colorprofile.info = "Adobe RGB (1998)"
-    colorprofile.condition = "RGB"
-    colorprofile.colors = 3
+f := frontend.new('out.pdf')
+backend_doc := f.doc
+colorprofile := f.doc.load_colorprofile("AdobeRGB1998.icc")
+colorprofile.identifier = "AdobeRGB1998"
+colorprofile.registry = "Adobe"
+colorprofile.info = "Adobe RGB (1998)"
+colorprofile.condition = "RGB"
+colorprofile.colors = 3
 
-    zugferd.attach_zugferd(backend_doc, "zugferd.xml")
-    backend_doc.language = frontend.get_language("de")
+zugferd.attach_zugferd(backend_doc, "zugferd.xml")
+backend_doc.language = frontend.get_language("de")
 
-    backend_doc.title = "Rechnung " + zugferd.get_invoice_number()
-    backend_doc.subject = "Rechnung"
-    backend_doc.author = "boxes and glue"
+backend_doc.title = "Rechnung " + zugferd.get_invoice_number()
+backend_doc.subject = "Rechnung"
+backend_doc.author = "boxes and glue"
 
-    fontfamily := document.setup_fonts(f)
+fontfamily := document.setup_fonts(f)
 
-    p := f.doc.new_page()
-    document.render_logo(f,p)
-
-
-    cury := document.render_text(f, p, bag.sp("194mm"), "Rechnung " + zugferd.get_invoice_number() + "\n\nSehr geehrte Damen und Herren,\n\nwir bedanken uns für Ihren Einkauf und stellen folgende Positionen in Rechnung")
-
-    tbl := document.build_table(f, zugferd.get_invoice_lines(), zugferd.get_invoice_summation())
-    p.output_at(bag.sp("2.5cm"), cury - bag.sp("1cm") , tbl)
+p := f.doc.new_page()
+document.render_logo(f,p)
 
 
-    cury =  cury - tbl.height - bag.sp("2cm")
-    document.render_text(f, p, cury, zugferd.get_payment_terms() +  "\n\nWir bitten um Überweisung des Gesamtbetrags auf unser Konto. Wir danken Ihnen für Ihr Vertrauen und freuen uns auf Ihren nächsten Einkauf.\n\nMit freundlichen Grüßen\n\nboxes and glue")
+cury := document.render_text(f, p, bag.sp("194mm"), "Rechnung " + zugferd.get_invoice_number() + "\n\nSehr geehrte Damen und Herren,\n\nwir bedanken uns für Ihren Einkauf und stellen folgende Positionen in Rechnung")
+
+tbl := document.build_table(f, zugferd.get_invoice_lines(), zugferd.get_invoice_summation())
+p.output_at(bag.sp("2.5cm"), cury - bag.sp("1cm") , tbl)
 
 
-    document.render_address(f,p, zugferd.get_address_short("seller"), zugferd.get_address("buyer"))
+cury =  cury - tbl.height - bag.sp("2cm")
+document.render_text(f, p, cury, zugferd.get_payment_terms() +  "\n\nWir bitten um Überweisung des Gesamtbetrags auf unser Konto. Wir danken Ihnen für Ihr Vertrauen und freuen uns auf Ihren nächsten Einkauf.\n\nMit freundlichen Grüßen\n\nboxes and glue")
 
-    str := zugferd.get_reginfo() + "\n\n" + zugferd.get_date()
-    document.render_docinfo(f, p, str)
 
-    p.shipout()
+document.render_address(f,p, zugferd.get_address_short("seller"), zugferd.get_address("buyer"))
 
-    f.doc.finish()
+str := zugferd.get_reginfo() + "\n\n" + zugferd.get_date()
+document.render_docinfo(f, p, str)
 
-}
+p.shipout()
+
+f.doc.finish()
+
 
 
 printf("finished in %.2fms\n",time.since(now) * 1000)
