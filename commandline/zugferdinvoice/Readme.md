@@ -1,4 +1,5 @@
-Requires https://github.com/boxesandglue/cli
+Requires https://github.com/boxesandglue/glu
 
-Run bag main.rsr to create an electronic invoice conforming to the EN 16931 standard.
+Run `glu main.lua` to create an electronic invoice conforming to the EN 16931 standard.
 
+The result will be saved as `out.pdf` in the current directory.
