@@ -14,8 +14,8 @@ func dothings() error {
 	}
 	defer w.Close()
 	pw := pdf.NewPDFWriter(w)
-	pw.DefaultPageHeight = 510 // dtp point
-	pw.DefaultPageWidth = 310
+	pw.DefaultPageHeight = 520 // dtp point
+	pw.DefaultPageWidth = 320
 	pw.DefaultOffsetX = -10
 	pw.DefaultOffsetY = -10
 
@@ -39,8 +39,8 @@ func dothings() error {
 	page2 := pw.AddPage(stream, 0)
 	page2.Width = 100
 	page2.Height = 100
-	page2.OffsetX = -100
-	page2.OffsetY = -100
+	page2.OffsetX = -50
+	page2.OffsetY = -50
 
 	pw.Finish()
 

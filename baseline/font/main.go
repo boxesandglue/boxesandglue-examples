@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	pdf "github.com/boxesandglue/baseline-pdf"
-	"github.com/boxesandglue/textlayout/harfbuzz"
+	"github.com/boxesandglue/textshape/ot"
 )
 
 func dothings() error {
@@ -28,20 +28,24 @@ func dothings() error {
 	text := "Hello, world!"
 
 	// text shaping turns a text into code points and positions
-	buf := harfbuzz.NewBuffer()
-	buf.AddRunes([]rune(text), 0, -1)
+	buf := ot.NewBuffer()
+	buf.AddString(text)
 	buf.GuessSegmentProperties()
-	buf.Shape(face.HarfbuzzFont, []harfbuzz.Feature{})
-	codepoints := []int{}
+	face.Shaper.Shape(buf, nil)
 
-	// let's start with a 12 pt font and output at (100,100)
-	data := []string{fmt.Sprintf("BT %s 12 Tf 100 100 Td <", face.InternalName())}
+	// Collect glyph IDs and register them for subsetting
+	codepoints := []int{}
 	for _, v := range buf.Info {
-		// I ignore kerns and other positioning for the sake of simplicity
-		data = append(data, fmt.Sprintf("%04x", int(v.Glyph)))
-		codepoints = append(codepoints, int(v.Glyph))
+		codepoints = append(codepoints, int(v.GlyphID))
 	}
 	face.RegisterCodepoints(codepoints)
+
+	// Simple workflow: use original glyph IDs directly
+	// (PrepareSubset not called → FlagRetainGIDs is used automatically)
+	data := []string{fmt.Sprintf("BT %s 12 Tf 100 100 Td <", face.InternalName())}
+	for _, v := range buf.Info {
+		data = append(data, fmt.Sprintf("%04x", int(v.GlyphID)))
+	}
 	data = append(data, "> Tj ET")
 	stream := pw.NewObject()
 	stream.Data.WriteString(strings.Join(data, ""))

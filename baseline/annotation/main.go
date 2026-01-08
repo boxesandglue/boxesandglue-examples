@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	pdf "github.com/boxesandglue/baseline-pdf"
-	"github.com/boxesandglue/textlayout/harfbuzz"
+	"github.com/boxesandglue/textshape/ot"
 )
 
 func dothings() error {
@@ -28,18 +28,18 @@ func dothings() error {
 	text := "boxesandglue.dev"
 
 	// text shaping turns a text into code points and positions
-	buf := harfbuzz.NewBuffer()
-	buf.AddRunes([]rune(text), 0, -1)
+	buf := ot.NewBuffer()
+	buf.AddString(text)
 	buf.GuessSegmentProperties()
-	buf.Shape(face.HarfbuzzFont, []harfbuzz.Feature{})
+	face.Shaper.Shape(buf, nil)
 	codepoints := []int{}
 
 	// let's start with a 12 pt font and output at (100,100)
 	data := []string{fmt.Sprintf("BT %s 12 Tf 10 100 Td <", face.InternalName())}
 	for _, v := range buf.Info {
 		// I ignore kerns and other positioning for the sake of simplicity
-		data = append(data, fmt.Sprintf("%04x", int(v.Glyph)))
-		codepoints = append(codepoints, int(v.Glyph))
+		data = append(data, fmt.Sprintf("%04x", int(v.GlyphID)))
+		codepoints = append(codepoints, int(v.GlyphID))
 	}
 	face.RegisterCodepoints(codepoints)
 	data = append(data, "> Tj ET")
