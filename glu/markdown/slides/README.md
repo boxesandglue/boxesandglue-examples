@@ -16,12 +16,12 @@ brew install boxesandglue/tap/glu
 
 **Pre-built binaries** (no Go required):
 
-Download the latest release from <https://github.com/speedata/glu/releases/latest>.
+Download the latest release from <https://github.com/boxesandglue/glu/releases/latest>.
 
 **Build from source** (requires Go):
 
 ```
-git clone https://github.com/speedata/glu
+git clone https://github.com/boxesandglue/glu
 cd glu
 rake build
 ```
