@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>glu Presentations</title>
+<style>
+/* ===== Toggle ===== */
+.view-toggle {
+  position: fixed; top: 12px; right: 16px; z-index: 100;
+  display: flex; align-items: center; gap: 8px;
+  font: 13px/1 system-ui, sans-serif; color: #555;
+  background: #fff; border: 1px solid #ddd; border-radius: 20px;
+  padding: 6px 14px; box-shadow: 0 1px 4px rgba(0,0,0,.12);
+}
+.view-toggle label { cursor: pointer; padding: 2px 8px; border-radius: 12px; }
+.view-toggle input[type=radio] { display: none; }
+.view-toggle input[type=radio]:checked + label {
+  background: #335; color: #fff;
+}
+
+/* ===== Content view (default) ===== */
+body.view-content { font-family: system-ui, sans-serif; max-width: 900px; margin: 2em auto; padding: 0 1em 4em; line-height: 1.6; color: #222; background: #fff; }
+body.view-content table { border-collapse: collapse; margin: 1em 0; }
+body.view-content th, body.view-content td { border: 1px solid #ccc; padding: .4em .8em; text-align: left; }
+body.view-content th { background: #f5f5f5; }
+body.view-content blockquote { border-left: 3px solid #ccc; margin-left: 0; padding-left: 1em; color: #555; }
+body.view-content code { background: #f4f4f4; padding: .15em .3em; border-radius: 3px; font-size: 0.9em; }
+body.view-content pre { background: #f4f4f4; padding: 1em; border-radius: 5px; overflow-x: auto; }
+body.view-content pre code { padding: 0; background: none; }
+
+/* Hide structure labels in content view */
+body.view-content [data-role]::before { display: none !important; }
+
+/* ===== Structure view ===== */
+body.view-structure {
+  font-family: system-ui, sans-serif; background: #1a1a2e; color: #333;
+  padding: 20px; padding-top: 50px; line-height: 1.5;
+}
+
+body.view-structure .content { max-width: none; }
+
+/* All structural elements get a label and nesting */
+body.view-structure [data-role] {
+  display: block; position: relative;
+  margin: 6px 0 6px 0; padding: 8px 8px 8px 56px;
+  border-radius: 3px; min-height: 20px;
+}
+
+/* Tag label */
+body.view-structure [data-role]::before {
+  content: attr(data-role);
+  position: absolute; left: 4px; top: 4px;
+  font: bold 10px/1 monospace; color: #fff;
+  background: #555; padding: 2px 5px; border-radius: 3px;
+  min-width: 32px; text-align: center;
+}
+
+/* === Colors per role === */
+
+/* Document / Grouping */
+body.view-structure [data-role="Document"] { background: rgba(255,255,185,.15); padding-left: 12px; }
+body.view-structure [data-role="Document"]::before { background: #46a; }
+body.view-structure [data-role="Div"]  { background: rgba(255,255,185,.15); }
+body.view-structure [data-role="Div"]::before  { background: #46a; }
+body.view-structure [data-role="Part"] { background: rgba(255,255,185,.15); }
+body.view-structure [data-role="Part"]::before { background: #46a; }
+body.view-structure [data-role="Sect"] { background: rgba(255,255,185,.15); }
+body.view-structure [data-role="Sect"]::before { background: #46a; }
+body.view-structure [data-role="Art"]  { background: rgba(255,255,185,.12); }
+body.view-structure [data-role="Art"]::before  { background: #46a; }
+
+/* Headings */
+body.view-structure [data-role="H1"], body.view-structure [data-role="H2"],
+body.view-structure [data-role="H3"], body.view-structure [data-role="H4"],
+body.view-structure [data-role="H5"], body.view-structure [data-role="H6"] {
+  background: #f0f0e0; font-weight: bold;
+}
+body.view-structure [data-role="H1"]::before { background: #c33; }
+body.view-structure [data-role="H2"]::before { background: #d55; }
+body.view-structure [data-role="H3"]::before { background: #e77; }
+body.view-structure [data-role="H4"]::before { background: #e99; }
+body.view-structure [data-role="H5"]::before { background: #ebb; }
+body.view-structure [data-role="H6"]::before { background: #ecc; }
+
+/* Paragraph */
+body.view-structure [data-role="P"] { background: #f0f0e0; }
+body.view-structure [data-role="P"]::before { background: #888; }
+
+/* Span */
+body.view-structure [data-role="Span"] { background: rgba(64,64,64,.08); display: inline-block; }
+body.view-structure [data-role="Span"]::before { background: #999; }
+
+/* Code */
+body.view-structure [data-role="Code"] {
+  background: #f0f0e0; font-family: monospace; white-space: pre-wrap;
+}
+body.view-structure [data-role="Code"]::before { background: #666; }
+
+/* BlockQuote */
+body.view-structure [data-role="BlockQuote"] { background: #946003; color: #fff; }
+body.view-structure [data-role="BlockQuote"]::before { background: #724; }
+body.view-structure [data-role="BlockQuote"] [data-role] { color: #333; }
+
+/* Lists */
+body.view-structure [data-role="L"] { background: rgba(200,240,200,.3); }
+body.view-structure [data-role="L"]::before { background: #4a4; }
+body.view-structure [data-role="LI"] { background: #f0f0e0; }
+body.view-structure [data-role="LI"]::before { background: #5b5; }
+body.view-structure [data-role="Lbl"] { background: #cff; display: inline-block; }
+body.view-structure [data-role="Lbl"]::before { background: #3aa; }
+body.view-structure [data-role="LBody"] { background: #eeffee; }
+body.view-structure [data-role="LBody"]::before { background: #5b5; }
+
+/* Tables */
+body.view-structure [data-role="Table"] { background: rgba(200,200,240,.2); }
+body.view-structure [data-role="Table"]::before { background: #66a; }
+body.view-structure [data-role="THead"] { background: rgba(200,200,240,.15); }
+body.view-structure [data-role="THead"]::before { background: #77b; }
+body.view-structure [data-role="TBody"] { background: rgba(200,200,240,.1); }
+body.view-structure [data-role="TBody"]::before { background: #77b; }
+body.view-structure [data-role="TR"] { background: rgba(200,200,240,.08); }
+body.view-structure [data-role="TR"]::before { background: #88c; }
+body.view-structure [data-role="TH"] { background: #ff66ff; }
+body.view-structure [data-role="TH"]::before { background: #a3a; }
+body.view-structure [data-role="TD"] { background: #ffcfee; }
+body.view-structure [data-role="TD"]::before { background: #c6c; }
+
+/* Link */
+body.view-structure [data-role="Link"] { background: rgba(64,64,64,.12); display: inline-block; }
+body.view-structure [data-role="Link"]::before { background: #36c; }
+
+/* Figure */
+body.view-structure [data-role="Figure"] { background: #ffe; border: 2px solid #aa8; }
+body.view-structure [data-role="Figure"]::before { background: #a84; }
+
+/* In structure view, reset all semantic HTML styling */
+body.view-structure h1, body.view-structure h2, body.view-structure h3,
+body.view-structure h4, body.view-structure h5, body.view-structure h6 {
+  font-size: inherit; margin: 0;
+}
+body.view-structure table, body.view-structure thead, body.view-structure tbody,
+body.view-structure tr, body.view-structure th, body.view-structure td {
+  display: block; border: none; padding: 0; margin: 0; background: none;
+}
+body.view-structure ul, body.view-structure ol { list-style: none; padding: 0; margin: 0; }
+body.view-structure li { display: block; padding: 0; margin: 0; }
+body.view-structure blockquote { border: none; margin: 0; padding: 0; }
+body.view-structure pre { background: none; padding: 0; margin: 0; border-radius: 0; }
+body.view-structure code { background: none; padding: 0; }
+</style>
+</head>
+<body class="view-content">
+
+<div class="view-toggle">
+  <input type="radio" name="view" id="v-content" checked>
+  <label for="v-content" onclick="setView('content')">Content</label>
+  <input type="radio" name="view" id="v-structure">
+  <label for="v-structure" onclick="setView('structure')">Structure</label>
+</div>
+
+<div data-role="Document">
+<div data-role="Div">
+<h1 data-role="H1">glu Presentations</h1>
+<p data-role="P">PDF slides with Markdown and Lua</p>
+<p data-role="P">Patrick — March 2026</p>
+</div>
+<h2 data-role="H2">Why glu for slides?</h2>
+<ul data-role="L">
+<li data-role="LI"><div data-role="LBody">Markdown — easy to write</div></li>
+<li data-role="LI"><div data-role="LBody">Lua — dynamic and programmable</div></li>
+<li data-role="LI"><div data-role="LBody">CSS — full control over layout</div></li>
+<li data-role="LI"><div data-role="LBody">PDF — universal output format</div></li>
+</ul>
+<blockquote data-role="BlockQuote">
+<p data-role="P">Less overhead than LaTeX/Beamer, more control than Marp.</p>
+</blockquote>
+<h2 data-role="H2">How it works</h2>
+<p data-role="P">A Markdown file with YAML frontmatter:</p>
+<pre data-role="Code"><code>---
+title: My Talk
+css: slides.css
+---</code></pre>
+<p data-role="P">Each ## heading starts a new slide (via CSS break-before: always).</p>
+<p data-role="P">Lua code embedded directly: 4 is four.</p>
+<h2 data-role="H2">Lua blocks</h2>
+<p data-role="P">This talk covers 4 topics:</p>
+<ul data-role="L">
+<li data-role="LI"><div data-role="LBody"><p data-role="P">Text formatting</p>
+</div></li>
+<li data-role="LI"><div data-role="LBody"><p data-role="P">Tables and lists</p>
+</div></li>
+<li data-role="LI"><div data-role="LBody"><p data-role="P">SVG graphics</p>
+</div></li>
+<li data-role="LI"><div data-role="LBody"><p data-role="P">Dynamic content</p>
+</div></li>
+</ul>
+<h2 data-role="H2">The Markdown pipeline</h2>
+<h2 data-role="H2">Tables</h2>
+<table data-role="Table">
+<thead data-role="THead">
+<tr data-role="TR">
+<th scope="column" data-role="TH">Feature</th>
+<th scope="column" data-role="TH">Supported</th>
+</tr>
+</thead>
+<tbody data-role="TBody">
+<tr data-role="TR">
+<td data-role="TD">Markdown syntax</td>
+<td data-role="TD">Yes</td>
+</tr>
+<tr data-role="TR">
+<td data-role="TD">CSS styling</td>
+<td data-role="TD">Yes</td>
+</tr>
+<tr data-role="TR">
+<td data-role="TD">Lua logic</td>
+<td data-role="TD">Yes</td>
+</tr>
+<tr data-role="TR">
+<td data-role="TD">SVG graphics</td>
+<td data-role="TD">Yes</td>
+</tr>
+<tr data-role="TR">
+<td data-role="TD">Page numbers</td>
+<td data-role="TD">Yes</td>
+</tr>
+</tbody>
+</table>
+<h2 data-role="H2">Callbacks for recurring elements</h2>
+<p data-role="P">In the companion file slides.lua:</p>
+<ul data-role="L">
+<li data-role="LI"><div data-role="LBody">page_init — page number, accent line, logo</div></li>
+<li data-role="LI"><div data-role="LBody">pre_shipout — final adjustments before rendering</div></li>
+<li data-role="LI"><div data-role="LBody">document_end — post-processing</div></li>
+</ul>
+<pre data-role="Code"><code>frontend.add_callback(&#34;page_init&#34;, &#34;slide_number&#34;,
+    function(doc, page, pagenum, pageinfo)
+        -- page number in the bottom right
+    end)</code></pre>
+<h2 data-role="H2">Lua blocks: syntax</h2>
+<p data-role="P">This is what a Lua block looks like in Markdown:</p>
+<pre data-role="Code"><code>```{lua}
+-- executed and the result is inserted
+items = { &#34;Item 1&#34;, &#34;Item 2&#34; }
+return &#34;There are &#34; .. #items .. &#34; items.&#34;
+```</code></pre>
+<p data-role="P">Inline expressions with {= … =} are replaced directly.</p>
+<p data-role="P">To only display code (without executing): {!lua} instead of {lua}.</p>
+<h2 data-role="H2">Verbatim blocks</h2>
+<p data-role="P">Want to display code blocks with ``` verbatim? Simply wrap them with more backticks:</p>
+<pre data-role="Code"><code>```{lua}
+return &#34;Hello from Lua!&#34;
+```</code></pre>
+<p data-role="P">The outer 5 backticks protect the inner block — it is displayed, not executed.</p>
+<h2 data-role="H2">Lua blocks: live example</h2>
+<p data-role="P">3 kinds of fruit: Apples, Pears, Cherries</p>
+<p data-role="P">And the same as a non-executed block with {!lua}:</p>
+<pre data-role="Code"><code>example = { &#34;Apples&#34;, &#34;Pears&#34;, &#34;Cherries&#34; }
+return #example .. &#34; kinds of fruit&#34;</code></pre>
+<h2 data-role="H2">Thank you!</h2>
+<p data-role="P">Source code: playground/slides.md</p>
+<p data-role="P">Back to: Why glu for slides?<span data-role="Link"></span></p>
+<p data-role="P">Run with:</p>
+<pre data-role="Code"><code>glu slides.md</code></pre>
+</div>
+
+<script>
+function setView(mode) {
+  document.body.className = 'view-' + mode;
+  document.getElementById('v-' + mode).checked = true;
+}
+</script>
+</body>
+</html>
