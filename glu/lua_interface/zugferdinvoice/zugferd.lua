@@ -17,49 +17,23 @@ function M.attach_zugferd(doc, filename, conformancelevel, visiblename, descript
         name = visiblename,
     })
 
-    doc.additional_xml_metadata = string.format([[
-    <rdf:Description xmlns:pdfaExtension="http://www.aiim.org/pdfa/ns/extension/" xmlns:pdfaField="http://www.aiim.org/pdfa/ns/field#" xmlns:pdfaProperty="http://www.aiim.org/pdfa/ns/property#" xmlns:pdfaSchema="http://www.aiim.org/pdfa/ns/schema#" xmlns:pdfaType="http://www.aiim.org/pdfa/ns/type#" rdf:about="">
-    <pdfaExtension:schemas>
-    <rdf:Bag>
-    <rdf:li rdf:parseType="Resource">
-    <pdfaSchema:schema>ZUGFeRD PDFA Extension Schema</pdfaSchema:schema>
-    <pdfaSchema:namespaceURI>urn:ferd:pdfa:CrossIndustryDocument:invoice:1p0#</pdfaSchema:namespaceURI>
-    <pdfaSchema:prefix>zf</pdfaSchema:prefix>
-    <pdfaSchema:property>
-    <rdf:Seq>
-    <rdf:li rdf:parseType="Resource">
-    <pdfaProperty:name>DocumentFileName</pdfaProperty:name>
-    <pdfaProperty:valueType>Text</pdfaProperty:valueType>
-    <pdfaProperty:category>external</pdfaProperty:category>
-    <pdfaProperty:description>name of the embedded XML invoice file</pdfaProperty:description>
-    </rdf:li>
-    <rdf:li rdf:parseType="Resource">
-    <pdfaProperty:name>DocumentType</pdfaProperty:name>
-    <pdfaProperty:valueType>Text</pdfaProperty:valueType>
-    <pdfaProperty:category>external</pdfaProperty:category>
-    <pdfaProperty:description>INVOICE</pdfaProperty:description>
-    </rdf:li>
-    <rdf:li rdf:parseType="Resource">
-    <pdfaProperty:name>Version</pdfaProperty:name>
-    <pdfaProperty:valueType>Text</pdfaProperty:valueType>
-    <pdfaProperty:category>external</pdfaProperty:category>
-    <pdfaProperty:description>The actual version of the ZUGFeRD data</pdfaProperty:description>
-    </rdf:li>
-    <rdf:li rdf:parseType="Resource">
-    <pdfaProperty:name>ConformanceLevel</pdfaProperty:name>
-    <pdfaProperty:valueType>Text</pdfaProperty:valueType>
-    <pdfaProperty:category>external</pdfaProperty:category>
-    <pdfaProperty:description>The conformance level of the ZUGFeRD data</pdfaProperty:description>
-    </rdf:li>
-    </rdf:Seq>
-    </pdfaSchema:property>
-    </rdf:li>
-    </rdf:Bag>
-    </pdfaExtension:schemas>
-    </rdf:Description>
-    <rdf:Description xmlns:zf="urn:ferd:pdfa:CrossIndustryDocument:invoice:1p0#"
-      rdf:about="" zf:ConformanceLevel="%s" zf:DocumentFileName="%s" zf:DocumentType="INVOICE" zf:Version="1.0"/>]],
-      conformancelevel, visiblename)
+    doc:add_xmp_extension({
+        schema = "ZUGFeRD PDFA Extension Schema",
+        namespace_uri = "urn:ferd:pdfa:CrossIndustryDocument:invoice:1p0#",
+        prefix = "zf",
+        properties = {
+            { name = "DocumentFileName", value_type = "Text", category = "external", description = "name of the embedded XML invoice file" },
+            { name = "DocumentType",     value_type = "Text", category = "external", description = "INVOICE" },
+            { name = "Version",          value_type = "Text", category = "external", description = "The actual version of the ZUGFeRD data" },
+            { name = "ConformanceLevel", value_type = "Text", category = "external", description = "The conformance level of the ZUGFeRD data" },
+        },
+        values = {
+            ConformanceLevel = conformancelevel,
+            DocumentFileName = visiblename,
+            DocumentType     = "INVOICE",
+            Version          = "1.0",
+        },
+    })
 end
 
 -- Open and parse the ZUGFeRD XML
