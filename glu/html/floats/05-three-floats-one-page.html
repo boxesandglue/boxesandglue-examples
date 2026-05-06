@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<!--
+  Three top-floats from three different paragraphs all stack on one
+  page. Without two-pass page assembly (Phase 3), each float-bearing
+  paragraph would have forced its own page break.
+
+  Run:  glu 05-three-floats-one-page.html
+-->
+<html>
+<head>
+  <style>
+    @page { size: A5; margin: 2cm; }
+    body { font-family: serif; font-size: 10pt; line-height: 1.35; }
+    .fig { float: top; font-style: italic; }
+  </style>
+</head>
+<body>
+  <p>Paragraph one, marker A<span class="fig">Float A — page 1, top.</span>.</p>
+  <p>Paragraph two, marker B<span class="fig">Float B — directly under A.</span>.</p>
+  <p>Paragraph three, marker C<span class="fig">Float C — third element in the stack.</span>.</p>
+  <p>Paragraph four with no marker, flows below the float stack.</p>
+</body>
+</html>

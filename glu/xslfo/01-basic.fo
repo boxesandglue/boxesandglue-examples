@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Basic XSL-FO walker demo. Exercises the full surface that
+  foproc.lua covers in its non-float role: page master, blocks,
+  inline markup (bold / italic / colour), and two footnotes.
+
+    glu foproc.lua 01-basic.fo
+    glu 01-basic.html
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="148mm" page-height="210mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block font-size="18pt" font-weight="bold" space-after="12pt">
+        XSL-FO Walker Demo
+      </fo:block>
+
+      <fo:block space-after="6pt">
+        First paragraph with a footnote<fo:footnote>
+          <fo:inline>1</fo:inline>
+          <fo:footnote-body>
+            <fo:block font-size="9pt">First footnote, written in XSL-FO,
+            transformed to HTML via the Lua walker and rendered with
+            htmlbag. The running number is set by htmlbag automatically.</fo:block>
+          </fo:footnote-body>
+        </fo:footnote>. Some text follows the marker.
+      </fo:block>
+
+      <fo:block space-after="6pt">
+        Second paragraph with
+        <fo:inline font-weight="bold">bold</fo:inline>
+        and
+        <fo:inline font-style="italic">italic</fo:inline>
+        inline markup, plus
+        <fo:inline color="#a00000">coloured</fo:inline>
+        text.
+      </fo:block>
+
+      <fo:block text-align="justify" space-after="6pt">
+        Third paragraph, justified. Lorem ipsum dolor sit amet,
+        consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut
+        labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+        nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat<fo:footnote>
+          <fo:inline>2</fo:inline>
+          <fo:footnote-body>
+            <fo:block font-size="9pt">Second footnote, further down —
+            should run with the counter and appear as "2."</fo:block>
+          </fo:footnote-body>
+        </fo:footnote>.
+      </fo:block>
+
+      <fo:block text-align="center" font-style="italic" space-before="12pt">
+        — End of test —
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

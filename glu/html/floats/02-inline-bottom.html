@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<!--
+  Inline bottom-float: <span style="float: bottom">. Lands above the
+  footnote zone (or above the page bottom if no footnotes are present).
+
+  Run:  glu 02-inline-bottom.html
+-->
+<html>
+<head>
+  <style>
+    @page { size: A6; margin: 1.5cm; }
+    body { font-family: serif; font-size: 10pt; line-height: 1.35; }
+    .figbottom { float: bottom; font-style: italic; }
+  </style>
+</head>
+<body>
+  <p>First paragraph with a bottom-float marker<span class="figbottom">Bottom-float — appears at the bottom of the page.</span> via CSS `float: bottom`.</p>
+  <p>Second paragraph, no marker.</p>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+  Block-level float: <div style="float: top"> with multi-paragraph
+  content. The HTML5 parser keeps the structure intact (since <div>
+  is a known block element), so the float can carry full block content
+  — paragraphs, captions, even tables or lists.
+
+  This is the closest equivalent to XSL-FO's `<fo:float float="before">`,
+  whose content model is `(%block;)+`.
+
+  Run:  glu 03-block-multi-paragraph.html
+-->
+<html>
+<head>
+  <style>
+    @page { size: A5; margin: 2cm; }
+    body { font-family: serif; font-size: 10pt; line-height: 1.35; }
+    .figure { float: top; }
+    .figure p { font-size: 9pt; }
+    .figure .caption { color: #666; font-style: italic; }
+  </style>
+</head>
+<body>
+  <p>Body paragraph before the block float.</p>
+  <div class="figure">
+    <p>First paragraph inside the float body.</p>
+    <p>Second paragraph inside the float body — a block float can carry any number of blocks.</p>
+    <p class="caption">Caption block (italic and grey via CSS).</p>
+  </div>
+  <p>Body paragraph after the block float (in source order); lands on the same page, below the stack.</p>
+  <p>Third body paragraph, flows on.</p>
+</body>
+</html>

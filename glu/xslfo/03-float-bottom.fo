@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  XSL-FO with a bottom-float (fo:float float="after"). XSL-FO 1.1
+  itself does not standardize "after" as a value — it is a CSS GCPM
+  extension that htmlbag picks up alongside the standard "before".
+
+  The fo:float sits as a direct sibling of the body fo:blocks under
+  fo:flow — fo:float is block-level and not permitted inline in an
+  fo:block.
+
+    glu foproc.lua 03-float-bottom.fo
+    glu 03-float-bottom.html
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="148mm" page-height="210mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block font-size="14pt" font-weight="bold" space-after="8pt">
+        Bottom-float demo
+      </fo:block>
+
+      <fo:block space-after="6pt">
+        First body paragraph. A bottom-float follows in source order;
+        it gets pinned to the page bottom regardless of its position
+        in the stream.
+      </fo:block>
+
+      <fo:float float="after">
+        <fo:block font-style="italic" font-size="9pt">
+          Bottom-float caption — anchored at the page bottom, above
+          any footnote zone.
+        </fo:block>
+      </fo:float>
+
+      <fo:block space-after="6pt">
+        Second body paragraph. The bottom-float reservation is
+        accounted for in the page-fill check, so the body cursor
+        stops above the bottom stack.
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!--
+  Inline top-float: a <span> in the body text with `float: top`.
+  Its content is lifted out of the paragraph flow and stacked at
+  the top of the page where the marker was encountered.
+
+  Run:  glu 01-inline-top.html
+-->
+<html>
+<head>
+  <style>
+    @page { size: A6; margin: 1.5cm; }
+    body { font-family: serif; font-size: 10pt; line-height: 1.35; }
+    .figtop { float: top; font-style: italic; }
+  </style>
+</head>
+<body>
+  <p>First paragraph with an inline float marker<span class="figtop">Floating note: appears at the top of this page; no glyph is left at the marker position.</span> that the CSS rule `float: top` lifts out of the flow.</p>
+  <p>Second paragraph, no marker, flows below the float stack.</p>
+  <p>Third paragraph.</p>
+</body>
+</html>

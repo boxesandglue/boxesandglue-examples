@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  XSL-FO with a top-float (fo:float float="before") carrying a
+  multi-block body (caption + supporting paragraph). The fo:float is
+  a direct sibling of the body fo:blocks under fo:flow — that is the
+  spec-conformant placement: fo:float is block-level and is NOT
+  permitted as inline content of an fo:block.
+
+  Walk to HTML, then render:
+
+    glu foproc.lua 02-float-top.fo
+    glu 02-float-top.html
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="148mm" page-height="210mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block font-size="14pt" font-weight="bold" space-after="8pt">
+        Top-float demo
+      </fo:block>
+
+      <fo:float float="before">
+        <fo:block font-style="italic" font-size="9pt">
+          Figure 1 — caption block of the top-float.
+        </fo:block>
+        <fo:block font-size="9pt" color="#666666">
+          A second block inside the same float, demonstrating that
+          fo:float can carry the full XSL-FO `(%block;)+` content
+          model — not just a single paragraph.
+        </fo:block>
+      </fo:float>
+
+      <fo:block space-after="6pt">
+        First body paragraph. The float above is anchored to this
+        page; its content is lifted out of the flow and stacked at
+        the top of the content area.
+      </fo:block>
+
+      <fo:block space-after="6pt">
+        Second body paragraph, no float, flows under the top stack.
+      </fo:block>
+
+      <fo:block space-after="6pt">
+        Third body paragraph, also without a marker. Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit.
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

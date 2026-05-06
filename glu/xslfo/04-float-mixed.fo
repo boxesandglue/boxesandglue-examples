@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Four insert classes coexisting on a single XSL-FO page:
+    - top-float    (fo:float float="before") — sibling of body blocks
+    - bottom-float (fo:float float="after")  — sibling of body blocks
+    - footnote     (fo:footnote / fo:footnote-body) — inline marker in
+                                                     a body fo:block
+
+  fo:float is block-level and lives directly under fo:flow; the
+  footnote alone is a valid inline-marker construct in XSL-FO and
+  stays inside its source paragraph.
+
+  All four layers (top stack, body, bottom stack, footnote stack) get
+  painted by htmlbag's two-pass page assembly.
+
+    glu foproc.lua 04-float-mixed.fo
+    glu 04-float-mixed.html
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="148mm" page-height="210mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block font-size="14pt" font-weight="bold" space-after="8pt">
+        Four-layer page
+      </fo:block>
+
+      <fo:float float="before">
+        <fo:block font-style="italic" font-size="9pt">
+          Top — figure caption pinned to page top.
+        </fo:block>
+      </fo:float>
+
+      <fo:float float="after">
+        <fo:block font-style="italic" font-size="9pt">
+          Bottom — note pinned above the footnote zone.
+        </fo:block>
+      </fo:float>
+
+      <fo:block space-after="6pt">
+        First body paragraph. A top-float and a bottom-float precede
+        this block in source order; a footnote<fo:footnote>
+          <fo:inline>1</fo:inline>
+          <fo:footnote-body>
+            <fo:block font-size="8pt">Footnote at the page bottom,
+            above the separator rule and below the bottom-float.</fo:block>
+          </fo:footnote-body>
+        </fo:footnote> sits inline in this paragraph and lands at the
+        bottom of the page.
+      </fo:block>
+
+      <fo:block space-after="6pt">
+        Second body paragraph, no markers, flows between the two
+        float stacks.
+      </fo:block>
+
+      <fo:block space-after="6pt">
+        Third body paragraph. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit, sed do eiusmod tempor incididunt ut labore.
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

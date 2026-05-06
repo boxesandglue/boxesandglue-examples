@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+  Four insert classes coexisting on a single page:
+    1. Top-float stack (top of content area)
+    2. Body content (paragraphs)
+    3. Bottom-float stack (above footnotes)
+    4. Footnote stack (page bottom, separator rule above)
+
+  Demonstrates Phase 4 (bottom-floats) + Phase 3 (multiple floats per
+  page via two-pass page assembly).
+
+  Run:  glu 04-mixed-classes.html
+-->
+<html>
+<head>
+  <style>
+    @page { size: A5; margin: 2cm; }
+    body { font-family: serif; font-size: 10pt; line-height: 1.35; }
+    .figtop { float: top; font-style: italic; }
+    .figbottom { float: bottom; font-style: italic; }
+    fn { font-size: 8pt; }
+  </style>
+</head>
+<body>
+  <p>First paragraph with a top-float<span class="figtop">Top A — top of page.</span>, a bottom-float<span class="figbottom">Bottom X — bottom of page.</span> and a footnote<fn>Footnote at the very bottom, above the separator rule.</fn>.</p>
+  <p>Second paragraph with another top-float<span class="figtop">Top B — stacked under A.</span> and another bottom-float<span class="figbottom">Bottom Y — stacked under X.</span>.</p>
+  <p>Third paragraph, no markers, flows between the two float stacks.</p>
+</body>
+</html>
