@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PDF/UA (ISO 14289-1) accessibility showcase.
+
+  Activates the tagged-PDF pipeline via three top-level metadata items
+  on fo:root:
+
+    xml:lang   = "en-US"      → /Lang catalog entry + per-paragraph
+                                 hyphenation default
+    bg:format  = "PDF/UA"     → enables htmlbag's auto-tagging:
+                                 StructTreeRoot, MarkInfo, /DisplayDocTitle,
+                                 XMP pdfuaid:part 1, role-mapped element tree
+    <fo:title> = "…"          → /Title catalog entry (XMP dc:title) — PDF/UA
+                                 readers display this in the window chrome
+
+  fo:block role="H1"…"H6" (XSL-FO 1.1 §7.21.5) flows into htmlbag's
+  heading tagging (H1…H6 structure elements). fo:external-graphic
+  alt="…" populates the Figure element's /Alt entry — without alt-text
+  the image would fail PDF/UA conformance.
+
+    glu foproc.lua 10-pdfua.fo
+    pdfinfo 10-pdfua.pdf       # /Title, /Lang, Tagged: yes
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+         xmlns:bg="https://boxesandglue.dev/ns/xslfo"
+         xml:lang="en-US"
+         bg:format="PDF/UA">
+
+  <fo:title>boxes and glue — Accessibility Showcase</fo:title>
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="148mm" page-height="210mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block role="H1" font-size="20pt" font-weight="bold"
+                space-after="12pt">
+        Accessibility Showcase
+      </fo:block>
+
+      <fo:block role="H2" font-size="14pt" font-weight="bold"
+                space-after="8pt">
+        What this document demonstrates
+      </fo:block>
+
+      <fo:block text-align="justify" space-after="8pt">
+        This PDF is generated with PDF/UA tagging enabled. Every
+        paragraph, heading, and figure carries a structure element so
+        screen readers can navigate the content the way the author
+        intended. The catalog declares its language as
+        <fo:inline font-style="italic">en-US</fo:inline>, and the
+        document title appears in the PDF window chrome instead of the
+        filename.
+      </fo:block>
+
+      <fo:block role="H2" font-size="14pt" font-weight="bold"
+                space-after="8pt">
+        Figure with alternative text
+      </fo:block>
+
+      <fo:block text-align="center" space-after="4pt">
+        <fo:external-graphic src="ocean.pdf" width="60mm"
+                             alt="Stylised ocean wave illustration in
+                                  shades of blue, used as the cover image
+                                  for the boxesandglue baseline image
+                                  example."/>
+      </fo:block>
+
+      <fo:block font-size="9pt" font-style="italic" text-align="center"
+                space-after="12pt">
+        Figure 1 — the alt-text on the fo:external-graphic flows into
+        the PDF Figure element's /Alt entry.
+      </fo:block>
+
+      <fo:block role="H2" font-size="14pt" font-weight="bold"
+                space-after="8pt">
+        Reading order
+      </fo:block>
+
+      <fo:block text-align="justify" space-after="6pt">
+        Body content is emitted into the structure tree in source
+        order, which is also the logical reading order for a PDF/UA
+        validator. No content is silent or untagged: even purely
+        decorative material is wrapped as an Artifact at shipout time
+        so it does not pollute the reading order.
+      </fo:block>
+
+      <fo:block role="H3" font-size="11pt" font-weight="bold"
+                space-after="4pt">
+        Verifying the output
+      </fo:block>
+
+      <fo:block text-align="justify" space-after="6pt">
+        Run
+        <fo:inline font-family="monospace">pdfinfo 10-pdfua.pdf</fo:inline>
+        to see the Title, Tagged flag, and Lang fields. For a full
+        spec validation use
+        <fo:inline font-family="monospace">veraPDF</fo:inline> with the
+        PDF/UA-1 profile.
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

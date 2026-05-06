@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  fo:external-graphic in the normal flow. The image is a single-page
+  PDF (ocean.pdf) — htmlbag pulls it in via gofpdi as a Form XObject,
+  so vector content is preserved. width / height are honoured; if only
+  one dimension is set the other scales proportionally.
+
+    glu foproc.lua 05-image.fo
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="148mm" page-height="210mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block font-size="14pt" font-weight="bold" space-after="8pt">
+        Image in flow
+      </fo:block>
+
+      <fo:block space-after="6pt">
+        The next block contains an external graphic. Width is set to
+        80&#160;mm; height is left to scale automatically.
+      </fo:block>
+
+      <fo:block text-align="center" space-after="4pt">
+        <fo:external-graphic src="ocean.pdf" width="80mm"/>
+      </fo:block>
+
+      <fo:block font-size="9pt" font-style="italic" text-align="center"
+                space-after="12pt">
+        Figure 1 — single-page PDF embedded as a Form XObject.
+      </fo:block>
+
+      <fo:block text-align="justify" space-after="6pt">
+        The image above is the same ocean.pdf used by the baseline-pdf
+        image example. Because the source is a PDF, gofpdi imports it
+        without rasterisation: the embedded paths and gradients keep
+        their original resolution at any zoom level.
+      </fo:block>
+
+      <fo:block text-align="justify">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+        do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

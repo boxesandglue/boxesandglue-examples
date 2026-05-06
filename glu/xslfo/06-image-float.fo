@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  fo:float[float="before"] carrying an image plus a caption block —
+  the classic "figure at the top of the page" pattern. The float
+  wraps an fo:external-graphic and a small italic block; both are
+  pulled out of the running flow and stacked in the top-float region
+  by htmlbag's two-pass page assembler.
+
+    glu foproc.lua 06-image-float.fo
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="148mm" page-height="210mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block font-size="14pt" font-weight="bold" space-after="8pt">
+        Image in a top-float
+      </fo:block>
+
+      <fo:float float="before">
+        <fo:block text-align="center">
+          <fo:external-graphic src="ocean.pdf" width="80mm"/>
+        </fo:block>
+        <fo:block font-style="italic" font-size="9pt"
+                  text-align="center" space-before="4pt">
+          Figure 1 — anchored to the top of the page, regardless of
+          where the markup appears in the source flow.
+        </fo:block>
+      </fo:float>
+
+      <fo:block space-after="6pt">
+        Body paragraph one. The figure above is reserved at the top of
+        the page during the first pass; the body content then flows
+        below the reservation in the second pass.
+      </fo:block>
+
+      <fo:block space-after="6pt">
+        Body paragraph two. Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
+        dolore magna aliqua.
+      </fo:block>
+
+      <fo:block space-after="6pt">
+        Body paragraph three. Ut enim ad minim veniam, quis nostrud
+        exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat.
+      </fo:block>
+
+      <fo:block text-align="justify">
+        Body paragraph four. Duis aute irure dolor in reprehenderit
+        in voluptate velit esse cillum dolore eu fugiat nulla
+        pariatur.
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

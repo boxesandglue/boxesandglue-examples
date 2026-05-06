@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Right-to-left text, rendered with Amiri (OFL). The font is
+  registered via fo:declarations/bg:font-face — an extension element
+  in our own namespace (BG_NS). XSL-FO 1.1 §6.4.2 allows arbitrary
+  elements from any other namespace under fo:declarations, so this
+  passes schema validation in oxygen XML and similar editors.
+  foproc.lua maps bg:font-face to a CSS @font-face rule.
+
+  htmlbag does not honour `dir="rtl"` or CSS `direction`. RTL is
+  enabled by the boxesandglue paragraph builder when it sees Arabic /
+  Hebrew codepoints; the bidi reordering and Arabic shaping run
+  automatically.
+
+    glu foproc.lua 07-rtl-arabic.fo
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+         xmlns:bg="https://boxesandglue.dev/ns/xslfo">
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="148mm" page-height="210mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:declarations>
+    <bg:font-face font-family="Amiri" src="amiri-regular.ttf"
+                  font-weight="normal" font-style="normal"/>
+  </fo:declarations>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block font-size="16pt" font-weight="bold" space-after="10pt">
+        Arabic / RTL demo
+      </fo:block>
+
+      <fo:block space-after="8pt">
+        Body text below is Arabic, set in Amiri. Glyph shaping (initial
+        / medial / final / isolated forms) and right-to-left reordering
+        are produced automatically by the typesetter.
+      </fo:block>
+
+      <fo:block font-family="Amiri" font-size="14pt"
+                line-height="1.7" space-after="8pt">
+        بسم الله الرحمن الرحيم. الحمد لله رب العالمين، الرحمن الرحيم،
+        مالك يوم الدين، إياك نعبد وإياك نستعين.
+      </fo:block>
+
+      <fo:block font-family="Amiri" font-size="14pt"
+                line-height="1.7" space-after="8pt">
+        اهدنا الصراط المستقيم، صراط الذين أنعمت عليهم، غير المغضوب
+        عليهم ولا الضالين.
+      </fo:block>
+
+      <fo:block font-family="Amiri" font-size="12pt"
+                line-height="1.7" text-align="justify">
+        النص العربي يستخدم خط أميري المرخص بموجب رخصة الخطوط المفتوحة
+        OFL. تتم معالجة الحروف وتشكيلها تلقائيا عند اكتشاف نقاط
+        الترميز اليونيكود العربية في فقرة النص.
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

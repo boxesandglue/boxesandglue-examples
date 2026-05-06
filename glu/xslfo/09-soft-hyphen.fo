@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Soft-hyphens (U+00AD) drive the line breaker in CSS Text 3 §6
+  hyphens=manual mode: only positions explicitly marked by &#xAD;
+  are valid break points; pattern-based hyphenation is suppressed.
+  In hyphens=auto mode, BOTH soft-hyphens and language patterns
+  produce break points — useful for words that have a preferred
+  break that the pattern set wouldn't pick (compound words, brand
+  names, technical terms).
+
+  This example sets hyphenate="manual" via foproc.lua's `hyphenate`
+  property (foproc maps the value through unchanged when it's an
+  explicit CSS keyword). The shy positions in "supercalifragilis-
+  ticexpialidocious" guide where the breaker may split.
+
+    glu foproc.lua 09-soft-hyphen.fo
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="105mm" page-height="148mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block font-size="12pt" font-weight="bold" space-after="6pt"
+                xml:lang="en">
+        Soft hyphen demo
+      </fo:block>
+
+      <fo:block xml:lang="en" hyphenate="manual" font-size="11pt"
+                line-height="1.5" text-align="justify" space-after="6pt">
+        Manual mode honours only explicit soft-hyphens, so the long word
+        super&#xAD;cali&#xAD;fragilis&#xAD;ticexpiali&#xAD;docious can
+        be split at the marked positions, but other long words like
+        electroencephalography stay whole because no shy was provided.
+      </fo:block>
+
+      <fo:block xml:lang="en" hyphenate="auto" font-size="11pt"
+                line-height="1.5" text-align="justify" space-after="6pt">
+        Auto mode merges soft-hyphens with the English hyphenation
+        pattern set, so super&#xAD;cali&#xAD;fragilis&#xAD;ticexpiali&#xAD;docious
+        now has both the user-supplied break points and the pattern
+        ones, while electroencephalography also becomes breakable
+        through the en patterns.
+      </fo:block>
+
+      <fo:block xml:lang="en" hyphenate="false" font-size="11pt"
+                line-height="1.5" text-align="justify">
+        None mode treats soft-hyphens as zero-width text and forbids
+        all breaks, so super&#xAD;cali&#xAD;fragilis&#xAD;ticexpiali&#xAD;docious
+        will overflow the line rather than break — a brittle but spec-
+        defined behaviour.
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

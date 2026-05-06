@@ -12,18 +12,38 @@
 -- Coverage:
 --   fo:simple-page-master       → @page { size, margin }
 --   fo:flow                     → <body>
---   fo:block                    → <p style="...">
---   fo:inline                   → <span style="...">
+--   fo:block                    → <p style="..." lang="...">
+--   fo:inline                   → <span style="..." lang="...">
 --   fo:footnote / footnote-body → <fn>...</fn>
---   fo:float                    → <div style="float: top|bottom">
+--   fo:float                    → <div style="float: top|bottom" lang="...">
 --   fo:external-graphic         → <img>
+--   fo:declarations/bg:font-face → @font-face { font-family; src }
+--   xml:lang / language(+country) → HTML lang= (BCP47)
+--   hyphenate="true|false"      → CSS hyphens: auto|none
+--   xml:lang on fo:root         → htmlbag opts.lang (PDF /Lang)
+--   bg:format on fo:root        → htmlbag opts.format ("PDF/UA" enables tagging)
+--   fo:title (child of fo:root) → htmlbag opts.title (PDF /Title)
+--   fo:block role="H1..H6"      → <h1>..<h6> (XSL-FO 1.1 §7.21.5 role)
+--   fo:external-graphic alt=    → <img alt="…"> (Figure /Alt for PDF/UA)
 -- Property mapping is a static table; complex compounds (space-before.optimum
 -- etc.) are not unpacked. Multi-column, side-floats (start/end/inside/outside),
 -- retrieve-marker, page-number-citation are deferred.
+--
+-- Note on RTL: htmlbag does not honour `dir="rtl"` or CSS `direction`. Bidi /
+-- Arabic shaping is engaged automatically when the rendered text contains RTL
+-- codepoints, so the .fo files just need the Arabic UTF-8 in place — no extra
+-- direction property is mapped here. Hyphenation language IS routed through:
+-- htmlbag reads HTML lang= and resolves it to a TeX hyphenation pattern set
+-- (or a no-op for languages without patterns, such as Arabic).
 
 local cxpath = require("xml.cxpath")
 
 local FO_NS = "http://www.w3.org/1999/XSL/Format"
+-- Extension namespace for non-standard helper elements (currently
+-- bg:font-face). XSL-FO 1.1 §6.4.2 explicitly allows elements from any
+-- other namespace under fo:declarations, which is what schema-aware
+-- editors like oxygen XML look for.
+local BG_NS = "https://boxesandglue.dev/ns/xslfo"
 
 -- FO attribute → CSS property (1:1 mapping where possible).
 local FO_TO_CSS = {
@@ -50,6 +70,41 @@ local FO_TO_CSS = {
     ["line-height"]      = "line-height",
 }
 
+-- Build the HTML lang= attribute from XSL-FO 1.1 §7.10:
+--   xml:lang="en-US"          → lang="en-US"
+--   language="en"             → lang="en"
+--   language="en" country="US"→ lang="en-US"
+-- Returns the empty string when no language information is present.
+local function lang_attr(ctx)
+    local xmllang = ctx:eval("@xml:lang").string
+    if xmllang ~= "" then
+        return ' lang="' .. escape(xmllang) .. '"'
+    end
+    local language = ctx:eval("@language").string
+    if language == "" then return "" end
+    local country = ctx:eval("@country").string
+    if country == "" or country == "none" then
+        return ' lang="' .. escape(language) .. '"'
+    end
+    return ' lang="' .. escape(language .. "-" .. country) .. '"'
+end
+
+-- Translate XSL-FO hyphenation properties to a CSS hyphens declaration.
+-- XSL-FO 1.1 §7.10 uses hyphenate="true|false". CSS Text 3 §6 uses
+-- hyphens: auto|manual|none. We map true→auto, false→none. The optional
+-- intermediate value "manual" can be expressed via hyphenate="manual" as a
+-- non-standard but intuitive extension; full CSS keyword is also accepted.
+local function hyphens_decl(ctx)
+    local v = ctx:eval("@hyphenate").string
+    if v == "" then return "" end
+    if v == "true" then return "hyphens:auto" end
+    if v == "false" then return "hyphens:none" end
+    if v == "auto" or v == "manual" or v == "none" then
+        return "hyphens:" .. v
+    end
+    return ""
+end
+
 local function escape(s)
     return (s:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;"):gsub('"', "&quot;"))
 end
@@ -59,7 +114,8 @@ local function localname(ctx)
 end
 
 -- Build a CSS style string from the FO attributes on ctx that are in the
--- mapping table. Empty string if no mapped attributes.
+-- mapping table, plus any synthesized declarations such as hyphens. Empty
+-- string if no mapped properties applied.
 local function build_style(ctx)
     local parts = {}
     for foprop, cssprop in pairs(FO_TO_CSS) do
@@ -68,6 +124,8 @@ local function build_style(ctx)
             parts[#parts+1] = cssprop .. ":" .. v
         end
     end
+    local h = hyphens_decl(ctx)
+    if h ~= "" then parts[#parts+1] = h end
     return table.concat(parts, ";")
 end
 
@@ -88,7 +146,7 @@ local function walk_inline(ctx, out)
         return
     end
     if name == "inline" then
-        out[#out+1] = "<span" .. style_attr(ctx) .. ">"
+        out[#out+1] = "<span" .. style_attr(ctx) .. lang_attr(ctx) .. ">"
         for child in ctx:each("node()") do walk_inline(child, out) end
         out[#out+1] = "</span>"
     else
@@ -111,12 +169,22 @@ local function walk(ctx, out)
     end
 
     if name == "block" then
-        out[#out+1] = "<p" .. style_attr(ctx) .. ">"
+        -- XSL-FO 1.1 §7.21.5 defines `role` as the structural role for
+        -- Tagged PDF. We honour H1…H6 (and the lowercase variants) by
+        -- emitting <h1>…<h6>, which htmlbag's PDF/UA pipeline tags as the
+        -- corresponding heading structure elements (htmlToPDFRole map at
+        -- htmlbag/tagging.go). All other roles fall through to <p>.
+        local role = ctx:eval("@role").string
+        local tag = "p"
+        if role:match("^[Hh][1-6]$") then
+            tag = role:lower()
+        end
+        out[#out+1] = "<" .. tag .. style_attr(ctx) .. lang_attr(ctx) .. ">"
         for child in ctx:each("node()") do walk(child, out) end
-        out[#out+1] = "</p>"
+        out[#out+1] = "</" .. tag .. ">"
 
     elseif name == "inline" then
-        out[#out+1] = "<span" .. style_attr(ctx) .. ">"
+        out[#out+1] = "<span" .. style_attr(ctx) .. lang_attr(ctx) .. ">"
         for child in ctx:each("node()") do walk(child, out) end
         out[#out+1] = "</span>"
 
@@ -158,13 +226,39 @@ local function walk(ctx, out)
         local extra = build_style(ctx)
         local style = "float:" .. cssval
         if extra ~= "" then style = style .. ";" .. extra end
-        out[#out+1] = '<div style="' .. style .. '">'
+        out[#out+1] = '<div style="' .. style .. '"' .. lang_attr(ctx) .. '>'
         for child in ctx:each("node()") do walk(child, out) end
         out[#out+1] = '</div>'
 
     elseif name == "external-graphic" then
+        -- htmlbag pulls image dimensions from the HTML width / height
+        -- *attributes*, not from the CSS style string (inheritablestyles.go's
+        -- "img" case reads item.Attributes["width" / "height"] directly).
+        -- So @width / @height bypass build_style and become attributes.
+        --
+        -- @alt is non-standard XSL-FO but is the natural mapping to
+        -- HTML's <img alt="…">. PDF/UA mode uses it to populate the
+        -- Figure structure element's /Alt entry (htmlbag/vlistbuilder.go
+        -- findImageAlt). Without it, an image cannot be PDF/UA-conformant.
         local src = ctx:eval("@src").string
-        out[#out+1] = '<img src="' .. escape(src) .. '"' .. style_attr(ctx) .. '/>'
+        local imgw = ctx:eval("@width").string
+        local imgh = ctx:eval("@height").string
+        -- Collapse interior whitespace in alt-text. XML attribute value
+        -- normalisation turns newlines into spaces but preserves runs of
+        -- spaces, which leaves multi-line wrapped alt= attributes ugly
+        -- in the PDF /Alt entry. Screen readers also benefit from a
+        -- single-spaced reading.
+        local imgalt = ctx:eval("@alt").string
+        if imgalt ~= "" then
+            imgalt = imgalt:gsub("%s+", " "):gsub("^%s+", ""):gsub("%s+$", "")
+        end
+        local parts = {'<img src="' .. escape(src) .. '"'}
+        if imgw ~= "" then parts[#parts+1] = ' width="' .. escape(imgw) .. '"' end
+        if imgh ~= "" then parts[#parts+1] = ' height="' .. escape(imgh) .. '"' end
+        if imgalt ~= "" then parts[#parts+1] = ' alt="' .. escape(imgalt) .. '"' end
+        parts[#parts+1] = style_attr(ctx)
+        parts[#parts+1] = '/>'
+        out[#out+1] = table.concat(parts)
 
     else
         -- Unknown FO element — pass through children (tolerant fallback so
@@ -193,6 +287,38 @@ local function page_css(doc)
     return ""
 end
 
+-- Map fo:declarations/bg:font-face into @font-face CSS rules. XSL-FO 1.1
+-- has no standard in-document font registration; FOP uses an external
+-- config file, Antenna House uses axf:font-face. We mirror the CSS
+-- @font-face shape under our own extension namespace (BG_NS) so
+-- schema-aware editors (oxygen XML, etc.) accept the document — XSL-FO
+-- §6.4.2 explicitly allows elements from any other namespace inside
+-- fo:declarations.
+--
+-- Expected input:
+--   <fo:declarations xmlns:bg="https://boxesandglue.dev/ns/xslfo">
+--     <bg:font-face font-family="Amiri" src="amiri-regular.ttf"
+--                   font-weight="normal" font-style="normal"/>
+--   </fo:declarations>
+local function font_face_css(doc)
+    local rules = {}
+    for ff in doc:each("//fo:declarations/bg:font-face") do
+        local function a(n) return ff:eval("@" .. n).string end
+        local family, src = a("font-family"), a("src")
+        if family ~= "" and src ~= "" then
+            local parts = {
+                "font-family:'" .. family .. "'",
+                "src:url('" .. src .. "')",
+            }
+            local w, s = a("font-weight"), a("font-style")
+            if w ~= "" then parts[#parts+1] = "font-weight:" .. w end
+            if s ~= "" then parts[#parts+1] = "font-style:" .. s end
+            rules[#rules+1] = "@font-face { " .. table.concat(parts, ";") .. " }"
+        end
+    end
+    return table.concat(rules, "\n")
+end
+
 -- Main
 local input = nil
 local writeHTML = false
@@ -209,10 +335,50 @@ end
 
 local doc = cxpath.open(input)
 doc:set_namespace("fo", FO_NS)
+doc:set_namespace("bg", BG_NS)
+
+-- read_attr returns the value of a named attribute on ctx, iterating
+-- over @* and matching on name(). cxpath's @ns:name selector trips on
+-- namespaced attributes (and strips the xml: prefix on xml:lang), so
+-- this iteration form is the robust path. Same trick as the @float
+-- handler in walk(), kept as a single helper to share between sites.
+local function read_attr(ctx, ...)
+    local wanted = {...}
+    for attr in ctx:each("@*") do
+        local n = attr:eval("name()").string
+        for _, w in ipairs(wanted) do
+            if n == w then return attr.string end
+        end
+    end
+    return ""
+end
+
+-- Extract document-level metadata before walking the flow.
+--   xml:lang on fo:root  → htmlbag opts.lang  → PDF /Lang catalog entry
+--   bg:format on fo:root → htmlbag opts.format → "PDF/UA" enables tagging
+--   <fo:title>…</fo:title> as direct child of fo:root → opts.title → PDF /Title
+local meta = {}
+do
+    for r in doc:each("/fo:root") do
+        local lang = read_attr(r, "xml:lang", "lang")
+        if lang ~= "" then meta.lang = lang end
+        local format = read_attr(r, "bg:format")
+        if format ~= "" then meta.format = format end
+        break
+    end
+    -- fo:title is a top-level XSL-FO element for the document title; we
+    -- accept it as direct child of fo:root. string(.) on the title node
+    -- returns its concatenated text content (XPath 1.0 §4.2).
+    local title = doc:eval("string(/fo:root/fo:title)").string
+    if title ~= "" then
+        meta.title = title:gsub("%s+", " "):gsub("^%s+", ""):gsub("%s+$", "")
+    end
+end
 
 local out = {}
 out[#out+1] = "<!DOCTYPE html><html><head><style>"
 out[#out+1] = page_css(doc)
+out[#out+1] = font_face_css(doc)
 out[#out+1] = "body { font-family: serif; font-size: 11pt; line-height: 1.4; }"
 out[#out+1] = "</style></head><body>"
 
@@ -239,5 +405,14 @@ if writeHTML then
 end
 
 -- Hand the HTML to glu's HTML pipeline directly — no disk roundtrip.
+-- Pass the document metadata through as an options table; the third
+-- argument of htmlbag.render accepts either a base_dir string or an
+-- options dict. base_dir defaults to "." which is what we want for
+-- relative font/image paths.
 local htmlbag = require("glu.htmlbag")
-htmlbag.render(html_string, pdf_filename)
+htmlbag.render(html_string, pdf_filename, {
+    base_dir = ".",
+    format   = meta.format,
+    lang     = meta.lang,
+    title    = meta.title,
+})

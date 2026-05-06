@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Mixed-direction text — English (LTR) and Arabic (RTL) inside the
+  same paragraph. The Arabic blocks are tagged xml:lang="ar"; the
+  English inline runs override that with xml:lang="en". htmlbag now
+  routes the language through the typesetter, so:
+    * Arabic runs use a no-op hyphenator (Arabic has no TeX pattern
+      set) — bidi reordering and Arabic shaping run normally.
+    * English runs use the en pattern, which may break long words at
+      legitimate hyphenation points if a line is tight.
+    * A run can opt out of automatic hyphenation locally with
+      hyphenate="false" or carry an explicit U+00AD (&#xAD;) for a
+      manual break point.
+
+    glu foproc.lua 08-mixed-ltr-rtl.fo
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+         xmlns:bg="https://boxesandglue.dev/ns/xslfo">
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="148mm" page-height="210mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:declarations>
+    <bg:font-face font-family="Amiri" src="amiri-regular.ttf"
+                  font-weight="normal" font-style="normal"/>
+    <bg:font-face font-family="Amiri" src="amiri-slanted.ttf"
+                  font-weight="normal" font-style="italic"/>
+  </fo:declarations>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block font-size="14pt" font-weight="bold" space-after="10pt"
+                xml:lang="en">
+        Bidirectional text
+      </fo:block>
+
+      <fo:block xml:lang="en" font-family="Amiri" font-size="12pt"
+                line-height="1.6" space-after="8pt">
+        Paragraph starting in English, then switching to Arabic:
+        the word for "book" is
+        <fo:inline xml:lang="ar">كِتاب</fo:inline>
+        and the word for "peace" is
+        <fo:inline xml:lang="ar">سَلام</fo:inline>.
+        Numbers like 2026 stay LTR even inside an RTL run.
+      </fo:block>
+
+      <fo:block xml:lang="ar" font-family="Amiri" font-size="12pt"
+                line-height="1.6" space-after="8pt">
+        هذه فقرة تبدأ بالعربية ثم تتضمن كلمات إنجليزية مثل
+        <fo:inline xml:lang="en" font-style="italic">typesetting</fo:inline>
+        و
+        <fo:inline xml:lang="en" font-style="italic">layout</fo:inline>،
+        ثم تعود إلى العربية. ترتيب الكلمات يحدد آليا.
+      </fo:block>
+
+      <fo:block xml:lang="en" font-family="Amiri" font-size="11pt"
+                line-height="1.6" space-after="8pt" text-align="justify">
+        Hyphenation is run per-language: this English block sits inside
+        an Arabic-leaning document, so the line breaker may hyphenate
+        long English words like
+        <fo:inline xml:lang="en">internationalisation</fo:inline>
+        at legitimate pattern points when the line is tight, while a
+        word marked
+        <fo:inline xml:lang="en" hyphenate="false">unbreakable</fo:inline>
+        stays whole.
+      </fo:block>
+
+      <fo:block xml:lang="ar" font-family="Amiri" font-size="11pt"
+                line-height="1.6" text-align="justify">
+        أرقام في سياق عربي: السنة 2026 / page 42. الأرقام تحافظ على
+        ترتيبها من اليسار إلى اليمين، بينما تُرتَّب الفقرات العربية
+        والإنجليزية تلقائيًا حسب خوارزمية ثنائية الاتجاه.
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>
