@@ -12,7 +12,7 @@
       hyphenate="false" or carry an explicit U+00AD (&#xAD;) for a
       manual break point.
 
-    glu foproc.lua 08-mixed-ltr-rtl.fo
+    glu ../foproc.lua 08-mixed-ltr-rtl.fo
 -->
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
          xmlns:bg="https://boxesandglue.dev/ns/xslfo">
@@ -26,9 +26,9 @@
   </fo:layout-master-set>
 
   <fo:declarations>
-    <bg:font-face font-family="Amiri" src="amiri-regular.ttf"
+    <bg:font-face font-family="Amiri" src="../amiri-regular.ttf"
                   font-weight="normal" font-style="normal"/>
-    <bg:font-face font-family="Amiri" src="amiri-slanted.ttf"
+    <bg:font-face font-family="Amiri" src="../amiri-slanted.ttf"
                   font-weight="normal" font-style="italic"/>
   </fo:declarations>
 

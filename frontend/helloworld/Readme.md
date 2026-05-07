@@ -1,11 +1,17 @@
-To get the PDF:
+# Hello world
 
-Run `go run main.go` on the command line inside this directory.
+The Hello-world equivalent for the `frontend` package: load a font
+family, format a paragraph, ship out a one-page PDF. The smallest
+program that exercises the full TeX-style line breaker.
 
+## Run
 
-----
+```
+go run main.go
+```
 
+Produces `result.pdf`.
 
-![Image of the result](firstpage.png)
+## Result
 
-
+![first page of result.pdf](firstpage.png)

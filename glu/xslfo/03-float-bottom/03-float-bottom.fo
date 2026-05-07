@@ -8,7 +8,7 @@
   fo:flow — fo:float is block-level and not permitted inline in an
   fo:block.
 
-    glu foproc.lua 03-float-bottom.fo
+    glu ../foproc.lua 03-float-bottom.fo
     glu 03-float-bottom.html
 -->
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">

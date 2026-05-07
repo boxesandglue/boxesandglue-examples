@@ -9,11 +9,11 @@ function M.setup_fonts(f)
     ff = f:new_font_family("text")
 
     local regular = frontend.fontsource({
-        location = "../../fonts/crimsonpro/CrimsonPro-Regular.ttf",
+        location = "../../../fonts/crimsonpro/CrimsonPro-Regular.ttf",
         features = {"kern", "liga"},
     })
     local bold = frontend.fontsource({
-        location = "../../fonts/crimsonpro/CrimsonPro-Bold.ttf",
+        location = "../../../fonts/crimsonpro/CrimsonPro-Bold.ttf",
         features = {"kern", "liga"},
     })
 

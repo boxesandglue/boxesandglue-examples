@@ -1,11 +1,17 @@
-To get the PDF:
+# Table with cell spans
 
-Run `go run main.go` on the command line inside this directory.
+Tables with `colspan` / `rowspan` cell merging. The frontend builds
+the table from XML (`out.xml` is the input fixture); cells span both
+horizontally and vertically.
 
+## Run
 
-----
+```
+go run main.go
+```
 
+Produces `result.pdf`.
 
-![Image of the result](firstpage.png)
+## Result
 
-
+![first page of result.pdf](firstpage.png)

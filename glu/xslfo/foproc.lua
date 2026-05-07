@@ -5,7 +5,8 @@
 --                                                  (writes the intermediate
 --                                                   HTML out for inspection /
 --                                                   debugging)
--- Note: the keep-html marker is a positional keyword, not a `--flag`,
+--          glu foproc.lua <input.fo> out=NAME    → writes NAME instead of <input>.pdf
+-- Note: keep-html and out=… are positional keywords, not `--flags`,
 -- because glu reserves `--html` for its own debug output flag and
 -- swallows it before the script sees it.
 --
@@ -322,15 +323,18 @@ end
 -- Main
 local input = nil
 local writeHTML = false
+local outOverride = nil
 for i = 1, #arg do
     if arg[i] == "keep-html" then
         writeHTML = true
+    elseif arg[i]:sub(1, 4) == "out=" then
+        outOverride = arg[i]:sub(5)
     elseif input == nil then
         input = arg[i]
     end
 end
 if not input then
-    error("usage: glu foproc.lua <input.fo> [keep-html]")
+    error("usage: glu foproc.lua <input.fo> [keep-html] [out=NAME]")
 end
 
 local doc = cxpath.open(input)
@@ -391,8 +395,13 @@ out[#out+1] = "</body></html>"
 
 local html_string = table.concat(out, "")
 
-local pdf_filename = input:gsub("%.fo$", ".pdf")
-if pdf_filename == input then pdf_filename = input .. ".pdf" end
+local pdf_filename
+if outOverride then
+    pdf_filename = outOverride
+else
+    pdf_filename = input:gsub("%.fo$", ".pdf")
+    if pdf_filename == input then pdf_filename = input .. ".pdf" end
+end
 
 if writeHTML then
     local html_filename = input:gsub("%.fo$", ".html")

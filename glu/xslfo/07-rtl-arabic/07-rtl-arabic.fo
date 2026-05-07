@@ -12,7 +12,7 @@
   Hebrew codepoints; the bidi reordering and Arabic shaping run
   automatically.
 
-    glu foproc.lua 07-rtl-arabic.fo
+    glu ../foproc.lua 07-rtl-arabic.fo
 -->
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
          xmlns:bg="https://boxesandglue.dev/ns/xslfo">
@@ -26,7 +26,7 @@
   </fo:layout-master-set>
 
   <fo:declarations>
-    <bg:font-face font-family="Amiri" src="amiri-regular.ttf"
+    <bg:font-face font-family="Amiri" src="../amiri-regular.ttf"
                   font-weight="normal" font-style="normal"/>
   </fo:declarations>
 

@@ -13,7 +13,7 @@
   All four layers (top stack, body, bottom stack, footnote stack) get
   painted by htmlbag's two-pass page assembly.
 
-    glu foproc.lua 04-float-mixed.fo
+    glu ../foproc.lua 04-float-mixed.fo
     glu 04-float-mixed.html
 -->
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">

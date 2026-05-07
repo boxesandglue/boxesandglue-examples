@@ -5,7 +5,7 @@ local node = require("glu.node")
 local zugferd = require("zugferd")
 local doc_module = require("document")
 
-local doc = frontend.new("out.pdf")
+local doc = frontend.new("result.pdf")
 
 local colorprofile = doc:load_colorprofile("AdobeRGB1998.icc")
 colorprofile.identifier = "AdobeRGB1998"

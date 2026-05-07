@@ -8,7 +8,7 @@
 
   Walk to HTML, then render:
 
-    glu foproc.lua 02-float-top.fo
+    glu ../foproc.lua 02-float-top.fo
     glu 02-float-top.html
 -->
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">

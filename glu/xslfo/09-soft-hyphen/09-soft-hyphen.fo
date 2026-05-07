@@ -13,7 +13,7 @@
   explicit CSS keyword). The shy positions in "supercalifragilis-
   ticexpialidocious" guide where the breaker may split.
 
-    glu foproc.lua 09-soft-hyphen.fo
+    glu ../foproc.lua 09-soft-hyphen.fo
 -->
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
 

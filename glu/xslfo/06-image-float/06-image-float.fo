@@ -6,7 +6,7 @@
   pulled out of the running flow and stacked in the top-float region
   by htmlbag's two-pass page assembler.
 
-    glu foproc.lua 06-image-float.fo
+    glu ../foproc.lua 06-image-float.fo
 -->
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
 
@@ -27,7 +27,7 @@
 
       <fo:float float="before">
         <fo:block text-align="center">
-          <fo:external-graphic src="ocean.pdf" width="80mm"/>
+          <fo:external-graphic src="../ocean.pdf" width="80mm"/>
         </fo:block>
         <fo:block font-style="italic" font-size="9pt"
                   text-align="center" space-before="4pt">

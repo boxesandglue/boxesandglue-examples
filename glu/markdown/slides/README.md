@@ -34,7 +34,7 @@ See <https://boxesandglue.dev/glu/> for full installation instructions.
 glu slides.md
 ```
 
-This produces `slides.pdf`.
+This produces `slides.pdf` (this directory ships a copy as `result.pdf`).
 
 ## Files
 

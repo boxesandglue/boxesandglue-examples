@@ -5,7 +5,7 @@
   so vector content is preserved. width / height are honoured; if only
   one dimension is set the other scales proportionally.
 
-    glu foproc.lua 05-image.fo
+    glu ../foproc.lua 05-image.fo
 -->
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
 
@@ -30,7 +30,7 @@
       </fo:block>
 
       <fo:block text-align="center" space-after="4pt">
-        <fo:external-graphic src="ocean.pdf" width="80mm"/>
+        <fo:external-graphic src="../ocean.pdf" width="80mm"/>
       </fo:block>
 
       <fo:block font-size="9pt" font-style="italic" text-align="center"

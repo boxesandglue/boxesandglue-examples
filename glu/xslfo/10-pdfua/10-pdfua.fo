@@ -18,7 +18,7 @@
   alt="…" populates the Figure element's /Alt entry — without alt-text
   the image would fail PDF/UA conformance.
 
-    glu foproc.lua 10-pdfua.fo
+    glu ../foproc.lua 10-pdfua.fo
     pdfinfo 10-pdfua.pdf       # /Title, /Lang, Tagged: yes
 -->
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
@@ -65,7 +65,7 @@
       </fo:block>
 
       <fo:block text-align="center" space-after="4pt">
-        <fo:external-graphic src="ocean.pdf" width="60mm"
+        <fo:external-graphic src="../ocean.pdf" width="60mm"
                              alt="Stylised ocean wave illustration in
                                   shades of blue, used as the cover image
                                   for the boxesandglue baseline image

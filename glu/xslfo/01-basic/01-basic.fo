@@ -4,7 +4,7 @@
   foproc.lua covers in its non-float role: page master, blocks,
   inline markup (bold / italic / colour), and two footnotes.
 
-    glu foproc.lua 01-basic.fo
+    glu ../foproc.lua 01-basic.fo
     glu 01-basic.html
 -->
 <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
