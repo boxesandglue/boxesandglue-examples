@@ -58,6 +58,7 @@ elements.
 
 Description | Preview
 --- | ---
+[Alignment](markdown/alignment) — `# Heading {.right}` syntax, `-bag-linebreak-*` tuning, German hyphenation | <a href="markdown/alignment"><img src="markdown/alignment/firstpage.png" width="200"></a>
 [Barcodes](markdown/barcodes) — `<barcode>` element: EAN-13, Code 128, QR | <a href="markdown/barcodes"><img src="markdown/barcodes/firstpage.png" width="200"></a>
 [Slides](markdown/slides) — Markdown → 16:9 slide deck with hobby-curve accents | <a href="markdown/slides"><img src="markdown/slides/slides-preview.png" width="200"></a>
 

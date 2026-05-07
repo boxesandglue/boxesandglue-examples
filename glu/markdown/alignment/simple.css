@@ -1,0 +1,38 @@
+/* Utility classes for paragraph alignment.
+   Markdown's attribute syntax {.classname} attaches a class to the
+   following heading; CSS rules below turn that class into text-align.
+
+   Note: goldmark's WithAttribute parser only attaches attributes to
+   headings (and a few other block elements), NOT to paragraphs. To
+   align a paragraph or a run of paragraphs, wrap them in a <div> with
+   inline HTML — Markdown's WithUnsafe renderer passes that through. */
+
+.left    { text-align: left }
+.right   { text-align: right }
+.center  { text-align: center }
+.justify { text-align: justify }
+
+/* Adjacent-sibling shortcut: align the paragraph that immediately
+   follows a tagged heading, so "# Heading {.right}\n\npara" stays
+   right-aligned without needing a wrapping <div>. */
+h1.left + p, h2.left + p, h3.left + p,
+h4.left + p, h5.left + p, h6.left + p { text-align: left }
+
+h1.right + p, h2.right + p, h3.right + p,
+h4.right + p, h5.right + p, h6.right + p { text-align: right }
+
+h1.center + p, h2.center + p, h3.center + p,
+h4.center + p, h5.center + p, h6.center + p { text-align: center }
+
+h1.justify + p, h2.justify + p, h3.justify + p,
+h4.justify + p, h5.justify + p, h6.justify + p { text-align: justify }
+
+/* Knuth-Plass line breaker tuning (boxesandglue-specific properties).
+   The defaults are conservative (Tolerance=4, Hyphenpenalty=50) to
+   match TeX's \fussy mode. For long-compound German prose the
+   penalties below let the line breaker pick hyphenation points
+   instead of overfull lines. */
+body {
+	-bag-linebreak-tolerance: 200;
+	-bag-linebreak-hyphen-penalty: 5;
+}

@@ -32,6 +32,7 @@ Description | Preview
 [XSL-FO walker](glu/xslfo) — XSL-FO front matter handed to htmlbag | <a href="glu/xslfo"><img src="glu/xslfo/01-basic/firstpage.png" width="200"></a>
 [PDF/UA tagging](glu/xslfo/10-pdfua) — ISO 14289-1 accessibility | <a href="glu/xslfo/10-pdfua"><img src="glu/xslfo/10-pdfua/firstpage.png" width="200"></a>
 [Markdown slides](glu/markdown/slides) — 16:9 deck from Markdown | <a href="glu/markdown/slides"><img src="glu/markdown/slides/slides-preview.png" width="200"></a>
+[Markdown alignment](glu/markdown/alignment) — `{.class}` heading attributes, German hyphenation, `-bag-linebreak-*` tuning | <a href="glu/markdown/alignment"><img src="glu/markdown/alignment/firstpage.png" width="200"></a>
 [Barcodes](glu/markdown/barcodes) — EAN-13, Code 128, QR via the `<barcode>` element | <a href="glu/markdown/barcodes"><img src="glu/markdown/barcodes/firstpage.png" width="200"></a>
 [ZUGFeRD invoice](glu/lua_interface/zugferdinvoice) — EN 16931 PDF/A-3 | <a href="glu/lua_interface/zugferdinvoice"><img src="glu/lua_interface/zugferdinvoice/firstpage.png" width="200"></a>
 
@@ -56,12 +57,9 @@ emit PDF objects by hand). Run any example with `go run main.go`.
 
 Description | Preview
 --- | ---
-[Simple PDF](baseline/simplepdf) — minimal two-page document | <a href="baseline/simplepdf"><img src="baseline/simplepdf/firstpage.png" width="200"></a>
 [Font](baseline/font) — load a font and write a glyph | <a href="baseline/font"><img src="baseline/font/firstpage.png" width="200"></a>
 [Image](baseline/image) — import a PDF as a Form XObject | <a href="baseline/image"><img src="baseline/image/firstpage.png" width="200"></a>
 [Annotation (hyperlink)](baseline/annotation) — clickable URI annotation | <a href="baseline/annotation"><img src="baseline/annotation/firstpage.png" width="200"></a>
-[Outline — direct destinations](baseline/outlinedirectdest) — bookmarks pointing at explicit `/XYZ` views | <a href="baseline/outlinedirectdest"><img src="baseline/outlinedirectdest/firstpage.png" width="200"></a>
-[Outline — named destinations](baseline/outlinenamedest) — bookmarks via the catalog `/Names` dictionary | <a href="baseline/outlinenamedest"><img src="baseline/outlinenamedest/firstpage.png" width="200"></a>
 
 ## fonts
 
