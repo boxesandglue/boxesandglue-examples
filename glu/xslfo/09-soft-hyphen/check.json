@@ -1,0 +1,1 @@
+{ "cmd": "glu ../foproc.lua 09-soft-hyphen.fo out=out.pdf" }

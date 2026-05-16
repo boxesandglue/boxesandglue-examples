@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--
+  CSS-Counter variant of the numbered-sections example. The section
+  numbers are NOT written into the HTML — they are computed at
+  render time by counter-reset / counter-increment / counters().
+  Compare against ../numbered-sections/ for the hardcoded-numbers
+  version.
+
+  Run:  glu numbered-sections-counters.html
+-->
+<html lang="de">
+<head>
+  <style>
+    @page { size: A5; margin: 1.8cm 1.6cm; }
+
+    body {
+      font-family: sans-serif;
+      font-size: 11pt;
+      line-height: 1.35;
+      hyphens: auto;
+    }
+
+    /* Three nested <ol>s, one per hierarchy level. Each level resets
+       its own slot in the `sec` counter; counters(sec, ".") joins the
+       whole ancestor chain to yield "2", "2.1", "2.1.1" etc.
+
+       The outer <ol> opens a 50pt gutter for the marker; the nested
+       <ol>s pull padding-left back to zero so the layout doesn't step
+       further right at each depth. htmlbag's marker prepend inherits
+       the outer ListPaddingLeft, so deeper-level markers still hang
+       cleanly into the same gutter.                                  */
+    ol.sec {
+      list-style: none;
+      padding-left: 50pt;
+      counter-reset: sec;
+    }
+    /* Nested levels drop their own padding-left (they share the outer
+       gutter) and add a top margin so the parent's title doesn't sit
+       directly above the first nested marker.                         */
+    ol.sec ol.sec { padding-left: 0; margin-top: 0.6em; }
+    /* Start the very outermost counter at 1 so the first <li> increments
+       it to 2 — gives "2", "2.1", "2.1.1" like the Skatordnung's
+       Chapter 2.                                                        */
+    ol.sec.start-at-two { counter-reset: sec 1; }
+
+    ol.sec > li {
+      counter-increment: sec;
+      margin-bottom: 0.6em;
+    }
+
+    ol.sec > li::before {
+      content: counters(sec, ".") "  ";
+      font-weight: bold;
+      /* Left-aligned marker — every number starts at the same X.
+         (CSS default is `right`, which mimics browser <ol>.)        */
+      text-align: left;
+    }
+
+    /* Heading variants: the FIRST <li> in each level carries the title
+       text. The chapter title is centred while its marker keeps
+       hanging in the 50pt gutter — htmlbag now anchors <li> markers
+       via Attributes["outside-marker"], decoupled from the line's
+       text-align stretch. `display: block` promotes the inline <span>
+       to a block box so text-align: center has something to act on.   */
+    .chapter-title { font-size: 18pt; font-weight: bold; display: block; text-align: center; }
+    .section-title { font-size: 12pt; font-weight: bold; }
+
+    p.body { text-align: justify; margin: 0; }
+  </style>
+</head>
+<body>
+
+  <ol class="sec start-at-two">
+    <li>
+      <span class="chapter-title">Spielgrundlagen</span>
+      <ol class="sec">
+        <li>
+          <span class="section-title">Spielmöglichkeiten</span>
+          <ol class="sec">
+            <li><p class="body">Es gibt zwei Spielklassen: Spiele mit Skataufnahme
+              und Spiele ohne Skataufnahme (Handspiele). In beiden Spielklassen
+              unterscheidet man die drei Gattungen Farbspiele, Grandspiele
+              und Nullspiele.</p></li>
+            <li><p class="body">Die möglichen Spiele sind wie folgt eingeteilt:
+              Farbspiele werden mit den vier Farben Kreuz, Pik, Herz und
+              Karo gespielt. Grandspiele kennen nur die vier Buben als
+              Trumpfkarten. Nullspiele werden ohne Trumpf gespielt.</p></li>
+            <li><p class="body">Jeder Mitspieler ist verpflichtet, die im Folgenden
+              festgelegten Spielregeln einzuhalten. Verstöße gegen die
+              Spielregeln werden nach Maßgabe der Internationalen Skatordnung
+              geahndet.</p></li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+  </ol>
+
+</body>
+</html>

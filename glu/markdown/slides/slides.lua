@@ -2,7 +2,11 @@
 local frontend = require("glu.frontend")
 local h = require("hobby")
 
-math.randomseed(os.time())
+-- A real slide deck would call os.time() here so every render gets a
+-- fresh wobble. We hard-code the seed so the rendered PDF is
+-- byte-deterministic across runs — needed for the automated render
+-- check (rake check_glu_examples).
+math.randomseed(20260516)
 
 local randomamount = 10
 

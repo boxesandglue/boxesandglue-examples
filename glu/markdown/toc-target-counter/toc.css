@@ -1,0 +1,49 @@
+/* TOC layout: each link is a block of fixed width, with the title on
+ * the left, a stretchy dot leader in the middle, and the page number
+ * pushed flush right. The fil³ stretch on the leader glue is what
+ * makes the line span the full block width. */
+.toc {
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
+
+.toc ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.toc li {
+    padding: 0.1em 0;
+    width: 9cm;
+}
+
+.toc a {
+    text-decoration: none;
+    color: black;
+}
+
+/*
+ * target-counter(attr(href), page) resolves the target id from the href
+ * attribute and returns the page number that anchor sits on.
+ *
+ * leader(".") becomes a fil³-stretched glue whose pattern (a dot, in
+ * this case) is repeated along the stretched width by the PDF output.
+ *
+ * Pass 1: anchor positions are not yet known → renders "?".
+ * Pass 2+: aux file carries the map, real numbers appear.
+ */
+.toc a::after {
+    content: " " leader(" . ") " " target-counter(attr(href), page);
+}
+
+/* Headings: left-aligned, with some breathing room. */
+h1 {
+    font-size: 18pt;
+    margin-bottom: 0.5em;
+}
+
+h2 {
+    font-size: 14pt;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+}

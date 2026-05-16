@@ -1,0 +1,1 @@
+{ "cmd": "glu ../foproc.lua 10-pdfua.fo out=out.pdf" }

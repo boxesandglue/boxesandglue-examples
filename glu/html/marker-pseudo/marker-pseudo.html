@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+  Shows the CSS ::marker pseudo-element styling each list's bullet or
+  number independently from the body text. Three lists, three marker
+  styles, no <span class=…> tricks — the colour, weight, size, family
+  and even the marker content are all carried by ::marker rules.
+
+  Run:  glu marker-pseudo.html
+-->
+<html lang="en">
+<head>
+  <style>
+    @page { size: A5; margin: 1.6cm; }
+
+    body {
+      font-family: sans-serif;
+      font-size: 11pt;
+      line-height: 1.4;
+    }
+
+    h1 { font-size: 16pt; margin: 0 0 0.6em 0; }
+    h2 { font-size: 11pt; font-weight: bold; margin: 1.1em 0 0.3em 0; color: #2b4a6b; }
+
+    ul, ol {
+      padding-left: 28pt;
+      margin: 0;
+    }
+    li { margin-bottom: 0.15em; }
+
+    /* 1. Coloured bullets, slightly larger than the body text. */
+    ul.dots {
+      list-style-type: disc;
+    }
+    ul.dots li::marker {
+      color: #c13030;
+      font-size: 1.6em;
+    }
+
+    /* 2. Bold step numbers with custom content via counter().
+          counter-reset/increment promote the <li> index into a counter
+          we can shape ourselves. The wider padding-left gives the
+          "Step N." marker enough room in the gutter so it doesn't
+          collide with the body text. */
+    ol.steps {
+      list-style: none;
+      padding-left: 50pt;
+      counter-reset: step;
+    }
+    ol.steps li {
+      counter-increment: step;
+    }
+    ol.steps li::marker {
+      content: "Step " counter(step) ".";
+      color: #2b4a6b;
+      font-weight: bold;
+    }
+
+    /* 3. Monospace markers in an accent colour — the marker keeps a
+          different font family from the surrounding sans body, which
+          is exactly what ::marker is for in the spec. */
+    ul.checks {
+      list-style-type: none;
+    }
+    ul.checks li::marker {
+      content: "[x] ";
+      font-family: monospace;
+      color: #2c8a4a;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>::marker styling demo</h1>
+
+  <h2>1. Coloured oversized bullets</h2>
+  <ul class="dots">
+    <li>Notebook A4</li>
+    <li>Mechanical pencil</li>
+    <li>Eraser</li>
+  </ul>
+
+  <h2>2. Custom marker content from a counter</h2>
+  <ol class="steps">
+    <li>Open the lid and remove the protective film.</li>
+    <li>Connect the power cable to the back of the unit.</li>
+    <li>Press the round button on the front panel.</li>
+  </ol>
+
+  <h2>3. Monospace marker, sans body</h2>
+  <ul class="checks">
+    <li>Tests pass on the feature branch.</li>
+    <li>Example renders to a one-page PDF.</li>
+    <li>Readme cross-links the underlying CSS specs.</li>
+  </ul>
+
+</body>
+</html>

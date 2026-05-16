@@ -1,0 +1,3 @@
+{
+	"cmd": "glu slides.md -o out.pdf"
+}

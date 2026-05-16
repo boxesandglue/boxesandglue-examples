@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!--
+  Numbered-section layout in the style of the German "Skatordnung":
+  every paragraph (and every heading) has its section number sitting
+  in a fixed left gutter; the body text is justified in a flush column
+  to the right. The trick is a two-column table — the left cell carries
+  the number, the right cell carries the prose.
+
+  Run:  glu numbered-sections.html
+-->
+<html lang="de">
+<head>
+  <style>
+    @page { size: A5; margin: 1.8cm 1.6cm; }
+
+    body {
+      font-family: sans-serif;
+      font-size: 11pt;
+      line-height: 1.35;
+      hyphens: auto;
+    }
+
+    /* Two-column grid: number gutter on the left, justified body on the   */
+    /* right. `vertical-align: top` is what pins the number to the first   */
+    /* body line (the default centres it on multi-line cells).             */
+    table.sect       { width: 100%; }
+    table.sect td    { vertical-align: top; padding-bottom: 0.6em; padding-right: 6pt; }
+    td.num           { font-weight: bold; }
+    td.body          { text-align: justify; }
+
+    /* Right-cell variants. The more specific selectors (`td.chapter-title`)*/
+    /* win over `td.body` thanks to higher specificity, no !important.     */
+    td.chapter-title { text-align: center; font-size: 18pt; font-weight: bold; }
+    td.section-title { font-weight: bold; font-size: 12pt; }
+    td.chapter-num   { font-size: 14pt; }
+  </style>
+</head>
+<body>
+
+  <table class="sect">
+    <colgroup>
+      <col style="width: 50pt">
+      <col>
+    </colgroup>
+    <tr>
+      <td class="num chapter-num">2</td>
+      <td class="body chapter-title">Spielgrundlagen</td>
+    </tr>
+    <tr>
+      <td class="num">2.1</td>
+      <td class="body section-title">Spielmöglichkeiten</td>
+    </tr>
+    <tr>
+      <td class="num">2.1.1</td>
+      <td class="body">Es gibt zwei Spielklassen: Spiele mit Skataufnahme
+        und Spiele ohne Skataufnahme (Handspiele). In beiden Spielklassen
+        unterscheidet man die drei Gattungen Farbspiele, Grandspiele
+        und Nullspiele.</td>
+    </tr>
+    <tr>
+      <td class="num">2.1.2</td>
+      <td class="body">Die möglichen Spiele sind wie folgt eingeteilt:
+        Farbspiele werden mit den vier Farben Kreuz, Pik, Herz und
+        Karo gespielt. Grandspiele kennen nur die vier Buben als
+        Trumpfkarten. Nullspiele werden ohne Trumpf gespielt.</td>
+    </tr>
+    <tr>
+      <td class="num">2.1.3</td>
+      <td class="body">Jeder Mitspieler ist verpflichtet, die im Folgenden
+        festgelegten Spielregeln einzuhalten. Verstöße gegen die
+        Spielregeln werden nach Maßgabe der Internationalen Skatordnung
+        geahndet.</td>
+    </tr>
+  </table>
+
+</body>
+</html>

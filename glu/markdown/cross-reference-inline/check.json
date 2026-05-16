@@ -1,0 +1,1 @@
+{ "cmd": "glu refs.md -o out.pdf" }

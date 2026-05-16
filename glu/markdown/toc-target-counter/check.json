@@ -1,0 +1,1 @@
+{ "cmd": "glu toc.md -o out.pdf" }

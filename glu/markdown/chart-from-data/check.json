@@ -1,0 +1,3 @@
+{
+	"cmd": "glu chart-from-data.md -o out.pdf"
+}

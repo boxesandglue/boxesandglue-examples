@@ -1,0 +1,1 @@
+{ "cmd": "glu ../foproc.lua 02-float-top.fo out=out.pdf" }

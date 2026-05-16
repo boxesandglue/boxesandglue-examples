@@ -1,0 +1,40 @@
+@import url("../../css/a5.css");
+
+@page {
+    size: a5;
+    margin: 1.5cm;
+}
+
+body {
+    font-family: serif;
+    font-size: 11pt;
+}
+
+h1 {
+    font-size: 20pt;
+    margin-top: 2cm;
+    margin-bottom: 1cm;
+}
+
+h2 {
+    font-size: 14pt;
+    margin-top: 12pt;
+    margin-bottom: 6pt;
+    page-break-before: always;
+}
+
+p {
+    margin-top: 6pt;
+    margin-bottom: 3pt;
+}
+
+ol, ul {
+    margin-top: 6pt;
+    margin-bottom: 6pt;
+}
+
+blockquote {
+    margin-left: 1cm;
+    margin-right: 1cm;
+    font-style: italic;
+}

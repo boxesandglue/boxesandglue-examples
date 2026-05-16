@@ -1,0 +1,25 @@
+@page {
+    size: a5;
+    margin: 1cm;
+}
+
+body {
+    font-family: serif;
+    font-size: 12pt;
+}
+
+h1 {
+    font-size: 18pt;
+    margin-bottom: 12pt;
+}
+
+h2 {
+    font-size: 14pt;
+    margin-top: 12pt;
+    margin-bottom: 6pt;
+}
+
+p {
+    margin-top: 4pt;
+    margin-bottom: 4pt;
+}

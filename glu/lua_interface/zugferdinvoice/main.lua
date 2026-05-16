@@ -5,7 +5,10 @@ local node = require("glu.node")
 local zugferd = require("zugferd")
 local doc_module = require("document")
 
-local doc = frontend.new("result.pdf")
+-- Output filename: first positional arg if given, otherwise result.pdf.
+-- Lets the automated render check (rake check_glu_examples) write to
+-- out.pdf without touching the checked-in result.pdf.
+local doc = frontend.new(arg[1] or "result.pdf")
 
 local colorprofile = doc:load_colorprofile("AdobeRGB1998.icc")
 colorprofile.identifier = "AdobeRGB1998"

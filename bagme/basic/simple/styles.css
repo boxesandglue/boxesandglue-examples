@@ -1,0 +1,36 @@
+@import url("../../css/syntaxhighlight.css");
+@import url("../../css/a5.css");
+
+@page {
+    size: a5;
+    margin: 1cm;
+}
+
+body {
+    font-family: serif;
+    font-size: 12pt;
+}
+
+ol, ul {
+    margin-top: 6pt;
+    margin-bottom: 6pt;
+}
+
+p {
+    margin-top: 8pt;
+    margin-bottom: 2pt;
+}
+
+pre, tt, code, kbd, samp {
+    font-family: monospace;
+}
+
+.green {
+    color: green;
+}
+
+#important {
+    color: rebeccapurple;
+    font-weight: bolder;
+    font-style: italic;
+}

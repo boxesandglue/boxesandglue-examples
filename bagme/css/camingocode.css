@@ -1,0 +1,26 @@
+@font-face {
+    font-family: CamingoCode;
+    src: url("../fonts/camingocode/CamingoCode-Regular.ttf");
+    size-adjust: 89%;
+}
+
+@font-face {
+    font-family: CamingoCode;
+    src: url("../fonts/camingocode/CamingoCode-Bold.ttf");
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: CamingoCode;
+    src: url("../fonts/camingocode/CamingoCode-Italic.ttf");
+    font-style: italic;
+}
+
+@font-face {
+    font-family: CamingoCode;
+    src: url("../fonts/camingocode/CamingoCode-BoldItalic.ttf");
+    font-style: italic;
+    font-weight: bold;
+}
+
+pre, tt, code, kbd, samp { font-family: CamingoCode; }

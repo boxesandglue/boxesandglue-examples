@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Frog King</title>
+<style>
+/* ===== Toggle ===== */
+.view-toggle {
+  position: fixed; top: 12px; right: 16px; z-index: 100;
+  display: flex; align-items: center; gap: 8px;
+  font: 13px/1 system-ui, sans-serif; color: #555;
+  background: #fff; border: 1px solid #ddd; border-radius: 20px;
+  padding: 6px 14px; box-shadow: 0 1px 4px rgba(0,0,0,.12);
+}
+.view-toggle label { cursor: pointer; padding: 2px 8px; border-radius: 12px; }
+.view-toggle input[type=radio] { display: none; }
+.view-toggle input[type=radio]:checked + label {
+  background: #335; color: #fff;
+}
+
+/* ===== Content view (default) ===== */
+body.view-content { font-family: system-ui, sans-serif; max-width: 900px; margin: 2em auto; padding: 0 1em 4em; line-height: 1.6; color: #222; background: #fff; }
+body.view-content table { border-collapse: collapse; margin: 1em 0; }
+body.view-content th, body.view-content td { border: 1px solid #ccc; padding: .4em .8em; text-align: left; }
+body.view-content th { background: #f5f5f5; }
+body.view-content blockquote { border-left: 3px solid #ccc; margin-left: 0; padding-left: 1em; color: #555; }
+body.view-content code { background: #f4f4f4; padding: .15em .3em; border-radius: 3px; font-size: 0.9em; }
+body.view-content pre { background: #f4f4f4; padding: 1em; border-radius: 5px; overflow-x: auto; }
+body.view-content pre code { padding: 0; background: none; }
+
+/* Hide structure labels in content view */
+body.view-content [data-role]::before { display: none !important; }
+
+/* ===== Structure view ===== */
+body.view-structure {
+  font-family: system-ui, sans-serif; background: #1a1a2e; color: #333;
+  padding: 20px; padding-top: 50px; line-height: 1.5;
+}
+
+body.view-structure .content { max-width: none; }
+
+/* All structural elements get a label and nesting */
+body.view-structure [data-role] {
+  display: block; position: relative;
+  margin: 6px 0 6px 0; padding: 8px 8px 8px 56px;
+  border-radius: 3px; min-height: 20px;
+}
+
+/* Tag label */
+body.view-structure [data-role]::before {
+  content: attr(data-role);
+  position: absolute; left: 4px; top: 4px;
+  font: bold 10px/1 monospace; color: #fff;
+  background: #555; padding: 2px 5px; border-radius: 3px;
+  min-width: 32px; text-align: center;
+}
+
+/* === Colors per role === */
+
+/* Document / Grouping */
+body.view-structure [data-role="Document"] { background: rgba(255,255,185,.15); padding-left: 12px; }
+body.view-structure [data-role="Document"]::before { background: #46a; }
+body.view-structure [data-role="Div"]  { background: rgba(255,255,185,.15); }
+body.view-structure [data-role="Div"]::before  { background: #46a; }
+body.view-structure [data-role="Part"] { background: rgba(255,255,185,.15); }
+body.view-structure [data-role="Part"]::before { background: #46a; }
+body.view-structure [data-role="Sect"] { background: rgba(255,255,185,.15); }
+body.view-structure [data-role="Sect"]::before { background: #46a; }
+body.view-structure [data-role="Art"]  { background: rgba(255,255,185,.12); }
+body.view-structure [data-role="Art"]::before  { background: #46a; }
+
+/* Headings */
+body.view-structure [data-role="H1"], body.view-structure [data-role="H2"],
+body.view-structure [data-role="H3"], body.view-structure [data-role="H4"],
+body.view-structure [data-role="H5"], body.view-structure [data-role="H6"] {
+  background: #f0f0e0; font-weight: bold;
+}
+body.view-structure [data-role="H1"]::before { background: #c33; }
+body.view-structure [data-role="H2"]::before { background: #d55; }
+body.view-structure [data-role="H3"]::before { background: #e77; }
+body.view-structure [data-role="H4"]::before { background: #e99; }
+body.view-structure [data-role="H5"]::before { background: #ebb; }
+body.view-structure [data-role="H6"]::before { background: #ecc; }
+
+/* Paragraph */
+body.view-structure [data-role="P"] { background: #f0f0e0; }
+body.view-structure [data-role="P"]::before { background: #888; }
+
+/* Span */
+body.view-structure [data-role="Span"] { background: rgba(64,64,64,.08); display: inline-block; }
+body.view-structure [data-role="Span"]::before { background: #999; }
+
+/* Code */
+body.view-structure [data-role="Code"] {
+  background: #f0f0e0; font-family: monospace; white-space: pre-wrap;
+}
+body.view-structure [data-role="Code"]::before { background: #666; }
+
+/* BlockQuote */
+body.view-structure [data-role="BlockQuote"] { background: #946003; color: #fff; }
+body.view-structure [data-role="BlockQuote"]::before { background: #724; }
+body.view-structure [data-role="BlockQuote"] [data-role] { color: #333; }
+
+/* Lists */
+body.view-structure [data-role="L"] { background: rgba(200,240,200,.3); }
+body.view-structure [data-role="L"]::before { background: #4a4; }
+body.view-structure [data-role="LI"] { background: #f0f0e0; }
+body.view-structure [data-role="LI"]::before { background: #5b5; }
+body.view-structure [data-role="Lbl"] { background: #cff; display: inline-block; }
+body.view-structure [data-role="Lbl"]::before { background: #3aa; }
+body.view-structure [data-role="LBody"] { background: #eeffee; }
+body.view-structure [data-role="LBody"]::before { background: #5b5; }
+
+/* Tables */
+body.view-structure [data-role="Table"] { background: rgba(200,200,240,.2); }
+body.view-structure [data-role="Table"]::before { background: #66a; }
+body.view-structure [data-role="THead"] { background: rgba(200,200,240,.15); }
+body.view-structure [data-role="THead"]::before { background: #77b; }
+body.view-structure [data-role="TBody"] { background: rgba(200,200,240,.1); }
+body.view-structure [data-role="TBody"]::before { background: #77b; }
+body.view-structure [data-role="TR"] { background: rgba(200,200,240,.08); }
+body.view-structure [data-role="TR"]::before { background: #88c; }
+body.view-structure [data-role="TH"] { background: #ff66ff; }
+body.view-structure [data-role="TH"]::before { background: #a3a; }
+body.view-structure [data-role="TD"] { background: #ffcfee; }
+body.view-structure [data-role="TD"]::before { background: #c6c; }
+
+/* Link */
+body.view-structure [data-role="Link"] { background: rgba(64,64,64,.12); display: inline-block; }
+body.view-structure [data-role="Link"]::before { background: #36c; }
+
+/* Figure */
+body.view-structure [data-role="Figure"] { background: #ffe; border: 2px solid #aa8; }
+body.view-structure [data-role="Figure"]::before { background: #a84; }
+
+/* In structure view, reset all semantic HTML styling */
+body.view-structure h1, body.view-structure h2, body.view-structure h3,
+body.view-structure h4, body.view-structure h5, body.view-structure h6 {
+  font-size: inherit; margin: 0;
+}
+body.view-structure table, body.view-structure thead, body.view-structure tbody,
+body.view-structure tr, body.view-structure th, body.view-structure td {
+  display: block; border: none; padding: 0; margin: 0; background: none;
+}
+body.view-structure ul, body.view-structure ol { list-style: none; padding: 0; margin: 0; }
+body.view-structure li { display: block; padding: 0; margin: 0; }
+body.view-structure blockquote { border: none; margin: 0; padding: 0; }
+body.view-structure pre { background: none; padding: 0; margin: 0; border-radius: 0; }
+body.view-structure code { background: none; padding: 0; }
+</style>
+</head>
+<body class="view-content">
+
+<div class="view-toggle">
+  <input type="radio" name="view" id="v-content" checked>
+  <label for="v-content" onclick="setView('content')">Content</label>
+  <input type="radio" name="view" id="v-structure">
+  <label for="v-structure" onclick="setView('structure')">Structure</label>
+</div>
+
+<div data-role="Document">
+<h1 data-role="H1">The frog king</h1>
+<p data-role="P">In olden times when wishing still helped one,  there lived a king whose daughters were all beautiful,  but the youngest was so beautiful that the sun itself,  which has seen so much, was astonished whenever it  shone in her face.</p>
+<p data-role="P">Close by the king&#39;s castle lay a great dark forest, 	and under an old lime-tree in the forest was a well, 	and when the day was very warm, the king&#39;s child 	went out into the forest and sat down by the side of 	the cool fountain, and when she was bored she took a 	golden ball, and threw it up on high and caught it, 	and this ball was her favorite plaything. </p>
+<h2 data-role="H2">The golden ball</h2>
+<p data-role="P">Now it so happened that on one occasion the princess&#39;s  golden ball did not fall into the little hand which she  was holding up for it, but on to the ground beyond,  and rolled straight into the water.</p>
+<ul data-role="L">
+<li data-role="LI"><div data-role="LBody">The king&#39;s daughter followed it with her eyes, but it vanished, and the well was deep, so deep that the bottom could not be seen.</div></li>
+<li data-role="LI"><div data-role="LBody">At this she began to cry, and cried louder and louder, and could not be comforted.</div></li>
+</ul>
+<ul data-role="L">
+<li data-role="LI"><div data-role="LBody">And as she thus lamented someone called to her, &#34;What ails you, king&#39;s daughter? You weep so that even a stone would show pity.&#34;</div></li>
+<li data-role="LI"><div data-role="LBody">She looked round to the side from whence the voice came, and saw a frog stretching forth its big, ugly head from the water.</div></li>
+</ul>
+<pre data-role="Code"><code>&lt;Layout xmlns=&#34;urn:speedata.de:2009/publisher/en&#34;&gt;
+	&lt;Record element=&#34;data&#34;&gt;
+		&lt;ProcessNode select=&#34;article&#34;/&gt;
+	&lt;/Record&gt;
+&lt;/Layout&gt;</code></pre>
+</div>
+
+<script>
+function setView(mode) {
+  document.body.className = 'view-' + mode;
+  document.getElementById('v-' + mode).checked = true;
+}
+</script>
+</body>
+</html>

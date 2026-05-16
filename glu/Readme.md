@@ -8,14 +8,28 @@ generated `result.pdf`, and a `firstpage.png` preview.
 
 ## Table of contents
 
-* [HTML / floats](#html--floats)
+* [HTML](#html)
 * [XSL-FO walker](#xsl-fo-walker)
 * [Markdown](#markdown)
 * [Lua interface](#lua-interface)
 
-## HTML / floats
+## HTML
 
-htmlbag's float and footnote insert system, driven from plain HTML.
+htmlbag drives plain HTML / CSS through the boxesandglue typesetter.
+The examples below cover CSS selector coverage, pseudo-element
+styling, nested list counters, and the float / footnote insert
+machinery.
+
+### Standalone examples
+
+Description | Preview
+--- | ---
+[Zebra-striped table](html/zebra-table) — CSS3 structural selectors: `:nth-child(even)`, `:nth-of-type(n)`, `:not(...)`, `:first-child`, `:last-child`, plus `<tfoot>` totals | <a href="html/zebra-table"><img src="html/zebra-table/firstpage.png" width="200"></a>
+[`::marker` pseudo](html/marker-pseudo) — CSS Pseudo 4 `li::marker { color, font-size, font-family, content }` with `counter()` content | <a href="html/marker-pseudo"><img src="html/marker-pseudo/firstpage.png" width="200"></a>
+[Numbered sections](html/numbered-sections) — Skatordnung-style nested numbered headings with hanging-indent markers (numbers hardcoded in HTML) | <a href="html/numbered-sections"><img src="html/numbered-sections/firstpage.png" width="200"></a>
+[Numbered sections via CSS counters](html/numbered-sections-counters) — same layout, but numbers come from `counter-reset` / `counter-increment` / `counters()` | <a href="html/numbered-sections-counters"><img src="html/numbered-sections-counters/firstpage.png" width="200"></a>
+
+### Floats and footnotes
 
 Description | Preview
 --- | ---
@@ -60,6 +74,8 @@ Description | Preview
 --- | ---
 [Alignment](markdown/alignment) — `# Heading {.right}` syntax, `-bag-linebreak-*` tuning, German hyphenation | <a href="markdown/alignment"><img src="markdown/alignment/firstpage.png" width="200"></a>
 [Barcodes](markdown/barcodes) — `<barcode>` element: EAN-13, Code 128, QR | <a href="markdown/barcodes"><img src="markdown/barcodes/firstpage.png" width="200"></a>
+[Cross references, inline](markdown/cross-reference-inline) — `target-text()` and `target-counter()` resolved against inline anchors via aux-roundtrip | <a href="markdown/cross-reference-inline"><img src="markdown/cross-reference-inline/firstpage.png" width="200"></a>
+[Table of contents](markdown/toc-target-counter) — `target-counter()` page numbers and `leader()` dot fills for a generated TOC | <a href="markdown/toc-target-counter"><img src="markdown/toc-target-counter/firstpage.png" width="200"></a>
 [Slides](markdown/slides) — Markdown → 16:9 slide deck with hobby-curve accents | <a href="markdown/slides"><img src="markdown/slides/slides-preview.png" width="200"></a>
 
 ## Lua interface

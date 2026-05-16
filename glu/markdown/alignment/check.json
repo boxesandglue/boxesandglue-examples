@@ -1,0 +1,1 @@
+{ "cmd": "glu simple.md -o out.pdf" }

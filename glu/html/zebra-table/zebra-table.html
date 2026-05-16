@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+  Stress-test for CSS3 structural selectors in csshtml/htmlbag.
+  No class= attributes on the data rows: the alternating fill, the
+  highlighted header, the rounded corners on the first/last column,
+  and the suppressed bottom border on the last row are all expressed
+  via :nth-child, :first-of-type, :last-of-type, :first-child,
+  :last-child, and :not().
+
+  Run:  glu zebra-table.html
+-->
+<html lang="en">
+<head>
+  <style>
+    @page { size: A5; margin: 1.6cm; }
+
+    body {
+      font-family: sans-serif;
+      font-size: 10pt;
+      line-height: 1.35;
+    }
+
+    h1 { font-size: 16pt; margin-bottom: 0.6em; }
+    h1:first-child { margin-top: 0; }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-bottom: 1.4em;
+    }
+
+    /* Header row: distinct fill + bold text. */
+    thead tr {
+      background-color: #2b4a6b;
+      color: #ffffff;
+    }
+    thead th { padding: 5pt 7pt; text-align: left; font-weight: bold; }
+
+    /* Body cells. */
+    tbody td { padding: 4pt 7pt; border-bottom: 0.4pt solid #cccccc; }
+
+    /* Zebra stripes — the headline feature. */
+    tbody tr:nth-child(even)  { background-color: #eef2f7; }
+    tbody tr:nth-child(odd)   { background-color: #ffffff; }
+
+    /* First body row pulls a thicker top rule from the header. */
+    tbody tr:first-child td { border-top: 0.6pt solid #2b4a6b; }
+
+    /* Last body row drops its bottom rule (the table's own border closes
+       the box visually). */
+    tbody tr:last-child td { border-bottom: none; }
+
+    /* Right-align everything except the first column. */
+    td:not(:first-child),
+    th:not(:first-child) { text-align: right; }
+
+    /* Footer row: bold totals, separated from body by a heavier rule. */
+    tfoot tr { font-weight: bold; background-color: #dde4ec; }
+    tfoot td { padding: 5pt 7pt; border-top: 0.8pt solid #2b4a6b; }
+
+    /* "Most expensive" highlight: nth-child(3) is the price column,
+       nth-of-type(2) on tbody tr picks the second data row. Combined
+       via descendant selector. */
+    tbody tr:nth-of-type(2) td:nth-child(3) {
+      color: #b03030;
+      font-weight: bold;
+    }
+
+    /* Notes paragraph below uses :first-letter pseudo-element only if
+       supported; harmless if ignored. */
+    p.note { font-size: 9pt; color: #555; margin-top: 0; }
+  </style>
+</head>
+<body>
+
+  <h1>Zebra-striped product table</h1>
+
+  <table>
+    <thead>
+      <tr><th>Product</th><th>Units</th><th>Price</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Notebook A4</td><td>120</td><td>3.20</td></tr>
+      <tr><td>Mechanical pencil</td><td>45</td><td>12.90</td></tr>
+      <tr><td>Eraser</td><td>200</td><td>0.45</td></tr>
+      <tr><td>Folder</td><td>60</td><td>4.10</td></tr>
+      <tr><td>Stapler</td><td>15</td><td>9.80</td></tr>
+      <tr><td>Paper clips (box)</td><td>80</td><td>1.75</td></tr>
+      <tr><td>Highlighter</td><td>35</td><td>2.40</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td>Total</td><td>555</td><td>34.60</td></tr>
+    </tfoot>
+  </table>
+
+  <p class="note">No <code>class=</code> attribute on any data row. The
+  alternating fill comes from <code>tr:nth-child(even)</code>, the
+  highlighted price cell from
+  <code>tbody tr:nth-of-type(2) td:nth-child(3)</code>, and the
+  right-aligned numeric columns from
+  <code>td:not(:first-child)</code>.</p>
+
+</body>
+</html>
