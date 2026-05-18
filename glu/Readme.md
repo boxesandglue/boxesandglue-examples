@@ -28,6 +28,9 @@ Description | Preview
 [`::marker` pseudo](html/marker-pseudo) — CSS Pseudo 4 `li::marker { color, font-size, font-family, content }` with `counter()` content | <a href="html/marker-pseudo"><img src="html/marker-pseudo/firstpage.png" width="200"></a>
 [Numbered sections](html/numbered-sections) — Skatordnung-style nested numbered headings with hanging-indent markers (numbers hardcoded in HTML) | <a href="html/numbered-sections"><img src="html/numbered-sections/firstpage.png" width="200"></a>
 [Numbered sections via CSS counters](html/numbered-sections-counters) — same layout, but numbers come from `counter-reset` / `counter-increment` / `counters()` | <a href="html/numbered-sections-counters"><img src="html/numbered-sections-counters/firstpage.png" width="200"></a>
+[Inline SVG with percentage width](html/inline-svg-percentage) — `<svg width="100%">` adapting to different containers via deferred sizing; includes a `stroke-dasharray` check | <a href="html/inline-svg-percentage"><img src="html/inline-svg-percentage/firstpage.png" width="200"></a>
+[`<img>` with percentage width](html/img-percentage) — raster image equivalent of the deferred-sizing demo; aspect ratio preserved across container sizes | <a href="html/img-percentage"><img src="html/img-percentage/firstpage.png" width="200"></a>
+[Inline SVG in table cells](html/svg-in-table) — dashboard-style three-column table where each cell carries an `<svg width="100%">`, materialised against the cell's `paraWidth` | <a href="html/svg-in-table"><img src="html/svg-in-table/firstpage.png" width="200"></a>
 
 ### Floats and footnotes
 
@@ -76,6 +79,7 @@ Description | Preview
 [Barcodes](markdown/barcodes) — `<barcode>` element: EAN-13, Code 128, QR | <a href="markdown/barcodes"><img src="markdown/barcodes/firstpage.png" width="200"></a>
 [Cross references, inline](markdown/cross-reference-inline) — `target-text()` and `target-counter()` resolved against inline anchors via aux-roundtrip | <a href="markdown/cross-reference-inline"><img src="markdown/cross-reference-inline/firstpage.png" width="200"></a>
 [Table of contents](markdown/toc-target-counter) — `target-counter()` page numbers and `leader()` dot fills for a generated TOC | <a href="markdown/toc-target-counter"><img src="markdown/toc-target-counter/firstpage.png" width="200"></a>
+[Chart from data](markdown/chart-from-data) — a Lua block turns a plain Lua table into an SVG bar chart that htmlbag embeds inline | <a href="markdown/chart-from-data"><img src="markdown/chart-from-data/firstpage.png" width="200"></a>
 [Slides](markdown/slides) — Markdown → 16:9 slide deck with hobby-curve accents | <a href="markdown/slides"><img src="markdown/slides/slides-preview.png" width="200"></a>
 
 ## Lua interface

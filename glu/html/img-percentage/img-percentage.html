@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<!--
+  Shows <img> raster images with percentage widths, materialised against
+  the real container via the same DeferredSizer protocol used for inline
+  SVG. Before this patch, <img width="100%"> in htmlbag panicked at
+  bag.MustSP("100%"); now the percent is recognised and the image is
+  rescaled to the actual content width at layout time.
+
+  Run:  glu img-percentage.html
+-->
+<html lang="en">
+<head>
+  <style>
+    @page { size: A5; margin: 1.6cm; }
+
+    body {
+      font-family: sans-serif;
+      font-size: 10pt;
+      line-height: 1.4;
+    }
+
+    h1 { font-size: 14pt; margin: 0 0 0.8em 0; }
+    h2 { font-size: 10pt; font-weight: bold; margin: 1.2em 0 0.3em 0; color: #2b4a6b; }
+
+    .padded {
+      padding-left: 30pt;
+      padding-right: 30pt;
+      background-color: #f4f4f4;
+      margin-bottom: 0.6em;
+    }
+    .narrow {
+      padding-left: 90pt;
+      padding-right: 90pt;
+      background-color: #eef2f7;
+      margin-bottom: 0.6em;
+    }
+  </style>
+</head>
+<body>
+  <h1>&lt;img&gt; with percentage width</h1>
+
+  <p>Same image (200×100 PNG, two horizontal stripes) placed in three
+    containers via the deferred-sizing protocol. The same generalisation
+    that handles inline SVG now also covers raster <code>&lt;img&gt;</code>.</p>
+
+  <h2>Container A — page-wide, padded</h2>
+  <div class="padded">
+    <img src="stripe.png" width="100%">
+  </div>
+
+  <h2>Container B — narrow (heavy padding)</h2>
+  <div class="narrow">
+    <img src="stripe.png" width="100%">
+  </div>
+
+  <h2>Container C — eager fixed width (regression check)</h2>
+  <p>For comparison: same image with an absolute <code>width="120pt"</code>
+    attribute. Aspect ratio is preserved.</p>
+  <img src="stripe.png" width="120pt">
+
+  <h2>Container D — 50% width</h2>
+  <p>And the same image with <code>width="50%"</code>, sized against the
+    paragraph's content width.</p>
+  <img src="stripe.png" width="50%">
+</body>
+</html>
