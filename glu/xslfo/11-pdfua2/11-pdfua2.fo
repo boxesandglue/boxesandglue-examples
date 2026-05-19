@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  PDF/UA-2 (ISO 14289-2) accessibility showcase.
+
+  Differs from the PDF/UA-1 example in three things:
+
+    * the underlying PDF version is 2.0 (header "%PDF-2.0", no /Info dict)
+    * XMP metadata declares pdfuaid:part 2
+    * the structure tree uses the HTML5 namespace (http://www.w3.org/1999/xhtml)
+      via the new Catalog /Namespaces array; element role names follow HTML5
+      conventions (lowercase: p, h1-h6, figure, table, etc.) for elements that
+      have HTML5 equivalents, and fall back to the PDF 2.0 Standard Structure
+      Namespace (http://iso.org/pdf2/ssn) for things like /Document, /LBody.
+
+  Three top-level metadata items on fo:root activate the pipeline:
+
+    xml:lang   = "en-US"      → /Lang catalog entry + hyphenation default
+    bg:format  = "PDF/UA-2"   → enables UA-2: PDF 2.0 header, MarkInfo,
+                                 StructTreeRoot with /Namespaces, role-mapped
+                                 element tree in HTML5/PDF 2.0 SSN namespaces,
+                                 XMP pdfuaid:part 2
+    <fo:title> = "…"          → /Title catalog entry (XMP dc:title)
+
+    glu ../foproc.lua 11-pdfua2.fo
+    pdfinfo 11-pdfua2.pdf                    # PDF version 2.0, Tagged: yes
+    veraPDF (profile PDF/UA-2) 11-pdfua2.pdf  full ISO 14289-2 conformance
+-->
+<fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format"
+         xmlns:bg="https://boxesandglue.dev/ns/xslfo"
+         xml:lang="en-US"
+         bg:format="PDF/UA-2">
+
+  <fo:title>boxes and glue — PDF/UA-2 Showcase</fo:title>
+
+  <fo:layout-master-set>
+    <fo:simple-page-master master-name="default"
+                           page-width="148mm" page-height="210mm"
+                           margin="2cm">
+      <fo:region-body/>
+    </fo:simple-page-master>
+  </fo:layout-master-set>
+
+  <fo:page-sequence master-reference="default">
+    <fo:flow flow-name="xsl-region-body">
+
+      <fo:block role="H1" font-size="20pt" font-weight="bold"
+                space-after="12pt">
+        PDF/UA-2 Showcase
+      </fo:block>
+
+      <fo:block role="H2" font-size="14pt" font-weight="bold"
+                space-after="8pt">
+        What this document demonstrates
+      </fo:block>
+
+      <fo:block text-align="justify" space-after="8pt">
+        This PDF is generated as PDF 2.0 with PDF/UA-2 (ISO 14289-2)
+        tagging enabled. Structure elements use the HTML5 namespace,
+        so an accessibility tool sees the familiar
+        <fo:inline font-family="monospace">p</fo:inline>,
+        <fo:inline font-family="monospace">h1</fo:inline>…<fo:inline
+        font-family="monospace">h6</fo:inline>, and
+        <fo:inline font-family="monospace">figure</fo:inline> tag names
+        instead of the PDF 1.7 capitalized role set.
+      </fo:block>
+
+      <fo:block role="H2" font-size="14pt" font-weight="bold"
+                space-after="8pt">
+        Figure with alternative text
+      </fo:block>
+
+      <fo:block text-align="center" space-after="4pt">
+        <fo:external-graphic src="../ocean.pdf" width="60mm"
+                             alt="Stylised ocean wave illustration in
+                                  shades of blue, used as the cover image
+                                  for the boxesandglue baseline image
+                                  example."/>
+      </fo:block>
+
+      <fo:block font-size="9pt" font-style="italic" text-align="center"
+                space-after="12pt">
+        Figure 1 — the imported PDF rides in the HTML5 figure tag with
+        the alt-text on /Alt.
+      </fo:block>
+
+      <fo:block role="H2" font-size="14pt" font-weight="bold"
+                space-after="8pt">
+        What changed compared to UA-1
+      </fo:block>
+
+      <fo:block text-align="justify" space-after="6pt">
+        The PDF header is 2.0 and the /Info dict is omitted in favour
+        of the XMP metadata stream. The MarkInfo dictionary is emitted
+        with a proper typed Boolean
+        <fo:inline font-family="monospace">/Marked true</fo:inline>;
+        the deprecated /Suspects entry is dropped (its default is
+        false). The StructTreeRoot carries a /Namespaces array
+        referencing both the HTML5 namespace and the PDF 2.0 Standard
+        Structure Namespace; every structure element points at one of
+        the two via its /NS entry.
+      </fo:block>
+
+      <fo:block role="H3" font-size="11pt" font-weight="bold"
+                space-after="4pt">
+        Verifying the output
+      </fo:block>
+
+      <fo:block text-align="justify" space-after="6pt">
+        Run
+        <fo:inline font-family="monospace">pdfinfo 11-pdfua2.pdf</fo:inline>
+        to see the PDF version, Title, Tagged flag, and Lang fields.
+        For a full spec validation use
+        <fo:inline font-family="monospace">veraPDF</fo:inline> with the
+        PDF/UA-2 profile.
+      </fo:block>
+
+    </fo:flow>
+  </fo:page-sequence>
+</fo:root>

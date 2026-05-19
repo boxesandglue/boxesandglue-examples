@@ -23,6 +23,7 @@ Description | Preview
 [08 — Mixed LTR / RTL](08-mixed-ltr-rtl) — per-run `xml:lang`, per-language hyphenation | <a href="08-mixed-ltr-rtl"><img src="08-mixed-ltr-rtl/firstpage.png" width="200"></a>
 [09 — Soft hyphens](09-soft-hyphen) — CSS Text 3 `hyphens` modes (`auto` / `manual` / `none`) | <a href="09-soft-hyphen"><img src="09-soft-hyphen/firstpage.png" width="200"></a>
 [10 — PDF/UA accessibility](10-pdfua) — ISO 14289-1 tagged PDF, headings, alt-text, `/Title`, `/Lang` | <a href="10-pdfua"><img src="10-pdfua/firstpage.png" width="200"></a>
+[11 — PDF/UA-2](11-pdfua2) — ISO 14289-2 on PDF 2.0, HTML5 namespace structure tree, `/Namespaces` array | <a href="11-pdfua2"><img src="11-pdfua2/firstpage.png" width="200"></a>
 
 ## Workflow
 

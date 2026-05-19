@@ -15,6 +15,7 @@ Description | Preview
 [Inline SVG with percentage width](inline-svg-percentage) — `<svg width="100%">` adapting to different containers via deferred sizing; includes a `stroke-dasharray` check | <a href="inline-svg-percentage"><img src="inline-svg-percentage/firstpage.png" width="200"></a>
 [`<img>` with percentage width](img-percentage) — raster image equivalent of the deferred-sizing demo; aspect ratio preserved across container sizes | <a href="img-percentage"><img src="img-percentage/firstpage.png" width="200"></a>
 [Inline SVG in table cells](svg-in-table) — dashboard-style three-column table where each cell carries an `<svg width="100%">`, materialised against the cell's `paraWidth` | <a href="svg-in-table"><img src="svg-in-table/firstpage.png" width="200"></a>
+[Inline image vertical-align](inline-image-align) — CSS `vertical-align: text-top` / `top` on raster `<img>` inside a paragraph; image top aligns with the parent font's ascent | <a href="inline-image-align"><img src="inline-image-align/firstpage.png" width="200"></a>
 
 ## Floats and footnotes
 
@@ -53,6 +54,7 @@ to produce `<name>.pdf`. The checked-in `result.pdf` and
 | CSS counters (`counter-reset` / `counter-increment` / `counters()`) | `numbered-sections-counters` |
 | Inline SVG with viewBox + percentage width | `inline-svg-percentage`, `svg-in-table` |
 | Raster `<img>` with percentage width | `img-percentage` |
+| Inline image CSS vertical-align (`text-top`, `top`) | `inline-image-align` |
 | Deferred sizing for replaced content inside `<td>` | `svg-in-table` |
 | `stroke-dasharray` in inline SVG | `inline-svg-percentage` (Container D) |
 | Top floats and bottom floats (`float: top|bottom`) | `floats/` |

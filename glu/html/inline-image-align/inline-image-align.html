@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+  CSS vertical-align for inline raster images.
+
+  Three side-by-side paragraphs put the same 50×25pt stripe image on a
+  line of running text:
+
+    1. baseline    (default) — image bottom on baseline; image overhangs
+                                upward, well above the text x-height.
+    2. text-top    — image top sits at the parent font's ascent line;
+                                lower part of the image dips below the
+                                baseline.
+    3. top         — htmlbag aliases this to text-top (no first-class
+                                line-box model). Visually identical to
+                                option 2 for inline images.
+
+  Run:  glu inline-image-align.html
+-->
+<html lang="en">
+<head>
+  <style>
+    @page { size: A6; margin: 1.2cm; }
+
+    body {
+      font-family: sans-serif;
+      font-size: 11pt;
+      line-height: 1.6;
+    }
+
+    h1 { font-size: 13pt; margin: 0 0 0.6em 0; }
+    h2 { font-size: 10pt; font-weight: bold; margin: 1em 0 0.2em 0; color: #2b4a6b; }
+
+    img.tall { width: 50pt; height: 25pt; }
+    img.top  { vertical-align: text-top; }
+  </style>
+</head>
+<body>
+  <h1>vertical-align on inline images</h1>
+
+  <h2>baseline (default)</h2>
+  <p>Text before <img src="stripe.png" class="tall"> text after — image
+    bottom sits on the baseline, the rest pushes upward and leaves the
+    line-top well above the text cap height.</p>
+
+  <h2>vertical-align: text-top</h2>
+  <p>Text before <img src="stripe.png" class="tall top"> text after —
+    image top now aligns with the parent font's ascent (cap height
+    line); the lower portion of the image dips below the text baseline.</p>
+
+  <h2>vertical-align: top (aliased)</h2>
+  <p>Text before <img src="stripe.png" class="tall" style="vertical-align: top"> text after —
+    htmlbag maps CSS top to the same resolution as text-top.</p>
+</body>
+</html>

@@ -16,6 +16,7 @@ Description | Preview
 [Table of contents](toc-target-counter) — `target-counter()` page numbers and `leader()` dot fills for a generated TOC | <a href="toc-target-counter"><img src="toc-target-counter/firstpage.png" width="200"></a>
 [Chart from data](chart-from-data) — a Lua block turns a plain Lua table into an SVG bar chart that htmlbag embeds inline | <a href="chart-from-data"><img src="chart-from-data/firstpage.png" width="200"></a>
 [Slides](slides) — Markdown → 16:9 slide deck with hobby-curve accents and per-slide layout | <a href="slides"><img src="slides/slides-preview.png" width="200"></a>
+[Accessible report (PDF/UA-2)](accessible-report) — `format: PDF/UA-2` frontmatter switch, HTML5-namespaced structure tree, veraPDF UA-2 conformant | <a href="accessible-report"><img src="accessible-report/firstpage.png" width="200"></a>
 
 ## Workflow
 
@@ -68,13 +69,18 @@ plain-HTML mode — Markdown mode just adds steps 1–6 in front.
 
 ## PDF/UA
 
-Set `format: PDF/UA` in frontmatter (plus `lang:` and `title:`) to
-opt the document into the tagged-PDF pipeline: htmlbag emits
+Set `format: PDF/UA` (or `PDF/UA-1`) in frontmatter (plus `lang:` and
+`title:`) to opt into the PDF/UA-1 tagged-PDF pipeline: htmlbag emits
 StructTreeRoot, MarkInfo, `/DisplayDocTitle`, role-mapped element
-tree, and the XMP `pdfuaid:part 1` metadata. The xslfo cluster's
-example 10 demonstrates the full PDF/UA path end-to-end; the
-Markdown pipeline goes through the same htmlbag tagging code, so
-adding the three frontmatter keys is enough to opt in.
+tree, and XMP `pdfuaid:part 1` metadata. For PDF/UA-2 (ISO 14289-2 on
+PDF 2.0) use `format: PDF/UA-2`: the structure tree uses the HTML5
+namespace with `RoleMapNS` to the PDF Standard Structure Namespace,
+outline destinations are structure destinations, and XMP carries
+`pdfuaid:part 2` plus `pdfuaid:rev 2024`.
+
+The `accessible-report` example exercises the UA-2 path
+end-to-end; the xslfo cluster's examples 10 (UA-1) and 11 (UA-2)
+do the same from XSL-FO input.
 
 For the full glu Markdown-pipeline reference, see the
 [glu handbook](https://boxesandglue.dev/glu/) (or the local
