@@ -383,7 +383,12 @@ local out = {}
 out[#out+1] = "<!DOCTYPE html><html><head><style>"
 out[#out+1] = page_css(doc)
 out[#out+1] = font_face_css(doc)
-out[#out+1] = "body { font-family: serif; font-size: 11pt; line-height: 1.4; }"
+-- XSL-FO traditionally derives the base writing direction from the
+-- script of the content itself (htmlbag's pre-2026-05-20 default).
+-- CSS Writing Modes 3 §2.4 expresses that as `unicode-bidi: plaintext`
+-- — opt in here so existing Arabic/Hebrew FO docs keep their RTL
+-- layout without needing an explicit `direction:` attribute.
+out[#out+1] = "body { font-family: serif; font-size: 11pt; line-height: 1.4; unicode-bidi: plaintext; }"
 out[#out+1] = "</style></head><body>"
 
 -- Walk all top-level children of the body flow.

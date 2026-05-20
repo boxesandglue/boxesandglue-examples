@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+  Demonstrates COLRv0 + CPAL color emoji rendering. Twemoji.Mozilla is a
+  Twemoji port that stores per-glyph layers in COLR (vector layers, one
+  CPAL palette index per layer) instead of SVG-in-OpenType, which means
+  boxesandglue's PDF emitter can paint each layer in its own fill color.
+
+  Run:  glu color-emoji.html
+-->
+<html lang="en">
+<head>
+  <style>
+    @page { size: A5; margin: 1.6cm; }
+
+    @font-face {
+      font-family: "Twemoji";
+      src: url("Twemoji.Mozilla.ttf");
+    }
+
+    body {
+      font-family: sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+    }
+
+    h1 { font-size: 16pt; margin: 0 0 0.6em 0; }
+    h2 { font-size: 11pt; font-weight: bold; margin: 1.1em 0 0.3em 0; color: #2b4a6b; }
+
+    .emoji {
+      font-family: "Twemoji", sans-serif;
+    }
+
+    .size1 { font-size: 12pt; }
+    .size2 { font-size: 24pt; }
+    .size3 { font-size: 48pt; line-height: 1.2; }
+
+    .row { margin: 0.4em 0; }
+  </style>
+</head>
+<body>
+
+  <h1>COLR / CPAL color emoji</h1>
+
+  <h2>Small (12pt)</h2>
+  <div class="row emoji size1">😀 😎 🤔 🥳 🙂 😢 🐶 🐱 🐭 🐹 🦊 🐻</div>
+
+  <h2>Medium (24pt)</h2>
+  <div class="row emoji size2">❤️ 🧡 💛 💚 💙 💜 🖤 🤍 🤎</div>
+
+  <h2>Large (48pt)</h2>
+  <div class="row emoji size3">🌈 ☀️ 🌙 ⭐ 🍎 🍋 🥕 🌳</div>
+
+</body>
+</html>
