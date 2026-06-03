@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<!--
+  Demonstrates per-glyph CSS font fallback (CSS Fonts 4 §3.1 prioritised
+  list). Each paragraph declares a font-family stack of two or more
+  families; htmlbag / boxesandglue probe coverage per grapheme cluster and
+  shape each cluster with the first family that has glyphs for it. No
+  <span> wrappers needed: latin text comes from sans-serif, colour emoji
+  from Twemoji.Mozilla, Arabic from Amiri.
+
+  Run:  glu font-fallback-mixed.html
+-->
+<html lang="en">
+<head>
+  <style>
+    @page { size: A5; margin: 1.6cm; }
+
+    @font-face {
+      font-family: "Twemoji";
+      src: url("Twemoji.Mozilla.ttf");
+    }
+    @font-face {
+      font-family: "Amiri";
+      src: url("amiri-regular.ttf");
+    }
+
+    body {
+      font-family: sans-serif, "Twemoji", "Amiri";
+      font-size: 11pt;
+      line-height: 1.6;
+    }
+
+    h1 { font-size: 14pt; margin: 0 0 0.6em 0; }
+    p  { margin: 0 0 0.5em 0; }
+
+    .label { color: #2b4a6b; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>Per-glyph font fallback</h1>
+
+  <p><span class="label">Status emoji:</span> 🟢 live, 🟡 staging, 🔴 down.</p>
+
+  <p lang="de"><span class="label">Currency:</span> Trinkgeld 💶 dankend abgelehnt.</p>
+
+  <p class="label">Mixed RTL:</p>
+  <p dir="rtl" lang="ar">السلام عليكم 🌍 hello world.</p>
+
+</body>
+</html>
