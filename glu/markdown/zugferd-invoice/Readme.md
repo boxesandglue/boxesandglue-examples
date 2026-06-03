@@ -1,36 +1,36 @@
-# ZUGFeRD-Rechnung im Markdown-Modus
+# ZUGFeRD invoice in Markdown mode
 
-Erstellt eine **EN 16931 / ZUGFeRD 2 / Factur-X**-konforme Rechnungs-PDF
-mit eingebetteter Cross-Industry-Invoice-XML. Demonstriert das
-**Companion-Lua-Pattern** für Compliance-Formate: glu's Markdown-Mode
-kennt selbst nichts ZUGFeRD-spezifisches — alle Plumbing-Schritte
-(XML-Anhang, XMP-Erweiterungsschema, Output-Intent, Daten-Extraktion)
-laufen in `rechnung.lua` als regulärer Frontend-Lua-Code.
+Produces an **EN 16931 / ZUGFeRD 2 / Factur-X**-compliant invoice PDF
+with the structured Cross-Industry-Invoice XML embedded as an
+attachment. Demonstrates the **companion-Lua pattern** for compliance
+formats: glu's Markdown mode has no ZUGFeRD-specific code — all the
+plumbing (XML attachment, XMP extension schema, output intent, data
+extraction) lives in `rechnung.lua` as plain frontend-Lua code.
 
-Dasselbe Pattern lässt sich für **XRechnung**, **PEPPOL**, **DIN 5008**
-oder beliebige andere Compliance-Formate adaptieren — ohne Änderungen am
-glu-Core.
+The same pattern adapts cleanly to **XRechnung**, **PEPPOL**, **DIN
+5008** or any other compliance format — no changes to glu's core
+needed.
 
-## Dateien
+## Files
 
-| Datei | Zweck |
+| File | Purpose |
 |---|---|
-| `rechnung.md` | Sichtbare Rechnung in Markdown; setzt `format: PDF/A-3b` per Frontmatter, nutzt `{= zugferd.* =}` Inline-Expressions |
-| `rechnung.lua` | Companion-Lua: parst XML, exponiert `zugferd`-Global, registriert `page_init`-Callback für Output-Intent + Anhang + XMP-Extension |
-| `rechnung.css` | Layout-Stylesheet (Briefkopf, Adressblock, Tabelle, Summen) |
-| `invoice.xml` | ZUGFeRD 2.3.0 Cross-Industry-Invoice (FeRD-Beispiel) |
-| `AdobeRGB1998.icc` | Output-Intent für PDF/A-3 |
-| `Readme.md` | Diese Beschreibung |
-| `result.pdf`, `firstpage.png` | Statische Snapshot-Artefakte |
+| `rechnung.md` | Visible invoice in Markdown; sets `format: PDF/A-3b` via frontmatter, uses `{= zugferd.* =}` inline expressions |
+| `rechnung.lua` | Companion Lua: parses the XML, exposes a `zugferd` global, registers a `page_init` callback for output intent + attachment + XMP extension |
+| `rechnung.css` | Layout stylesheet (letterhead, address block, positions table, totals) |
+| `invoice.xml` | ZUGFeRD 2.3.0 Cross-Industry Invoice (FeRD sample) |
+| `AdobeRGB1998.icc` | Output intent profile for PDF/A-3 |
+| `Readme.md` | This file |
+| `result.pdf`, `firstpage.png` | Static snapshot artefacts |
 
-## Lauf
+## Run
 
 ```
 glu rechnung.md
 ```
 
-Output: `rechnung.pdf` neben dem Skript. Verifikation des
-ZUGFeRD-Anhangs:
+Output: `rechnung.pdf` next to the script. Verify the ZUGFeRD
+attachment:
 
 ```
 pdfdetach -list rechnung.pdf
@@ -44,61 +44,60 @@ exiftool -XMP-pdfaid:Part -XMP-zf:ConformanceLevel \
 # Document File Name  : factur-x.xml
 ```
 
-## Wie das Pattern funktioniert
+## How the pattern works
 
-glu lädt automatisch die zum Markdown-Stem passende Lua-Datei
-(`rechnung.lua` für `rechnung.md`). Diese läuft als Top-Level-Skript
-*bevor* `{= … =}` Inline-Expressions oder `{lua}`-Blöcke im Markdown
-ausgewertet werden — perfekt für Daten-Vorbereitung.
+glu auto-loads the Lua file matching the Markdown stem
+(`rechnung.lua` for `rechnung.md`). It runs as a top-level script
+*before* `{= … =}` inline expressions or `{lua}` blocks in the
+Markdown body are evaluated — perfect for data preparation.
 
-**Drei Bausteine:**
+**Three building blocks:**
 
-1. **XML-Parsing** (Top-Level in `rechnung.lua`): `cxpath` öffnet
-   `invoice.xml`, extrahiert die Felder, setzt das `zugferd`-Global mit
-   `id`, `date`, `currency`, `seller.*`, `buyer.*`, `lines[i].*`,
-   `total`, `tax_total`, `payment_terms` etc. Alle Werte bleiben
-   **Strings** — keine Float-Rundungsfehler, Locale-Formatierung dem
-   Anwender überlassen.
+1. **XML parsing** (top-level in `rechnung.lua`): `cxpath` opens
+   `invoice.xml`, extracts fields and populates the `zugferd` global
+   with `id`, `date`, `currency`, `seller.*`, `buyer.*`,
+   `lines[i].*`, `total`, `tax_total`, `payment_terms` and so on. All
+   values stay as **strings** — no float rounding drift, locale
+   formatting left to the author.
 
-2. **Inline-Expressions im Body**: `{= zugferd.id =}`,
-   `{= zugferd.buyer.name =}` etc. Die Positions-Tabelle wird in einem
-   kleinen `{lua}`-Block aus `zugferd.lines` zusammengebaut und als
-   Markdown-Pipe-Table zurückgegeben.
+2. **Inline expressions in the body**: `{= zugferd.id =}`,
+   `{= zugferd.buyer.name =}` etc. The positions table is built in a
+   small `{lua}` block from `zugferd.lines` and returned as a
+   Markdown pipe table.
 
-3. **PDF-Compliance-Plumbing** (`page_init`-Callback): beim ersten
-   Page-Init ist das `frontend.Document` verfügbar und wir können
-   `load_colorprofile` + `attach_file` + `add_xmp_extension` rufen.
-   Eine `initialized`-Guard sorgt dafür, dass das nur einmal passiert.
-   `format: PDF/A-3b` wird via Markdown-Frontmatter gesetzt (das ist
-   ein generischer glu-Key, kein ZUGFeRD-Spezifikum).
+3. **PDF compliance plumbing** (`page_init` callback): on the first
+   page init the `frontend.Document` is available and we can call
+   `load_colorprofile` + `attach_file` + `add_xmp_extension`. An
+   `initialized` guard makes sure this runs exactly once.
+   `format: PDF/A-3b` is set via the Markdown frontmatter (a generic
+   glu key, not ZUGFeRD-specific).
 
-## Warum Companion-Lua statt eingebaut?
+## Why companion Lua instead of built-in?
 
-`★ Insight ─────────────────────────────────────`
-- ZUGFeRD ist eine **Domain-spezifische** Compliance-Anforderung
-  (Rechnungen mit eingebetteter strukturierter XML + Schema-Validierung).
-  glu ist ein **horizontales Typesetting-Tool**. Würde glu ZUGFeRD im
-  Core unterstützen, wäre der nächste PR „XRechnung", dann „PEPPOL",
-  dann „BSI TR-RESISCAN" — die Liste hat kein natürliches Ende.
-- Companion-Lua ist glu's etablierter Erweiterungsmechanismus. Es ist
-  versionsfest, testbar, von Hand zu inspizieren, und der Anwender hat
-  volle Kontrolle. Wenn morgen die ZUGFeRD-Spec eine neue Property
-  einführt, passt der Anwender 5 Zeilen `rechnung.lua` an — keine
-  glu-Release nötig.
-- Falls sich später eine Plugin-Architektur als sinnvoll erweist (wenn
-  3-5 verschiedene Companion-Lua-Setups für ähnliche Aufgaben in der
-  Praxis entstehen), ist Companion-Lua die Proto-Phase, aus der die
-  Plugin-API natürlich abgeleitet werden kann.
-`─────────────────────────────────────────────────`
+- ZUGFeRD is a **domain-specific** compliance requirement (invoices
+  with embedded structured XML + schema validation). glu is a
+  **horizontal typesetting tool**. If glu supported ZUGFeRD in its
+  core, the next request would be "XRechnung", then "PEPPOL", then
+  "BSI TR-RESISCAN" — the list has no natural end.
+- Companion Lua is glu's established extension mechanism. It is
+  version-stable, testable, hand-inspectable, and the author has full
+  control. When the ZUGFeRD spec introduces a new property tomorrow,
+  the author updates 5 lines of `rechnung.lua` — no glu release
+  needed.
+- If a plugin architecture later turns out to be worthwhile (when
+  3-5 unrelated companion-Lua setups for similar tasks emerge in
+  practice), companion Lua is the proto-phase from which the plugin
+  API can be derived from real use.
 
-## Anpassung für Ihre Rechnung
+## Adapting for your own invoice
 
-1. `invoice.xml` durch Ihre CII-XML ersetzen (oder per Skript erzeugen)
-2. `rechnung.md` an Ihr Layout anpassen
-3. `rechnung.lua` ändert sich **nicht** — die XPath-Mappings decken alle
-   EN-16931-Pflichtfelder ab
-4. `AdobeRGB1998.icc` durch ein sRGB- oder anderes ICC-Profil ersetzen,
-   falls Ihr Workflow das verlangt
+1. Replace `invoice.xml` with your CII XML (or generate it from your
+   billing system)
+2. Adjust `rechnung.md` to match your layout
+3. `rechnung.lua` does **not** need to change — the XPath mappings
+   cover every EN 16931 mandatory field
+4. Replace `AdobeRGB1998.icc` with an sRGB or other ICC profile if
+   your workflow requires it
 
 ## Result
 

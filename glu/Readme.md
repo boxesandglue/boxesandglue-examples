@@ -31,6 +31,16 @@ Description | Preview
 [Inline SVG with percentage width](html/inline-svg-percentage) — `<svg width="100%">` adapting to different containers via deferred sizing; includes a `stroke-dasharray` check | <a href="html/inline-svg-percentage"><img src="html/inline-svg-percentage/firstpage.png" width="200"></a>
 [`<img>` with percentage width](html/img-percentage) — raster image equivalent of the deferred-sizing demo; aspect ratio preserved across container sizes | <a href="html/img-percentage"><img src="html/img-percentage/firstpage.png" width="200"></a>
 [Inline SVG in table cells](html/svg-in-table) — dashboard-style three-column table where each cell carries an `<svg width="100%">`, materialised against the cell's `paraWidth` | <a href="html/svg-in-table"><img src="html/svg-in-table/firstpage.png" width="200"></a>
+[Inline image vertical-align](html/inline-image-align) — CSS `vertical-align: text-top` / `top` on raster `<img>` inside a paragraph; image top aligns with the parent font's ascent | <a href="html/inline-image-align"><img src="html/inline-image-align/firstpage.png" width="200"></a>
+
+### Color emoji and font fallback
+
+Description | Preview
+--- | ---
+[COLR / CPAL color emoji](html/color-emoji) — COLRv0 layered color glyphs from Twemoji.Mozilla, painted layer-by-layer with the CPAL palette | <a href="html/color-emoji"><img src="html/color-emoji/firstpage.png" width="200"></a>
+[CBDT color bitmap](html/color-emoji-cbdt) — Google/Microsoft CBDT/CBLC PNG-in-glyph format via a Noto Color Emoji subset | <a href="html/color-emoji-cbdt"><img src="html/color-emoji-cbdt/firstpage.png" width="200"></a>
+[sbix color bitmap](html/color-emoji-sbix) — Apple's sbix PNG-strike format; **font is not bundled** (Liebeheide Color is not redistributable) | _(no snapshot — runs only with the font present)_
+[Per-glyph font fallback](html/font-fallback-mixed) — CSS Fonts 4 §3.1 prioritised font-family list resolved per grapheme cluster: Latin + emoji + Arabic in one paragraph | <a href="html/font-fallback-mixed"><img src="html/font-fallback-mixed/firstpage.png" width="200"></a>
 
 ### Floats and footnotes
 
@@ -81,6 +91,9 @@ Description | Preview
 [Table of contents](markdown/toc-target-counter) — `target-counter()` page numbers and `leader()` dot fills for a generated TOC | <a href="markdown/toc-target-counter"><img src="markdown/toc-target-counter/firstpage.png" width="200"></a>
 [Chart from data](markdown/chart-from-data) — a Lua block turns a plain Lua table into an SVG bar chart that htmlbag embeds inline | <a href="markdown/chart-from-data"><img src="markdown/chart-from-data/firstpage.png" width="200"></a>
 [Slides](markdown/slides) — Markdown → 16:9 slide deck with hobby-curve accents | <a href="markdown/slides"><img src="markdown/slides/slides-preview.png" width="200"></a>
+[Accessible report (PDF/UA-2)](markdown/accessible-report) — `format: PDF/UA-2` frontmatter, HTML5-namespaced structure tree, veraPDF UA-2 conformant | <a href="markdown/accessible-report"><img src="markdown/accessible-report/firstpage.png" width="200"></a>
+[DIN 5008 letter](markdown/letter-din5008) — German business letter (DIN 5008 Form B), `position: absolute` slots for recipient / sender / fold marks against a flowing body | <a href="markdown/letter-din5008"><img src="markdown/letter-din5008/firstpage.png" width="200"></a>
+[ZUGFeRD invoice](markdown/zugferd-invoice) — EN 16931 / Factur-X compliant PDF/A-3b with embedded CII XML; companion-Lua pattern for compliance formats | <a href="markdown/zugferd-invoice"><img src="markdown/zugferd-invoice/firstpage.png" width="200"></a>
 
 ## Lua interface
 
@@ -90,7 +103,7 @@ frontend, font, and node APIs without the Markdown / HTML wrappers.
 Description | Preview
 --- | ---
 [Text shaping](lua_interface/textshape) — `frontend.shape` glyph dump (console output, no PDF) | <code>glyph=362 cluster=0 …</code>
-[ZUGFeRD invoice](lua_interface/zugferdinvoice) — EN 16931 PDF/A-3 with embedded CII XML | <a href="lua_interface/zugferdinvoice"><img src="lua_interface/zugferdinvoice/firstpage.png" width="200"></a>
+[ZUGFeRD invoice](lua_interface/zugferdinvoice) — EN 16931 PDF/A-3 with embedded CII XML, built entirely through the low-level Lua frontend API (see also the [Markdown variant](markdown/zugferd-invoice) for the companion-Lua pattern on top of glu's Markdown pipeline) | <a href="lua_interface/zugferdinvoice"><img src="lua_interface/zugferdinvoice/firstpage.png" width="200"></a>
 
 ## Installing glu
 

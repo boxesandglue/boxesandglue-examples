@@ -17,6 +17,20 @@ Description | Preview
 [Inline SVG in table cells](svg-in-table) — dashboard-style three-column table where each cell carries an `<svg width="100%">`, materialised against the cell's `paraWidth` | <a href="svg-in-table"><img src="svg-in-table/firstpage.png" width="200"></a>
 [Inline image vertical-align](inline-image-align) — CSS `vertical-align: text-top` / `top` on raster `<img>` inside a paragraph; image top aligns with the parent font's ascent | <a href="inline-image-align"><img src="inline-image-align/firstpage.png" width="200"></a>
 
+## Color emoji and font fallback
+
+Per-glyph color emoji rendering across the four OpenType color formats
+(COLR/CPAL, CBDT, sbix, SVG-in-OT), plus the CSS Fonts 4 prioritised-list
+fallback that lets a single text run mix Latin, emoji and complex
+scripts from separate fonts.
+
+Description | Preview
+--- | ---
+[COLR / CPAL color emoji](color-emoji) — COLRv0 layered color glyphs from Twemoji.Mozilla, painted layer-by-layer with the CPAL palette | <a href="color-emoji"><img src="color-emoji/firstpage.png" width="200"></a>
+[CBDT color bitmap](color-emoji-cbdt) — Google/Microsoft CBDT/CBLC PNG-in-glyph format via a Noto Color Emoji subset, embedded as PDF Image XObjects | <a href="color-emoji-cbdt"><img src="color-emoji-cbdt/firstpage.png" width="200"></a>
+[sbix color bitmap](color-emoji-sbix) — Apple's sbix PNG-strike format. Source ships, **font is not bundled** (Liebeheide Color is not redistributable); see `color-emoji-sbix/Readme.md` for sourcing instructions | _(no snapshot — runs only with the font present)_
+[Per-glyph font fallback](font-fallback-mixed) — CSS Fonts 4 §3.1 prioritised font-family list resolved per grapheme cluster: Latin from a serif face, emoji from Twemoji.Mozilla, Arabic from Amiri, all in one paragraph | <a href="font-fallback-mixed"><img src="font-fallback-mixed/firstpage.png" width="200"></a>
+
 ## Floats and footnotes
 
 A separate cluster of five examples for `htmlbag`'s float and footnote
@@ -57,6 +71,11 @@ to produce `<name>.pdf`. The checked-in `result.pdf` and
 | Inline image CSS vertical-align (`text-top`, `top`) | `inline-image-align` |
 | Deferred sizing for replaced content inside `<td>` | `svg-in-table` |
 | `stroke-dasharray` in inline SVG | `inline-svg-percentage` (Container D) |
+| COLRv0 layered color glyphs + CPAL palette | `color-emoji` |
+| CBDT/CBLC color bitmap glyphs (PNG-in-OT) | `color-emoji-cbdt` |
+| sbix color bitmap strikes (Apple format) | `color-emoji-sbix` |
+| Per-glyph CSS font fallback (CSS Fonts 4 §3.1) | `font-fallback-mixed` |
+| UAX#29 grapheme segmentation across font runs | `font-fallback-mixed` |
 | Top floats and bottom floats (`float: top|bottom`) | `floats/` |
 | Footnote markers and footnote bodies | `floats/04`, `floats/05` |
 | Two-pass page assembly (multiple floats sharing a page) | `floats/05` |

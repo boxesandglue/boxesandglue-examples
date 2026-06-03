@@ -17,6 +17,8 @@ Description | Preview
 [Chart from data](chart-from-data) — a Lua block turns a plain Lua table into an SVG bar chart that htmlbag embeds inline | <a href="chart-from-data"><img src="chart-from-data/firstpage.png" width="200"></a>
 [Slides](slides) — Markdown → 16:9 slide deck with hobby-curve accents and per-slide layout | <a href="slides"><img src="slides/slides-preview.png" width="200"></a>
 [Accessible report (PDF/UA-2)](accessible-report) — `format: PDF/UA-2` frontmatter switch, HTML5-namespaced structure tree, veraPDF UA-2 conformant | <a href="accessible-report"><img src="accessible-report/firstpage.png" width="200"></a>
+[DIN 5008 letter](letter-din5008) — German business letter (DIN 5008 Form B), `position: absolute` slots for recipient / sender / fold marks against a flowing body | <a href="letter-din5008"><img src="letter-din5008/firstpage.png" width="200"></a>
+[ZUGFeRD invoice](zugferd-invoice) — EN 16931 / Factur-X compliant PDF/A-3b with embedded CII XML; companion-Lua pattern for compliance formats (XML parsing + `page_init` plumbing) | <a href="zugferd-invoice"><img src="zugferd-invoice/firstpage.png" width="200"></a>
 
 ## Workflow
 
