@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<!--
+  Phase 3a of the OpenType MATH project: htmlbag has a native MathML reader
+  that dispatches presentation MathML straight to the math engine. No Pandoc,
+  no JavaScript, no external converter — just <math>...</math> inline in your
+  HTML and the engine in boxesandglue/frontend/math turns the atoms into
+  glyphs.
+
+  Run:  glu mathml.html
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="pdf-format" content="PDF/UA-2">
+  <title>MathML in htmlbag</title>
+  <style>
+    @page { size: A5; margin: 1.6cm; }
+
+    @font-face {
+      font-family: "Latin Modern Math";
+      src: url("latinmodern-math.otf");
+    }
+
+    body {
+      font-family: serif;
+      font-size: 11pt;
+      line-height: 1.45;
+    }
+
+    /* The math element looks up font-family on itself, so the engine
+       can find a MATH-table font for atom rendering. Sized one notch
+       larger than body to keep formulas visually distinct. */
+    math {
+      font-family: "Latin Modern Math";
+      font-size: 12pt;
+    }
+
+    h1 { font-size: 16pt; margin: 0 0 0.6em 0; }
+    h2 { font-size: 11pt; font-weight: bold; margin: 1.2em 0 0.3em 0; color: #2b4a6b; }
+
+    p { margin: 0.4em 0; }
+    .caption { color: #666; font-style: italic; font-size: 10pt; }
+  </style>
+</head>
+<body>
+
+  <h1>MathML in htmlbag</h1>
+
+  <p>Every formula below is presentation MathML embedded directly in the
+  HTML source. The htmlbag selector picks up the <code>&lt;math&gt;</code>
+  subtree as foreign content, hands it to the MathML reader, and the math
+  engine renders to a single HList that flows inline with the surrounding
+  text.</p>
+
+  <h2>Inline math: variables and superscripts</h2>
+  <p>The Pythagorean relation
+  <math>
+    <msup><mi>a</mi><mn>2</mn></msup>
+    <mo>+</mo>
+    <msup><mi>b</mi><mn>2</mn></msup>
+    <mo>=</mo>
+    <msup><mi>c</mi><mn>2</mn></msup>
+  </math>
+  holds for every right triangle with legs <math><mi>a</mi></math>,
+  <math><mi>b</mi></math> and hypotenuse <math><mi>c</mi></math>.</p>
+  <p class="caption">Single-character &lt;mi&gt; defaults to italic per the
+  MathML spec; the reader auto-maps a, b, c to U+1D44E ff so the font shows
+  them in the Mathematical Italic alphabet.</p>
+
+  <h2>Inline math: fractions and roots</h2>
+  <p>The quadratic formula
+  <math>
+    <mi>x</mi>
+    <mo>=</mo>
+    <mfrac>
+      <mrow>
+        <mo>-</mo><mi>b</mi>
+        <mo>±</mo>
+        <msqrt>
+          <msup><mi>b</mi><mn>2</mn></msup>
+          <mo>-</mo>
+          <mn>4</mn><mi>a</mi><mi>c</mi>
+        </msqrt>
+      </mrow>
+      <mrow><mn>2</mn><mi>a</mi></mrow>
+    </mfrac>
+  </math>
+  solves <math><mi>a</mi><msup><mi>x</mi><mn>2</mn></msup>
+  <mo>+</mo><mi>b</mi><mi>x</mi><mo>+</mo><mi>c</mi><mo>=</mo><mn>0</mn></math>.</p>
+
+  <h2>Display math: big operators with limits</h2>
+  <p>Gauss famously summed the first <math><mi>n</mi></math> integers:</p>
+  <math display="block">
+    <munderover>
+      <mo>∑</mo>
+      <mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow>
+      <mi>n</mi>
+    </munderover>
+    <mi>k</mi>
+    <mo>=</mo>
+    <mfrac>
+      <mrow><mi>n</mi><mo>(</mo><mi>n</mi><mo>+</mo><mn>1</mn><mo>)</mo></mrow>
+      <mn>2</mn>
+    </mfrac>
+  </math>
+  <p class="caption">display="block" routes through math.DisplayMath, which
+  applies the bigger FractionNumeratorDisplayStyleShiftUp and centres limits
+  above / below the sigma rather than typesetting them as scripts.</p>
+
+  <h2>Nested scripts and indexed roots</h2>
+  <p>Index-of-summation gymnastics plus an n-th root:</p>
+  <math display="block">
+    <mroot>
+      <mrow>
+        <munderover>
+          <mo>∑</mo>
+          <mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow>
+          <mi>n</mi>
+        </munderover>
+        <msubsup><mi>x</mi><mi>i</mi><mn>2</mn></msubsup>
+      </mrow>
+      <mi>n</mi>
+    </mroot>
+    <mo>=</mo>
+    <msub><mi>σ</mi><mi>n</mi></msub>
+  </math>
+
+  <h2>Multi-character identifier (function name)</h2>
+  <p>Per the MathML default, multi-character <code>&lt;mi&gt;</code> stays
+  upright — that's how function names render correctly:</p>
+  <math display="block">
+    <mfrac>
+      <mrow><mi>d</mi></mrow>
+      <mrow><mi>d</mi><mi>x</mi></mrow>
+    </mfrac>
+    <mi>sin</mi>
+    <mo>(</mo><mi>x</mi><mo>)</mo>
+    <mo>=</mo>
+    <mi>cos</mi>
+    <mo>(</mo><mi>x</mi><mo>)</mo>
+  </math>
+
+</body>
+</html>

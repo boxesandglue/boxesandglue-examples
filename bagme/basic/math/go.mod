@@ -1,19 +1,19 @@
-module bagtest-accessible
+module bagtest-math
 
-go 1.24.0
+go 1.25.0
 
-require github.com/boxesandglue/bagme v0.0.8
+require github.com/boxesandglue/bagme v0.0.9
 
 require (
 	github.com/PuerkitoBio/goquery v1.11.0 // indirect
 	github.com/andybalholm/cascadia v1.3.3 // indirect
 	github.com/boxesandglue/baseline-pdf v1.1.16 // indirect
-	github.com/boxesandglue/boxesandglue v0.2.31 // indirect
+	github.com/boxesandglue/boxesandglue v0.2.32 // indirect
 	github.com/boxesandglue/csshtml v0.0.12 // indirect
 	github.com/boxesandglue/gofpdi v1.0.23 // indirect
-	github.com/boxesandglue/htmlbag v0.0.30 // indirect
+	github.com/boxesandglue/htmlbag v0.0.31 // indirect
 	github.com/boxesandglue/svgreader v0.0.4 // indirect
-	github.com/boxesandglue/textshape v0.0.12 // indirect
+	github.com/boxesandglue/textshape v0.0.13 // indirect
 	github.com/clipperhouse/stringish v0.1.1 // indirect
 	github.com/clipperhouse/uax29/v2 v2.5.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
