@@ -1,0 +1,5 @@
+# Test fonts and build artifacts — see ../../boxesandglue/frontend/math/testdata/README.md
+*.otf
+*.ttf
+*.pdf
+*.png
