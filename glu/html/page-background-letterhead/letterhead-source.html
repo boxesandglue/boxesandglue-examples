@@ -1,0 +1,59 @@
+<!--
+  Source for the two-page letterhead PDF used as the @page background of
+  page-background-letterhead.html. Rendered once with `glu` to produce
+  letterhead.pdf; that PDF is the reusable stationery, not this HTML.
+
+  Page 1: full corporate header + footer band.
+  Page 2: slim continuation header only.
+
+  Edge-to-edge artwork, so margin: 0 and full-bleed coloured bands.
+-->
+<html>
+<head>
+<style>
+@page { size: A4; margin: 0; }
+
+body { font-family: sans; margin: 0; color: #1f3a5f; }
+
+/* Page 1 header */
+.hdr1 {
+    background-color: #1f3a5f;
+    color: white;
+    height: 2.2cm;
+    padding: 0.6cm 2.5cm 0 2.5cm;
+}
+.hdr1 .brand { font-size: 22pt; font-weight: bold; letter-spacing: 1pt; }
+.hdr1 .tag   { font-size: 9pt; color: #cfe0f5; margin-top: 2pt; }
+
+/* Page 1 footer */
+.foot1 {
+    background-color: #eef3fa;
+    color: #1f3a5f;
+    height: 1.1cm;
+    padding: 0.35cm 2.5cm 0 2.5cm;
+    font-size: 8pt;
+}
+
+/* Page 2+ slim header */
+.hdr2 {
+    page-break-before: always;
+    background-color: #eef3fa;
+    color: #1f3a5f;
+    height: 0.9cm;
+    padding: 0.28cm 2.5cm 0 2.5cm;
+    font-size: 9pt;
+    font-weight: bold;
+    border-bottom: 1pt solid #1f3a5f;
+}
+</style>
+</head>
+<body>
+<div class="hdr1">
+    <div class="brand">ACME GmbH</div>
+    <div class="tag">Musterstraße 1 · 12345 Musterstadt · +49 30 000000 · www.acme.example</div>
+</div>
+<div class="foot1">ACME GmbH · Amtsgericht Musterstadt HRB 00000 · Geschäftsführer: M. Muster · Bank: DE00 0000 0000 0000 0000 00</div>
+
+<div class="hdr2">ACME GmbH · Fortsetzung</div>
+</body>
+</html>

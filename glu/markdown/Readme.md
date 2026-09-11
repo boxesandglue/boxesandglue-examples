@@ -15,6 +15,7 @@ Description | Preview
 [Cross references, inline](cross-reference-inline) — `target-text()` and `target-counter()` resolving against inline anchors via the aux roundtrip | <a href="cross-reference-inline"><img src="cross-reference-inline/firstpage.png" width="200"></a>
 [Table of contents](toc-target-counter) — `target-counter()` page numbers and `leader()` dot fills for a generated TOC | <a href="toc-target-counter"><img src="toc-target-counter/firstpage.png" width="200"></a>
 [Chart from data](chart-from-data) — a Lua block turns a plain Lua table into an SVG bar chart that htmlbag embeds inline | <a href="chart-from-data"><img src="chart-from-data/firstpage.png" width="200"></a>
+[Table column widths](table-column-widths) — `width` on `<td>`/`<th>` for percentage and absolute columns, plus `nth-child` rules to size a Markdown pipe table | <a href="table-column-widths"><img src="table-column-widths/firstpage.png" width="200"></a>
 [Slides](slides) — Markdown → 16:9 slide deck with hobby-curve accents and per-slide layout | <a href="slides"><img src="slides/slides-preview.png" width="200"></a>
 [Accessible report (PDF/UA-2)](accessible-report) — `format: PDF/UA-2` frontmatter switch, HTML5-namespaced structure tree, veraPDF UA-2 conformant | <a href="accessible-report"><img src="accessible-report/firstpage.png" width="200"></a>
 [DIN 5008 letter](letter-din5008) — German business letter (DIN 5008 Form B), `position: absolute` slots for recipient / sender / fold marks against a flowing body | <a href="letter-din5008"><img src="letter-din5008/firstpage.png" width="200"></a>
@@ -61,6 +62,7 @@ plain-HTML mode — Markdown mode just adds steps 1–6 in front.
 | Knuth-Plass linebreak tuning (`-bag-linebreak-*`) | `alignment` |
 | Per-language hyphenation (German patterns) | `alignment` |
 | `<barcode>` HTML element | `barcodes` |
+| `width` on table cells, `nth-child` column sizing | `table-column-widths` |
 | `target-text()` / `target-counter(attr(href), page)` | `cross-reference-inline`, `toc-target-counter` |
 | `leader()` fil³-stretchy glue with dot pattern | `toc-target-counter` |
 | Embedded Lua block returning HTML/SVG | `chart-from-data` |

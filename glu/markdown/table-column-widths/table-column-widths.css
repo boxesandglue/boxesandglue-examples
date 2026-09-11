@@ -1,0 +1,76 @@
+@page {
+	size: a4;
+	margin: 2cm;
+}
+
+body {
+	font-family: serif;
+	font-size: 10pt;
+	line-height: 1.4;
+}
+
+h1 {
+	font-size: 17pt;
+	margin: 0 0 0.4em 0;
+}
+
+h2 {
+	font-size: 12pt;
+	margin: 1.1em 0 0.35em 0;
+	color: #23486b;
+}
+
+p {
+	margin: 0.35em 0;
+}
+
+code {
+	font-family: monospace;
+	font-size: 0.92em;
+	background-color: #f0f0f0;
+}
+
+/* Tables stretch to the full content width. Without this a table is only
+   as wide as its columns need, and a percentage on a cell resolves
+   against a table that has already shrunk to its content. */
+table {
+	width: 100%;
+	margin: 0.5em 0;
+	border-collapse: collapse;
+}
+
+td, th {
+	border: 0.4pt solid #99a7b5;
+	padding: 3pt 5pt;
+	vertical-align: top;
+}
+
+th {
+	background-color: #e8edf2;
+	text-align: left;
+}
+
+/* A signature block: two equal halves, no visible frame. The cells still
+   declare width: 50% so both blocks line up across tables regardless of
+   how much text each one holds. */
+table.signature {
+	margin-top: 2em;
+}
+
+/* The signature rule is the cell's own top border, and the space to sign
+   in is the margin above the table. The caption sits right under the
+   line, so the cell needs no inner markup at all. */
+table.signature td {
+	border: none;
+	border-top: 0.4pt solid black;
+	padding: 2pt 10pt 0 0;
+}
+
+/* Markdown pipe tables cannot carry a style attribute on a cell, so their
+   columns are sized from the stylesheet instead. The class sits on the
+   surrounding div, so the selector reaches the table as a descendant;
+   nth-child picks the column, and the rule has to name th and td alike
+   so the header row agrees with the body. */
+.terms table th:nth-child(1), .terms table td:nth-child(1) { width: 22% }
+.terms table th:nth-child(2), .terms table td:nth-child(2) { width: 18% }
+.terms table th:nth-child(3), .terms table td:nth-child(3) { width: 60% }

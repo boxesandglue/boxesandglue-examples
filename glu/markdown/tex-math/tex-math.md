@@ -31,6 +31,16 @@ places the limits above and below:
 
 $$\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$$
 
+## Fences, floors and primes
+
+Delimiters written with `\left` and `\right` stretch to the content
+they enclose, floor brackets come from `\lfloor` and `\rfloor`, and
+primes use the TeX apostrophe shorthand. An integral keeps its scripts
+beside the operator (TeX treats it as nolimits), unlike the stacked
+sum above:
+
+$$f'(x) = \left( \frac{x}{2} \right)^2 + \left\lfloor \frac{n}{2} \right\rfloor + \int_0^1 x^2 \, dx$$
+
 ## Predictable dollars
 
 The strict dollar rule keeps prose safe: prices such as $5 and $10 are

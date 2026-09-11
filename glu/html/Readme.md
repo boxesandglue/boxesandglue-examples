@@ -16,6 +16,8 @@ Description | Preview
 [`<img>` with percentage width](img-percentage) — raster image equivalent of the deferred-sizing demo; aspect ratio preserved across container sizes | <a href="img-percentage"><img src="img-percentage/firstpage.png" width="200"></a>
 [Inline SVG in table cells](svg-in-table) — dashboard-style three-column table where each cell carries an `<svg width="100%">`, materialised against the cell's `paraWidth` | <a href="svg-in-table"><img src="svg-in-table/firstpage.png" width="200"></a>
 [Inline image vertical-align](inline-image-align) — CSS `vertical-align: text-top` / `top` on raster `<img>` inside a paragraph; image top aligns with the parent font's ascent | <a href="inline-image-align"><img src="inline-image-align/firstpage.png" width="200"></a>
+[Per-page `@page` background (letterhead)](page-background-letterhead) — two-page PDF letterhead behind the text, full header on page 1 and slim continuation header on pages 2+ via `@page :first` + `background-image` + `-bag-background-page`; pure CSS, no Go/Lua | <a href="page-background-letterhead"><img src="page-background-letterhead/firstpage.png" width="200"></a>
+[Running footer (CSS GCPM running elements)](running-footer): a three-column `<footer>` table repeated in the `@bottom-center` margin box of every page via `position: running(name)` + `content: element(name)`; pure CSS, no Go/Lua | <a href="running-footer"><img src="running-footer/firstpage.png" width="200"></a>
 
 ## Color emoji and font fallback
 

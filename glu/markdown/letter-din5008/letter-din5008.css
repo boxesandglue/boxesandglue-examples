@@ -75,13 +75,13 @@ body {
 }
 
 /* Subject line — bold, lives in the regular flow so it pushes the
- * body content down naturally. With @page margin: 0 the top of the
- * flow is the physical page top, so this margin sets the absolute
- * y-position of the subject. 12.7cm clears the recipient (4.5cm +
+ * body content down naturally. The flow starts below the body
+ * padding-top (2.5cm), so 10.2cm margin-top lands the subject at
+ * 12.7cm from the physical page top: clear of the recipient (4.5cm +
  * 4.5cm = 9cm) and the date line (9.7cm + ~0.4cm). DIN 5008 puts
  * "Betreff" two empty lines below the date, which lands here. */
 h2.letter-subject {
-    margin-top: 12.7cm;
+    margin-top: 10.2cm;
     margin-bottom: 0.6cm;
     font-size: 11pt;
     font-weight: bold;

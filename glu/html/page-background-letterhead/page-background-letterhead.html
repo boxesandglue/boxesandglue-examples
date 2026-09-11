@@ -1,0 +1,101 @@
+<!--
+  Per-page @page background-image: a two-page PDF letterhead painted behind
+  the flowing body text. No Go and no Lua: the letterhead is driven entirely
+  from CSS, so it works from plain HTML/Markdown through `glu`.
+
+  - @page :first uses page 1 of letterhead.pdf (tall corporate header) and a
+    taller margin-top so the body clears the header band.
+  - The generic @page uses page 2 of letterhead.pdf (slim continuation
+    header) via the custom property -bag-background-page: 2.
+
+  Left/right margins are identical on every page, so the running text keeps a
+  single column width and flows across the page break cleanly.
+
+  Run:  glu page-background-letterhead.html
+-->
+<html>
+<head>
+<style>
+@page {
+    size: A4;
+    margin: 3cm 2.5cm 3cm 2.5cm;
+    background-image: url(letterhead.pdf);
+    -bag-background-page: 2;          /* pages 2+: slim continuation header */
+}
+
+@page :first {
+    margin-top: 4.2cm;               /* clear the tall header on page 1 */
+    background-image: url(letterhead.pdf);
+    -bag-background-page: 1;         /* page 1: full header (source page 1).
+                                        Must be set explicitly: :first inherits
+                                        -bag-background-page: 2 from @page via the
+                                        paged-media cascade otherwise. */
+}
+
+body { font-family: serif; font-size: 11pt; line-height: 1.45; hyphens: auto; }
+h1   { font-size: 17pt; color: #1f3a5f; margin: 0 0 0.6em 0; }
+p    { margin: 0 0 0.7em 0; text-align: justify; }
+.meta { color: #55708f; font-size: 9.5pt; margin-bottom: 1.4em; }
+</style>
+</head>
+<body lang="de">
+<h1>Angebot 2026-0815</h1>
+<p class="meta">Musterstadt, 7. Juli 2026 · Kundennummer 4711 · Bearbeiter: M. Muster</p>
+
+<p>Sehr geehrte Damen und Herren, vielen Dank für Ihre Anfrage. Gern
+unterbreiten wir Ihnen das folgende Angebot. Die erste Seite dieses
+Dokuments trägt den vollständigen Briefkopf der ACME GmbH; ab der zweiten
+Seite erscheint automatisch der schlanke Fortsetzungskopf. Beides stammt aus
+ein und derselben Briefbogen-PDF und wird allein über CSS gesteuert.</p>
+
+<p>Der Briefbogen liegt als zweiseitiges PDF vor. Die Regel
+<code>@page :first</code> wählt die erste PDF-Seite als Hintergrund und
+reserviert über einen größeren oberen Rand Platz für den hohen Kopf. Die
+allgemeine Regel <code>@page</code> setzt über die Eigenschaft
+<code>-bag-background-page: 2</code> die zweite PDF-Seite als Hintergrund aller
+Folgeseiten. Weil linker und rechter Rand auf allen Seiten gleich bleiben,
+fließt der Text ohne Umbruch-Sprünge über den Seitenwechsel.</p>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+<p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore
+veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
+ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+
+<p>Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
+consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt
+ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
+veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi
+ut aliquid ex ea commodi consequatur.</p>
+
+<p>Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam
+nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas
+nulla pariatur. At vero eos et accusamus et iusto odio dignissimos ducimus qui
+blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas
+molestias excepturi sint occaecati cupiditate non provident.</p>
+
+<p>Similique sunt in culpa qui officia deserunt mollitia animi, id est laborum
+et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam
+libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo
+minus id quod maxime placeat facere possimus, omnis voluptas assumenda est,
+omnis dolor repellendus.</p>
+
+<p>Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus
+saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.
+Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis
+voluptatibus maiores alias consequatur aut perferendis doloribus asperiores
+repellat. Über den Seitenwechsel hinweg trägt jede Folgeseite denselben
+schlanken Kopf.</p>
+
+<p>Mit freundlichen Grüßen<br>
+ACME GmbH<br>
+M. Muster</p>
+</body>
+</html>
