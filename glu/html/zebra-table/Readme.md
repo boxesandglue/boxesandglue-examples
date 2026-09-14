@@ -1,6 +1,6 @@
 # Zebra-striped table — CSS3 structural selectors
 
-Smoke test that proves csshtml + htmlbag actually honour the CSS3
+Smoke test that proves htmlbag actually honours the CSS3
 structural selector family end to end. No `class=` attributes on the
 data rows: every visual differentiation is driven by selectors over
 the document structure.
@@ -19,9 +19,9 @@ the document structure.
 | `tfoot tr`, `tfoot td`                         | bold totals row separated by a heavy rule   |
 
 Internally bag delegates selector parsing and matching to
-[`cascadia`](https://github.com/andybalholm/cascadia); csshtml then
+[`cascadia`](https://github.com/andybalholm/cascadia); htmlbag then
 folds the matched rules into the HTML tree as `!`-prefixed attributes
-ordered by specificity (`csshtml/tree.go`). That means anything
+ordered by specificity (`htmlbag/tree.go`). That means anything
 cascadia understands works without further bag-side code — CSS3
 structural selectors all qualify.
 
