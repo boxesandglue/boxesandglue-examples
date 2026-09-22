@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+  Right-to-left paragraphs: the layout features that depend on which
+  edge a line starts at. Every block is Arabic set in Amiri with
+  direction: rtl; the grey boxes are floats.
+
+  Run:  glu rtl-paragraphs.html
+-->
+<html lang="ar">
+<head>
+  <style>
+    @page { size: A4; margin: 1.6cm; }
+
+    @font-face {
+      font-family: "Amiri";
+      src: url("amiri-regular.ttf");
+    }
+
+    body {
+      font-family: "Amiri", serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      direction: rtl;
+    }
+    h1, h2 {
+      font-family: serif;
+      direction: ltr;
+      font-size: 12pt;
+      margin: 8pt 0 3pt 0;
+    }
+    h1 { font-size: 15pt; margin-top: 0; }
+    p {
+      margin: 0 0 4pt 0;
+      border: 0.4pt solid #888;
+      padding: 1pt 3pt;
+    }
+    .two { display: table; width: 100%; }
+    .fr { float: right; width: 26mm; height: 11mm; background-color: #ccc; margin: 0 0 0 8pt; }
+    .fl { float: left;  width: 26mm; height: 11mm; background-color: #ccc; margin: 0 8pt 0 0; }
+    .indent p { text-indent: 18mm; }
+    .hang p { hanging-punctuation: allow-end; }
+    .latin { font-family: serif; }
+  </style>
+</head>
+<body>
+<h1>Right-to-left paragraphs</h1>
+
+<h2>text-align: start, end, center, justify</h2>
+<p style="text-align: start">في قديم الزمان عاش ملك له بنات جميلات، وكانت الصغرى أجملهن حتى إن الشمس نفسها كانت تعجب كلما أشرقت على وجهها. وبالقرب من قصر الملك كانت غابة كبيرة مظلمة.</p>
+<p style="text-align: end">في قديم الزمان عاش ملك له بنات جميلات، وكانت الصغرى أجملهن حتى إن الشمس نفسها كانت تعجب كلما أشرقت على وجهها. وبالقرب من قصر الملك كانت غابة كبيرة مظلمة.</p>
+<p style="text-align: center">في قديم الزمان عاش ملك له بنات جميلات، وكانت الصغرى أجملهن حتى إن الشمس نفسها كانت تعجب كلما أشرقت على وجهها. وبالقرب من قصر الملك كانت غابة كبيرة مظلمة.</p>
+<p style="text-align: justify">في قديم الزمان عاش ملك له بنات جميلات، وكانت الصغرى أجملهن حتى إن الشمس نفسها كانت تعجب كلما أشرقت على وجهها. وبالقرب من قصر الملك كانت غابة كبيرة مظلمة، وتحت شجرة زيزفون قديمة في الغابة كان هناك بئر. وعندما كان اليوم حارا كانت ابنة الملك تخرج إلى الغابة.</p>
+
+<h2>float: right and float: left</h2>
+<div><div class="fr"></div>
+<p style="text-align: justify">في قديم الزمان عاش ملك له بنات جميلات، وكانت الصغرى أجملهن حتى إن الشمس نفسها كانت تعجب كلما أشرقت على وجهها. وبالقرب من قصر الملك كانت غابة كبيرة مظلمة، وتحت شجرة زيزفون قديمة في الغابة كان هناك بئر. وعندما كان اليوم حارا كانت ابنة الملك تخرج إلى الغابة وتجلس بجانب النبع البارد.</p></div>
+<div><div class="fl"></div>
+<p style="text-align: justify">في قديم الزمان عاش ملك له بنات جميلات، وكانت الصغرى أجملهن حتى إن الشمس نفسها كانت تعجب كلما أشرقت على وجهها. وبالقرب من قصر الملك كانت غابة كبيرة مظلمة، وتحت شجرة زيزفون قديمة في الغابة كان هناك بئر. وعندما كان اليوم حارا كانت ابنة الملك تخرج إلى الغابة وتجلس بجانب النبع البارد.</p></div>
+
+<h2>text-indent</h2>
+<div class="indent">
+<p style="text-align: justify">في قديم الزمان عاش ملك له بنات جميلات، وكانت الصغرى أجملهن حتى إن الشمس نفسها كانت تعجب كلما أشرقت على وجهها. وبالقرب من قصر الملك كانت غابة كبيرة مظلمة، وتحت شجرة زيزفون قديمة في الغابة كان هناك بئر.</p>
+</div>
+
+<h2>Forced breaks with hanging punctuation</h2>
+<div class="hang">
+<p style="text-align: justify">في قديم الزمان عاش ملك له بنات جميلات.<br>وكانت الصغرى أجملهن حتى إن الشمس نفسها كانت تعجب كلما أشرقت على وجهها.<br>وبالقرب من قصر الملك كانت غابة كبيرة مظلمة، وتحت شجرة زيزفون قديمة في الغابة كان هناك بئر. وعندما كان اليوم حارا كانت ابنة الملك تخرج إلى الغابة وتجلس بجانب النبع البارد.</p>
+</div>
+
+<h2>Latin run inside an Arabic paragraph</h2>
+<p style="text-align: justify">تستخدم هذه الأمثلة خط <span class="latin">Amiri</span> المرخص بموجب رخصة <span class="latin">SIL Open Font License 1.1</span>، وتعمل إعادة ترتيب الاتجاهات تلقائيا عند اكتشاف نقاط الترميز العربية. الأرقام مثل <span class="latin">2026</span> تحافظ على ترتيبها من اليسار إلى اليمين.</p>
+</body>
+</html>

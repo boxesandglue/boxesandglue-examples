@@ -42,6 +42,12 @@ Description | Preview
 [sbix color bitmap](html/color-emoji-sbix) — Apple's sbix PNG-strike format; **font is not bundled** (Liebeheide Color is not redistributable) | _(no snapshot — runs only with the font present)_
 [Per-glyph font fallback](html/font-fallback-mixed) — CSS Fonts 4 §3.1 prioritised font-family list resolved per grapheme cluster: Latin + emoji + Arabic in one paragraph | <a href="html/font-fallback-mixed"><img src="html/font-fallback-mixed/firstpage.png" width="200"></a>
 
+### Right-to-left text
+
+Description | Preview
+--- | ---
+[Right-to-left paragraphs](html/rtl-paragraphs) — Arabic under `direction: rtl`: the four `text-align` values, floats on either side, `text-indent`, forced breaks with hanging punctuation, and a Latin run inside an Arabic line | <a href="html/rtl-paragraphs"><img src="html/rtl-paragraphs/firstpage.png" width="200"></a>
+
 ### Floats and footnotes
 
 Description | Preview
