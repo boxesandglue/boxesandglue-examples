@@ -41,8 +41,12 @@ page of the other parity is moved to its side when the page is painted.
 A float that narrows the text beside it, like `.figure`, is rebuilt on
 the page it lands on, so the lines give way on the correct side.
 
-Limits: a float needs a declared width, and a float close to the bottom
-of a page is not carried over to the next page with the text beside it.
+At a page break the float stays with the text beside it: a note or
+figure whose paragraph has no room left on the page moves to the next
+page with that paragraph, and a paragraph that is split beside a figure
+continues at full width on the next page.
+
+Limits: a float needs a declared width.
 
 ## Run
 

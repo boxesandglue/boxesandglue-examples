@@ -47,6 +47,7 @@ Description | Preview
 [Hello world](frontend/helloworld) — smallest end-to-end frontend program | <a href="frontend/helloworld"><img src="frontend/helloworld/firstpage.png" width="200"></a>
 [Simple table](frontend/simpletable) — row / column basics | <a href="frontend/simpletable"><img src="frontend/simpletable/firstpage.png" width="200"></a>
 [Table with cell spans](frontend/tablespan) — `colspan` / `rowspan` from XML | <a href="frontend/tablespan"><img src="frontend/tablespan/firstpage.png" width="200"></a>
+[Tab stops](frontend/tabstops) — left, right, center and decimal stops with leaders | <a href="frontend/tabstops"><img src="frontend/tabstops/firstpage.png" width="200"></a>
 
 ## baseline
 

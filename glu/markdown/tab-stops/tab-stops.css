@@ -1,0 +1,60 @@
+@page {
+	size: a4;
+	margin: 2cm;
+}
+
+body {
+	font-family: serif;
+	font-size: 10pt;
+	line-height: 1.4;
+}
+
+h1 {
+	font-size: 17pt;
+	margin: 0 0 0.4em 0;
+}
+
+h2 {
+	font-size: 12pt;
+	margin: 1.1em 0 0.35em 0;
+	color: #23486b;
+}
+
+p {
+	margin: 0.35em 0;
+}
+
+code {
+	font-family: monospace;
+	font-size: 0.92em;
+	background-color: #f0f0f0;
+}
+
+/* The line breaks in the Markdown source are kept (pre-line), so one
+   paragraph holds all lines. Tabs survive any white-space mode once
+   stops are set; pre-line is only for the newlines. */
+.contents p, .form, .prices, .signature {
+	white-space: pre-line;
+}
+
+/* The number starts at the margin, the title at 10mm, the page number
+   ends at the end of the line with a dotted leader before it. */
+.contents p {
+	-bag-tab-stops: 10mm, 100% end leader(dotted);
+}
+
+.form {
+	-bag-tab-stops: 35mm;
+}
+
+/* decimal(",") aligns on the comma. The headings have no comma and end
+   at the stop, which right aligns them over the figures. */
+.prices {
+	-bag-tab-stops: 55mm decimal(","), 90mm decimal(",");
+}
+
+.signature {
+	margin-top: 3em;
+	border-top: 0.4pt solid black;
+	-bag-tab-stops: 25% center, 75% center;
+}
