@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Keepers of the light</title>
+<style>
+@page { size: a5; margin: 16mm 16mm 18mm 16mm; }
+body {
+  font-size: 10pt;
+  line-height: 1.4;
+  text-align: justify;
+  -bag-float-gutter: 4mm;   /* space between a float and the text */
+}
+h1 { font-size: 20pt; line-height: 1.1; margin: 0 0 4mm 0; text-align: left; }
+h2 { font-size: 12pt; margin: 4mm 0 1.5mm 0; text-align: left; clear: both; }
+p  { margin: 0 0 2mm 0; }
+
+/* A figure with a caption. A float that holds a block image needs a
+   width; the image fills it. */
+.figure  { float: right; width: 36mm; margin-bottom: 2mm; }
+.figure img { display: block; width: 100%; }
+.caption { font-size: 7.5pt; line-height: 1.25; text-align: left; color: #445566; margin: 1.5mm 0 0 0; }
+
+/* An image at the start of a paragraph floats at its first line. */
+img.left { float: left; width: 17mm; }
+
+/* A box without a width shrinks to its longest line. */
+.facts {
+  float: right;
+  background-color: #eef3f7;
+  padding: 2mm 3mm;
+  font-size: 8.5pt;
+  line-height: 1.35;
+  text-align: left;
+}
+</style>
+</head>
+<body>
+<h1>Keepers of the light</h1>
+
+<div class="figure">
+  <img src="lighthouse.svg" alt="A white lighthouse with two red bands on a green headland">
+  <p class="caption">Skerry Point, a tower that exists only in this example.</p>
+</div>
+
+<p>For more than a century the light at Skerry Point has turned every
+night, from dusk to dawn, whatever the weather. Ships far out at sea
+know it by its rhythm: three white flashes, then darkness, then three
+flashes again. No other light on the coast keeps the same count, so a
+navigator who sees it knows where the ship is without asking anyone.</p>
+
+<p>The tower itself is unremarkable. It is a tapering cylinder of
+stone, painted white with two red bands so that it stands out against
+the hills by day. What makes it a lighthouse is the room at the top,
+where a lamp no brighter than a few household bulbs is turned into a
+beam that reaches the horizon.</p>
+
+<h2>The lens</h2>
+
+<p><img class="left" src="lens.svg" alt="A round lens made of concentric rings">The
+heart of the tower is not the lamp but the lens around it. A Fresnel
+lens breaks one heavy curved glass into a set of thin rings, each
+bending the light by the same amount as the solid lens would. The
+result is light enough to turn on a bed of mercury and strong enough
+to gather almost every ray of the lamp into a narrow beam.</p>
+
+<div class="facts">
+  <b>Skerry Point</b><br>
+  Tower: 32 m<br>
+  Light: 48 m above the sea<br>
+  Range: 22 nautical miles<br>
+  First lit: 1874
+</div>
+
+<p>The rings are ground so precisely that the beam spreads by less
+than a degree. Turned by clockwork, the lens sweeps the beam over the
+sea, and the gaps between its panels make the flashes. The keepers
+wound the clockwork by hand every few hours and polished the glass
+every morning.</p>
+
+<h2>Today</h2>
+
+<p>Today a sensor switches the light on at dusk and a small motor
+turns the lens. The flashes are the same as in 1874.</p>
+</body>
+</html>

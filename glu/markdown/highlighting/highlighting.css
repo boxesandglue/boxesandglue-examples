@@ -1,0 +1,12 @@
+@page { size: a5; margin: 16mm 16mm 18mm 16mm; }
+body { font-size: 10.5pt; line-height: 1.45; }
+
+/* The highlighter: a background color on an inline element. */
+.mark  { background-color: #fff1a8; }
+.green { background-color: #d3efd0; }
+
+/* The red pen: text-decoration with a line, a style and a color. */
+del    { text-decoration-color: #c0392b; }
+.ins   { color: #2e7d32; text-decoration: underline #2e7d32; }
+.spell { text-decoration: underline wavy #c0392b; }
+.query { text-decoration: underline dotted #1f5fa8; }

@@ -46,7 +46,8 @@ figure whose paragraph has no room left on the page moves to the next
 page with that paragraph, and a paragraph that is split beside a figure
 continues at full width on the next page.
 
-Limits: a float needs a declared width.
+Give a note a width: a float without one shrinks to its longest line,
+which for a note of running text is the full measure.
 
 ## Run
 

@@ -18,6 +18,7 @@ Description | Preview
 [Inline image vertical-align](inline-image-align) — CSS `vertical-align: text-top` / `top` on raster `<img>` inside a paragraph; image top aligns with the parent font's ascent | <a href="inline-image-align"><img src="inline-image-align/firstpage.png" width="200"></a>
 [Per-page `@page` background (letterhead)](page-background-letterhead) — two-page PDF letterhead behind the text, full header on page 1 and slim continuation header on pages 2+ via `@page :first` + `background-image` + `-bag-background-page`; pure CSS, no Go/Lua | <a href="page-background-letterhead"><img src="page-background-letterhead/firstpage.png" width="200"></a>
 [Running footer (CSS GCPM running elements)](running-footer): a three-column `<footer>` table repeated in the `@bottom-center` margin box of every page via `position: running(name)` + `content: element(name)`; pure CSS, no Go/Lua | <a href="running-footer"><img src="running-footer/firstpage.png" width="200"></a>
+[Text around images](image-runaround): `float: left` / `float: right` for a figure with caption, an image at the start of a paragraph and a box without a width that shrinks to its content; `-bag-float-gutter` and `clear` | <a href="image-runaround"><img src="image-runaround/firstpage.png" width="200"></a>
 
 ## Color emoji and font fallback
 
