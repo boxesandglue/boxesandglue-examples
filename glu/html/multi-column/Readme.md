@@ -24,10 +24,7 @@ columns, and the columns of the last page are balanced.
 
 `column-count` is laid out on the `body` and on a direct child of the
 `body` without a border, a background or padding, whose siblings then
-span the columns. A footnote
-in a paragraph that is split between columns is placed in the column
-where the paragraph starts
-([htmlbag#96](https://github.com/boxesandglue/htmlbag/issues/96)).
+span the columns.
 
 ## Run
 
