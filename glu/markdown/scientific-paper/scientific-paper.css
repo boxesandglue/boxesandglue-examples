@@ -55,6 +55,16 @@ h1 {
 }
 .abstract p { margin: 0 0 0.5em 0; }
 
+/* Everything after the abstract is set in two columns; the title block
+   and the abstract, siblings of this div, span both. The columns of the
+   last page are balanced. */
+.paper-body {
+  column-count: 2;
+  column-gap: 7mm;
+}
+/* The first heading starts level with the top of the second column. */
+.paper-body > h2:first-child { margin-top: 0; }
+
 /* Numbered sections */
 h2 {
   font-size: 11pt;
@@ -69,6 +79,7 @@ h2.unnumbered::before { content: none; }
 p { margin: 0 0 0.5em 0; }
 
 /* Figures and tables, numbered by counters */
+figure img { max-width: 100%; }
 figure {
   margin: 1em 0;
   counter-increment: figure;
@@ -90,6 +101,7 @@ p.table-caption {
   font-size: 9pt;
   margin: 1em 0 0.4em 0;
   counter-increment: table;
+  break-after: avoid;
 }
 p.table-caption::before {
   content: "Table " counter(table) ". ";
@@ -103,7 +115,7 @@ table {
   font-size: 9pt;
 }
 thead th { border-bottom: 0.6pt solid black; }
-th, td { padding: 2pt 6pt; text-align: right; }
+th, td { padding: 2pt 5pt; text-align: right; hyphens: manual; }
 th:first-child, td:first-child { text-align: left; }
 
 /* Display equations: centered, number at the right margin */

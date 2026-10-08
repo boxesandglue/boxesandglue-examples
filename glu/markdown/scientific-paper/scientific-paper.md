@@ -32,6 +32,8 @@ are illustrative.
 **Keywords:** line breaking, typesetting, justification, hyphenation
 :::
 
+::: {.paper-body}
+
 ## Introduction {#sec-intro}
 
 Justified text distributes the leftover width of a line over its
@@ -104,19 +106,19 @@ measures, given in ems of the text font. Total-fit keeps the average
 badness low down to the narrowest measure, where first-fit leaves
 loose lines that a reader notices as rivers of white space.
 
-<p class="table-caption" id="tab-results">Average badness and loose
-lines (b > 200) per 100 lines, first-fit against total-fit.
+<p class="table-caption" id="tab-results">Average badness b and loose
+lines (b > 200) per 100 lines, first-fit (FF) against total-fit (TF).
 Illustrative values.</p>
 
 <table>
 <thead>
-<tr><th>Measure</th><th>First-fit b</th><th>Total-fit b</th><th>First-fit loose</th><th>Total-fit loose</th></tr>
+<tr><th>Measure</th><th>FF b</th><th>TF b</th><th>FF loose</th><th>TF loose</th></tr>
 </thead>
 <tbody>
-<tr><td>35 em</td><td>18</td><td>9</td><td>1</td><td>0</td></tr>
-<tr><td>28 em</td><td>31</td><td>14</td><td>3</td><td>0</td></tr>
-<tr><td>22 em</td><td>57</td><td>23</td><td>8</td><td>1</td></tr>
-<tr><td>16 em</td><td>112</td><td>41</td><td>19</td><td>4</td></tr>
+<tr><td>35&nbsp;em</td><td>18</td><td>9</td><td>1</td><td>0</td></tr>
+<tr><td>28&nbsp;em</td><td>31</td><td>14</td><td>3</td><td>0</td></tr>
+<tr><td>22&nbsp;em</td><td>57</td><td>23</td><td>8</td><td>1</td></tr>
+<tr><td>16&nbsp;em</td><td>112</td><td>41</td><td>19</td><td>4</td></tr>
 </tbody>
 </table>
 
@@ -143,3 +145,5 @@ columns.
 <li id="ref-plass">M. F. Plass. <i>Optimal Pagination Techniques for Automatic Typesetting Systems</i>. PhD thesis, Stanford University, 1981.</li>
 <li id="ref-css-multicol">W3C. <i>CSS Multi-column Layout Module Level 1</i>. W3C Candidate Recommendation.</li>
 </ol>
+
+:::
