@@ -12,6 +12,7 @@ columns, and the columns of the last page are balanced.
 | Feature | How |
 | --- | --- |
 | `column-count`, `column-gap` | `body { column-count: 2; column-gap: 7mm; }`: two columns of 83.5 mm on an A4 page with 174 mm of content width. |
+| `column-rule` | A thin gray rule in the middle of the gap, as high as the columns of each row. |
 | `column-span: all` | The `h1` and the lead paragraph are as wide as the page; the columns start below them. |
 | Balancing | The text of the last page is spread so that both columns end at about the same height (`column-fill: balance`, the initial value). |
 | Column breaks | Headings keep with the next paragraph (`break-after: avoid`) across the column break as across a page break; a paragraph is split between the columns. |
@@ -23,7 +24,7 @@ columns, and the columns of the last page are balanced.
 
 `column-count` is laid out on the `body` and on a direct child of the
 `body` without a border, a background or padding, whose siblings then
-span the columns. `column-rule` is read but not drawn yet. A footnote
+span the columns. A footnote
 in a paragraph that is split between columns is placed in the column
 where the paragraph starts
 ([htmlbag#96](https://github.com/boxesandglue/htmlbag/issues/96)).

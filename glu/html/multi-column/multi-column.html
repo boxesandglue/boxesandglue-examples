@@ -10,12 +10,14 @@
   @bottom-center { content: counter(page); font-size: 8pt; }
 }
 
-/* The body is the multi-column container: two columns with a 7mm gap.
+/* The body is the multi-column container: two columns with a 7mm gap
+   and a thin rule in the middle of it.
    Everything in it flows from the first column to the second, then on
    to the next page. */
 body {
   column-count: 2;
   column-gap: 7mm;
+  column-rule: 0.4pt solid #b8b8b8;
   font-family: serif;
   font-size: 10pt;
   line-height: 1.32;
