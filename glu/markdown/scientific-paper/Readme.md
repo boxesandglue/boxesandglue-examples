@@ -73,15 +73,13 @@ glu scientific-paper.md
 - **References** are an ordered list with an id per entry; citations
   link to them.
 
-The figures are SVG files. Their labels name `font-family="serif"`,
-as SVG text without a font family is not rendered.
+The figures are SVG files with labels in `serif`, the font an SVG in
+`<img>` takes without a `font-family`.
 
 ## Not yet
 
 The table caption is a paragraph, as `<caption>` is not rendered yet
-([htmlbag#90](https://github.com/boxesandglue/htmlbag/issues/90)).
-The cross references are not clickable
-([htmlbag#94](https://github.com/boxesandglue/htmlbag/issues/94)),
+([htmlbag#90](https://github.com/boxesandglue/htmlbag/issues/90)),
 and the document is not tagged as PDF/UA-2 until
 [htmlbag#92](https://github.com/boxesandglue/htmlbag/issues/92) and
 [#93](https://github.com/boxesandglue/htmlbag/issues/93) are fixed.
