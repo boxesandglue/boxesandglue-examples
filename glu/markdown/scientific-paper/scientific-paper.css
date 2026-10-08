@@ -95,19 +95,20 @@ figcaption::before {
   font-weight: bold;
 }
 
-/* <caption> is not rendered yet, the caption is a paragraph above the
-   table and carries the counter and the id for cross references. */
-p.table-caption {
+/* The table counts itself, so its caption and a cross reference to its
+   id see the same number. The caption stands above the table and keeps
+   with it at a break. */
+caption {
   font-size: 9pt;
+  text-align: left;
   margin: 1em 0 0.4em 0;
-  counter-increment: table;
-  break-after: avoid;
 }
-p.table-caption::before {
+caption::before {
   content: "Table " counter(table) ". ";
   font-weight: bold;
 }
 table {
+  counter-increment: table;
   margin: 0 auto 1em auto;
   border-collapse: collapse;
   border-top: 0.8pt solid black;

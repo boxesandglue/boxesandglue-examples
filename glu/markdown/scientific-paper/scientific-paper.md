@@ -106,11 +106,9 @@ measures, given in ems of the text font. Total-fit keeps the average
 badness low down to the narrowest measure, where first-fit leaves
 loose lines that a reader notices as rivers of white space.
 
-<p class="table-caption" id="tab-results">Average badness b and loose
-lines (b > 200) per 100 lines, first-fit (FF) against total-fit (TF).
-Illustrative values.</p>
-
-<table>
+<table id="tab-results">
+<caption>Average badness b and loose lines (b > 200) per 100 lines,
+first-fit (FF) against total-fit (TF). Illustrative values.</caption>
 <thead>
 <tr><th>Measure</th><th>FF b</th><th>TF b</th><th>FF loose</th><th>TF loose</th></tr>
 </thead>

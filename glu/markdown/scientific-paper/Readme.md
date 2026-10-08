@@ -78,8 +78,6 @@ The figures are SVG files with labels in `serif`, the font an SVG in
 
 ## Not yet
 
-The table caption is a paragraph, as `<caption>` is not rendered yet
-([htmlbag#90](https://github.com/boxesandglue/htmlbag/issues/90)),
-and the document is not tagged as PDF/UA-2 until
+The document is not tagged as PDF/UA-2 until
 [htmlbag#92](https://github.com/boxesandglue/htmlbag/issues/92) and
 [#93](https://github.com/boxesandglue/htmlbag/issues/93) are fixed.
