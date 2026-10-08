@@ -1,7 +1,7 @@
 # Scientific paper
 
-A short journal-style article written in Markdown and set in two
-columns: title block with authors and affiliations and an abstract
+A short journal-style article written in Markdown, set in two columns
+and tagged as PDF/UA-2: title block with authors and affiliations and an abstract
 across both columns, then numbered sections, inline and numbered
 display equations, two figures, a table, a footnote, cross references
 and a hand-made list of references.
@@ -76,8 +76,10 @@ glu scientific-paper.md
 The figures are SVG files with labels in `serif`, the font an SVG in
 `<img>` takes without a `font-family`.
 
-## Not yet
+## Accessibility
 
-The document is not tagged as PDF/UA-2 until
-[htmlbag#92](https://github.com/boxesandglue/htmlbag/issues/92) and
-[#93](https://github.com/boxesandglue/htmlbag/issues/93) are fixed.
+`format: PDF/UA-2` in the frontmatter tags the paper. veraPDF
+(`verapdf --flavour ua2 result.pdf`) reports it compliant: the cross
+references point to the structure elements of their targets, each
+figure is a section with the image's alt text and its caption, and the
+table caption is the first child of the table.

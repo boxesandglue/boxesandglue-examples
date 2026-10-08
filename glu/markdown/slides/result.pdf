@@ -368,6 +368,17 @@ endobj
 68 0 obj
 <<
  /Type /StructElem
+ /A << /O /Layout /Placement /Block /BBox [ 42.52 96.52 677.48 296.52 ] >>
+ /Alt <feff004d00610072006b0064006f0077006e00200070006900700065006c0069006e0065003a0020004d00610072006b0064006f0077006e00202192002000480054004d004c002021920020005000440046>
+ /K << /Type /MCR /Pg 13 0 R /MCID 1 >>
+ /P 29 0 R
+ /S /Figure
+>>
+endobj
+
+69 0 obj
+<<
+ /Type /StructElem
  /ActualText (Tables)
  /K << /Type /MCR /Pg 15 0 R /MCID 0 >>
  /P 29 0 R
@@ -375,91 +386,52 @@ endobj
 >>
 endobj
 
-72 0 obj
+73 0 obj
 <<
  /Type /StructElem
  /A << /O /Table /Scope /Column >>
  /ActualText (Feature)
  /K << /Type /MCR /Pg 15 0 R /MCID 1 >>
- /P 71 0 R
+ /P 72 0 R
  /S /TH
 >>
 endobj
 
-73 0 obj
+74 0 obj
 <<
  /Type /StructElem
  /A << /O /Table /Scope /Column >>
  /ActualText (Supported)
  /K << /Type /MCR /Pg 15 0 R /MCID 2 >>
- /P 71 0 R
+ /P 72 0 R
  /S /TH
+>>
+endobj
+
+72 0 obj
+<<
+ /Type /StructElem
+ /K [ 73 0 R 74 0 R ]
+ /P 71 0 R
+ /S /TR
 >>
 endobj
 
 71 0 obj
 <<
  /Type /StructElem
- /K [ 72 0 R 73 0 R ]
+ /K 72 0 R
  /P 70 0 R
- /S /TR
->>
-endobj
-
-70 0 obj
-<<
- /Type /StructElem
- /K 71 0 R
- /P 69 0 R
  /S /THead
->>
-endobj
-
-76 0 obj
-<<
- /Type /StructElem
- /ActualText (Markdown syntax)
- /K << /Type /MCR /Pg 15 0 R /MCID 3 >>
- /P 75 0 R
- /S /TD
 >>
 endobj
 
 77 0 obj
 <<
  /Type /StructElem
- /ActualText (Yes)
- /K << /Type /MCR /Pg 15 0 R /MCID 4 >>
- /P 75 0 R
- /S /TD
->>
-endobj
-
-75 0 obj
-<<
- /Type /StructElem
- /K [ 76 0 R 77 0 R ]
- /P 74 0 R
- /S /TR
->>
-endobj
-
-79 0 obj
-<<
- /Type /StructElem
- /ActualText (CSS styling)
- /K << /Type /MCR /Pg 15 0 R /MCID 5 >>
- /P 78 0 R
- /S /TD
->>
-endobj
-
-80 0 obj
-<<
- /Type /StructElem
- /ActualText (Yes)
- /K << /Type /MCR /Pg 15 0 R /MCID 6 >>
- /P 78 0 R
+ /ActualText (Markdown syntax)
+ /K << /Type /MCR /Pg 15 0 R /MCID 3 >>
+ /P 76 0 R
  /S /TD
 >>
 endobj
@@ -467,28 +439,28 @@ endobj
 78 0 obj
 <<
  /Type /StructElem
- /K [ 79 0 R 80 0 R ]
- /P 74 0 R
- /S /TR
->>
-endobj
-
-82 0 obj
-<<
- /Type /StructElem
- /ActualText (Lua logic)
- /K << /Type /MCR /Pg 15 0 R /MCID 7 >>
- /P 81 0 R
+ /ActualText (Yes)
+ /K << /Type /MCR /Pg 15 0 R /MCID 4 >>
+ /P 76 0 R
  /S /TD
 >>
 endobj
 
-83 0 obj
+76 0 obj
 <<
  /Type /StructElem
- /ActualText (Yes)
- /K << /Type /MCR /Pg 15 0 R /MCID 8 >>
- /P 81 0 R
+ /K [ 77 0 R 78 0 R ]
+ /P 75 0 R
+ /S /TR
+>>
+endobj
+
+80 0 obj
+<<
+ /Type /StructElem
+ /ActualText (CSS styling)
+ /K << /Type /MCR /Pg 15 0 R /MCID 5 >>
+ /P 79 0 R
  /S /TD
 >>
 endobj
@@ -496,28 +468,28 @@ endobj
 81 0 obj
 <<
  /Type /StructElem
- /K [ 82 0 R 83 0 R ]
- /P 74 0 R
- /S /TR
->>
-endobj
-
-85 0 obj
-<<
- /Type /StructElem
- /ActualText (SVG graphics)
- /K << /Type /MCR /Pg 15 0 R /MCID 9 >>
- /P 84 0 R
+ /ActualText (Yes)
+ /K << /Type /MCR /Pg 15 0 R /MCID 6 >>
+ /P 79 0 R
  /S /TD
 >>
 endobj
 
-86 0 obj
+79 0 obj
 <<
  /Type /StructElem
- /ActualText (Yes)
- /K << /Type /MCR /Pg 15 0 R /MCID 10 >>
- /P 84 0 R
+ /K [ 80 0 R 81 0 R ]
+ /P 75 0 R
+ /S /TR
+>>
+endobj
+
+83 0 obj
+<<
+ /Type /StructElem
+ /ActualText (Lua logic)
+ /K << /Type /MCR /Pg 15 0 R /MCID 7 >>
+ /P 82 0 R
  /S /TD
 >>
 endobj
@@ -525,28 +497,28 @@ endobj
 84 0 obj
 <<
  /Type /StructElem
- /K [ 85 0 R 86 0 R ]
- /P 74 0 R
- /S /TR
->>
-endobj
-
-88 0 obj
-<<
- /Type /StructElem
- /ActualText (Page numbers)
- /K << /Type /MCR /Pg 15 0 R /MCID 11 >>
- /P 87 0 R
+ /ActualText (Yes)
+ /K << /Type /MCR /Pg 15 0 R /MCID 8 >>
+ /P 82 0 R
  /S /TD
 >>
 endobj
 
-89 0 obj
+82 0 obj
 <<
  /Type /StructElem
- /ActualText (Yes)
- /K << /Type /MCR /Pg 15 0 R /MCID 12 >>
- /P 87 0 R
+ /K [ 83 0 R 84 0 R ]
+ /P 75 0 R
+ /S /TR
+>>
+endobj
+
+86 0 obj
+<<
+ /Type /StructElem
+ /ActualText (SVG graphics)
+ /K << /Type /MCR /Pg 15 0 R /MCID 9 >>
+ /P 85 0 R
  /S /TD
 >>
 endobj
@@ -554,31 +526,70 @@ endobj
 87 0 obj
 <<
  /Type /StructElem
- /K [ 88 0 R 89 0 R ]
- /P 74 0 R
+ /ActualText (Yes)
+ /K << /Type /MCR /Pg 15 0 R /MCID 10 >>
+ /P 85 0 R
+ /S /TD
+>>
+endobj
+
+85 0 obj
+<<
+ /Type /StructElem
+ /K [ 86 0 R 87 0 R ]
+ /P 75 0 R
  /S /TR
 >>
 endobj
 
-74 0 obj
+89 0 obj
 <<
  /Type /StructElem
- /K [ 75 0 R 78 0 R 81 0 R 84 0 R 87 0 R ]
- /P 69 0 R
+ /ActualText (Page numbers)
+ /K << /Type /MCR /Pg 15 0 R /MCID 11 >>
+ /P 88 0 R
+ /S /TD
+>>
+endobj
+
+90 0 obj
+<<
+ /Type /StructElem
+ /ActualText (Yes)
+ /K << /Type /MCR /Pg 15 0 R /MCID 12 >>
+ /P 88 0 R
+ /S /TD
+>>
+endobj
+
+88 0 obj
+<<
+ /Type /StructElem
+ /K [ 89 0 R 90 0 R ]
+ /P 75 0 R
+ /S /TR
+>>
+endobj
+
+75 0 obj
+<<
+ /Type /StructElem
+ /K [ 76 0 R 79 0 R 82 0 R 85 0 R 88 0 R ]
+ /P 70 0 R
  /S /TBody
 >>
 endobj
 
-69 0 obj
+70 0 obj
 <<
  /Type /StructElem
- /K [ 70 0 R 74 0 R ]
+ /K [ 71 0 R 75 0 R ]
  /P 29 0 R
  /S /Table
 >>
 endobj
 
-90 0 obj
+91 0 obj
 <<
  /Type /StructElem
  /ActualText (Callbacks for recurring elements)
@@ -588,7 +599,7 @@ endobj
 >>
 endobj
 
-91 0 obj
+92 0 obj
 <<
  /Type /StructElem
  /ActualText (In the companion file slides.lua:)
@@ -598,93 +609,93 @@ endobj
 >>
 endobj
 
-94 0 obj
+95 0 obj
 <<
  /Type /StructElem
  /ActualText (page_init „ page number, accent line, logo)
  /K << /Type /MCR /Pg 17 0 R /MCID 2 >>
+ /P 94 0 R
+ /S /LBody
+>>
+endobj
+
+94 0 obj
+<<
+ /Type /StructElem
+ /K 95 0 R
  /P 93 0 R
- /S /LBody
->>
-endobj
-
-93 0 obj
-<<
- /Type /StructElem
- /K 94 0 R
- /P 92 0 R
  /S /LI
->>
-endobj
-
-96 0 obj
-<<
- /Type /StructElem
- /ActualText (pre_shipout „ final adjustments before rendering)
- /K << /Type /MCR /Pg 17 0 R /MCID 3 >>
- /P 95 0 R
- /S /LBody
->>
-endobj
-
-95 0 obj
-<<
- /Type /StructElem
- /K 96 0 R
- /P 92 0 R
- /S /LI
->>
-endobj
-
-98 0 obj
-<<
- /Type /StructElem
- /ActualText (document_end „ post-processing)
- /K << /Type /MCR /Pg 17 0 R /MCID 4 >>
- /P 97 0 R
- /S /LBody
 >>
 endobj
 
 97 0 obj
 <<
  /Type /StructElem
- /K 98 0 R
- /P 92 0 R
+ /ActualText (pre_shipout „ final adjustments before rendering)
+ /K << /Type /MCR /Pg 17 0 R /MCID 3 >>
+ /P 96 0 R
+ /S /LBody
+>>
+endobj
+
+96 0 obj
+<<
+ /Type /StructElem
+ /K 97 0 R
+ /P 93 0 R
  /S /LI
->>
-endobj
-
-92 0 obj
-<<
- /Type /StructElem
- /A << /O /List /ListNumbering /Disc >>
- /K [ 93 0 R 95 0 R 97 0 R ]
- /P 29 0 R
- /S /L
->>
-endobj
-
-100 0 obj
-<<
- /Type /StructElem
- /ActualText (frontend.add_callback\("page_init", "slide_number",\n    function\(doc, page, pagenum, pageinfo\)\n        -- page number in the bottom right\n    end\))
- /K << /Type /MCR /Pg 17 0 R /MCID 5 >>
- /P 99 0 R
- /S /Code
 >>
 endobj
 
 99 0 obj
 <<
  /Type /StructElem
- /K 100 0 R
+ /ActualText (document_end „ post-processing)
+ /K << /Type /MCR /Pg 17 0 R /MCID 4 >>
+ /P 98 0 R
+ /S /LBody
+>>
+endobj
+
+98 0 obj
+<<
+ /Type /StructElem
+ /K 99 0 R
+ /P 93 0 R
+ /S /LI
+>>
+endobj
+
+93 0 obj
+<<
+ /Type /StructElem
+ /A << /O /List /ListNumbering /Disc >>
+ /K [ 94 0 R 96 0 R 98 0 R ]
+ /P 29 0 R
+ /S /L
+>>
+endobj
+
+101 0 obj
+<<
+ /Type /StructElem
+ /ActualText (frontend.add_callback\("page_init", "slide_number",\n    function\(doc, page, pagenum, pageinfo\)\n        -- page number in the bottom right\n    end\))
+ /K << /Type /MCR /Pg 17 0 R /MCID 5 >>
+ /P 100 0 R
+ /S /Code
+>>
+endobj
+
+100 0 obj
+<<
+ /Type /StructElem
+ /K 101 0 R
  /P 29 0 R
  /S /P
 >>
 endobj
 
-101 0 obj
+102 0 obj
 <<
  /Type /StructElem
  /ActualText (Lua blocks: syntax)
@@ -694,7 +705,7 @@ endobj
 >>
 endobj
 
-102 0 obj
+103 0 obj
 <<
  /Type /StructElem
  /ActualText (This is what a Lua block looks like in Markdown:)
@@ -704,26 +715,26 @@ endobj
 >>
 endobj
 
-104 0 obj
+105 0 obj
 <<
  /Type /StructElem
  /ActualText (```{lua}\n-- executed and the result is inserted\nitems = { "Item 1", "Item 2" }\nreturn "There are " .. #items .. " items."\n```)
  /K << /Type /MCR /Pg 19 0 R /MCID 2 >>
- /P 103 0 R
+ /P 104 0 R
  /S /Code
 >>
 endobj
 
-103 0 obj
+104 0 obj
 <<
  /Type /StructElem
- /K 104 0 R
+ /K 105 0 R
  /P 29 0 R
  /S /P
 >>
 endobj
 
-105 0 obj
+106 0 obj
 <<
  /Type /StructElem
  /ActualText (Inline expressions with {= ƒ =} are replaced directly.)
@@ -733,7 +744,7 @@ endobj
 >>
 endobj
 
-106 0 obj
+107 0 obj
 <<
  /Type /StructElem
  /ActualText (To only display code \(without executing\): {!lua} instead of {lua}.)
@@ -743,7 +754,7 @@ endobj
 >>
 endobj
 
-107 0 obj
+108 0 obj
 <<
  /Type /StructElem
  /ActualText (Verbatim blocks)
@@ -753,7 +764,7 @@ endobj
 >>
 endobj
 
-108 0 obj
+109 0 obj
 <<
  /Type /StructElem
  /ActualText (Want to display code blocks with ``` verbatim? Simply wrap them with more backticks:)
@@ -763,26 +774,26 @@ endobj
 >>
 endobj
 
-110 0 obj
+111 0 obj
 <<
  /Type /StructElem
  /ActualText (```{lua}\nreturn "Hello from Lua!"\n```)
  /K << /Type /MCR /Pg 21 0 R /MCID 2 >>
- /P 109 0 R
+ /P 110 0 R
  /S /Code
 >>
 endobj
 
-109 0 obj
+110 0 obj
 <<
  /Type /StructElem
- /K 110 0 R
+ /K 111 0 R
  /P 29 0 R
  /S /P
 >>
 endobj
 
-111 0 obj
+112 0 obj
 <<
  /Type /StructElem
  /ActualText (The outer 5 backticks protect the inner block „ it is displayed, not executed.)
@@ -792,7 +803,7 @@ endobj
 >>
 endobj
 
-112 0 obj
+113 0 obj
 <<
  /Type /StructElem
  /ActualText (Lua blocks: live example)
@@ -802,7 +813,7 @@ endobj
 >>
 endobj
 
-113 0 obj
+114 0 obj
 <<
  /Type /StructElem
  /ActualText (3 kinds of fruit: Apples, Pears, Cherries)
@@ -812,7 +823,7 @@ endobj
 >>
 endobj
 
-114 0 obj
+115 0 obj
 <<
  /Type /StructElem
  /ActualText (And the same as a non-executed block with {!lua}:)
@@ -822,26 +833,26 @@ endobj
 >>
 endobj
 
-116 0 obj
+117 0 obj
 <<
  /Type /StructElem
  /ActualText (example = { "Apples", "Pears", "Cherries" }\nreturn #example .. " kinds of fruit")
  /K << /Type /MCR /Pg 23 0 R /MCID 3 >>
- /P 115 0 R
+ /P 116 0 R
  /S /Code
 >>
 endobj
 
-115 0 obj
+116 0 obj
 <<
  /Type /StructElem
- /K 116 0 R
+ /K 117 0 R
  /P 29 0 R
  /S /P
 >>
 endobj
 
-117 0 obj
+118 0 obj
 <<
  /Type /StructElem
  /ActualText (Thank you!)
@@ -851,7 +862,7 @@ endobj
 >>
 endobj
 
-118 0 obj
+119 0 obj
 <<
  /Type /StructElem
  /ActualText (Source code: playground/slides.md)
@@ -861,26 +872,26 @@ endobj
 >>
 endobj
 
-120 0 obj
+121 0 obj
 <<
  /Type /StructElem
  /K << /Type /OBJR /Obj 27 0 R /Pg 25 0 R >>
- /P 119 0 R
+ /P 120 0 R
  /S /Link
 >>
 endobj
 
-119 0 obj
+120 0 obj
 <<
  /Type /StructElem
  /ActualText (Back to: Why glu for slides?)
- /K [ << /Type /MCR /Pg 25 0 R /MCID 2 >> 120 0 R ]
+ /K [ << /Type /MCR /Pg 25 0 R /MCID 2 >> 121 0 R ]
  /P 29 0 R
  /S /P
 >>
 endobj
 
-121 0 obj
+122 0 obj
 <<
  /Type /StructElem
  /ActualText (Run with:)
@@ -890,20 +901,20 @@ endobj
 >>
 endobj
 
-123 0 obj
+124 0 obj
 <<
  /Type /StructElem
  /ActualText (glu slides.md)
  /K << /Type /MCR /Pg 25 0 R /MCID 4 >>
- /P 122 0 R
+ /P 123 0 R
  /S /Code
 >>
 endobj
 
-122 0 obj
+123 0 obj
 <<
  /Type /StructElem
- /K 123 0 R
+ /K 124 0 R
  /P 29 0 R
  /S /P
 >>
@@ -912,7 +923,7 @@ endobj
 29 0 obj
 <<
  /Type /StructElem
- /K [ 30 0 R 34 0 R 35 0 R 44 0 R 46 0 R 47 0 R 48 0 R 50 0 R 51 0 R 52 0 R 53 0 R 54 0 R 67 0 R 68 0 R 69 0 R 90 0 R 91 0 R 92 0 R 99 0 R 101 0 R 102 0 R 103 0 R 105 0 R 106 0 R 107 0 R 108 0 R 109 0 R 111 0 R 112 0 R 113 0 R 114 0 R 115 0 R 117 0 R 118 0 R 119 0 R 121 0 R 122 0 R ]
+ /K [ 30 0 R 34 0 R 35 0 R 44 0 R 46 0 R 47 0 R 48 0 R 50 0 R 51 0 R 52 0 R 53 0 R 54 0 R 67 0 R 68 0 R 69 0 R 70 0 R 91 0 R 92 0 R 93 0 R 100 0 R 102 0 R 103 0 R 104 0 R 106 0 R 107 0 R 108 0 R 109 0 R 110 0 R 112 0 R 113 0 R 114 0 R 115 0 R 116 0 R 118 0 R 119 0 R 120 0 R 122 0 R 123 0 R ]
  /P 28 0 R
  /S /Document
 >>
@@ -922,11 +933,11 @@ endobj
 <<
  /Type /StructTreeRoot
  /K 29 0 R
- /ParentTree << /Nums [ 0 [31 0 R 32 0 R 33 0 R] 1 [34 0 R 37 0 R 39 0 R 41 0 R 43 0 R 45 0 R] 2 [46 0 R 47 0 R 49 0 R 50 0 R 51 0 R] 3 [52 0 R 53 0 R 57 0 R 60 0 R 63 0 R 66 0 R] 4 [67 0 R] 5 [68 0 R 72 0 R 73 0 R 76 0 R 77 0 R 79 0 R 80 0 R 82 0 R 83 0 R 85 0 R 86 0 R 88 0 R 89 0 R] 6 [90 0 R 91 0 R 94 0 R 96 0 R 98 0 R 100 0 R] 7 [101 0 R 102 0 R 104 0 R 105 0 R 106 0 R] 8 [107 0 R 108 0 R 110 0 R 111 0 R] 9 [112 0 R 113 0 R 114 0 R 116 0 R] 10 120 0 R 11 [117 0 R 118 0 R 119 0 R 121 0 R 123 0 R] ] >>
+ /ParentTree << /Nums [ 0 [31 0 R 32 0 R 33 0 R] 1 [34 0 R 37 0 R 39 0 R 41 0 R 43 0 R 45 0 R] 2 [46 0 R 47 0 R 49 0 R 50 0 R 51 0 R] 3 [52 0 R 53 0 R 57 0 R 60 0 R 63 0 R 66 0 R] 4 [67 0 R 68 0 R] 5 [69 0 R 73 0 R 74 0 R 77 0 R 78 0 R 80 0 R 81 0 R 83 0 R 84 0 R 86 0 R 87 0 R 89 0 R 90 0 R] 6 [91 0 R 92 0 R 95 0 R 97 0 R 99 0 R 101 0 R] 7 [102 0 R 103 0 R 105 0 R 106 0 R 107 0 R] 8 [108 0 R 109 0 R 111 0 R 112 0 R] 9 [113 0 R 114 0 R 115 0 R 117 0 R] 10 121 0 R 11 [118 0 R 119 0 R 120 0 R 122 0 R 124 0 R] ] >>
 >>
 endobj
 
-124 0 obj
+125 0 obj
 <<
  /Type /Metadata
  /Length 1241
@@ -1011,23 +1022,21 @@ endobj
 14 0 obj
 <<
  /Filter /FlateDecode
- /Length 2646
+ /Length 2657
 >>
 stream
-xœìZÛŞ¶¾×SğşñœHÃ@í¸nhœzäÂÙØN‚İ¤víÓC(j¥lÖ{×ÂğŠúùix˜OßE>ùË§ß~zÿöú·ğüõ‹axùúÅ°ı‰şWAb¸¾†‹`ÈŒA0|zş~>NØ‹_.äÈñ7ˆ¦˜J
-Ÿ>ì~zójˆá÷ÃW…Ÿ‡o¿~¼ÙÛÁ›Àp3dÁ H1‡›AM€sâå'–™Å‚êˆ¹.åëá"*9¯Õ’ M½§şïzøqx>|íÿÂ:àË2âó‰¡?=)”Sê}E,æ3sçï÷‹D*>?>úK¤ùvÄÜ9Dj†÷7OŸ>yıâË/>{ñb@pg±»JÜwáùU ÄpõŸ€áê_axòWláê}X&D"Ópu¾}Š˜
-¢"¢b2Dı‘~@L„¨Q1ò³@"fAÔw#2FD•ñêO«[šêE}wõÕğòª’Ã›W“??}{‡øpê2˜,¾dÄ@ªşcãPQµúä¥)Ïl¯[ù_2»³‹^Ø¯˜- 0çŞ¼$ü>`øjÀÖÏnÂáf ÔÈ¼ \‹Ó_]ıñ¸}+£™Ûj¬mà›É”fSg‰“8FÊó«Ê âpõ~ü…B4(E“»ÿ)b,ÏÂÕÏk}bY«õz[J±µ^p[o)¥µ>¿ÛÖÜ>¯]óEA¤éH­yåï¿vâĞ€ŞNÛË‘£(»D†Ûà…˜ÂÍâ…êw„S™ÉPY@È³WüõB;´]bˆnÖZ¸X3äDêw1$I-e	×ƒLÂÍXˆ#xyÊ,¸)³p=”z½
-&ÌBYñ¢Û+ÕîÍPÖ¶æ¢…±³Š~¼sl‡l!1@a
-Ùf‡ØÖa¤È¶õ€©¤¹DİZĞ3”¤1Şöõ$6€´” ë
- :€ñ¶»&ÌÁ'€‚ÚAˆô€Ò<O+¯?‡Õf«İ©3­¥#Ôÿ]­“%!­jÂ1”!	7€›Z $=–Ã„•ëó±«·J<¦âe­¼c: ¾/×Zß±Ê"HÒãş>·O(N	äc¹&B@iH}”AR.»)¸KÑ=ÿß¼üÒğCáè*…á6°a-­jÂüæyÚÒr‚-b= lj{oq‰Sè§ƒK†l' ÁÖ>k_ÛÙï; D@|Ò¡”Ji š;w6RÇ)a+½¦‹0o ½Ş‰dH¶…ôUÖ¤ç·hİg×İè©úÒ‰³DÔóîFƒ„çƒN&çVRÙNàã=É¢ôñn¥“Ò¯IÍtY’šyåÙ“¨åDíSÍl/(-—®« sš”Y4L8mRŒû·äf¼-¿°T_/ c$ÁßpOq$‚Qf¿™aşØõ€DÃpM¬®¸;.CiÎãøq‰(S'¹Ô”O-ÉqD‰Øõşˆ#	9ò#YÄáû'5Ö£ìZ=;~¾ dlïÕ¸x6—ÖúA‹³ÎZœõZ¼¦Dï·å‚U³Œ–KªJ–í`¸‚É@= €¶M¤^,)ºC;)Œs)-¤Wà¶‘>HWÁ¥®K‚XJ9™Q‚7Ü+˜&ÈñÜJdm_vš¢l!}˜‹ÜPÚ5´‡)ƒmçvO3nçEä‘·à$¸Œ-¯eÅÈ˜¦%£—š5£ßú²ÑÖU#MËFšÖ,Ò-Ùó0õZ—^X×~WšçjÙízÜliš]Â¦ş~Æ2S
-Ìivân	¡˜5ˆşE¦( Ü z6Qr@k¢'ew}è©DY ”Ñ¿§dÔ7Ò½¦d¸i¤Ó*
-‰Ú‘¤#ºŞ[€™ffj‰zOvrİÌØœƒ g\Ri ½ô¹Bkn;…f@9éƒ§Ä’@¿‚h[Øi´ƒÜékuÑ/„°«ĞjcgdÊ§ÊÓa)Hçù{ûkî½;¬@Ù vî`ÈÒ úÉàbÀ¥µ°sAáĞ5!¨Ûú> bµ“A1¨œµ@ˆÀ>œ"¤¶ı¢¼zTÎFÉ5-X{oÖ´`ìâµâ°ë¤Æ1o8é…Ü@ú|P¢Ë#>^AÅ4®ÃHOßÄã:Œû¥ÚgQ:SøèA4òD#o‚¨«¢ÇÈ¨S«7y¢9ÏA4—>ˆAÔx
-¢Æm5ö/°Ësµœ§ Z·¿JÓìòTä0õ÷¡A”2dQ
-œùÀÑÄ˜qéMl ÈH… ‹µ#0ëY3Ê ˜DÿşPdPÒS„ik£Ïİı«o¤¶§ı{N™Ábèß0Êb¶³n˜oLô ßĞ`>Edˆe3_‚Ñm”Ò@z¹¨é`¢r2ëLb‘²ïÊçä)Ï¹EÊÈ-òì¸‹[ˆ6 éœç©CI- ›5AÎ`¿¸Ë[À.×ÄLü2(gVÈ¹”ÂöHÊió~—Gß°â2ïXy©UNß›‹¾IŞlZ	Î»VÂó¶•p¿oU3cõZ•Ó«rú]i«åi÷Ê¨Ë¥ÙE9KİÀò^>T9Õw,5-Ä>iÂ©AôoÅ)ZƒØÉfÂ¾•.TS²®•ı.•u6úôŒ,:ÄNÑ
-ÖıÓ¡ùqøèşù(º~œ¸òqÙZúS|Õ‰^jøè·•nš>j™ù˜ÊÌÇL==F9³N|ÌÚò1×è½<çåT&>j™ø¨iËGïÏÔß‡òÑ—²bÁ¿óMLé>)Qb@ä‘vl+£—„~ß!²#ZÀ#É’Ô¯}•f-C–Ä?¹Ô„ÎK-jV…Af?TN”8Ñ@)N4PÊ”±ÒÀ¯•^Xiàw¥y®–ãDƒ'Ìèùêİ›úû`YJ>çA=jê#ú÷kıJÈeÉ£±ÑKJ2H‰[DO¥L]+û'•J+`¯J©òuE<ÖêÁ3jŠŞµç¡’–=?¦µòğmÄ“-n·¸õş[ÜGíÈC6¹ï0vÈ¤dešøØùÎÏ= ®õÜI)¤öyi‚Ågº.Ïé‹ZºÓuf‹ë&ŸM—E;î¿‰ôÿíªƒí*?YÓl÷t)´4ÍvPŸMÌ§æúşÛB®çrXô)ûfYSßgğ~x¡İ­ê…¥”ÜÚïV<¥€ ­õ9²÷Şˆ6-x¼ô§<‘–µ×İ»Y+à`7«±p÷nÖ
-Ø/xêg«ÆB7áB
-zÖ¡Ööa÷5•RØ­ÊÄÏÉ–ÒB¶;àEdU’zwâ”2zâvˆ³Kâ¼Óh6¾éÎÎ^Æ3£—åĞ¨Kª„õÏ§a*µ;ƒúôé“«ÿó]xò÷·~úåío?ıúËrğ6JXÿÜyòÖÃâæämJ4ƒ˜çƒ·RÈŞ»3ëˆ2Ïç¥ç›q
-ĞOÌ>ùòöÃó·$|ñkøz^¾~1üw l;t
+xœìZÛn·¾ß§àh<'’CÀ0P;› G@/‚\8Š­8’ÚM´O_÷Äåj7Š¬»†µÜŸßò4ß~3Üá“¿|úíÃû·W¿…ç¯_ÃË×/†íO0`ğ¿ÊÃÕmø0\†ÌÃ§wáïá—áã„½ğË9rü¢©¦’Â§ëİOo^1ü>pøz ğóğİ÷Ãƒw{;xn†,„ )æp3¨	pN¼üÄ’ ³XP1„Kùj¸•œ×jI€¦>Rÿw5ü4<¾ñağÅ2ãó…¡?½(”SêcE,æ+sçï÷]1ˆT|}|ö‘æÛsç©™Ş_9<}úäõ‹¯¾øìYxşÅ‹ÁÅn*qÛ…ç—Ãå†Ë†áÉ—ØÂåû°,ˆ2D"¦áò6|÷1DEDÄdˆú"ıˆ˜Q3¢ bäg0<EÌ‚¨ïFdŒˆ*ãÕŸVoiªyöıå×ÃËËJo^Möütö'ùå‡ë}z·L”¦‰vƒG“ÅªŒHÕblL‹ ªVŸ¼hÊ3ïëj¶¾	%³›½(ñhïé=PÌ˜so^~0|=`kq·áp3Pj
+d^P®fÆé¯.&ÿxÜÏ¾—±™ÛÚYÛÁ·SSšM$NQâ}*Ï/+ˆÃåûiò¢A)˜œOcy.^ëƒÈZ­WÛêÌPŠ­õ‚ÛzH)­õùİ¶¾àöyíº/
+"ÍğDjıËKWŸìÄ¦½Ÿ¶—#CQv±·Á1…›Å
+Õî%¦2“¡²€g«ø‹†vØv‰!Z¸Xkáf`Í©ßqÄüuµ4–%\^0	7c!àå)³àM™…«¡ÔëÍPxlÂ,”õ/z{¥¶{3”µ¯ùhaß¬§ïœÛ![HP˜B¶Ù ¶5)²­€D= A*iDî Q·-hÇJÒ4Şöõ$6€´” ë
+ ;€ñvŒ».Ì'Á'€‚ÚIˆô€Ò<O+¯?‡Õf«İ¨3­¥#Ôÿ]­“%!­jÂ1”!	7€›Z $=–Ã„•ëó±«·J<¦âe­¼c: ¾/×Zß±Ê"HÒãñ>oŸPº:=&Låš¥é õPI¹ì–à.EwG8şójğKÃ	<R„£«†ÛÀ†µ´ªy
+óÿ™äLË	¶ˆõ€\°©í­Å%BL _.² ÛöYûÚ®ı~ BÄ'ãJ@©”¢¹ƒp×Fê8%l`eÓF¯é"ÄH¯w"’m!ı`U€uéù-A·óÙ7zĞ¾…tâ,Q õ|¸Ñ áù¤Éy+)ƒl—Nğq„dQúx·ÒÇIé× fº,AÍ¼‡‰ìÁNÔr¢ö©F¶(-—®ª sš”Y4L8mBŒû÷äÍx_~-`©¾^@ÆH‚¿áâH£Ì~3Ãü±«‰†àšXMq5,í¸¥8Ïã§Å£LƒäRC>µ$Ç%F`×û#$äpÈ4F‡ïwÔX¢kõhìøù‚±y¾WãâÑ\Zës|-Î:kqÖhñ½ß–V5Ìv0[.©*Y¶ƒé
+$k 9ö€Úv‘z±¤è=¤0BÌ¥´^}X€ÛNz']—6mìt]ÄRÊÉjˆ”¸ä^Á4Aç­DÙe§ÉQ!ÊÒ»¹øÇ¥]G;w˜2Øvmwş4#àv]DIpN‚ËØòúQvŒŒiÚ2z©Ù3ú­omİ52Ñ´md¡ißÈ"İÆ‘=ÓX¯uëè…uïèw¥y®–½]/7[šn—§0…i¼Ÿ±…Ì”sš¸ÛBF(f¢‘)
+7€M”Ğ6Ñ“‰²›¾ôT¢,PJ‹èßS2ê;é^S2ÜtÒé	…DíLÒ]ï-ÀL³ 3µD½§ ;¹îvflÎÁĞ»3.©4€^ú\¡5·€B3 œŒÁCbI ßÁ	´=ì4ÚIîtˆµšŒè€Â	ØUhmcçgdŠ—ÊÃa)Hgù{Ûkõî½9¬@Ù væ`ÈÒ úÅàbÀ¥mag‚Â- ëBP!·õ½CÅj'“bP9ë"5€½;EHíúMyµ¨œÍ’kX°öÖ¬aÁ
+ØùkÅ-`7HcÜp2
+5(¸ôñ D·G|¼ƒŠiÜ‡5¾‰Ç}÷[µÏv¢ît&'ñÑhäÙ‰FŞ8QWE÷‘Q'/VoòìDsh.½5¨ñäD['jì_`—çj9ON´&ÂJÓíòTä0÷¡N”2dQ
+œùÀĞÄ˜qéMl ÈHï… ‹õ#0ëY7Ê ˜DÿşPdPÒS„iÛF»ûWßHíHû÷œ2ƒÅĞ¿a”3ÄlgÃ0Ş4Ñ<¡Á|ŠÈËf½:£·QJéå¢†ƒ‰ÊÉª3EˆEÊ~(Ÿ[¤<Ç)? ¶È³³ãÎxl!Ú ¤3‡%µ€nÕ87€ıæ.o;?@\ˆ™ø!dPÎ)¬s)„í‘”Óæ|—GOXq™3V^j•ÓssÑÓåMÒJpÎZ	Ïi+á>oU#cõZ•Ó«rú]i«å){åÔíÇÒí¢œ¥&°|”UNõŒ¥¡eƒØíA85ˆşí£˜!Ek;ÙLØ÷Ò¹jJÖõ²ÏRY×F‘EçOƒØ)ZÁš?]š‡n¿‘¢ë÷Ç‰+—ÔÒŸâ£¨N|ôRÃG¿­tÓÔğQËÌÇTf>fêùè>Êù˜uâcÖ–¹zïå9/§2ñQËÄGM[>úx¦ñ>”¾•şobJ÷I‰"7ˆ´c[­¼ ô‡‘ÑI–¤~í«40kiğ²$şÉ¥t^jiP£*2Û¡r¢Ä‰Jq¢Rîh Œ•~­4ğÂJ¿+Ísµ'”8Ñ`FÏWŞ4ŞËRò5ê^s´P/Ñ¿GXƒèwB.K.M½¤$ƒ”¸EôTÊÔõ²ÿpR©´öª”*_WÄcíÜ8£æ¨è]9•´ä<üÀÖÊÃ?8¾EORÜ:§¸õş)î£~ä!Iî;;dR²À2-|ìlççP×zî¤ÆRû¼4Îâ3M—çğE-İi:³Åt“Í¦Ë¢÷O"ı?]u®ò“5Mº§¡ı£ilÒA}41Ÿ^˜ëûo¹Ëa=Ğ§ìÉ²¦¾àığB›­ê…¥”Ü¶ßíxJA[ës<dï½7<mÚğxéOox"-{¯»³Y+à ›Õ´pw6kì7<õ³UÓB·àB
+z6¡Öa÷5•RØíÊÄOÌ–ÒB¶pÈ"²*I½;1J-q;ÄÙ$qÎ4šM…o»S´ã™Ñ‹åĞ¨Kª„õÏ§ëğGçSŸ>}rùï¼OşööúÃ/oûğë/Ë	Ü(aısç\÷Š›#¸)eĞbOàJ9>+;Üw0ë„2Ï§ç›qĞÌ>ùêöúùÛk	_ü¾†—¯_ÿ AQ=F
 endstream
 endobj
 
@@ -1118,10 +1127,10 @@ r­Êœõ?WÊ\V}4ûJx0KÌÙİƒô~ašÏgW«w„Å‚–+«Åb-•híhÙ¨ù‡@ÍŸdfo˜¸¦fG£ m`[{jôe
 endstream
 endobj
 
-126 0 obj
+127 0 obj
 <</Type /XObject /Subtype /Form /FormType 1 /Filter /FlateDecode
 /BBox [0.00 0.00 800.00 204.02]
-/Resources <</ExtGState <</GS0 127 0 R >>/Properties <</MC0 128 0 R >>>>
+/Resources <</ExtGState <</GS0 128 0 R >>/Properties <</MC0 129 0 R >>>>
 /Length 2441 >>
 stream
 xœlXMÎ¹İ×)t¢Å?ılãY‚A9@cÆ^´Œs x¥nû3|®Çª–(‰||Ô§}.Ÿ~û\Ëßşş¹\]µH5ªRF­åÎçï\ÿ)ÿ½jÁ¿ï_®Oÿüw-_şwıU8L\š([éL¦½•Ç·øo!v/w%«Rn¥Vn&a.·‘ê,ëª<ÊíTûÀ'6'9ş6ÛàqİÌÔ«%~^7;î‰oî4™1IIt&ó^7ªññÈ)\Éy>®ô#ñóJ'ç¼Ó´³<ï$u`æµtod­•ZÜ©òÄƒĞèåq}½„DJoT{+ß0øPß®2‰Ú6`ÑÓ¸t%9‹nÚk•ÿ§a™V©7ù…å%©küAÜøW6b‰q¸‘ô‰˜ Ü ¯¯AÒåkE>/†ëv¢Tñ+näö‚ëàWboTç(ÏÛ$ã^r¬Ü÷­{\^¿¿…¥¨RU–ÂÖI™å˜ğÄê(kS£ÎåÖ1€Mkdlëe¯ÔÇ{'-·2åx»æ“*\Å«*ıÍ F“¥Ü­ˆ<aâ1^Ÿ™ğÛ/DÈb|ÿõçU¦:­®}_T¥9ÚZT>ó Ùæ›³ãh*ùĞ"BŞz¹yRï“Ğ´ù;1ªÓl1²8}'Õ¶áIÄ'=gzœ¡"=^3!=#5ı«%@zT’*Å˜´òíl`0Ópİ_Ü¦ÄÃ
@@ -1140,19 +1149,19 @@ nôfe®œ„Ï²Áãb¥.¾ñ’ŠunÌ\tÃƒ¤ékT«&i×í\¢ô<¾îBÃg‰!*áı Ÿ£´FC¬pŠl‚ğq¡ Ô†6gŠ‚æ
 endstream
 endobj
 
-127 0 obj
+128 0 obj
 <</AIS false /BM /Normal /CA 1 /OP false /OPM 1 /SA true /SMask /None /Type /ExtGState /ca 1 /op false >>
 endobj
 
-128 0 obj
-<</Intent 129 0 R /Name (Layer 1)/Type /OCG /Usage 130 0 R >>
-endobj
-
 129 0 obj
-[/View /Design ]
+<</Intent 130 0 R /Name (Layer 1)/Type /OCG /Usage 131 0 R >>
 endobj
 
 130 0 obj
+[/View /Design ]
+endobj
+
+131 0 obj
 <</CreatorInfo <</Creator (Adobe Illustrator 22.0)/Subtype /Artwork >>>>
 endobj
 
@@ -1160,14 +1169,14 @@ endobj
 <<
  /Type /Page
  /Contents 4 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
      /F2 2 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 0
@@ -1180,7 +1189,7 @@ endobj
 <<
  /Type /Page
  /Contents 7 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
@@ -1188,7 +1197,7 @@ endobj
      /F4 5 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 1
@@ -1201,7 +1210,7 @@ endobj
 <<
  /Type /Page
  /Contents 10 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
@@ -1209,7 +1218,7 @@ endobj
      /F5 8 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 2
@@ -1222,14 +1231,14 @@ endobj
 <<
  /Type /Page
  /Contents 12 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
      /F2 2 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 3
@@ -1242,14 +1251,14 @@ endobj
 <<
  /Type /Page
  /Contents 14 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
      /F2 2 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 4
@@ -1262,14 +1271,14 @@ endobj
 <<
  /Type /Page
  /Contents 16 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
      /F2 2 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 5
@@ -1282,7 +1291,7 @@ endobj
 <<
  /Type /Page
  /Contents 18 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
@@ -1290,7 +1299,7 @@ endobj
      /F5 8 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 6
@@ -1303,7 +1312,7 @@ endobj
 <<
  /Type /Page
  /Contents 20 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
@@ -1311,7 +1320,7 @@ endobj
      /F5 8 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 7
@@ -1324,7 +1333,7 @@ endobj
 <<
  /Type /Page
  /Contents 22 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
@@ -1332,7 +1341,7 @@ endobj
      /F5 8 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 8
@@ -1345,7 +1354,7 @@ endobj
 <<
  /Type /Page
  /Contents 24 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
@@ -1353,7 +1362,7 @@ endobj
      /F5 8 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 9
@@ -1379,7 +1388,7 @@ endobj
  /Type /Page
  /Annots [27 0 R]
  /Contents 26 0 R
- /Parent 125 0 R
+ /Parent 126 0 R
  /Resources <<
    /Font <<
      /F1 1 0 R
@@ -1387,7 +1396,7 @@ endobj
      /F5 8 0 R
     >>
    /XObject <<
-     /ImgBag3 126 0 R
+     /ImgBag3 127 0 R
     >>
   >>
  /StructParents 11
@@ -1396,7 +1405,7 @@ endobj
 >>
 endobj
 
-125 0 obj
+126 0 obj
 <<
  /Type /Pages
  /Count 11
@@ -1405,145 +1414,145 @@ endobj
 >>
 endobj
 
-132 0 obj
-<<
- /Dest [3 0 R /XYZ null 342.68 null]
- /Next 133 0 R
- /Parent 131 0 R
- /Title (glu Presentations)
->>
-endobj
-
 133 0 obj
 <<
- /Dest [6 0 R /XYZ null 362.83 null]
+ /Dest [3 0 R /XYZ null 342.68 null]
  /Next 134 0 R
- /Parent 131 0 R
- /Prev 132 0 R
- /Title (Why glu for slides?)
+ /Parent 132 0 R
+ /Title (glu Presentations)
 >>
 endobj
 
 134 0 obj
 <<
- /Dest [9 0 R /XYZ null 362.83 null]
+ /Dest [6 0 R /XYZ null 362.83 null]
  /Next 135 0 R
- /Parent 131 0 R
+ /Parent 132 0 R
  /Prev 133 0 R
- /Title (How it works)
+ /Title (Why glu for slides?)
 >>
 endobj
 
 135 0 obj
 <<
- /Dest [11 0 R /XYZ null 362.83 null]
+ /Dest [9 0 R /XYZ null 362.83 null]
  /Next 136 0 R
- /Parent 131 0 R
+ /Parent 132 0 R
  /Prev 134 0 R
- /Title (Lua blocks)
+ /Title (How it works)
 >>
 endobj
 
 136 0 obj
 <<
- /Dest [13 0 R /XYZ null 362.83 null]
+ /Dest [11 0 R /XYZ null 362.83 null]
  /Next 137 0 R
- /Parent 131 0 R
+ /Parent 132 0 R
  /Prev 135 0 R
- /Title (The Markdown pipeline)
+ /Title (Lua blocks)
 >>
 endobj
 
 137 0 obj
 <<
- /Dest [15 0 R /XYZ null 362.83 null]
+ /Dest [13 0 R /XYZ null 362.83 null]
  /Next 138 0 R
- /Parent 131 0 R
+ /Parent 132 0 R
  /Prev 136 0 R
- /Title (Tables)
+ /Title (The Markdown pipeline)
 >>
 endobj
 
 138 0 obj
 <<
- /Dest [17 0 R /XYZ null 362.83 null]
+ /Dest [15 0 R /XYZ null 362.83 null]
  /Next 139 0 R
- /Parent 131 0 R
+ /Parent 132 0 R
  /Prev 137 0 R
- /Title (Callbacks for recurring elements)
+ /Title (Tables)
 >>
 endobj
 
 139 0 obj
 <<
- /Dest [19 0 R /XYZ null 362.83 null]
+ /Dest [17 0 R /XYZ null 362.83 null]
  /Next 140 0 R
- /Parent 131 0 R
+ /Parent 132 0 R
  /Prev 138 0 R
- /Title (Lua blocks: syntax)
+ /Title (Callbacks for recurring elements)
 >>
 endobj
 
 140 0 obj
 <<
- /Dest [21 0 R /XYZ null 362.83 null]
+ /Dest [19 0 R /XYZ null 362.83 null]
  /Next 141 0 R
- /Parent 131 0 R
+ /Parent 132 0 R
  /Prev 139 0 R
- /Title (Verbatim blocks)
+ /Title (Lua blocks: syntax)
 >>
 endobj
 
 141 0 obj
 <<
- /Dest [23 0 R /XYZ null 362.83 null]
+ /Dest [21 0 R /XYZ null 362.83 null]
  /Next 142 0 R
- /Parent 131 0 R
+ /Parent 132 0 R
  /Prev 140 0 R
- /Title (Lua blocks: live example)
+ /Title (Verbatim blocks)
 >>
 endobj
 
 142 0 obj
 <<
- /Dest [25 0 R /XYZ null 362.83 null]
- /Parent 131 0 R
+ /Dest [23 0 R /XYZ null 362.83 null]
+ /Next 143 0 R
+ /Parent 132 0 R
  /Prev 141 0 R
- /Title (Thank you!)
->>
-endobj
-
-131 0 obj
-<<
- /Type /Outlines
- /Count 11
- /First 132 0 R
- /Last 142 0 R
->>
-endobj
-
-144 0 obj
-<<
- /D [6 0 R /XYZ 42.52 362.83 null]
+ /Title (Lua blocks: live example)
 >>
 endobj
 
 143 0 obj
 <<
+ /Dest [25 0 R /XYZ null 362.83 null]
+ /Parent 132 0 R
+ /Prev 142 0 R
+ /Title (Thank you!)
+>>
+endobj
+
+132 0 obj
+<<
+ /Type /Outlines
+ /Count 11
+ /First 133 0 R
+ /Last 143 0 R
+>>
+endobj
+
+145 0 obj
+<<
+ /D [6 0 R /XYZ 42.52 362.83 null]
+>>
+endobj
+
+144 0 obj
+<<
  /Type /Catalog
- /Outlines 131 0 R
+ /Outlines 132 0 R
  /Lang (en)
  /MarkInfo <<
    /Marked true
   >>
- /Metadata 124 0 R
+ /Metadata 125 0 R
  /Names <<
    /Dests <<
      /Limits [ (why) (why) ]
-     /Names [ (why) 144 0 R ]
+     /Names [ (why) 145 0 R ]
     >>
   >>
- /Pages 125 0 R
+ /Pages 126 0 R
  /StructTreeRoot 28 0 R
  /ViewerPreferences <<
    /DisplayDocTitle true
@@ -1551,7 +1560,7 @@ endobj
 >>
 endobj
 
-145 0 obj
+146 0 obj
 <<
  /Subtype /CIDFontType0C
  /Filter /FlateDecode
@@ -1583,7 +1592,7 @@ Miˆƒeà)ë(ekÍTIÆ˜¥yšì)ï(•§ˆ%”©®¡}—u±b”|nŒ·Î.ñ»ƒGê~`¯Ó7ºÄï©?òAA†N;DÙXş
 endstream
 endobj
 
-146 0 obj
+147 0 obj
 <<
  /Type /FontDescriptor
  /Ascent 1148
@@ -1591,7 +1600,7 @@ endobj
  /Descent -284
  /Flags 32
  /FontBBox [-529 -284 1353 1148]
- /FontFile3 145 0 R
+ /FontFile3 146 0 R
  /FontName /XQXVKT+TeXGyreHeros-Regular
  /ItalicAngle 0
  /StemV 80
@@ -1599,7 +1608,7 @@ endobj
 >>
 endobj
 
-147 0 obj
+148 0 obj
 <<
  /Length 1221
 >>
@@ -1687,12 +1696,12 @@ endcmap CMapName currentdict /CMap defineresource pop end end
 endstream
 endobj
 
-148 0 obj
+149 0 obj
 <<
  /Type /Font
  /BaseFont /XQXVKT+TeXGyreHeros-Regular
  /CIDSystemInfo << /Ordering (Identity) /Registry (Adobe) /Supplement 0 >>
- /FontDescriptor 146 0 R
+ /FontDescriptor 147 0 R
  /Subtype /CIDFontType0
  /W [0[280]28[667 556]35[667 556]39[334 334]43[722 500 278 278 722 556]50[667 556 556 584 278 611 278 556 556 778 556]64[556 333 278 222]69[222]71[500 556 222]75[833 833]78[556 556]82[556 556 667 556 333 333]89[278]93[556]96[722 333 667 500]101[556 556 278 278 611 278 556 556]110[556 556 667 500 944 722]117[500 667 500]122[556]126[500]203[350]289[1000]]
 >>
@@ -1702,14 +1711,14 @@ endobj
 <<
  /Type /Font
  /BaseFont /XQXVKT+TeXGyreHeros-Regular
- /DescendantFonts [148 0 R]
+ /DescendantFonts [149 0 R]
  /Encoding /Identity-H
  /Subtype /Type0
- /ToUnicode 147 0 R
+ /ToUnicode 148 0 R
 >>
 endobj
 
-149 0 obj
+150 0 obj
 <<
  /Subtype /CIDFontType0C
  /Filter /FlateDecode
@@ -1744,7 +1753,7 @@ _Ú’+qyo4°·Âlcá…2â~I¢¦êìïh½ŒmşÎj›«ê˜Ùha8Ÿ<Ïáå’ùX™9ÊşÃhás%ÖĞOeÍïÅ5WñZ…wl¹
 endstream
 endobj
 
-150 0 obj
+151 0 obj
 <<
  /Type /FontDescriptor
  /Ascent 1125
@@ -1752,7 +1761,7 @@ endobj
  /Descent -307
  /Flags 32
  /FontBBox [-531 -307 1359 1125]
- /FontFile3 149 0 R
+ /FontFile3 150 0 R
  /FontName /WIAKOT+TeXGyreHeros-Bold
  /ItalicAngle 0
  /StemV 140
@@ -1760,7 +1769,7 @@ endobj
 >>
 endobj
 
-151 0 obj
+152 0 obj
 <<
  /Length 944
 >>
@@ -1827,12 +1836,12 @@ endcmap CMapName currentdict /CMap defineresource pop end end
 endstream
 endobj
 
-152 0 obj
+153 0 obj
 <<
  /Type /Font
  /BaseFont /WIAKOT+TeXGyreHeros-Bold
  /CIDSystemInfo << /Ordering (Identity) /Registry (Adobe) /Supplement 0 >>
- /FontDescriptor 150 0 R
+ /FontDescriptor 151 0 R
  /Subtype /CIDFontType0
  /W [0[280]29[556]36[611]39[389 389]43[722 556 333]47[722 611]51[556]53[584 333 611 333]58[556]60[611]63[722 611]67[278]71[556 611 278]75[833 889]78[611]82[611]84[667 611]89[278]93[611]97[389 667 556]104[278 611 333 556]110[611 556 667 556 944 778]117[556]119[556]126[611]286[1000]]
 >>
@@ -1842,14 +1851,14 @@ endobj
 <<
  /Type /Font
  /BaseFont /WIAKOT+TeXGyreHeros-Bold
- /DescendantFonts [152 0 R]
+ /DescendantFonts [153 0 R]
  /Encoding /Identity-H
  /Subtype /Type0
- /ToUnicode 151 0 R
+ /ToUnicode 152 0 R
 >>
 endobj
 
-153 0 obj
+154 0 obj
 <<
  /Subtype /CIDFontType0C
  /Filter /FlateDecode
@@ -1870,7 +1879,7 @@ lßHF©–Á›…+³”¿„ÛJR|İZW'íîì‘¤_"‚MÁàş`s°3øJdä§­M[‚ÍMÁ`ËşÈIô›©ÚÿÈFÃŒğ\*…Ø½8
 endstream
 endobj
 
-154 0 obj
+155 0 obj
 <<
  /Type /FontDescriptor
  /Ascent 1126
@@ -1878,7 +1887,7 @@ endobj
  /Descent -284
  /Flags 96
  /FontBBox [-549 -284 1375 1126]
- /FontFile3 153 0 R
+ /FontFile3 154 0 R
  /FontName /HZUBEN+TeXGyreHeros-Italic
  /ItalicAngle -12
  /StemV 80
@@ -1886,7 +1895,7 @@ endobj
 >>
 endobj
 
-155 0 obj
+156 0 obj
 <<
  /Length 632
 >>
@@ -1929,12 +1938,12 @@ endcmap CMapName currentdict /CMap defineresource pop end end
 endstream
 endobj
 
-156 0 obj
+157 0 obj
 <<
  /Type /Font
  /BaseFont /HZUBEN+TeXGyreHeros-Italic
  /CIDSystemInfo << /Ordering (Identity) /Registry (Adobe) /Supplement 0 >>
- /FontDescriptor 154 0 R
+ /FontDescriptor 155 0 R
  /Subtype /CIDFontType0
  /W [0[280]29[556]35[667]44[500]46[278]48[556]51[556]64[556]72[556 222]75[833 833]78[556]82[556]85[556]89[278]97[333]99[500]103[278 278 611 278]113[500]116[667]]
 >>
@@ -1944,14 +1953,14 @@ endobj
 <<
  /Type /Font
  /BaseFont /HZUBEN+TeXGyreHeros-Italic
- /DescendantFonts [156 0 R]
+ /DescendantFonts [157 0 R]
  /Encoding /Identity-H
  /Subtype /Type0
- /ToUnicode 155 0 R
+ /ToUnicode 156 0 R
 >>
 endobj
 
-157 0 obj
+158 0 obj
 <<
  /Filter /FlateDecode
  /Length 8730
@@ -1998,7 +2007,7 @@ b-£è¼äŸjü<Àò‘|ÿwRÍiÿğææmwëåñP]GæyÖ?¨üFmgGGª¯Çãğøkš›ë‡Öôe'×‹r O±óì,¨è5
 endstream
 endobj
 
-158 0 obj
+159 0 obj
 <<
  /Type /FontDescriptor
  /Ascent 1050
@@ -2006,7 +2015,7 @@ endobj
  /Descent -250
  /Flags 33
  /FontBBox [-2 -250 578 1050]
- /FontFile2 157 0 R
+ /FontFile2 158 0 R
  /FontName /WGWQPC+CamingoCode-Regular
  /ItalicAngle 0
  /StemV 80
@@ -2014,7 +2023,7 @@ endobj
 >>
 endobj
 
-159 0 obj
+160 0 obj
 <<
  /Length 957
 >>
@@ -2082,13 +2091,13 @@ endcmap CMapName currentdict /CMap defineresource pop end end
 endstream
 endobj
 
-160 0 obj
+161 0 obj
 <<
  /Type /Font
  /BaseFont /WGWQPC+CamingoCode-Regular
  /CIDSystemInfo << /Ordering (Identity) /Registry (Adobe) /Supplement 0 >>
  /CIDToGIDMap /Identity
- /FontDescriptor 158 0 R
+ /FontDescriptor 159 0 R
  /Subtype /CIDFontType2
  /W [0[550]3[550]5[550]20[550 550]27[550]31[550]41[550 550]49[550]53[550]69[550]73[550]79[550 550]88[550]102[550]105[550]109[550]116[550]121[550]134[550]136[550 550]146[550]162[550]190[550]194[550]211[550]217[550]239[550]253[550]283[550]313[550 550 550]320[550]325[550 550]331[550]342[550 550 550 550]348[550]367[550]369[550 550]440[550]]
 >>
@@ -2098,14 +2107,14 @@ endobj
 <<
  /Type /Font
  /BaseFont /WGWQPC+CamingoCode-Regular
- /DescendantFonts [160 0 R]
+ /DescendantFonts [161 0 R]
  /Encoding /Identity-H
  /Subtype /Type0
- /ToUnicode 159 0 R
+ /ToUnicode 160 0 R
 >>
 endobj
 
-161 0 obj
+162 0 obj
 <<
  /Author (Patrick)
  /CreationDate (D:19700101000000+00'00')
@@ -2115,37 +2124,37 @@ endobj
 >>
 endobj
 xref
-0 162
+0 163
 0000000000 65535 f 
-0000043962 00000 n 
-0000051264 00000 n 
-0000030148 00000 n 
-0000013955 00000 n 
-0000055515 00000 n 
-0000030385 00000 n 
-0000014402 00000 n 
-0000066309 00000 n 
-0000030637 00000 n 
-0000015414 00000 n 
-0000030890 00000 n 
-0000016586 00000 n 
-0000031129 00000 n 
-0000017356 00000 n 
-0000031368 00000 n 
-0000020079 00000 n 
-0000031607 00000 n 
-0000020918 00000 n 
-0000031861 00000 n 
-0000022494 00000 n 
-0000032115 00000 n 
-0000023982 00000 n 
-0000032369 00000 n 
-0000025069 00000 n 
-0000032801 00000 n 
-0000026301 00000 n 
-0000032623 00000 n 
-0000012059 00000 n 
-0000011707 00000 n 
+0000044343 00000 n 
+0000051645 00000 n 
+0000030529 00000 n 
+0000014325 00000 n 
+0000055896 00000 n 
+0000030766 00000 n 
+0000014772 00000 n 
+0000066690 00000 n 
+0000031018 00000 n 
+0000015784 00000 n 
+0000031271 00000 n 
+0000016956 00000 n 
+0000031510 00000 n 
+0000017726 00000 n 
+0000031749 00000 n 
+0000020460 00000 n 
+0000031988 00000 n 
+0000021299 00000 n 
+0000032242 00000 n 
+0000022875 00000 n 
+0000032496 00000 n 
+0000024363 00000 n 
+0000032750 00000 n 
+0000025450 00000 n 
+0000033182 00000 n 
+0000026682 00000 n 
+0000033004 00000 n 
+0000012422 00000 n 
+0000012062 00000 n 
 0000000430 00000 n 
 0000000015 00000 n 
 0000000148 00000 n 
@@ -2185,106 +2194,107 @@ xref
 0000003868 00000 n 
 0000004285 00000 n 
 0000004423 00000 n 
-0000006793 00000 n 
-0000004949 00000 n 
-0000004866 00000 n 
-0000004546 00000 n 
-0000004705 00000 n 
-0000006686 00000 n 
-0000005276 00000 n 
-0000005024 00000 n 
-0000005156 00000 n 
-0000005607 00000 n 
-0000005359 00000 n 
-0000005487 00000 n 
-0000005936 00000 n 
-0000005690 00000 n 
-0000005816 00000 n 
-0000006269 00000 n 
-0000006019 00000 n 
-0000006148 00000 n 
-0000006603 00000 n 
-0000006352 00000 n 
-0000006482 00000 n 
-0000006879 00000 n 
-0000007028 00000 n 
-0000007873 00000 n 
-0000007339 00000 n 
-0000007177 00000 n 
-0000007579 00000 n 
-0000007411 00000 n 
-0000007801 00000 n 
-0000007651 00000 n 
-0000008274 00000 n 
-0000008002 00000 n 
-0000008346 00000 n 
-0000008482 00000 n 
-0000008897 00000 n 
-0000008647 00000 n 
-0000008970 00000 n 
-0000009141 00000 n 
-0000009326 00000 n 
-0000009459 00000 n 
-0000009820 00000 n 
-0000009660 00000 n 
-0000009893 00000 n 
-0000010088 00000 n 
-0000010230 00000 n 
-0000010388 00000 n 
-0000010756 00000 n 
-0000010554 00000 n 
-0000010829 00000 n 
-0000010957 00000 n 
-0000011217 00000 n 
-0000011107 00000 n 
-0000011374 00000 n 
-0000011634 00000 n 
-0000011500 00000 n 
-0000012626 00000 n 
-0000033074 00000 n 
-0000027155 00000 n 
-0000029818 00000 n 
-0000029942 00000 n 
-0000030022 00000 n 
-0000030057 00000 n 
-0000034707 00000 n 
-0000033236 00000 n 
-0000033357 00000 n 
-0000033495 00000 n 
-0000033626 00000 n 
-0000033756 00000 n 
-0000033897 00000 n 
-0000034023 00000 n 
-0000034175 00000 n 
-0000034313 00000 n 
-0000034448 00000 n 
-0000034592 00000 n 
-0000034849 00000 n 
-0000034790 00000 n 
-0000035162 00000 n 
-0000041891 00000 n 
-0000042128 00000 n 
-0000043405 00000 n 
-0000044125 00000 n 
-0000049549 00000 n 
-0000049784 00000 n 
-0000050783 00000 n 
-0000051424 00000 n 
-0000054228 00000 n 
-0000054466 00000 n 
-0000055153 00000 n 
-0000055677 00000 n 
-0000064501 00000 n 
-0000064734 00000 n 
-0000065746 00000 n 
-0000066471 00000 n 
+0000004776 00000 n 
+0000007146 00000 n 
+0000005302 00000 n 
+0000005219 00000 n 
+0000004899 00000 n 
+0000005058 00000 n 
+0000007039 00000 n 
+0000005629 00000 n 
+0000005377 00000 n 
+0000005509 00000 n 
+0000005960 00000 n 
+0000005712 00000 n 
+0000005840 00000 n 
+0000006289 00000 n 
+0000006043 00000 n 
+0000006169 00000 n 
+0000006622 00000 n 
+0000006372 00000 n 
+0000006501 00000 n 
+0000006956 00000 n 
+0000006705 00000 n 
+0000006835 00000 n 
+0000007232 00000 n 
+0000007381 00000 n 
+0000008226 00000 n 
+0000007692 00000 n 
+0000007530 00000 n 
+0000007932 00000 n 
+0000007764 00000 n 
+0000008154 00000 n 
+0000008004 00000 n 
+0000008628 00000 n 
+0000008355 00000 n 
+0000008701 00000 n 
+0000008837 00000 n 
+0000009252 00000 n 
+0000009002 00000 n 
+0000009325 00000 n 
+0000009496 00000 n 
+0000009681 00000 n 
+0000009814 00000 n 
+0000010175 00000 n 
+0000010015 00000 n 
+0000010248 00000 n 
+0000010443 00000 n 
+0000010585 00000 n 
+0000010743 00000 n 
+0000011111 00000 n 
+0000010909 00000 n 
+0000011184 00000 n 
+0000011312 00000 n 
+0000011572 00000 n 
+0000011462 00000 n 
+0000011729 00000 n 
+0000011989 00000 n 
+0000011855 00000 n 
+0000012996 00000 n 
+0000033455 00000 n 
+0000027536 00000 n 
+0000030199 00000 n 
+0000030323 00000 n 
+0000030403 00000 n 
+0000030438 00000 n 
+0000035088 00000 n 
+0000033617 00000 n 
+0000033738 00000 n 
+0000033876 00000 n 
+0000034007 00000 n 
+0000034137 00000 n 
+0000034278 00000 n 
+0000034404 00000 n 
+0000034556 00000 n 
+0000034694 00000 n 
+0000034829 00000 n 
+0000034973 00000 n 
+0000035230 00000 n 
+0000035171 00000 n 
+0000035543 00000 n 
+0000042272 00000 n 
+0000042509 00000 n 
+0000043786 00000 n 
+0000044506 00000 n 
+0000049930 00000 n 
+0000050165 00000 n 
+0000051164 00000 n 
+0000051805 00000 n 
+0000054609 00000 n 
+0000054847 00000 n 
+0000055534 00000 n 
+0000056058 00000 n 
+0000064882 00000 n 
+0000065115 00000 n 
+0000066127 00000 n 
+0000066852 00000 n 
 trailer
 <<
- /ID [<534D9DDDA45C8FBAF0BA879B2311AFCB> <534D9DDDA45C8FBAF0BA879B2311AFCB>]
- /Info 161 0 R
- /Root 143 0 R
- /Size 162
+ /ID [<DE1F4169982D8243AB9A4FDE8D08A5A8> <DE1F4169982D8243AB9A4FDE8D08A5A8>]
+ /Info 162 0 R
+ /Root 144 0 R
+ /Size 163
 >>
 startxref
-66641
+67022
 %%EOF

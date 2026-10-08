@@ -2,6 +2,7 @@
 title: Total-fit line breaking in narrow measures
 author: A. Example, B. Sample
 lang: en
+format: PDF/UA-2
 css: scientific-paper.css
 math: true
 ---
