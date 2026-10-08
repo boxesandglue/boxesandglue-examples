@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300pt" height="80pt" viewBox="0 0 300 80">
+<!-- Line measure -->
+<line x1="10" y1="12" x2="290" y2="12" stroke="#666" stroke-width="0.6"/>
+<line x1="10" y1="7" x2="10" y2="17" stroke="#666" stroke-width="0.6"/>
+<line x1="290" y1="7" x2="290" y2="17" stroke="#666" stroke-width="0.6"/>
+<text font-family="serif" x="150" y="9" font-size="8" text-anchor="middle" font-style="italic">w</text>
+<!-- Boxes -->
+<rect x="10" y="30" width="52" height="22" fill="#dfe6ee" stroke="#2b4a6b" stroke-width="0.8"/>
+<rect x="90" y="30" width="34" height="22" fill="#dfe6ee" stroke="#2b4a6b" stroke-width="0.8"/>
+<rect x="152" y="30" width="60" height="22" fill="#dfe6ee" stroke="#2b4a6b" stroke-width="0.8"/>
+<rect x="240" y="30" width="50" height="22" fill="#dfe6ee" stroke="#2b4a6b" stroke-width="0.8"/>
+<!-- Glue as springs -->
+<polyline points="62,41 66,36 70,46 74,36 78,46 82,36 86,46 90,41" fill="none" stroke="#b03030" stroke-width="0.8"/>
+<polyline points="124,41 128,36 132,46 136,36 140,46 144,36 148,46 152,41" fill="none" stroke="#b03030" stroke-width="0.8"/>
+<polyline points="212,41 216,36 220,46 224,36 228,46 232,36 236,46 240,41" fill="none" stroke="#b03030" stroke-width="0.8"/>
+<!-- Labels -->
+<text font-family="serif" x="36" y="68" font-size="8" text-anchor="middle">box</text>
+<text font-family="serif" x="76" y="68" font-size="8" text-anchor="middle" fill="#b03030">glue</text>
+<text font-family="serif" x="107" y="68" font-size="8" text-anchor="middle">box</text>
+<text font-family="serif" x="138" y="68" font-size="8" text-anchor="middle" fill="#b03030">glue</text>
+<text font-family="serif" x="182" y="68" font-size="8" text-anchor="middle">box</text>
+<text font-family="serif" x="226" y="68" font-size="8" text-anchor="middle" fill="#b03030">glue</text>
+<text font-family="serif" x="265" y="68" font-size="8" text-anchor="middle">box</text>
+</svg>

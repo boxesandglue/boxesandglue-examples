@@ -1,0 +1,137 @@
+@page {
+  size: A4;
+  margin: 25mm 25mm 25mm 25mm;
+  @top-center { content: element(runningtitle); vertical-align: bottom; padding-bottom: 6mm; }
+  @bottom-center { content: counter(page); font-size: 9pt; }
+}
+
+/* The title page carries the full title, so no running head there. */
+@page :first {
+  @top-center { content: none; }
+}
+
+@font-face {
+  font-family: "Latin Modern Math";
+  src: url("latinmodern-math.otf");
+}
+
+body {
+  font-family: serif;
+  font-size: 10.5pt;
+  line-height: 1.35;
+  text-align: justify;
+  hyphens: auto;
+  counter-reset: section figure table equation;
+}
+
+math { font-family: "Latin Modern Math"; }
+
+.running-title {
+  position: running(runningtitle);
+  font-size: 9pt;
+  font-style: italic;
+}
+
+/* Title block */
+h1 {
+  font-size: 18pt;
+  font-weight: normal;
+  text-align: center;
+  margin: 0 0 0.8em 0;
+}
+.authors {
+  text-align: center;
+  font-size: 12pt;
+  margin-bottom: 0.3em;
+}
+.affiliations {
+  text-align: center;
+  font-size: 9pt;
+  margin-bottom: 1.5em;
+}
+.abstract {
+  font-size: 9.5pt;
+  margin: 0 2.5em 1.5em 2.5em;
+}
+.abstract p { margin: 0 0 0.5em 0; }
+
+/* Numbered sections */
+h2 {
+  font-size: 11pt;
+  font-weight: bold;
+  margin: 1.4em 0 0.5em 0;
+  counter-increment: section;
+}
+h2::before { content: counter(section) "  "; }
+h2.unnumbered { counter-increment: none; }
+h2.unnumbered::before { content: none; }
+
+p { margin: 0 0 0.5em 0; }
+
+/* Figures and tables, numbered by counters */
+figure {
+  margin: 1em 0;
+  counter-increment: figure;
+  text-align: center;
+}
+figcaption {
+  font-size: 9pt;
+  text-align: left;
+  margin-top: 0.4em;
+}
+figcaption::before {
+  content: "Figure " counter(figure) ". ";
+  font-weight: bold;
+}
+
+/* <caption> is not rendered yet, the caption is a paragraph above the
+   table and carries the counter and the id for cross references. */
+p.table-caption {
+  font-size: 9pt;
+  margin: 1em 0 0.4em 0;
+  counter-increment: table;
+}
+p.table-caption::before {
+  content: "Table " counter(table) ". ";
+  font-weight: bold;
+}
+table {
+  margin: 0 auto 1em auto;
+  border-collapse: collapse;
+  border-top: 0.8pt solid black;
+  border-bottom: 0.8pt solid black;
+  font-size: 9pt;
+}
+thead th { border-bottom: 0.6pt solid black; }
+th, td { padding: 2pt 6pt; text-align: right; }
+th:first-child, td:first-child { text-align: left; }
+
+/* Display equations: centered, number at the right margin */
+p.equation {
+  -bag-tab-stops: 50% center, 100% end;
+  text-align: left;
+  margin: 0.6em 0;
+  counter-increment: equation;
+}
+p.equation::after { content: "(" counter(equation) ")"; }
+
+/* Cross references */
+a.sec, a.fig, a.tab, a.eq, a.cite { color: black; text-decoration: none; }
+a.sec::before { content: "Section " target-counter(attr(href), section); }
+a.fig::before { content: "Figure " target-counter(attr(href), figure); }
+a.tab::before { content: "Table " target-counter(attr(href), table); }
+a.eq::before  { content: "Equation (" target-counter(attr(href), equation) ")"; }
+
+/* References */
+ol.references {
+  font-size: 9pt;
+  padding-left: 2em;
+  list-style: none;
+  counter-reset: ref;
+}
+ol.references li {
+  counter-increment: ref;
+  margin-bottom: 0.3em;
+  text-align: left;
+}
+ol.references li::marker { content: "[" counter(ref) "]"; }
