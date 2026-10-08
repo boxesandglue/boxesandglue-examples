@@ -37,7 +37,8 @@ glu scientific-paper.md
   and the Latin Modern Math font.
 - **Numbered equations** are paragraphs with two tab stops: the formula
   is centered at 50 %, the number from `::after` ends at the right
-  margin.
+  margin. `\displaystyle` sets a fraction in such a paragraph at full
+  size, as in a display formula.
 
   ```markdown
   &Tab;$b = 100|r|^3$&Tab;

@@ -70,7 +70,7 @@ or shrinks to fill the line.</figcaption>
 For a line with natural width $x$, total stretchability $y$ and
 measure $w$, the adjustment ratio is
 
-&Tab;$r = (w - x)/y$&Tab;
+&Tab;$\displaystyle r = \frac{w - x}{y}$&Tab;
 {#eq-ratio .equation}
 
 where $z$ takes the place of $y$ when the line has to shrink. The
@@ -82,7 +82,7 @@ badness of the line grows with the cube of the ratio,
 and the demerits of a break combine the badness with the penalty $p$
 of the breakpoint and a constant line penalty $l$:
 
-&Tab;$d = (l + b)^2 + p^2$ for $p \ge 0$&Tab;
+&Tab;$d = (l + b)^2 + p^2 \quad (p \ge 0)$&Tab;
 {#eq-demerits .equation}
 
 The algorithm minimizes the sum of the demerits over all lines of the
