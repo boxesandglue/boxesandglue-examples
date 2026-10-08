@@ -50,6 +50,8 @@ glu scientific-paper.md
 - **The running head** from page 2 on is a running element
   (`position: running(runningtitle)`), switched off on the first page
   with `@page :first`.
+- **The footnote** is a Markdown footnote (`[^impl]`), set at the foot
+  of its page.
 - **References** are an ordered list with an id per entry; citations
   link to them.
 
@@ -59,6 +61,5 @@ as SVG text without a font family is not rendered.
 ## Not yet
 
 This example is the single-column starting point for a two-column
-layout. The footnote is collected at the end of the document rather
-than at the foot of its page, and the table caption is a paragraph, as
-`<caption>` is not rendered yet.
+layout. The table caption is a paragraph, as `<caption>` is not
+rendered yet.
