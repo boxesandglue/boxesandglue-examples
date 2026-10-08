@@ -5,6 +5,7 @@ lang: en
 format: PDF/UA-2
 css: scientific-paper.css
 math: true
+extensions: superscript
 ---
 
 <div class="running-title">Total-fit line breaking in narrow measures</div>
@@ -12,12 +13,12 @@ math: true
 # Total-fit line breaking in narrow measures
 
 ::: {.authors}
-Ada Example<sup>1</sup> and Ben Sample<sup>2</sup>
+Ada Example^1^ and Ben Sample^2^
 :::
 
 ::: {.affiliations}
-<sup>1</sup> Department of Typography, Example University\
-<sup>2</sup> Institute for Document Engineering, Sample College
+^1^ Department of Typography, Example University\
+^2^ Institute for Document Engineering, Sample College
 :::
 
 ::: {.abstract}
