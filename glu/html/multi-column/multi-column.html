@@ -23,10 +23,11 @@ body {
   hyphens: auto;
 }
 
-h1 { font-size: 17pt; font-weight: normal; line-height: 1.15; margin: 0 0 0.5em 0; text-align: left; }
+/* The title and the lead span both columns. */
+h1 { column-span: all; font-size: 20pt; font-weight: normal; line-height: 1.15; margin: 0 0 0.4em 0; text-align: left; }
 h2 { font-size: 11pt; margin: 1.1em 0 0.35em 0; break-after: avoid; }
 p  { margin: 0 0 0.45em 0; }
-p.lead { font-style: italic; }
+p.lead { column-span: all; font-size: 11.5pt; font-style: italic; margin-bottom: 1.2em; text-align: left; }
 
 /* A side float sits in its column and the text of the column runs
    around it. */
@@ -52,8 +53,6 @@ thead th { border-bottom: 0.8pt solid black; }
    wide as the column. */
 .footnote { font-size: 8pt; }
 
-/* The section on narrow measures starts at the top of a column. */
-.newcolumn { break-before: column; }
 </style>
 </head>
 <body>
@@ -106,15 +105,13 @@ wide.</p>
 </tbody>
 </table>
 
-<h2 class="newcolumn">Narrow measures</h2>
+<h2>Narrow measures</h2>
 
 <p>A narrow column has fewer spaces per line to take up the leftover
 width when the text is justified. A line breaker that looks at a whole
 paragraph at once finds better breaks than one that fills each line as
 far as it can, and hyphenation adds breakpoints where a long word would
-otherwise leave a loose line.<span class="footnote">Both work together
-here: the paragraphs are justified with hyphenation switched on through
-the CSS property hyphens.</span></p>
+otherwise leave a loose line.</p>
 
 <p>The narrower the column, the more these two matter. Three columns on
 an A4 page are about as narrow as continuous text should get; below
@@ -127,7 +124,9 @@ right text becomes the better choice.</p>
 column run around it, as the quotation above shows. A float that goes
 to the top or the bottom of the page goes to the top or the bottom of
 its column instead, at the width of the column. Footnotes do the same:
-each column collects the notes of its own text.</p>
+each column collects the notes of its own text.<span class="footnote">This
+note belongs to the second column and is set at its foot, as wide as the
+column.</span></p>
 
 <p>Running heads, page numbers and the other contents of the page
 margins belong to the page, not to a column. They are placed once per
@@ -137,14 +136,22 @@ page, as in a document with one column.</p>
 
 <p>Automatic breaks move the text on to the next column whenever the
 current one is full. A forced break with <code>break-before: column</code>
-starts an element at the top of the next column, as it does with the
-section on narrow measures. On the last column of a page, the next column is the first
-one of the next page. A forced page break, <code>break-before:
+starts an element at the top of the next column; on the last column of a
+page, that is the first column of the next page. A forced page break, <code>break-before:
 page</code>, skips the remaining columns and starts a new page right
 away.</p>
 
 <p>Outside a multi-column layout a column break has no effect, so the
 same stylesheet works for a document with one column.</p>
+
+<h2>Balancing</h2>
+
+<p>On the last page, the columns are balanced: the text is spread so that
+they end at about the same height, instead of filling the first column and
+leaving the second one short. The same happens above an element that
+spans the columns, such as the title of this article, which is set with
+<code>column-span: all</code>. With <code>column-fill: auto</code> the last
+page fills its columns one after the other.</p>
 
 </body>
 </html>
