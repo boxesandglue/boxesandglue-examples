@@ -28,6 +28,8 @@ body {
 /* The title and the lead span both columns. */
 h1 { column-span: all; font-size: 20pt; font-weight: normal; line-height: 1.15; margin: 0 0 0.4em 0; text-align: left; }
 h2 { font-size: 11pt; margin: 1.1em 0 0.35em 0; break-after: avoid; }
+/* The first heading starts level with the top of the second column. */
+p.lead + h2 { margin-top: 0; }
 p  { margin: 0 0 0.45em 0; }
 p.lead { column-span: all; font-size: 11.5pt; font-style: italic; margin-bottom: 1.2em; text-align: left; }
 
