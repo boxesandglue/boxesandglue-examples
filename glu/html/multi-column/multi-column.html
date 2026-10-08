@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Setting text in columns</title>
+<style>
+@page {
+  size: A4;
+  margin: 20mm 18mm;
+  @bottom-center { content: counter(page); font-size: 8pt; }
+}
+
+/* The body is the multi-column container: two columns with a 7mm gap.
+   Everything in it flows from the first column to the second, then on
+   to the next page. */
+body {
+  column-count: 2;
+  column-gap: 7mm;
+  font-family: serif;
+  font-size: 10pt;
+  line-height: 1.32;
+  text-align: justify;
+  hyphens: auto;
+}
+
+h1 { font-size: 17pt; font-weight: normal; line-height: 1.15; margin: 0 0 0.5em 0; text-align: left; }
+h2 { font-size: 11pt; margin: 1.1em 0 0.35em 0; break-after: avoid; }
+p  { margin: 0 0 0.45em 0; }
+p.lead { font-style: italic; }
+
+/* A side float sits in its column and the text of the column runs
+   around it. */
+.pullquote {
+  float: right;
+  width: 30mm;
+  margin: 2pt 0 4pt 4mm;
+  padding: 4pt 0;
+  border-top: 1pt solid #2b4a6b;
+  border-bottom: 1pt solid #2b4a6b;
+  font-size: 11pt;
+  font-style: italic;
+  text-align: left;
+  color: #2b4a6b;
+}
+
+table { border-collapse: collapse; margin: 0.6em 0; font-size: 9pt; }
+th, td { padding: 2pt 5pt; text-align: right; border-bottom: 0.5pt solid #999; }
+th:first-child, td:first-child { text-align: left; }
+thead th { border-bottom: 0.8pt solid black; }
+
+/* A footnote is placed at the foot of the column that holds it, as
+   wide as the column. */
+.footnote { font-size: 8pt; }
+
+/* The section on narrow measures starts at the top of a column. */
+.newcolumn { break-before: column; }
+</style>
+</head>
+<body>
+
+<h1>Setting text in columns</h1>
+
+<p class="lead">A line of text is easiest to read when it holds about
+sixty to seventy characters. On a wide page that means wide margins or
+a large font. Columns are the other answer: they split the page into
+measures of a comfortable length.</p>
+
+<h2>Why columns</h2>
+
+<p>Newspapers, journals and magazines have set their text in columns
+for as long as there have been large pages. A single line across an A4
+page in a ten point font holds well over a hundred characters, and the
+eye easily loses its place on the way back to the start of the next
+line. Two columns halve that distance and keep the type size that a
+reader is used to.</p>
+
+<p>Columns also make better use of the page. Short paragraphs, lists
+and tables that would leave much of a wide line empty fill a column
+nicely, and a page with two columns holds more text than a page with
+one wide measure and generous margins.</p>
+
+<h2>What makes a column</h2>
+
+<div class="pullquote">A column is a page within the page.</div>
+
+<p>A column is a page within the page. Text flows into the first
+column until it is full, then on into the second one, and only after
+the last column of a page on to the next page. Everything a page break
+does applies at a column break too: a heading stays with the paragraph
+that follows it, a paragraph keeps at least two lines together at the
+top and at the bottom, and a table repeats its header row.</p>
+
+<p>The width of a column follows from the width of the page, the number
+of columns and the gap between them. On this page, with 174 mm of
+content width, two columns and a gap of 7 mm, each column is 83.5 mm
+wide.</p>
+
+<table>
+<thead>
+<tr><th>Columns</th><th>Gap</th><th>Width</th><th>Characters</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td>none</td><td>174 mm</td><td>about 125</td></tr>
+<tr><td>2</td><td>7 mm</td><td>83.5 mm</td><td>about 60</td></tr>
+<tr><td>3</td><td>6 mm</td><td>54 mm</td><td>about 38</td></tr>
+</tbody>
+</table>
+
+<h2 class="newcolumn">Narrow measures</h2>
+
+<p>A narrow column has fewer spaces per line to take up the leftover
+width when the text is justified. A line breaker that looks at a whole
+paragraph at once finds better breaks than one that fills each line as
+far as it can, and hyphenation adds breakpoints where a long word would
+otherwise leave a loose line.<span class="footnote">Both work together
+here: the paragraphs are justified with hyphenation switched on through
+the CSS property hyphens.</span></p>
+
+<p>The narrower the column, the more these two matter. Three columns on
+an A4 page are about as narrow as continuous text should get; below
+that, the spaces in a justified line grow visibly wide, and ragged
+right text becomes the better choice.</p>
+
+<h2>Floats in a column</h2>
+
+<p>A box with a side float stays in its column, and the lines of the
+column run around it, as the quotation above shows. A float that goes
+to the top or the bottom of the page goes to the top or the bottom of
+its column instead, at the width of the column. Footnotes do the same:
+each column collects the notes of its own text.</p>
+
+<p>Running heads, page numbers and the other contents of the page
+margins belong to the page, not to a column. They are placed once per
+page, as in a document with one column.</p>
+
+<h2>Breaking between columns</h2>
+
+<p>Automatic breaks move the text on to the next column whenever the
+current one is full. A forced break with <code>break-before: column</code>
+starts an element at the top of the next column, as it does with the
+section on narrow measures. On the last column of a page, the next column is the first
+one of the next page. A forced page break, <code>break-before:
+page</code>, skips the remaining columns and starts a new page right
+away.</p>
+
+<p>Outside a multi-column layout a column break has no effect, so the
+same stylesheet works for a document with one column.</p>
+
+</body>
+</html>
