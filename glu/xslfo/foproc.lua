@@ -71,6 +71,10 @@ local FO_TO_CSS = {
     ["line-height"]      = "line-height",
 }
 
+local function escape(s)
+    return (s:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;"):gsub('"', "&quot;"))
+end
+
 -- Build the HTML lang= attribute from XSL-FO 1.1 §7.10:
 --   xml:lang="en-US"          → lang="en-US"
 --   language="en"             → lang="en"
@@ -104,10 +108,6 @@ local function hyphens_decl(ctx)
         return "hyphens:" .. v
     end
     return ""
-end
-
-local function escape(s)
-    return (s:gsub("&", "&amp;"):gsub("<", "&lt;"):gsub(">", "&gt;"):gsub('"', "&quot;"))
 end
 
 local function localname(ctx)
