@@ -5,11 +5,9 @@
   src: url("../markdown/scientific-paper/latinmodern-math.otf");
 }
 
-/* With 20mm 22mm the article fits on two pages, but then the last line
-   of page 1 runs into the footnote (htmlbag#99). */
 @page {
   size: A4;
-  margin: 25mm;
+  margin: 20mm 22mm;
   @bottom-center { content: counter(page); font-size: 9pt; }
 }
 
