@@ -108,19 +108,16 @@ measures, given in ems of the text font. Total-fit keeps the average
 badness low down to the narrowest measure, where first-fit leaves
 loose lines that a reader notices as rivers of white space.
 
-<table id="tab-results">
-<caption>Average badness b and loose lines (b > 200) per 100 lines,
-first-fit (FF) against total-fit (TF). Illustrative values.</caption>
-<thead>
-<tr><th>Measure</th><th>FF b</th><th>TF b</th><th>FF loose</th><th>TF loose</th></tr>
-</thead>
-<tbody>
-<tr><td>35&nbsp;em</td><td>18</td><td>9</td><td>1</td><td>0</td></tr>
-<tr><td>28&nbsp;em</td><td>31</td><td>14</td><td>3</td><td>0</td></tr>
-<tr><td>22&nbsp;em</td><td>57</td><td>23</td><td>8</td><td>1</td></tr>
-<tr><td>16&nbsp;em</td><td>112</td><td>41</td><td>19</td><td>4</td></tr>
-</tbody>
-</table>
+Table: Average badness b and loose lines (b > 200) per 100 lines,
+first-fit (FF) against total-fit (TF). Illustrative values.
+
+| Measure    | FF b | TF b | FF loose | TF loose |
+|------------|------|------|----------|----------|
+| 35&nbsp;em | 18   | 9    | 1        | 0        |
+| 28&nbsp;em | 31   | 14   | 3        | 0        |
+| 22&nbsp;em | 57   | 23   | 8        | 1        |
+| 16&nbsp;em | 112  | 41   | 19       | 4        |
+{#tab-results}
 
 Hyphenation widens the gap further: it adds breakpoints, and only an
 algorithm that weighs them against each other can use them without
