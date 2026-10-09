@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//NLM//DTD JATS (Z39.96) Journal Archiving and Interchange DTD with MathML3 v1.3 20210610//EN" "JATS-archive-oasis-article1-3-mathml3.dtd">
+<article xmlns:mml="http://www.w3.org/1998/Math/MathML"
+         xmlns:xlink="http://www.w3.org/1999/xlink"
+         article-type="research-article" dtd-version="1.3" xml:lang="en">
+  <front>
+    <journal-meta>
+      <journal-title-group>
+        <journal-title>Journal of Example Typography</journal-title>
+      </journal-title-group>
+      <issn pub-type="epub">0000-0000</issn>
+      <publisher><publisher-name>Example Press</publisher-name></publisher>
+    </journal-meta>
+    <article-meta>
+      <article-id pub-id-type="doi">10.0000/jet.2026.001</article-id>
+      <title-group>
+        <article-title>Total-fit line breaking in narrow measures</article-title>
+      </title-group>
+      <contrib-group>
+        <contrib contrib-type="author">
+          <name><surname>Example</surname><given-names>Ada</given-names></name>
+          <xref ref-type="aff" rid="aff1"><sup>1</sup></xref>
+        </contrib>
+        <contrib contrib-type="author">
+          <name><surname>Sample</surname><given-names>Ben</given-names></name>
+          <xref ref-type="aff" rid="aff2"><sup>2</sup></xref>
+        </contrib>
+      </contrib-group>
+      <aff id="aff1"><label>1</label>Department of Typography, Example University</aff>
+      <aff id="aff2"><label>2</label>Institute for Document Engineering, Sample College</aff>
+      <pub-date publication-format="electronic" date-type="pub">
+        <day>9</day><month>10</month><year>2026</year>
+      </pub-date>
+      <volume>1</volume>
+      <issue>1</issue>
+      <abstract>
+        <p>A line breaker that looks at the whole paragraph at once finds
+        better breaks than one that fills each line as far as it can. The
+        advantage grows as the measure gets narrower, because a narrow line
+        has fewer spaces to absorb the leftover width. We restate the box,
+        glue and penalty model, show how badness reacts to stretching and
+        compare first-fit and total-fit breaking on a set of measures typical
+        for two-column layouts. The numbers in this example document are
+        illustrative.</p>
+      </abstract>
+      <kwd-group kwd-group-type="author">
+        <kwd>line breaking</kwd>
+        <kwd>typesetting</kwd>
+        <kwd>justification</kwd>
+        <kwd>hyphenation</kwd>
+      </kwd-group>
+    </article-meta>
+  </front>
+  <body>
+    <sec id="sec-intro">
+      <label>1</label>
+      <title>Introduction</title>
+      <p>Justified text distributes the leftover width of a line over its
+      interword spaces. A greedy breaker decides line by line: it puts as
+      many words on a line as fit and moves on. The total-fit algorithm of
+      Knuth and Plass <xref ref-type="bibr" rid="ref-knuth-plass">[1]</xref>
+      instead treats the paragraph as a whole and picks the sequence of
+      breakpoints with the least total cost. It has been the line breaker of
+      TeX since 1982 <xref ref-type="bibr" rid="ref-texbook">[2]</xref>.<xref ref-type="fn" rid="fn-impl"/></p>
+      <p>Narrow measures, such as the columns of a journal page, are where
+      the choice matters most. <xref ref-type="sec" rid="sec-model">Section 2</xref>
+      recalls the model, <xref ref-type="sec" rid="sec-narrow">Section 3</xref>
+      compares the two strategies.</p>
+    </sec>
+    <sec id="sec-model">
+      <label>2</label>
+      <title>The box, glue and penalty model</title>
+      <p>A paragraph is a sequence of boxes, glue and penalties
+      (<xref ref-type="fig" rid="fig-model">Figure 1</xref>). A box has a
+      fixed width, a glyph or a whole word. Glue has a natural width that
+      can stretch by at most
+      <inline-formula><mml:math><mml:mi>y</mml:mi></mml:math></inline-formula>
+      and shrink by at most
+      <inline-formula><mml:math><mml:mi>z</mml:mi></mml:math></inline-formula>.
+      A penalty marks a possible break and its cost.</p>
+      <fig id="fig-model" position="float">
+        <label>Figure 1</label>
+        <caption><p>A line of width <italic>w</italic>: boxes keep their
+        width, glue stretches or shrinks to fill the line.</p></caption>
+        <alt-text>Four boxes of different widths joined by three springs
+        that stand for glue, spanning the line width w.</alt-text>
+        <graphic xlink:href="boxes-glue.svg"/>
+      </fig>
+      <p>For a line with natural width
+      <inline-formula><mml:math><mml:mi>x</mml:mi></mml:math></inline-formula>,
+      total stretchability
+      <inline-formula><mml:math><mml:mi>y</mml:mi></mml:math></inline-formula>
+      and measure
+      <inline-formula><mml:math><mml:mi>w</mml:mi></mml:math></inline-formula>,
+      the adjustment ratio is</p>
+      <disp-formula id="eq-ratio">
+        <label>(1)</label>
+        <mml:math display="block">
+          <mml:mi>r</mml:mi><mml:mo>=</mml:mo>
+          <mml:mfrac>
+            <mml:mrow><mml:mi>w</mml:mi><mml:mo>&#x2212;</mml:mo><mml:mi>x</mml:mi></mml:mrow>
+            <mml:mi>y</mml:mi>
+          </mml:mfrac>
+        </mml:math>
+      </disp-formula>
+      <p>where
+      <inline-formula><mml:math><mml:mi>z</mml:mi></mml:math></inline-formula>
+      takes the place of
+      <inline-formula><mml:math><mml:mi>y</mml:mi></mml:math></inline-formula>
+      when the line has to shrink. The badness of the line grows with the
+      cube of the ratio,</p>
+      <disp-formula id="eq-badness">
+        <label>(2)</label>
+        <mml:math display="block">
+          <mml:mi>b</mml:mi><mml:mo>=</mml:mo><mml:mn>100</mml:mn>
+          <mml:msup>
+            <mml:mrow><mml:mo>|</mml:mo><mml:mi>r</mml:mi><mml:mo>|</mml:mo></mml:mrow>
+            <mml:mn>3</mml:mn>
+          </mml:msup>
+        </mml:math>
+      </disp-formula>
+      <p>and the demerits of a break combine the badness with the penalty
+      <inline-formula><mml:math><mml:mi>p</mml:mi></mml:math></inline-formula>
+      of the breakpoint and a constant line penalty
+      <inline-formula><mml:math><mml:mi>l</mml:mi></mml:math></inline-formula>:</p>
+      <disp-formula id="eq-demerits">
+        <label>(3)</label>
+        <mml:math display="block">
+          <mml:mi>d</mml:mi><mml:mo>=</mml:mo>
+          <mml:msup>
+            <mml:mrow><mml:mo>(</mml:mo><mml:mi>l</mml:mi><mml:mo>+</mml:mo><mml:mi>b</mml:mi><mml:mo>)</mml:mo></mml:mrow>
+            <mml:mn>2</mml:mn>
+          </mml:msup>
+          <mml:mo>+</mml:mo>
+          <mml:msup><mml:mi>p</mml:mi><mml:mn>2</mml:mn></mml:msup>
+          <mml:mspace width="1em"/>
+          <mml:mrow><mml:mo>(</mml:mo><mml:mi>p</mml:mi><mml:mo>&#x2265;</mml:mo><mml:mn>0</mml:mn><mml:mo>)</mml:mo></mml:mrow>
+        </mml:math>
+      </disp-formula>
+      <p>The algorithm minimizes the sum of the demerits over all lines of
+      the paragraph, see <xref ref-type="disp-formula" rid="eq-demerits">Equation (3)</xref>.</p>
+    </sec>
+    <sec id="sec-narrow">
+      <label>3</label>
+      <title>Narrow measures</title>
+      <p>The cube in <xref ref-type="disp-formula" rid="eq-badness">Equation (2)</xref>
+      makes badness rise steeply once a line stretches beyond its natural
+      stretchability (<xref ref-type="fig" rid="fig-badness">Figure 2</xref>).
+      A line with
+      <inline-formula><mml:math><mml:mi>r</mml:mi><mml:mo>=</mml:mo><mml:mn>1.3</mml:mn></mml:math></inline-formula>
+      already has a badness of about 220 and is rejected under the tolerance
+      of 200 that plain TeX uses.</p>
+      <fig id="fig-badness" position="float">
+        <label>Figure 2</label>
+        <caption><p>Badness as a function of the adjustment ratio. The
+        dashed line marks the tolerance of 200.</p></caption>
+        <alt-text>Plot of badness against the adjustment ratio r from 0 to
+        1.5. The curve rises with the cube of r and crosses the dashed
+        tolerance line at 200 near r = 1.26.</alt-text>
+        <graphic xlink:href="badness.svg"/>
+      </fig>
+      <p><xref ref-type="table" rid="tab-results">Table 1</xref> lists the
+      outcome for four measures, given in ems of the text font. Total-fit
+      keeps the average badness low down to the narrowest measure, where
+      first-fit leaves loose lines that a reader notices as rivers of white
+      space.</p>
+      <table-wrap id="tab-results" position="float">
+        <label>Table 1</label>
+        <caption><p>Average badness <italic>b</italic> and loose lines
+        (<italic>b</italic> &gt; 200) per 100 lines, first-fit (FF) against
+        total-fit (TF). Illustrative values.</p></caption>
+        <table>
+          <thead>
+            <tr><th>Measure</th><th>FF b</th><th>TF b</th><th>FF loose</th><th>TF loose</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>35&#xA0;em</td><td>18</td><td>9</td><td>1</td><td>0</td></tr>
+            <tr><td>28&#xA0;em</td><td>31</td><td>14</td><td>3</td><td>0</td></tr>
+            <tr><td>22&#xA0;em</td><td>57</td><td>23</td><td>8</td><td>1</td></tr>
+            <tr><td>16&#xA0;em</td><td>112</td><td>41</td><td>19</td><td>4</td></tr>
+          </tbody>
+        </table>
+      </table-wrap>
+      <p>Hyphenation widens the gap further: it adds breakpoints, and only
+      an algorithm that weighs them against each other can use them without
+      hyphenating every other line. Plass extended the same idea from lines
+      to pages <xref ref-type="bibr" rid="ref-plass">[3]</xref>; the CSS
+      multi-column module <xref ref-type="bibr" rid="ref-css-multicol">[4]</xref>
+      describes how columns are filled, but leaves the line breaker to the
+      implementation.</p>
+    </sec>
+    <sec id="sec-conclusion">
+      <label>4</label>
+      <title>Conclusion</title>
+      <p>Breaking a paragraph as a whole costs more computation than
+      breaking it line by line, but the cost is small for a modern machine
+      and the gain is largest exactly where journals set their text: in
+      narrow columns.</p>
+    </sec>
+  </body>
+  <back>
+    <fn-group>
+      <fn id="fn-impl">
+        <p>This document is set by glu from its JATS source, with the same
+        line breaker through the boxes and glue library.</p>
+      </fn>
+    </fn-group>
+    <ref-list>
+      <title>References</title>
+      <ref id="ref-knuth-plass">
+        <label>1</label>
+        <mixed-citation publication-type="journal"><person-group person-group-type="author"><string-name>D. E. Knuth</string-name> and <string-name>M. F. Plass</string-name></person-group>. <article-title>Breaking paragraphs into lines</article-title>. <source>Software: Practice and Experience</source>, <volume>11</volume>(<issue>11</issue>):<fpage>1119</fpage>&#x2013;<lpage>1184</lpage>, <year>1981</year>.</mixed-citation>
+      </ref>
+      <ref id="ref-texbook">
+        <label>2</label>
+        <mixed-citation publication-type="book"><person-group person-group-type="author"><string-name>D. E. Knuth</string-name></person-group>. <source>The TeXbook</source>. <publisher-name>Addison-Wesley</publisher-name>, <publisher-loc>Reading, MA</publisher-loc>, <year>1984</year>.</mixed-citation>
+      </ref>
+      <ref id="ref-plass">
+        <label>3</label>
+        <mixed-citation publication-type="thesis"><person-group person-group-type="author"><string-name>M. F. Plass</string-name></person-group>. <source>Optimal Pagination Techniques for Automatic Typesetting Systems</source>. PhD thesis, <publisher-name>Stanford University</publisher-name>, <year>1981</year>.</mixed-citation>
+      </ref>
+      <ref id="ref-css-multicol">
+        <label>4</label>
+        <mixed-citation publication-type="standard"><person-group person-group-type="author"><collab>W3C</collab></person-group>. <source>CSS Multi-column Layout Module Level 1</source>. W3C Candidate Recommendation. <ext-link ext-link-type="uri" xlink:href="https://www.w3.org/TR/css-multicol-1/">https://www.w3.org/TR/css-multicol-1/</ext-link></mixed-citation>
+      </ref>
+    </ref-list>
+  </back>
+</article>

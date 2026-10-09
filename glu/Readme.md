@@ -10,6 +10,7 @@ generated `result.pdf`, and a `firstpage.png` preview.
 
 * [HTML](#html)
 * [XSL-FO walker](#xsl-fo-walker)
+* [JATS walker](#jats-walker)
 * [Markdown](#markdown)
 * [Lua interface](#lua-interface)
 
@@ -82,6 +83,15 @@ Description | Preview
 
 See [`xslfo/Readme.md`](xslfo) for the walker's coverage table and the
 PDF/UA tagging pipeline.
+
+## JATS walker
+
+A proof-of-concept Lua script (`jats/jats.lua`) that turns a journal
+article in JATS XML into HTML and typesets it, MathML formulas included.
+
+Description | Preview
+--- | ---
+[JATS article](jats): front matter, numbered sections, MathML display formulas, figures, a table, a footnote, cross references and references from a JATS 1.3 source | <a href="jats"><img src="jats/firstpage.png" width="200"></a>
 
 ## Markdown
 

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300pt" height="170pt" viewBox="0 0 300 170">
+<rect x="40" y="10" width="248" height="130" fill="none" stroke="#999" stroke-width="0.5"/>
+<line x1="40" y1="107.50" x2="288" y2="107.50" stroke="#ddd" stroke-width="0.5"/>
+<line x1="40" y1="75.00" x2="288" y2="75.00" stroke="#ddd" stroke-width="0.5"/>
+<line x1="40" y1="42.50" x2="288" y2="42.50" stroke="#ddd" stroke-width="0.5"/>
+<line x1="122.67" y1="10" x2="122.67" y2="140" stroke="#ddd" stroke-width="0.5"/>
+<line x1="205.33" y1="10" x2="205.33" y2="140" stroke="#ddd" stroke-width="0.5"/>
+<line x1="40" y1="75.00" x2="288" y2="75.00" stroke="#b03030" stroke-width="0.8" stroke-dasharray="4 2"/>
+<polyline points="40.00,140.00 44.13,140.00 48.27,140.00 52.40,139.99 56.53,139.97 60.67,139.94 64.80,139.89 68.93,139.83 73.07,139.74 77.20,139.63 81.33,139.49 85.47,139.32 89.60,139.12 93.73,138.88 97.87,138.61 102.00,138.29 106.13,137.92 110.27,137.51 114.40,137.04 118.53,136.52 122.67,135.94 126.80,135.30 130.93,134.59 135.07,133.82 139.20,132.98 143.33,132.07 147.47,131.07 151.60,130.00 155.73,128.85 159.87,127.61 164.00,126.29 168.13,124.87 172.27,123.36 176.40,121.75 180.53,120.04 184.67,118.23 188.80,116.31 192.93,114.28 197.07,112.14 201.20,109.88 205.33,107.50 209.47,105.00 213.60,102.38 217.73,99.63 221.87,96.74 226.00,93.73 230.13,90.57 234.27,87.28 238.40,83.84 242.53,80.26 246.67,76.52 250.80,72.64 254.93,68.60 259.07,64.40 263.20,60.04 267.33,55.51 271.47,50.82 275.60,45.96 279.73,40.92 283.87,35.71 288.00,30.31" fill="none" stroke="#2b4a6b" stroke-width="1.4"/>
+<text font-family="serif" x="35" y="143.00" font-size="8" text-anchor="end">0</text>
+<text font-family="serif" x="35" y="110.50" font-size="8" text-anchor="end">100</text>
+<text font-family="serif" x="35" y="78.00" font-size="8" text-anchor="end">200</text>
+<text font-family="serif" x="35" y="45.50" font-size="8" text-anchor="end">300</text>
+<text font-family="serif" x="35" y="13.00" font-size="8" text-anchor="end">400</text>
+<text font-family="serif" x="40.00" y="151" font-size="8" text-anchor="middle">0</text>
+<text font-family="serif" x="122.67" y="151" font-size="8" text-anchor="middle">0.5</text>
+<text font-family="serif" x="205.33" y="151" font-size="8" text-anchor="middle">1</text>
+<text font-family="serif" x="288.00" y="151" font-size="8" text-anchor="middle">1.5</text>
+<text font-family="serif" x="164.00" y="167" font-size="8" font-style="italic" text-anchor="middle">r</text>
+<text font-family="serif" x="46" y="71.00" font-size="8" fill="#b03030" text-anchor="start">tolerance 200</text>
+</svg>
