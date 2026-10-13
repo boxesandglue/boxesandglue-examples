@@ -24,8 +24,10 @@ Floats are detected via the CSS `float` property — recognised values:
 Use a `<span>` for inline content that should be lifted to a page edge
 (text, inline markup, inline images). Use a `<div>` when the float
 needs to carry block-level content (multiple paragraphs, lists, a
-caption block). Standard CSS `float: left|right` (side-floats with
-text wrap) is not implemented.
+caption block). Standard CSS `float: left|right`, with the text
+flowing beside the float, is shown in
+[Text around images](../image-runaround) and
+[Floats next to each other](../floats-side-by-side).
 
 ## Footnote syntax
 
