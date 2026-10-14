@@ -28,6 +28,6 @@ span the columns.
 
 ## Run
 
-```
-glu multi-column.html
+```bash
+glu multi-column.html -o out.pdf
 ```

@@ -1,15 +1,18 @@
-# 05 — Image in flow
+# 05 Image in the flow
 
-`fo:external-graphic` referencing the bundled `../ocean.pdf`. Because
-the source is a PDF, gofpdi imports it as a Form XObject — vector
-content is preserved at any zoom level. `width="80mm"` is set; height
-is left to scale automatically.
+An `fo:external-graphic` that references the shared `../ocean.pdf`.
+Because the source is a PDF, it is embedded as a Form XObject, so the
+vector content stays sharp at any zoom level. Only `width="80mm"` is
+set; the height follows from the aspect ratio.
 
 ## Run
 
 ```
-glu ../foproc.lua 05-image.fo out=result.pdf
+glu ../foproc.lua 05-image.fo out=out.pdf
 ```
+
+Run this inside the directory. It writes `out.pdf`; the directory
+ships a copy as `result.pdf`.
 
 ## Result
 

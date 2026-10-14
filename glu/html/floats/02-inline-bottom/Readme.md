@@ -1,7 +1,7 @@
-# 02 — Inline bottom float
+# 02 Inline bottom float
 
-Inline bottom-float — `<span style="float: bottom">` lands the run in
-the bottom-of-page stack, above any footnotes.
+A `<span>` with `float: bottom` moves its text into the stack at the
+bottom of the page, above any footnotes.
 
 ## Run
 
@@ -9,8 +9,8 @@ the bottom-of-page stack, above any footnotes.
 glu 02-inline-bottom.html
 ```
 
-(produces `02-inline-bottom.pdf`; this directory ships a copy as
-`result.pdf`.)
+This writes `02-inline-bottom.pdf`. The directory ships a copy as
+`result.pdf`.
 
 ## Result
 

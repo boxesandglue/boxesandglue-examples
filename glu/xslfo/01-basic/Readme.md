@@ -1,14 +1,17 @@
-# 01 — Basic walker
+# 01 Basic walker
 
-Smallest end-to-end XSL-FO walker test: page master, blocks, inline markup
-(bold / italic / colour) and two footnotes. Exercises the non-float code
-path of `foproc.lua`.
+The smallest complete XSL-FO document for the walker: a page master,
+blocks, inline markup (bold, italic, color) and two footnotes. It uses
+no floats.
 
 ## Run
 
 ```
-glu ../foproc.lua 01-basic.fo out=result.pdf
+glu ../foproc.lua 01-basic.fo out=out.pdf
 ```
+
+Run this inside the directory. It writes `out.pdf`; the directory
+ships a copy as `result.pdf`.
 
 ## Result
 

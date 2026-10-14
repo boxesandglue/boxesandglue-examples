@@ -1,23 +1,27 @@
-# 09 — Soft hyphens
+# 09 Soft hyphens
 
-CSS Text 3 `hyphens` modes side by side, controlled by the FO
-`hyphenate` property:
+The CSS Text 3 `hyphens` modes side by side, set with the FO property
+`hyphenate`:
 
-| `hyphenate=` | CSS `hyphens` | Behaviour |
+| `hyphenate=` | CSS `hyphens` | Behavior |
 |---|---|---|
-| `true`   | `auto`   | Pattern-based hyphenation + soft-hyphens |
-| `manual` | `manual` | Only U+00AD soft-hyphens, no pattern lookup |
-| `false`  | `none`   | Never break |
+| `manual` | `manual` | Breaks only at soft hyphens (U+00AD), no patterns |
+| `auto` or `true` | `auto` | Pattern-based hyphenation plus soft hyphens |
+| `false` | `none` | No hyphenation, soft hyphens are ignored |
 
-Soft hyphens are written as the XML numeric character reference
-`&#xAD;`. boxesandglue routes them through a discretionary node so
-they only appear when the line breaker chooses to break there.
+The example uses `manual`, `auto` and `false`, in this order. Soft
+hyphens are written as the XML character reference `&#xAD;`.
+boxesandglue turns each one into a discretionary break, so the hyphen
+appears only when the line breaker breaks the line there.
 
 ## Run
 
 ```
-glu ../foproc.lua 09-soft-hyphen.fo out=result.pdf
+glu ../foproc.lua 09-soft-hyphen.fo out=out.pdf
 ```
+
+Run this inside the directory. It writes `out.pdf`; the directory
+ships a copy as `result.pdf`.
 
 ## Result
 

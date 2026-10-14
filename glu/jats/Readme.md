@@ -15,11 +15,12 @@ know is unwrapped, its content kept.
 ## Run
 
 ```
-glu jats.lua article.xml
+glu jats.lua article.xml out=out.pdf
 ```
 
-`keep-html` also writes the generated HTML next to the input,
-`out=NAME` sets the name of the PDF.
+`out=NAME` sets the name of the PDF; without it the PDF is named after
+the input (`article.pdf`). `keep-html` also writes the generated HTML
+next to the input.
 
 ## What the walker covers
 

@@ -7,10 +7,10 @@
   passes schema validation in oxygen XML and similar editors.
   foproc.lua maps bg:font-face to a CSS @font-face rule.
 
-  htmlbag does not honour `dir="rtl"` or CSS `direction`. RTL is
-  enabled by the boxesandglue paragraph builder when it sees Arabic /
-  Hebrew codepoints; the bidi reordering and Arabic shaping run
-  automatically.
+  foproc.lua sets `unicode-bidi: plaintext` on the body, so each
+  paragraph takes its direction from its first strong character and
+  this file needs no direction property. The bidi reordering and the
+  Arabic shaping run automatically.
 
     glu ../foproc.lua 07-rtl-arabic.fo
 -->

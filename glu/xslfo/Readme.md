@@ -32,15 +32,16 @@ Inside the example's directory, run glu with the walker and the `.fo`
 file:
 
 ```bash
-glu ../foproc.lua 01-basic.fo out=result.pdf
+glu ../foproc.lua 01-basic.fo out=out.pdf
 ```
 
-`out=result.pdf` sets the name of the PDF; without it, the walker
-writes `01-basic.pdf`. The HTML is built in memory. To keep it as a
+`out=out.pdf` sets the name of the PDF; without it, the walker writes
+`01-basic.pdf`. The `result.pdf` in the repository is made the same
+way. The HTML is built in memory. To keep it as a
 file for a look or for debugging, add `keep-html`:
 
 ```bash
-glu ../foproc.lua 01-basic.fo keep-html out=result.pdf
+glu ../foproc.lua 01-basic.fo keep-html out=out.pdf
 ```
 
 These are plain words rather than `--flags` because glu takes options

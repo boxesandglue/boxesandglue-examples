@@ -1,9 +1,11 @@
 # Text shaping
 
-Calls `frontend.shape` directly and prints the shaping result —
-glyph IDs, cluster numbers, advance widths, codepoints — to stdout.
-There is no PDF output; this example is a sanity check on the
-HarfBuzz / boxesandglue text-shaping path.
+Shapes the word "office" with the `glu.textshape` module and prints
+the shaping result (glyph IDs, cluster numbers, advance widths,
+codepoints) to stdout. The module is the Lua binding of textshape, the
+HarfBuzz port that boxes and glue uses. The font is Crimson Pro, the
+features are `liga` and `kern`. There is no PDF output; this example is
+a sanity check on the text-shaping path.
 
 ## Run
 
@@ -22,7 +24,7 @@ glyph=280 cluster=5 advance=450 codepoint=U+0065 original="e"
 ```
 
 The third row is interesting: input `"f" "i"` (clusters 2 and 3)
-shapes to a single ligature glyph (`fi`, cluster 2, advance 547pt
-units). HarfBuzz keeps the cluster number of the first input
+shapes to a single ligature glyph (`fi`, cluster 2, advance 547 font
+units). The shaper keeps the cluster number of the first input
 character and skips the second cluster number entirely, which is how
-callers reconstruct character → glyph mapping after ligation.
+callers reconstruct the character-to-glyph mapping after ligation.

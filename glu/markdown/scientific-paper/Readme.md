@@ -1,17 +1,19 @@
 # Scientific paper
 
 A short journal-style article written in Markdown, set in two columns
-and tagged as PDF/UA-2: title block with authors and affiliations and an abstract
-across both columns, then numbered sections, inline and numbered
-display equations, two figures, a table, a footnote, cross references
-and a hand-made list of references.
+and tagged as PDF/UA-2. A title block with authors, affiliations and
+an abstract spans both columns. Then follow numbered sections, inline
+and numbered display equations, two figures, a table, a footnote,
+cross references and a hand-made list of references. The
+[how-to](https://boxesandglue.dev/glu/howto/scientific-paper/) walks
+through it step by step.
 
 ![first page of result.pdf](firstpage.png)
 
 ## Run
 
 ```
-glu scientific-paper.md
+glu scientific-paper.md -o out.pdf
 ```
 
 ## How it is built
@@ -36,7 +38,7 @@ glu scientific-paper.md
 - **Formulas** use TeX dollar syntax (`math: true` in the frontmatter)
   and the Latin Modern Math font.
 - **Numbered equations** are paragraphs with two tab stops: the formula
-  is centered at 50 %, the number from `::after` ends at the right
+  is centered at 50%, the number from `::after` ends at the right
   margin. `\displaystyle` sets a fraction in such a paragraph at full
   size, as in a display formula.
 
@@ -74,8 +76,8 @@ glu scientific-paper.md
 - **References** are an ordered list with an id per entry; citations
   link to them.
 
-The figures are SVG files with labels in `serif`, the font an SVG in
-`<img>` takes without a `font-family`.
+The figures are SVG files. Their labels are set in `serif`, the font
+an SVG in `<img>` gets when it names no `font-family`.
 
 ## Accessibility
 

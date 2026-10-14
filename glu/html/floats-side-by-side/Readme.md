@@ -24,7 +24,7 @@ h2      { clear: both; }
 
 A float opening while another one on its side is still there stands
 beside it, as in a browser. Each line keeps clear of the float that
-reaches furthest in at its height, so the measure widens step by step
+reaches farthest in at its height, so the measure widens step by step
 as the floats end. Where there is no room left for text beside the
 floats already there, the new float goes below the one that ends
 first.
@@ -35,5 +35,5 @@ keeps text off a float, so two floats without margins touch.
 ## Run
 
 ```bash
-glu floats-side-by-side.html
+glu floats-side-by-side.html -o out.pdf
 ```

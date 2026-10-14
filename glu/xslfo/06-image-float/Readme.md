@@ -1,15 +1,18 @@
-# 06 — Image in a top float
+# 06 Image in a top float
 
-Image plus caption inside a `fo:float[float="before"]` — the classic
-"figure at the top of the page" pattern. The float wraps an
-`fo:external-graphic` and a small italic caption block; both are
-pulled out of the running flow and stacked in the top-float region.
+An image with a caption inside an `fo:float` with `float="before"`:
+the classic figure at the top of the page. The float holds an
+`fo:external-graphic` and a small italic caption block. Both leave the
+running text and go to the top of the page.
 
 ## Run
 
 ```
-glu ../foproc.lua 06-image-float.fo out=result.pdf
+glu ../foproc.lua 06-image-float.fo out=out.pdf
 ```
+
+Run this inside the directory. It writes `out.pdf`; the directory
+ships a copy as `result.pdf`.
 
 ## Result
 

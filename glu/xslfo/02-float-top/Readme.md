@@ -1,14 +1,17 @@
-# 02 — Top float
+# 02 Top float
 
-A `fo:float[float="before"]` carrying a caption plus a supporting block.
-The float is reserved at the top of the page during htmlbag's first pass;
-body content flows below the reservation in the second pass.
+An `fo:float` with `float="before"` that holds a caption and a second
+block. htmlbag reserves room for the float at the top of the page, and
+the body text flows below it.
 
 ## Run
 
 ```
-glu ../foproc.lua 02-float-top.fo out=result.pdf
+glu ../foproc.lua 02-float-top.fo out=out.pdf
 ```
+
+Run this inside the directory. It writes `out.pdf`; the directory
+ships a copy as `result.pdf`.
 
 ## Result
 

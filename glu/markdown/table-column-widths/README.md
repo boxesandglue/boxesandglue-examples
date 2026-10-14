@@ -1,9 +1,12 @@
 # Table column widths
 
 This example shows how to control the width of table columns in glu's
-Markdown pipeline: with a `width` on a `<td>`/`<th>` for inline HTML
+Markdown pipeline: with a `width` on a `<td>` or `<th>` for inline HTML
 tables, and with `nth-child` rules in a stylesheet for Markdown pipe
 tables, which have nowhere to put a `style` attribute.
+
+The how-to on the website covers the same ground:
+<https://boxesandglue.dev/glu/howto/table-column-widths/>.
 
 ![first page of result.pdf](firstpage.png)
 
@@ -26,11 +29,10 @@ See <https://boxesandglue.dev/glu/> for full installation instructions.
 ## Running
 
 ```
-glu table-column-widths.md
+glu table-column-widths.md -o out.pdf
 ```
 
-This produces `table-column-widths.pdf` (this directory ships a copy as
-`result.pdf`).
+This writes `out.pdf` (this directory ships a copy as `result.pdf`).
 
 ## Files
 
@@ -50,7 +52,8 @@ empty spacer element inside the cell.
 Without any `width`, the table layout measures every cell and gives each
 column the room its content needs. That is a good default for data
 tables, but it means the column boundaries move as soon as the text
-changes — two signature blocks under each other end up misaligned.
+changes. Two signature blocks placed one under the other end up
+misaligned.
 
 A `width` on a cell overrides the measurement for that column. It is
 both the column's preferred and its minimum size, so the column keeps
@@ -59,7 +62,7 @@ its share even when the content is narrower.
 | Value | Meaning |
 |-------|---------|
 | `width: 50%` | Half of the table width. Percentages resolve against the table, not the page. |
-| `width: 4cm` | Fixed column width. Any CSS length works (`cm`, `mm`, `pt`, `in`, `em`). |
+| `width: 4cm` | Fixed column width. Absolute CSS lengths work (`cm`, `mm`, `pt`, `in`). |
 | omitted | Column is measured from its content and shares whatever the declared columns leave over. |
 
 Three edge cases are worth knowing:
@@ -77,9 +80,9 @@ Three edge cases are worth knowing:
 ## Percentages need a table width
 
 A table shrinks to its content unless told otherwise, and a percentage
-on a cell resolves against the table — so on a shrunk table, `50%` is
-half of the content width, not half of the page. Set the table width
-first:
+on a cell resolves against the table. On a shrunk table, `50%` is
+therefore half of the content width, not half of the page. Set the
+table width first:
 
 ```css
 table { width: 100% }
@@ -109,14 +112,18 @@ columns from the stylesheet:
 
 Two details matter here. The class sits on the `<div>`, so the selector
 has to reach the table as a descendant (`.terms table`, not
-`table.terms`). And every rule has to name `th` and `td` alike —
+`table.terms`). And every rule has to name `th` and `td` alike:
 selecting only `td` leaves the header row at its automatic width, and
 the header stops lining up with the body.
 
-The blank lines around the pipe table inside the `<div>` are required:
-without them the Markdown parser treats the whole block as raw HTML and
+The blank lines around the pipe table inside the `<div>` are required.
+Without them the Markdown parser treats the whole block as raw HTML and
 never builds a table from the pipe syntax.
 
+Without the `<div>`, a `{.terms}` line directly below the pipe table
+puts the class on the `<table>` itself, and the selectors become
+`table.terms th:nth-child(1)` and so on.
+
 See the [glu documentation](https://boxesandglue.dev/glu/markdown/) and
-the [htmlbag CSS reference](https://boxesandglue.dev/htmlbag/) for the
-full property catalogue.
+the [htmlbag CSS reference](https://boxesandglue.dev/htmlbag/css-properties/)
+for the full property catalog.

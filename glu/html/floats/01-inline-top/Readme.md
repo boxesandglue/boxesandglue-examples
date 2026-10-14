@@ -1,8 +1,8 @@
-# 01 — Inline top float
+# 01 Inline top float
 
-Inline top-float — a `<span style="float: top">` lifts inline content
-(text, inline markup, inline images) to the top-of-page stack. The
-marker leaves no visible glyph in the body.
+A `<span>` with `float: top` lifts inline content (text, inline markup,
+inline images) out of the paragraph and into the stack at the top of
+the page. The marker leaves no visible glyph in the body text.
 
 ## Run
 
@@ -10,8 +10,8 @@ marker leaves no visible glyph in the body.
 glu 01-inline-top.html
 ```
 
-(produces `01-inline-top.pdf`; this directory ships a copy as
-`result.pdf`.)
+This writes `01-inline-top.pdf`. The directory ships a copy as
+`result.pdf`.
 
 ## Result
 

@@ -1,14 +1,17 @@
-# 03 — Bottom float
+# 03 Bottom float
 
-A `fo:float[float="after"]` anchored above the footnote zone. The
-painting order on the page is: top-floats → body → bottom-floats →
-footnotes (see `htmlbag/insert.go::flushInserts`).
+An `fo:float` with `float="after"` placed at the bottom of the page,
+above the footnote area. On each page htmlbag places top floats first,
+then the body text, then bottom floats, then footnotes.
 
 ## Run
 
 ```
-glu ../foproc.lua 03-float-bottom.fo out=result.pdf
+glu ../foproc.lua 03-float-bottom.fo out=out.pdf
 ```
+
+Run this inside the directory. It writes `out.pdf`; the directory
+ships a copy as `result.pdf`.
 
 ## Result
 

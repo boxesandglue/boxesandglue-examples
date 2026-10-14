@@ -1,21 +1,25 @@
-# 08 — Mixed LTR / RTL
+# 08 Mixed left to right and right to left
 
-English (LTR) and Arabic (RTL) inside the same paragraph, with per-run
-`xml:lang`. The bidi algorithm reorders the runs and the typesetter
-selects the per-language hyphenation pattern set on the fly:
+English and Arabic inside the same paragraph, with `xml:lang` on each
+run. Each paragraph takes its direction from its first strong
+character, and the bidi algorithm orders the runs within it. The
+hyphenation patterns switch with the language of each run:
 
-* English runs use the `en` pattern set
-* Arabic runs use a no-op hyphenator (no TeX pattern set exists for
-  Arabic — CSS Text 3 §6 says a UA must not hyphenate without
-  patterns)
-* `hyphenate="false"` on a run opts out of automatic hyphenation
-  locally
+* English runs use the English patterns.
+* Arabic runs are not hyphenated. There are no TeX hyphenation
+  patterns for Arabic, and CSS Text 3 §6 allows automatic hyphenation
+  only where patterns exist.
+* `hyphenate="false"` on a run turns off automatic hyphenation for that
+  run.
 
 ## Run
 
 ```
-glu ../foproc.lua 08-mixed-ltr-rtl.fo out=result.pdf
+glu ../foproc.lua 08-mixed-ltr-rtl.fo out=out.pdf
 ```
+
+Run this inside the directory. It writes `out.pdf`; the directory
+ships a copy as `result.pdf`.
 
 ## Result
 

@@ -1,10 +1,9 @@
-# 05 — Three floats sharing one page
+# 05 Three floats sharing one page
 
-Three top-floats from three different paragraphs all stack on one
-page. This is the case the two-pass page assembly is built for: the
-first pass reserves the top-float region; the second pass paints the
-buffered body below the final reservation, so multiple floats per
-page work without reflow surprises.
+Three top floats from three different paragraphs stack on the same
+page. htmlbag holds back the body text of a page until the page is
+complete and then places it below the final float stack, so several
+floats fit on one page.
 
 ## Run
 
@@ -12,8 +11,8 @@ page work without reflow surprises.
 glu 05-three-floats-one-page.html
 ```
 
-(produces `05-three-floats-one-page.pdf`; this directory ships a copy
-as `result.pdf`.)
+This writes `05-three-floats-one-page.pdf`. The directory ships a copy
+as `result.pdf`.
 
 ## Result
 

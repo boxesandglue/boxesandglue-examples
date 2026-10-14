@@ -3,8 +3,10 @@
 This example sets text in columns with tab stops instead of tables: a
 contents list with a dotted leader, a label and value block, prices
 lined up on the decimal comma and two captions centered under a line.
-The Markdown holds plain text with a `&Tab;` between the columns, the
-stops come from the CSS property `-bag-tab-stops`.
+The Markdown holds plain text with a `&Tab;` between the columns. The
+stops come from the CSS property `-bag-tab-stops`. The
+[how-to](https://boxesandglue.dev/glu/howto/tab-stops/) walks through
+it step by step.
 
 ![first page of result.pdf](firstpage.png)
 
@@ -27,11 +29,10 @@ See <https://boxesandglue.dev/glu/> for full installation instructions.
 ## Running
 
 ```
-glu tab-stops.md
+glu tab-stops.md -o out.pdf
 ```
 
-This produces `tab-stops.pdf` (this directory ships a copy as
-`result.pdf`).
+This produces `out.pdf` (this directory ships a copy as `result.pdf`).
 
 ## Files
 

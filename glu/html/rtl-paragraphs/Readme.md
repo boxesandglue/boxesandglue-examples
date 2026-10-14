@@ -43,10 +43,9 @@ protrude at the line end as well.
 ## Run
 
 ```bash
-glu rtl-paragraphs.html
+glu rtl-paragraphs.html -o out.pdf
 ```
 
-This produces `rtl-paragraphs.pdf`. The checked-in `result.pdf` and
-`firstpage.png` were generated with `SOURCE_DATE_EPOCH=0` so the bytes
-are reproducible; `rake check` in the workspace root compares against
-them.
+This produces `out.pdf`. The checked-in `result.pdf` was generated with
+`SOURCE_DATE_EPOCH=0`, so its bytes are reproducible. `firstpage.png`
+is a preview of it.

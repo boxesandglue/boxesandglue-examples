@@ -1,6 +1,8 @@
 # Barcodes Example
 
-This example shows how to generate barcodes in glu using the `<barcode>` HTML element. All three supported barcode types are demonstrated: EAN-13, Code 128, and QR code.
+This example shows how to generate barcodes in glu using the `<barcode>` HTML element. It demonstrates all three supported barcode types: EAN-13, Code 128, and QR code.
+
+The how-to on the website covers the element in more detail: <https://boxesandglue.dev/glu/howto/barcodes/>.
 
 ![first page of result.pdf](firstpage.png)
 
@@ -23,10 +25,10 @@ See <https://boxesandglue.dev/glu/> for full installation instructions.
 ## Running
 
 ```
-glu barcodes.md
+glu barcodes.md -o out.pdf
 ```
 
-This produces `barcodes.pdf` (this directory ships a copy as `result.pdf`).
+This writes `out.pdf` (this directory ships a copy as `result.pdf`).
 
 ## Files
 
@@ -40,6 +42,6 @@ This produces `barcodes.pdf` (this directory ships a copy as `result.pdf`).
 |------|---------|
 | EAN-13 | `<barcode type="ean13" value="4006381333931" width="4cm" height="2cm"/>` |
 | Code 128 | `<barcode type="code128" value="ABC-12345" width="5cm" height="1.5cm"/>` |
-| QR Code | `<barcode type="qr" value="https://example.com" width="3cm" eclevel="H"/>` |
+| QR Code | `<barcode type="qr" value="https://boxesandglue.dev" width="3cm" eclevel="H"/>` |
 
 See the [glu documentation](https://boxesandglue.dev/glu/html/#barcodes) for the full attribute reference.

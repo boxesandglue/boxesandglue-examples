@@ -1,8 +1,8 @@
-# 03 — Block float, multiple paragraphs
+# 03 Block float, multiple paragraphs
 
-Block-level float — `<div style="float: top">` carrying multiple
-paragraphs and a caption. Use `<div>` (not `<span>`) when the float
-must transport block-level content.
+A `<div>` with `float: top` carries several paragraphs and a caption
+to the top of the page. Use a `<div>` rather than a `<span>` when the
+float holds block-level content.
 
 ## Run
 
@@ -10,8 +10,8 @@ must transport block-level content.
 glu 03-block-multi-paragraph.html
 ```
 
-(produces `03-block-multi-paragraph.pdf`; this directory ships a copy
-as `result.pdf`.)
+This writes `03-block-multi-paragraph.pdf`. The directory ships a copy
+as `result.pdf`.
 
 ## Result
 

@@ -52,10 +52,9 @@ which for a note of running text is the full measure.
 ## Run
 
 ```bash
-glu margin-notes.html
+glu margin-notes.html -o out.pdf
 ```
 
-This produces `margin-notes.pdf`. The checked-in `result.pdf`,
-`firstpage.png` and `secondpage.png` were generated with
-`SOURCE_DATE_EPOCH=0` so the bytes are reproducible; `rake check` in the
-workspace root compares against them.
+This produces `out.pdf`. The checked-in `result.pdf` was generated with
+`SOURCE_DATE_EPOCH=0`, so its bytes are reproducible. `firstpage.png`
+and `secondpage.png` are previews of it.

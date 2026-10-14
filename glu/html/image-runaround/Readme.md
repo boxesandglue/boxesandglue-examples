@@ -25,13 +25,13 @@ The lines beside a float are shortened by its width plus the gutter for
 as many lines as the float is tall. A float's margin on the side of the
 text replaces the gutter where it is positive.
 
-The pictures are SVG files; raster images (PNG, JPEG, PDF) float the
-same way.
+The pictures are SVG files. PNG, JPEG and PDF images float the same
+way.
 
 ## Run
 
 ```bash
-glu image-runaround.html
+glu image-runaround.html -o out.pdf
 ```
 
 The how-to on [boxesandglue.dev](https://boxesandglue.dev/glu/howto/image-runaround/)
