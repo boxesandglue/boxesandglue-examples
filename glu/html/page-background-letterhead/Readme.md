@@ -59,7 +59,6 @@ applies when no rule in the cascade sets it.
 
 - `background-image` accepts raster images (PNG, JPEG) and PDF pages.
   SVG page backgrounds are not supported yet.
-- `background-color` on `@page` currently fills page 1 only.
 - This example keeps the left and right margins the same on all pages.
   When a later page has a different content **width**, running text is
   set again at the new width, but a few things keep the width of the

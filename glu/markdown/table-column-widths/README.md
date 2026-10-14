@@ -62,7 +62,7 @@ its share even when the content is narrower.
 | Value | Meaning |
 |-------|---------|
 | `width: 50%` | Half of the table width. Percentages resolve against the table, not the page. |
-| `width: 4cm` | Fixed column width. Absolute CSS lengths work (`cm`, `mm`, `pt`, `in`). |
+| `width: 4cm` | Fixed column width. Absolute CSS lengths work (`cm`, `mm`, `pt`, `in`), and so do `em` (the cell's font size) and `rem` (the root font size). |
 | omitted | Column is measured from its content and shares whatever the declared columns leave over. |
 
 Three edge cases are worth knowing:
