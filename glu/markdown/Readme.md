@@ -1,96 +1,94 @@
 # Markdown examples
 
-glu's Markdown pipeline takes a `.md` file with optional YAML
-frontmatter, embedded Lua blocks (``` ```{lua} … ``` ```), inline
-expressions `{= expr =}` and any HTML5 fragments mixed in, and
-produces a PDF. Each example ships a `.md` source, a `result.pdf`
-and a `firstpage.png` preview.
+glu turns a `.md` file into a PDF. The file may start with YAML
+frontmatter, hold Lua blocks (```` ```{lua} ````) and inline
+expressions (`{= expr =}`), and mix in any HTML. Each example holds its
+Markdown source, the `result.pdf` it makes and a `firstpage.png`
+preview. Where the website has a how-to for an example, it is linked.
 
-## Examples
+## Documents
 
 Description | Preview
 --- | ---
-[Alignment](alignment) — `# Heading {.right}` syntax, `-bag-linebreak-*` Knuth-Plass tuning, German hyphenation | <a href="alignment"><img src="alignment/firstpage.png" width="200"></a>
-[Barcodes](barcodes) — `<barcode>` element: EAN-13, Code 128 and QR code in one document | <a href="barcodes"><img src="barcodes/firstpage.png" width="200"></a>
-[Cross references, inline](cross-reference-inline) — `target-text()` and `target-counter()` resolving against inline anchors via the aux roundtrip | <a href="cross-reference-inline"><img src="cross-reference-inline/firstpage.png" width="200"></a>
-[Table of contents](toc-target-counter) — `target-counter()` page numbers and `leader()` dot fills for a generated TOC | <a href="toc-target-counter"><img src="toc-target-counter/firstpage.png" width="200"></a>
-[Chart from data](chart-from-data) — a Lua block turns a plain Lua table into an SVG bar chart that htmlbag embeds inline | <a href="chart-from-data"><img src="chart-from-data/firstpage.png" width="200"></a>
-[Table column widths](table-column-widths) — `width` on `<td>`/`<th>` for percentage and absolute columns, plus `nth-child` rules to size a Markdown pipe table | <a href="table-column-widths"><img src="table-column-widths/firstpage.png" width="200"></a>
-[Tab stops](tab-stops) — `-bag-tab-stops` on plain Markdown text: contents list with a dotted leader, label/value block, decimal-comma prices, centered captions | <a href="tab-stops"><img src="tab-stops/firstpage.png" width="200"></a>
-[Highlighting](highlighting) — a highlighter with `background-color` on bracketed spans and a red pen with `~~strikethrough~~` and `text-decoration` in color, solid, wavy and dotted | <a href="highlighting"><img src="highlighting/firstpage.png" width="200"></a>
-[Slides](slides) — Markdown → 16:9 slide deck with hobby-curve accents and per-slide layout | <a href="slides"><img src="slides/slides-preview.png" width="200"></a>
-[Scientific paper](scientific-paper): journal-style article with title block, abstract, numbered sections, equations, figures and tables, `target-counter()` cross references, running head | <a href="scientific-paper"><img src="scientific-paper/firstpage.png" width="200"></a>
-[Accessible report (PDF/UA-2)](accessible-report) — `format: PDF/UA-2` frontmatter switch, HTML5-namespaced structure tree, veraPDF UA-2 conformant | <a href="accessible-report"><img src="accessible-report/firstpage.png" width="200"></a>
-[DIN 5008 letter](letter-din5008) — German business letter (DIN 5008 Form B), `position: absolute` slots for recipient / sender / fold marks against a flowing body | <a href="letter-din5008"><img src="letter-din5008/firstpage.png" width="200"></a>
-[ZUGFeRD invoice](zugferd-invoice) — EN 16931 / Factur-X compliant PDF/A-3b with embedded CII XML; companion-Lua pattern for compliance formats (XML parsing + `page_init` plumbing) | <a href="zugferd-invoice"><img src="zugferd-invoice/firstpage.png" width="200"></a>
+[Scientific paper](scientific-paper): a journal-style article in two columns with title block, abstract, numbered sections, equations, figures, a table, cross references and a running head, tagged as PDF/UA-2 ([how-to](https://boxesandglue.dev/glu/howto/scientific-paper/)) | <a href="scientific-paper"><img src="scientific-paper/firstpage.png" width="200"></a>
+[Accessible report](accessible-report): `format: PDF/UA-2` in the frontmatter makes a tagged PDF 2.0 that passes veraPDF ([how-to](https://boxesandglue.dev/glu/howto/accessible-report/)) | <a href="accessible-report"><img src="accessible-report/firstpage.png" width="200"></a>
+[DIN 5008 letter](letter-din5008): a German business letter (DIN 5008 form B) with `position: absolute` fields for recipient, sender and fold marks beside the flowing body ([how-to](https://boxesandglue.dev/glu/howto/letter-din5008/)) | <a href="letter-din5008"><img src="letter-din5008/firstpage.png" width="200"></a>
+[ZUGFeRD invoice](zugferd-invoice): an EN 16931 / Factur-X invoice as PDF/A-3b with the XML attached; a companion Lua file reads the XML and sets up the PDF ([how-to](https://boxesandglue.dev/glu/howto/zugferd-invoice/)) | <a href="zugferd-invoice"><img src="zugferd-invoice/firstpage.png" width="200"></a>
+[Slides](slides): a 16:9 slide deck with a layout per slide and curves drawn with hobby | <a href="slides"><img src="slides/slides-preview.png" width="200"></a>
 
-## Workflow
+## Text, references and tables
 
-```bash
-glu <name>.md
-```
+Description | Preview
+--- | ---
+[Alignment](alignment): `# Heading {.right}` classes, German hyphenation and the `-bag-linebreak-*` settings of the line breaker | <a href="alignment"><img src="alignment/firstpage.png" width="200"></a>
+[Table of contents](toc-target-counter): a contents list of links whose page numbers come from `target-counter()` and whose dot leaders from `leader()` ([how-to](https://boxesandglue.dev/glu/howto/toc-target-counter/)) | <a href="toc-target-counter"><img src="toc-target-counter/firstpage.png" width="200"></a>
+[Cross references](cross-reference-inline): `target-text()` and `target-counter()` pointing at headings and at inline anchors | <a href="cross-reference-inline"><img src="cross-reference-inline/firstpage.png" width="200"></a>
+[Highlighting](highlighting): a highlighter with `background-color` on bracketed spans and a red pen with `~~strikethrough~~` and `text-decoration` in color, solid, wavy and dotted ([how-to](https://boxesandglue.dev/glu/howto/highlighting/)) | <a href="highlighting"><img src="highlighting/firstpage.png" width="200"></a>
+[Tab stops](tab-stops): `-bag-tab-stops` on plain text: a contents list with a dot leader, a label and value block, prices aligned on the decimal comma and centered captions ([how-to](https://boxesandglue.dev/glu/howto/tab-stops/)) | <a href="tab-stops"><img src="tab-stops/firstpage.png" width="200"></a>
+[Table column widths](table-column-widths): `width` on `<td>` and `<th>` for HTML tables, and `nth-child` rules for Markdown pipe tables ([how-to](https://boxesandglue.dev/glu/howto/table-column-widths/)) | <a href="table-column-widths"><img src="table-column-widths/firstpage.png" width="200"></a>
 
-writes `<name>.pdf` and a companion `<name>-aux.json` (the
-cross-reference / TOC / Lua-persistent-state file). Subsequent runs
-re-read the aux file, so cross-references converge across multiple
-passes. The multi-pass loop runs automatically — converges when the
-aux file is byte-identical to the previous pass.
+## Math, charts and barcodes
 
-## Pipeline stages
+Description | Preview
+--- | ---
+[TeX math](tex-math): `math: true` in the frontmatter and formulas in TeX dollar syntax, inline and displayed, tagged for PDF/UA-2 ([how-to](https://boxesandglue.dev/glu/howto/tex-math/)) | <a href="tex-math"><img src="tex-math/firstpage.png" width="200"></a>
+[Chart from data](chart-from-data): a Lua block turns a Lua table into an SVG bar chart that goes into the page ([how-to](https://boxesandglue.dev/glu/howto/chart-from-data/)) | <a href="chart-from-data"><img src="chart-from-data/firstpage.png" width="200"></a>
+[Barcodes](barcodes): EAN-13, Code 128 and QR codes with the `<barcode>` element ([how-to](https://boxesandglue.dev/glu/howto/barcodes/)) | <a href="barcodes"><img src="barcodes/firstpage.png" width="200"></a>
 
-A `.md` file flows through:
+## Running an example
 
-1. Optional Go `text/template` expansion (`--template`).
-2. YAML frontmatter extraction — recognised keys: `title`, `author`,
-   `css`, `papersize`, `format`, `lang`, `highlight-style`.
-3. Companion `.lua` file loaded if it exists (registers lifecycle
-   callbacks).
-4. Aux file read; `_aux` and `_toc = _aux._headings` exposed to Lua.
-5. Lua block expansion: ``` ```{lua} ``` blocks replaced by their
-   return value; inline `{= expr =}` evaluated.
-6. Markdown → HTML via `goldmark` (Table, Strikethrough, Linkify,
-   chroma highlighting, `WithAttribute` for `{.class}` suffixes).
-7. HTML → PDF via `htmlbag`.
-8. Aux write-back; pipeline re-runs if aux changed.
+Inside the example's directory, run the command from its `check.json`,
+or `glu <name>.md` for an example without one. glu writes the PDF and
+an aux file, `<name>-aux.json`, which keeps cross references, the table
+of contents and what Lua stores between runs. glu runs the document
+again until the aux file no longer changes, so page numbers in cross
+references are right after one call.
 
-The shared HTML rendering core is the same `renderHTMLToPDF` used by
-plain-HTML mode — Markdown mode just adds steps 1–6 in front.
+## How a Markdown file is processed
 
-## What's exercised across the cluster
+1. With `--template`, the file is first expanded as a Go
+   `text/template`.
+2. The YAML frontmatter is read: `title`, `author`, `lang`, `css`,
+   `papersize`, `format` and `math` among others. The
+   [glu documentation](https://boxesandglue.dev/glu/) lists all keys.
+3. A Lua file of the same name, if there is one, is loaded and can
+   register callbacks.
+4. The aux file of the previous run is read and given to Lua as `_aux`,
+   its headings as `_toc`.
+5. Lua blocks are replaced by what they return, and inline `{= expr =}`
+   by its value.
+6. The Markdown becomes HTML (goldmark with tables, strikethrough,
+   links, code highlighting and `{.class}` attributes).
+7. htmlbag typesets the HTML, as for an HTML file.
+8. The aux file is written, and if it changed, the document runs again.
 
-| Feature | Where |
-|---|---|
-| YAML frontmatter | every example uses it |
-| `{.class}` heading suffix → `class=` | `alignment` |
-| Knuth-Plass linebreak tuning (`-bag-linebreak-*`) | `alignment` |
-| Per-language hyphenation (German patterns) | `alignment` |
-| `<barcode>` HTML element | `barcodes` |
-| `width` on table cells, `nth-child` column sizing | `table-column-widths` |
-| `target-text()` / `target-counter(attr(href), page)` | `cross-reference-inline`, `toc-target-counter` |
-| `leader()` fil³-stretchy glue with dot pattern | `toc-target-counter` |
-| `-bag-tab-stops`: start, end, center and decimal stops, leaders | `tab-stops` |
-| Inline `background-color`, `text-decoration` style and color, `~~strikethrough~~` | `highlighting` |
-| Embedded Lua block returning HTML/SVG | `chart-from-data` |
-| Lua module imports inside `{lua}` blocks | `chart-from-data` |
-| Multi-slide layout with per-section CSS | `slides` |
-| `hobby` MetaPost-style curve drawing in CSS background | `slides` |
-| Multi-pass aux convergence | every example with cross-references or TOC |
+## Features and where to find them
+
+Feature | Example
+--- | ---
+`{.class}` on headings | `alignment`
+Line breaker settings (`-bag-linebreak-*`), German hyphenation | `alignment`
+`target-text()`, `target-counter(attr(href), page)` | `cross-reference-inline`, `toc-target-counter`
+`leader()` with a dot pattern | `toc-target-counter`
+`-bag-tab-stops`: start, end, center and decimal stops, leaders | `tab-stops`
+`width` on table cells, `nth-child` column widths | `table-column-widths`
+Inline `background-color`, `text-decoration` style and color, `~~strikethrough~~` | `highlighting`
+`<barcode>` | `barcodes`
+Lua blocks returning HTML or SVG, Lua modules | `chart-from-data`
+`math: true` and TeX formulas | `tex-math`, `scientific-paper`
+A layout per slide, hobby curves | `slides`
+Companion Lua file, attachments, PDF/A-3b | `zugferd-invoice`
+PDF/UA-2 | `accessible-report`, `scientific-paper`, `tex-math`
 
 ## PDF/UA
 
-Set `format: PDF/UA` (or `PDF/UA-1`) in frontmatter (plus `lang:` and
-`title:`) to opt into the PDF/UA-1 tagged-PDF pipeline: htmlbag emits
-StructTreeRoot, MarkInfo, `/DisplayDocTitle`, role-mapped element
-tree, and XMP `pdfuaid:part 1` metadata. For PDF/UA-2 (ISO 14289-2 on
-PDF 2.0) use `format: PDF/UA-2`: the structure tree uses the HTML5
-namespace with `RoleMapNS` to the PDF Standard Structure Namespace,
-outline destinations are structure destinations, and XMP carries
-`pdfuaid:part 2` plus `pdfuaid:rev 2024`.
+`format: PDF/UA` (or `PDF/UA-1`) in the frontmatter, together with
+`lang` and `title`, makes a tagged PDF/UA-1 document: a structure tree,
+`/MarkInfo`, `/DisplayDocTitle` and `pdfuaid:part 1` in the XMP
+metadata. `format: PDF/UA-2` makes PDF/UA-2 on PDF 2.0: the structure
+tree uses the HTML5 namespace, mapped to the PDF standard structure
+namespace, the bookmarks point at structure elements, and the XMP
+metadata carries `pdfuaid:part 2` and `pdfuaid:rev 2024`.
 
-The `accessible-report` example exercises the UA-2 path
-end-to-end; the xslfo cluster's examples 10 (UA-1) and 11 (UA-2)
-do the same from XSL-FO input.
-
-For the full glu Markdown-pipeline reference, see the
-[glu handbook](https://boxesandglue.dev/glu/) (or the local
-`boxesandglue-website/content/glu/` source).
+The XSL-FO examples [10](../xslfo/10-pdfua) and [11](../xslfo/11-pdfua2)
+show both from XSL-FO input.

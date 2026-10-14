@@ -1,91 +1,80 @@
 # HTML examples
 
-Plain HTML / CSS driven through `htmlbag` — the boxesandglue HTML+CSS
-layout engine. Each example ships a runnable source file, a
-`result.pdf` and a `firstpage.png` preview next to the HTML.
+HTML and CSS typeset with glu through htmlbag, the HTML and CSS layout
+engine of boxes and glue. Each example holds its HTML source, the
+`result.pdf` it makes and a `firstpage.png` preview.
 
-## Standalone examples
+## Page layout
 
 Description | Preview
 --- | ---
-[Zebra-striped table](zebra-table) — CSS3 structural selectors: `:nth-child(even)`, `:nth-of-type(n)`, `:not(...)`, `:first-child`, `:last-child`, plus `<tfoot>` totals | <a href="zebra-table"><img src="zebra-table/firstpage.png" width="200"></a>
-[`::marker` pseudo](marker-pseudo) — CSS Pseudo 4 `li::marker { color, font-size, font-family, content }` with `counter()` content | <a href="marker-pseudo"><img src="marker-pseudo/firstpage.png" width="200"></a>
-[Numbered sections](numbered-sections) — Skatordnung-style nested numbered headings with hanging-indent markers (numbers hardcoded in HTML) | <a href="numbered-sections"><img src="numbered-sections/firstpage.png" width="200"></a>
-[Numbered sections via CSS counters](numbered-sections-counters) — same layout, but numbers come from `counter-reset` / `counter-increment` / `counters()` | <a href="numbered-sections-counters"><img src="numbered-sections-counters/firstpage.png" width="200"></a>
-[Inline SVG with percentage width](inline-svg-percentage) — `<svg width="100%">` adapting to different containers via deferred sizing; includes a `stroke-dasharray` check | <a href="inline-svg-percentage"><img src="inline-svg-percentage/firstpage.png" width="200"></a>
-[`<img>` with percentage width](img-percentage) — raster image equivalent of the deferred-sizing demo; aspect ratio preserved across container sizes | <a href="img-percentage"><img src="img-percentage/firstpage.png" width="200"></a>
-[Inline SVG in table cells](svg-in-table) — dashboard-style three-column table where each cell carries an `<svg width="100%">`, materialised against the cell's `paraWidth` | <a href="svg-in-table"><img src="svg-in-table/firstpage.png" width="200"></a>
-[Inline image vertical-align](inline-image-align) — CSS `vertical-align: text-top` / `top` on raster `<img>` inside a paragraph; image top aligns with the parent font's ascent | <a href="inline-image-align"><img src="inline-image-align/firstpage.png" width="200"></a>
-[Per-page `@page` background (letterhead)](page-background-letterhead) — two-page PDF letterhead behind the text, full header on page 1 and slim continuation header on pages 2+ via `@page :first` + `background-image` + `-bag-background-page`; pure CSS, no Go/Lua | <a href="page-background-letterhead"><img src="page-background-letterhead/firstpage.png" width="200"></a>
-[Running footer (CSS GCPM running elements)](running-footer): a three-column `<footer>` table repeated in the `@bottom-center` margin box of every page via `position: running(name)` + `content: element(name)`; pure CSS, no Go/Lua | <a href="running-footer"><img src="running-footer/firstpage.png" width="200"></a>
-[Text around images](image-runaround): `float: left` / `float: right` for a figure with caption, an image at the start of a paragraph and a box without a width that shrinks to its content; `-bag-float-gutter` and `clear` | <a href="image-runaround"><img src="image-runaround/firstpage.png" width="200"></a>
+[Multi-column layout](multi-column): an article in two columns from `column-count` and `column-gap` on the body, with a title across the columns (`column-span: all`), balanced columns on the last page, a side float and a footnote in a column | <a href="multi-column"><img src="multi-column/firstpage.png" width="200"></a>
+[Margin notes](margin-notes): notes in the outer margin with `float: outside`, on the right of right pages and the left of left pages, on a book layout whose wide margin swaps sides | <a href="margin-notes"><img src="margin-notes/firstpage.png" width="200"></a>
+[Text around images](image-runaround): `float: left` and `float: right` for a figure with caption, an image at the start of a paragraph and a box without a width that shrinks to its content; `-bag-float-gutter` and `clear` | <a href="image-runaround"><img src="image-runaround/firstpage.png" width="200"></a>
 [Floats next to each other](floats-side-by-side): two `float: left` figures in a row and a box of facts beside a picture on the right; the lines give way to the floats step by step as they end | <a href="floats-side-by-side"><img src="floats-side-by-side/firstpage.png" width="200"></a>
-[Multi-column layout](multi-column): an article in two columns from `column-count` and `column-gap` on the body, with a title spanning the columns (`column-span: all`), balanced columns on the last page, a side float and a footnote in a column | <a href="multi-column"><img src="multi-column/firstpage.png" width="200"></a>
+[Letterhead](page-background-letterhead): a PDF letterhead behind the text, the full one on page 1 and a slim one on the pages after it, from `@page :first`, `background-image` and `-bag-background-page` | <a href="page-background-letterhead"><img src="page-background-letterhead/firstpage.png" width="200"></a>
+[Running footer](running-footer): a three-column `<footer>` repeated in the `@bottom-center` margin box of every page with `position: running(name)` and `content: element(name)` | <a href="running-footer"><img src="running-footer/firstpage.png" width="200"></a>
+[Top and bottom floats, footnotes](floats): five steps from one top float to several floats and footnotes sharing a page; the [floats Readme](floats) explains the syntax and the order the page is painted in | <a href="floats"><img src="floats/04-mixed-classes/firstpage.png" width="200"></a>
 
-## Color emoji and font fallback
-
-Per-glyph color emoji rendering across the four OpenType color formats
-(COLR/CPAL, CBDT, sbix, SVG-in-OT), plus the CSS Fonts 4 prioritised-list
-fallback that lets a single text run mix Latin, emoji and complex
-scripts from separate fonts.
+## Tables, lists and numbering
 
 Description | Preview
 --- | ---
-[COLR / CPAL color emoji](color-emoji) — COLRv0 layered color glyphs from Twemoji.Mozilla, painted layer-by-layer with the CPAL palette | <a href="color-emoji"><img src="color-emoji/firstpage.png" width="200"></a>
-[CBDT color bitmap](color-emoji-cbdt) — Google/Microsoft CBDT/CBLC PNG-in-glyph format via a Noto Color Emoji subset, embedded as PDF Image XObjects | <a href="color-emoji-cbdt"><img src="color-emoji-cbdt/firstpage.png" width="200"></a>
-[sbix color bitmap](color-emoji-sbix) — Apple's sbix PNG-strike format. Source ships, **font is not bundled** (Liebeheide Color is not redistributable); see `color-emoji-sbix/Readme.md` for sourcing instructions | _(no snapshot — runs only with the font present)_
-[Per-glyph font fallback](font-fallback-mixed) — CSS Fonts 4 §3.1 prioritised font-family list resolved per grapheme cluster: Latin from a serif face, emoji from Twemoji.Mozilla, Arabic from Amiri, all in one paragraph | <a href="font-fallback-mixed"><img src="font-fallback-mixed/firstpage.png" width="200"></a>
+[Zebra-striped table](zebra-table): striped rows and a `<tfoot>` with totals from the CSS structural selectors `:nth-child(even)`, `:nth-of-type(n)`, `:not(...)`, `:first-child` and `:last-child`, without a single class | <a href="zebra-table"><img src="zebra-table/firstpage.png" width="200"></a>
+[SVG in table cells](svg-in-table): a dashboard table with an `<svg width="100%">` in every cell, sized to its cell | <a href="svg-in-table"><img src="svg-in-table/firstpage.png" width="200"></a>
+[List markers](marker-pseudo): three lists whose bullets and numbers get their own color, size, font and content from `li::marker` | <a href="marker-pseudo"><img src="marker-pseudo/firstpage.png" width="200"></a>
+[Numbered sections](numbered-sections): section numbers hanging in the left margin, as in rule books and legal texts, with the numbers written in the HTML | <a href="numbered-sections"><img src="numbered-sections/firstpage.png" width="200"></a>
+[Numbered sections with counters](numbered-sections-counters): the same layout with the numbers from `counter-reset`, `counter-increment` and `counters()` | <a href="numbered-sections-counters"><img src="numbered-sections-counters/firstpage.png" width="200"></a>
 
-## Floats and footnotes
-
-A separate cluster of five examples for `htmlbag`'s float and footnote
-machinery — see [`floats/Readme.md`](floats) for the float syntax, the
-footnote syntax, and the page-painting order.
+## Languages, fonts and math
 
 Description | Preview
 --- | ---
-[01 — Inline top float](floats/01-inline-top) | <a href="floats/01-inline-top"><img src="floats/01-inline-top/firstpage.png" width="200"></a>
-[02 — Inline bottom float](floats/02-inline-bottom) | <a href="floats/02-inline-bottom"><img src="floats/02-inline-bottom/firstpage.png" width="200"></a>
-[03 — Block float, multiple paragraphs](floats/03-block-multi-paragraph) | <a href="floats/03-block-multi-paragraph"><img src="floats/03-block-multi-paragraph/firstpage.png" width="200"></a>
-[04 — All four insert classes](floats/04-mixed-classes) | <a href="floats/04-mixed-classes"><img src="floats/04-mixed-classes/firstpage.png" width="200"></a>
-[05 — Three floats sharing one page](floats/05-three-floats-one-page) | <a href="floats/05-three-floats-one-page"><img src="floats/05-three-floats-one-page/firstpage.png" width="200"></a>
+[Right-to-left paragraphs](rtl-paragraphs): Arabic under `direction: rtl` with the four `text-align` values, floats on either side, `text-indent`, forced breaks and a Latin run inside an Arabic line | <a href="rtl-paragraphs"><img src="rtl-paragraphs/firstpage.png" width="200"></a>
+[Font fallback](font-fallback-mixed): one `font-family` list for Latin from a serif face, emoji from Twemoji and Arabic from Amiri, the font chosen per character, all in one paragraph | <a href="font-fallback-mixed"><img src="font-fallback-mixed/firstpage.png" width="200"></a>
+[Color emoji (COLR)](color-emoji): COLRv0 color glyphs from Twemoji, painted layer by layer in the colors of the CPAL palette | <a href="color-emoji"><img src="color-emoji/firstpage.png" width="200"></a>
+[Color emoji (CBDT)](color-emoji-cbdt): color bitmap glyphs from a Noto Color Emoji subset, embedded as images | <a href="color-emoji-cbdt"><img src="color-emoji-cbdt/firstpage.png" width="200"></a>
+[MathML](mathml): inline and display `<math>` in HTML, set with the OpenType MATH engine and tagged as formulas for PDF/UA-2 | <a href="mathml"><img src="mathml/firstpage.png" width="200"></a>
 
-## Workflow
+## Feature tests
 
-Every example is self-contained: `cd` into its subdirectory and run
+Small documents that show one feature in isolation.
+
+Description | Preview
+--- | ---
+[SVG with percentage width](inline-svg-percentage): the same `<svg width="100%">` in containers of different widths, and a `stroke-dasharray` line | <a href="inline-svg-percentage"><img src="inline-svg-percentage/firstpage.png" width="200"></a>
+[Image with percentage width](img-percentage): a raster `<img>` sized to its container, keeping its aspect ratio | <a href="img-percentage"><img src="img-percentage/firstpage.png" width="200"></a>
+[Inline image alignment](inline-image-align): an image in a line of text with `vertical-align: text-top` and `top` | <a href="inline-image-align"><img src="inline-image-align/firstpage.png" width="200"></a>
+
+## Running an example
+
+Inside the example's directory, run
 
 ```bash
-glu <name>.html
+glu <name>.html -o out.pdf
 ```
 
-to produce `<name>.pdf`. The checked-in `result.pdf` and
-`firstpage.png` were generated with `SOURCE_DATE_EPOCH=0 glu
-<name>.html -o out.pdf` so the bytes are deterministic.
+where `<name>` is the name of the directory. The `result.pdf` in the
+repository is made the same way with `SOURCE_DATE_EPOCH=0`, so its
+bytes do not change from one run to the next.
 
-## What's exercised across the cluster
+## Features and where to find them
 
-| Area | Where |
-|---|---|
-| CSS3 structural selectors (`:nth-child`, `:not`, …) | `zebra-table` |
-| `<tfoot>` rendering & tagged-PDF `TFoot` | `zebra-table` |
-| `::marker` pseudo (color, font, content) | `marker-pseudo` |
-| Hanging-indent list items (`outside-marker`) | `numbered-sections`, `numbered-sections-counters` |
-| CSS counters (`counter-reset` / `counter-increment` / `counters()`) | `numbered-sections-counters` |
-| Inline SVG with viewBox + percentage width | `inline-svg-percentage`, `svg-in-table` |
-| Raster `<img>` with percentage width | `img-percentage` |
-| Inline image CSS vertical-align (`text-top`, `top`) | `inline-image-align` |
-| Deferred sizing for replaced content inside `<td>` | `svg-in-table` |
-| `stroke-dasharray` in inline SVG | `inline-svg-percentage` (Container D) |
-| COLRv0 layered color glyphs + CPAL palette | `color-emoji` |
-| CBDT/CBLC color bitmap glyphs (PNG-in-OT) | `color-emoji-cbdt` |
-| sbix color bitmap strikes (Apple format) | `color-emoji-sbix` |
-| Per-glyph CSS font fallback (CSS Fonts 4 §3.1) | `font-fallback-mixed` |
-| UAX#29 grapheme segmentation across font runs | `font-fallback-mixed` |
-| Top floats and bottom floats (`float: top|bottom`) | `floats/` |
-| Footnote markers and footnote bodies | `floats/04`, `floats/05` |
-| Two-pass page assembly (multiple floats sharing a page) | `floats/05` |
+Feature | Example
+--- | ---
+CSS multi-column layout (`column-count`, `column-span`, balancing) | `multi-column`
+Floats left, right, inside and outside, `-bag-float-gutter`, `clear` | `image-runaround`, `floats-side-by-side`, `margin-notes`
+Top and bottom floats (`float: top`, `float: bottom`), footnotes | `floats/`
+`@page` backgrounds and running elements in margin boxes | `page-background-letterhead`, `running-footer`
+CSS structural selectors, `<tfoot>` and its `TFoot` tag | `zebra-table`
+`::marker` (color, font, content) | `marker-pseudo`
+Hanging list markers, CSS counters | `numbered-sections`, `numbered-sections-counters`
+Inline SVG and `<img>` with percentage width, also in table cells | `inline-svg-percentage`, `img-percentage`, `svg-in-table`
+`vertical-align` on inline images | `inline-image-align`
+Right-to-left text and bidi | `rtl-paragraphs`
+Font fallback per grapheme cluster (CSS Fonts 4 §3.1) | `font-fallback-mixed`
+COLRv0 and CBDT color glyphs | `color-emoji`, `color-emoji-cbdt`
+MathML with formula tagging | `mathml`
 
-For the htmlbag-side documentation of what CSS and HTML constructs
-are supported, see the
-[htmlbag handbook](https://doc.speedata.de/htmlbag/) (or the local
-`boxesandglue-website/content/htmlbag/` source).
+The CSS and HTML that htmlbag supports are described in the
+[htmlbag documentation](https://boxesandglue.dev/htmlbag/).

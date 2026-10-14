@@ -1,137 +1,65 @@
 # glu examples
 
-Examples for [glu](https://boxesandglue.dev/glu/) — the
-boxesandglue-based scripting tool that drives Markdown, HTML and Lua
-straight to PDF, with optional XSL-FO front matter via the bundled
-walker. Every example below ships a runnable source file, a
-generated `result.pdf`, and a `firstpage.png` preview.
+Examples for [glu](https://boxesandglue.dev/glu/), the command line
+tool of boxes and glue. glu turns Markdown, HTML and Lua scripts into
+PDF, and with a Lua walker also XSL-FO and JATS XML. Every example
+holds its source, the `result.pdf` it makes and a `firstpage.png`
+preview.
 
-## Table of contents
+The examples are sorted by input format. The [overview](..) one level
+up sorts all examples, glu and the others, by topic.
 
-* [HTML](#html)
-* [XSL-FO walker](#xsl-fo-walker)
-* [JATS walker](#jats-walker)
-* [Markdown](#markdown)
-* [Lua interface](#lua-interface)
+## By input format
 
-## HTML
+### [Markdown](markdown)
 
-htmlbag drives plain HTML / CSS through the boxesandglue typesetter.
-The examples below cover CSS selector coverage, pseudo-element
-styling, nested list counters, and the float / footnote insert
-machinery.
+Documents written in Markdown, with YAML frontmatter, Lua blocks and
+HTML where needed: a scientific paper, a DIN 5008 letter, a ZUGFeRD
+invoice, TeX math, a table of contents, tab stops, barcodes, slides.
+Most of them have a how-to on the website.
 
-### Standalone examples
+### [HTML](html)
 
-Description | Preview
---- | ---
-[Zebra-striped table](html/zebra-table) — CSS3 structural selectors: `:nth-child(even)`, `:nth-of-type(n)`, `:not(...)`, `:first-child`, `:last-child`, plus `<tfoot>` totals | <a href="html/zebra-table"><img src="html/zebra-table/firstpage.png" width="200"></a>
-[`::marker` pseudo](html/marker-pseudo) — CSS Pseudo 4 `li::marker { color, font-size, font-family, content }` with `counter()` content | <a href="html/marker-pseudo"><img src="html/marker-pseudo/firstpage.png" width="200"></a>
-[Numbered sections](html/numbered-sections) — Skatordnung-style nested numbered headings with hanging-indent markers (numbers hardcoded in HTML) | <a href="html/numbered-sections"><img src="html/numbered-sections/firstpage.png" width="200"></a>
-[Numbered sections via CSS counters](html/numbered-sections-counters) — same layout, but numbers come from `counter-reset` / `counter-increment` / `counters()` | <a href="html/numbered-sections-counters"><img src="html/numbered-sections-counters/firstpage.png" width="200"></a>
-[Inline SVG with percentage width](html/inline-svg-percentage) — `<svg width="100%">` adapting to different containers via deferred sizing; includes a `stroke-dasharray` check | <a href="html/inline-svg-percentage"><img src="html/inline-svg-percentage/firstpage.png" width="200"></a>
-[`<img>` with percentage width](html/img-percentage) — raster image equivalent of the deferred-sizing demo; aspect ratio preserved across container sizes | <a href="html/img-percentage"><img src="html/img-percentage/firstpage.png" width="200"></a>
-[Inline SVG in table cells](html/svg-in-table) — dashboard-style three-column table where each cell carries an `<svg width="100%">`, materialised against the cell's `paraWidth` | <a href="html/svg-in-table"><img src="html/svg-in-table/firstpage.png" width="200"></a>
-[Inline image vertical-align](html/inline-image-align) — CSS `vertical-align: text-top` / `top` on raster `<img>` inside a paragraph; image top aligns with the parent font's ascent | <a href="html/inline-image-align"><img src="html/inline-image-align/firstpage.png" width="200"></a>
+HTML and CSS typeset through htmlbag: multi-column layout, margin
+notes, text around images, letterheads and running footers, tables
+and lists, right-to-left text, color emoji, MathML. The
+[floats](html/floats) subdirectory shows top and bottom floats and
+footnotes in five steps.
 
-### Color emoji and font fallback
+### [XSL-FO](xslfo)
 
-Description | Preview
---- | ---
-[COLR / CPAL color emoji](html/color-emoji) — COLRv0 layered color glyphs from Twemoji.Mozilla, painted layer-by-layer with the CPAL palette | <a href="html/color-emoji"><img src="html/color-emoji/firstpage.png" width="200"></a>
-[CBDT color bitmap](html/color-emoji-cbdt) — Google/Microsoft CBDT/CBLC PNG-in-glyph format via a Noto Color Emoji subset | <a href="html/color-emoji-cbdt"><img src="html/color-emoji-cbdt/firstpage.png" width="200"></a>
-[sbix color bitmap](html/color-emoji-sbix) — Apple's sbix PNG-strike format; **font is not bundled** (Liebeheide Color is not redistributable) | _(no snapshot — runs only with the font present)_
-[Per-glyph font fallback](html/font-fallback-mixed) — CSS Fonts 4 §3.1 prioritised font-family list resolved per grapheme cluster: Latin + emoji + Arabic in one paragraph | <a href="html/font-fallback-mixed"><img src="html/font-fallback-mixed/firstpage.png" width="200"></a>
+A Lua walker, `foproc.lua`, turns XSL-FO into HTML and hands it to
+htmlbag. Eleven small documents show what it translates, from blocks
+and footnotes to floats, images, Arabic and PDF/UA.
 
-### Right-to-left text
+### [JATS](jats)
 
-Description | Preview
---- | ---
-[Right-to-left paragraphs](html/rtl-paragraphs) — Arabic under `direction: rtl`: the four `text-align` values, floats on either side, `text-indent`, forced breaks with hanging punctuation, and a Latin run inside an Arabic line | <a href="html/rtl-paragraphs"><img src="html/rtl-paragraphs/firstpage.png" width="200"></a>
+A Lua walker, `jats.lua`, turns a journal article in JATS XML into
+HTML, MathML formulas included, and typesets it.
 
-### Floats and footnotes
+### [Lua interface](lua_interface)
 
-Description | Preview
---- | ---
-[01 — Inline top float](html/floats/01-inline-top) | <a href="html/floats/01-inline-top"><img src="html/floats/01-inline-top/firstpage.png" width="200"></a>
-[02 — Inline bottom float](html/floats/02-inline-bottom) | <a href="html/floats/02-inline-bottom"><img src="html/floats/02-inline-bottom/firstpage.png" width="200"></a>
-[03 — Block float, multiple paragraphs](html/floats/03-block-multi-paragraph) | <a href="html/floats/03-block-multi-paragraph"><img src="html/floats/03-block-multi-paragraph/firstpage.png" width="200"></a>
-[04 — All four insert classes](html/floats/04-mixed-classes) | <a href="html/floats/04-mixed-classes"><img src="html/floats/04-mixed-classes/firstpage.png" width="200"></a>
-[05 — Three floats sharing one page](html/floats/05-three-floats-one-page) | <a href="html/floats/05-three-floats-one-page"><img src="html/floats/05-three-floats-one-page/firstpage.png" width="200"></a>
+Scripts that build a document with glu's Lua API alone, without
+Markdown or HTML: a ZUGFeRD invoice laid out from its XML, and a look
+at the text shaper.
 
-See [`html/floats/Readme.md`](html/floats) for the float syntax,
-footnote syntax, and page-painting order.
+## Running an example
 
-## XSL-FO walker
-
-A proof-of-concept Lua script (`xslfo/foproc.lua`) that walks an
-XSL-FO source, builds HTML in memory, and hands it to glu's HTML
-pipeline.
-
-Description | Preview
---- | ---
-[01 — Basic walker](xslfo/01-basic) | <a href="xslfo/01-basic"><img src="xslfo/01-basic/firstpage.png" width="200"></a>
-[02 — Top float](xslfo/02-float-top) | <a href="xslfo/02-float-top"><img src="xslfo/02-float-top/firstpage.png" width="200"></a>
-[03 — Bottom float](xslfo/03-float-bottom) | <a href="xslfo/03-float-bottom"><img src="xslfo/03-float-bottom/firstpage.png" width="200"></a>
-[04 — All four insert classes](xslfo/04-float-mixed) | <a href="xslfo/04-float-mixed"><img src="xslfo/04-float-mixed/firstpage.png" width="200"></a>
-[05 — Image in flow](xslfo/05-image) | <a href="xslfo/05-image"><img src="xslfo/05-image/firstpage.png" width="200"></a>
-[06 — Image in a top float](xslfo/06-image-float) | <a href="xslfo/06-image-float"><img src="xslfo/06-image-float/firstpage.png" width="200"></a>
-[07 — Arabic / RTL](xslfo/07-rtl-arabic) | <a href="xslfo/07-rtl-arabic"><img src="xslfo/07-rtl-arabic/firstpage.png" width="200"></a>
-[08 — Mixed LTR / RTL](xslfo/08-mixed-ltr-rtl) | <a href="xslfo/08-mixed-ltr-rtl"><img src="xslfo/08-mixed-ltr-rtl/firstpage.png" width="200"></a>
-[09 — Soft hyphens](xslfo/09-soft-hyphen) | <a href="xslfo/09-soft-hyphen"><img src="xslfo/09-soft-hyphen/firstpage.png" width="200"></a>
-[10 — PDF/UA accessibility](xslfo/10-pdfua) | <a href="xslfo/10-pdfua"><img src="xslfo/10-pdfua/firstpage.png" width="200"></a>
-
-See [`xslfo/Readme.md`](xslfo) for the walker's coverage table and the
-PDF/UA tagging pipeline.
-
-## JATS walker
-
-A proof-of-concept Lua script (`jats/jats.lua`) that turns a journal
-article in JATS XML into HTML and typesets it, MathML formulas included.
-
-Description | Preview
---- | ---
-[JATS article](jats): front matter, numbered sections, MathML display formulas, figures, a table, a footnote, cross references and references from a JATS 1.3 source | <a href="jats"><img src="jats/firstpage.png" width="200"></a>
-
-## Markdown
-
-glu's Markdown pipeline — YAML frontmatter, embedded Lua blocks
-(`` ```{lua} ``), inline expressions `{= expr =}`, plus bespoke HTML
-elements.
-
-Description | Preview
---- | ---
-[Alignment](markdown/alignment) — `# Heading {.right}` syntax, `-bag-linebreak-*` tuning, German hyphenation | <a href="markdown/alignment"><img src="markdown/alignment/firstpage.png" width="200"></a>
-[Barcodes](markdown/barcodes) — `<barcode>` element: EAN-13, Code 128, QR | <a href="markdown/barcodes"><img src="markdown/barcodes/firstpage.png" width="200"></a>
-[Cross references, inline](markdown/cross-reference-inline) — `target-text()` and `target-counter()` resolved against inline anchors via aux-roundtrip | <a href="markdown/cross-reference-inline"><img src="markdown/cross-reference-inline/firstpage.png" width="200"></a>
-[Table of contents](markdown/toc-target-counter) — `target-counter()` page numbers and `leader()` dot fills for a generated TOC | <a href="markdown/toc-target-counter"><img src="markdown/toc-target-counter/firstpage.png" width="200"></a>
-[Chart from data](markdown/chart-from-data) — a Lua block turns a plain Lua table into an SVG bar chart that htmlbag embeds inline | <a href="markdown/chart-from-data"><img src="markdown/chart-from-data/firstpage.png" width="200"></a>
-[Slides](markdown/slides) — Markdown → 16:9 slide deck with hobby-curve accents | <a href="markdown/slides"><img src="markdown/slides/slides-preview.png" width="200"></a>
-[Accessible report (PDF/UA-2)](markdown/accessible-report) — `format: PDF/UA-2` frontmatter, HTML5-namespaced structure tree, veraPDF UA-2 conformant | <a href="markdown/accessible-report"><img src="markdown/accessible-report/firstpage.png" width="200"></a>
-[DIN 5008 letter](markdown/letter-din5008) — German business letter (DIN 5008 Form B), `position: absolute` slots for recipient / sender / fold marks against a flowing body | <a href="markdown/letter-din5008"><img src="markdown/letter-din5008/firstpage.png" width="200"></a>
-[ZUGFeRD invoice](markdown/zugferd-invoice) — EN 16931 / Factur-X compliant PDF/A-3b with embedded CII XML; companion-Lua pattern for compliance formats | <a href="markdown/zugferd-invoice"><img src="markdown/zugferd-invoice/firstpage.png" width="200"></a>
-
-## Lua interface
-
-Programmatic use of glu's Lua bindings — direct calls into the
-frontend, font, and node APIs without the Markdown / HTML wrappers.
-
-Description | Preview
---- | ---
-[Text shaping](lua_interface/textshape) — `frontend.shape` glyph dump (console output, no PDF) | <code>glyph=362 cluster=0 …</code>
-[ZUGFeRD invoice](lua_interface/zugferdinvoice) — EN 16931 PDF/A-3 with embedded CII XML, built entirely through the low-level Lua frontend API (see also the [Markdown variant](markdown/zugferd-invoice) for the companion-Lua pattern on top of glu's Markdown pipeline) | <a href="lua_interface/zugferdinvoice"><img src="lua_interface/zugferdinvoice/firstpage.png" width="200"></a>
+Inside the example's directory, run the command from its `check.json`,
+or `glu <name>.md` (or `.html`, `.lua`) where `<name>` is the name of
+the directory. The Readme of each input format has the details.
 
 ## Installing glu
 
-Pre-built binaries: <https://github.com/boxesandglue/glu/releases/latest>.
+Prebuilt binaries: <https://github.com/boxesandglue/glu/releases/latest>.
 
-Homebrew (macOS / Linux):
+Homebrew (macOS and Linux):
 
 ```
 brew install boxesandglue/tap/glu
 ```
 
-Build from source (requires Go):
+Built from source (needs Go):
 
 ```
 git clone https://github.com/boxesandglue/glu
@@ -139,5 +67,5 @@ cd glu
 rake build
 ```
 
-See <https://boxesandglue.dev/glu/> for full installation and usage
-documentation.
+The [glu documentation](https://boxesandglue.dev/glu/) describes
+installation and use in full.
