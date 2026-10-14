@@ -1,17 +1,16 @@
 # Hello world
 
-The Hello-world equivalent for the `frontend` package: load a font
-family, format a paragraph, ship out a one-page PDF. The smallest
-program that exercises the full TeX-style line breaker.
+The smallest program for the `frontend` package: load a font family,
+set a paragraph with the TeX line breaker and write a one-page PDF.
 
 ## Run
 
 ```
-go run main.go
+go run .
 ```
 
-Produces `result.pdf`.
+Writes `sample.pdf`. The `result.pdf` in the repository is a copy of it.
 
 ## Result
 
-![first page of result.pdf](firstpage.png)
+![first page of the PDF](firstpage.png)

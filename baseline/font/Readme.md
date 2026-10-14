@@ -1,17 +1,17 @@
 # Font
 
-Loads a font and writes a single line of text via `baseline-pdf`'s
-font subsystem — no frontend layer, no paragraph builder. Useful for
-seeing what the lowest level of the font pipeline looks like.
+A font loaded with `baseline-pdf`, "Hello, world!" shaped with
+textshape and written with `Tj`, without the frontend and without the
+line breaker: the lowest level of text output.
 
 ## Run
 
 ```
-go run main.go
+go run .
 ```
 
-Produces `out.pdf`.
+Writes `out.pdf`.
 
 ## Result
 
-![first page of out.pdf](firstpage.png)
+![first page of the PDF](firstpage.png)

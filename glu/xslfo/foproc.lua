@@ -30,10 +30,11 @@
 -- etc.) are not unpacked. Multi-column, side-floats (start/end/inside/outside),
 -- retrieve-marker, page-number-citation are deferred.
 --
--- Note on RTL: htmlbag does not honour `dir="rtl"` or CSS `direction`. Bidi /
--- Arabic shaping is engaged automatically when the rendered text contains RTL
--- codepoints, so the .fo files just need the Arabic UTF-8 in place — no extra
--- direction property is mapped here. Hyphenation language IS routed through:
+-- Note on RTL: the body gets `unicode-bidi: plaintext` (see below), so each
+-- paragraph takes its direction from its first strong character, as XSL-FO
+-- derives it from the text. The .fo files just need the Arabic UTF-8 in
+-- place; no direction property is mapped here. Hyphenation language IS
+-- routed through:
 -- htmlbag reads HTML lang= and resolves it to a TeX hyphenation pattern set
 -- (or a no-op for languages without patterns, such as Arabic).
 

@@ -1,17 +1,17 @@
 # Simple table
 
-A basic table laid out with the `frontend` table builder. Demonstrates
-column widths, row construction, and where the table API sits between
-the paragraph builder and the page assembler.
+A table of two rows built with the `frontend` table builder: two cells
+per row, set ragged right, with a border of a different color on each
+side and a table width limited to the page.
 
 ## Run
 
 ```
-go run main.go
+go run .
 ```
 
-Produces `result.pdf`.
+Writes `sample.pdf`. The `result.pdf` in the repository is a copy of it.
 
 ## Result
 
-![first page of result.pdf](firstpage.png)
+![first page of the PDF](firstpage.png)

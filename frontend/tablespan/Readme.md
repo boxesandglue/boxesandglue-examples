@@ -1,17 +1,18 @@
 # Table with cell spans
 
-Tables with `colspan` / `rowspan` cell merging. The frontend builds
-the table from XML (`out.xml` is the input fixture); cells span both
-horizontally and vertically.
+A table of three rows and three columns in which the first cell spans
+two columns (`ExtraColspan`) and the middle cell of the second row
+spans two rows (`ExtraRowspan`). The cells are built in Go; the
+columns are as wide as their content.
 
 ## Run
 
 ```
-go run main.go
+go run .
 ```
 
-Produces `result.pdf`.
+Writes `sample.pdf`. The `result.pdf` in the repository is a copy of it.
 
 ## Result
 
-![first page of result.pdf](firstpage.png)
+![first page of the PDF](firstpage.png)

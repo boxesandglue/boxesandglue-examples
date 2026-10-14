@@ -1,17 +1,17 @@
 # Image
 
-Imports the bundled `ocean.pdf` as a Form XObject via `gofpdi` and
-places it on a page. The PDF is embedded as vector content — no
-rasterisation, no resolution loss.
+The bundled `ocean.pdf` loaded with `LoadImageFile`, which imports it
+as a Form XObject, and placed on a page. The PDF stays vector graphics, so it keeps its
+quality at any zoom.
 
 ## Run
 
 ```
-go run main.go
+go run .
 ```
 
-Produces `out.pdf`.
+Writes `out.pdf`.
 
 ## Result
 
-![first page of out.pdf](firstpage.png)
+![first page of the PDF](firstpage.png)

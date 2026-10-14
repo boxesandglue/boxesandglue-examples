@@ -1,17 +1,17 @@
 # Simple PDF
 
-A minimal two-page PDF written with the `baseline-pdf` package — no
-frontend, no font shaping, just the raw page tree. Good starting
-point for understanding what the higher-level packages add.
+A minimal two-page PDF written with `baseline-pdf`: no frontend, no
+fonts, just the page tree. A starting point for seeing what the
+packages above add.
 
 ## Run
 
 ```
-go run main.go
+go run .
 ```
 
-Produces `out.pdf`.
+Writes `out.pdf`.
 
 ## Result
 
-![first page of out.pdf](firstpage.png)
+![first page of the PDF](firstpage.png)

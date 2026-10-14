@@ -1,19 +1,18 @@
-# Outline — direct destinations
+# Bookmarks with direct destinations
 
-PDF outline (bookmark) tree with **direct** destination references —
-each outline item points to a page object plus an explicit
-`(/XYZ left top zoom)` view rectangle.
+A bookmark tree whose entries point at a page object and a view,
+`/XYZ left top zoom`, each.
 
-Compare with `../outlinenamedest/` for the named-destination variant.
+The [named variant](../outlinenamedest) points at names instead.
 
 ## Run
 
 ```
-go run main.go
+go run .
 ```
 
-Produces `out.pdf`.
+Writes `out.pdf`.
 
 ## Result
 
-![first page of out.pdf](firstpage.png)
+![first page of the PDF](firstpage.png)

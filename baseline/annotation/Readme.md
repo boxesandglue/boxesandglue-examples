@@ -1,16 +1,16 @@
-# Annotation (hyperlink)
+# Hyperlink
 
-Adds a clickable URI annotation to a page using `baseline-pdf`'s
-annotation API.
+A clickable link on a page, made with the annotation API of
+`baseline-pdf`.
 
 ## Run
 
 ```
-go run main.go
+go run .
 ```
 
-Produces `out.pdf`.
+Writes `out.pdf`.
 
 ## Result
 
-![first page of out.pdf](firstpage.png)
+![first page of the PDF](firstpage.png)

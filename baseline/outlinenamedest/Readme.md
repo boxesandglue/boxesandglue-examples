@@ -1,22 +1,20 @@
-# Outline — named destinations
+# Bookmarks with named destinations
 
-PDF outline (bookmark) tree with **named** destination references —
-outline items point to symbolic names (e.g. `chapter-1`); the actual
-page+view tuple is registered once in the catalog's `/Names`
-dictionary. Cleaner indirection when several outlines / links share
-the same target.
+A bookmark tree whose entries point at names such as `chapter-1`. Each
+name is mapped to its page and view once, in the `/Names` dictionary
+of the catalog, which keeps it in one place when several bookmarks or
+links share a target.
 
-Compare with `../outlinedirectdest/` for the direct-destination
-variant.
+The [direct variant](../outlinedirectdest) points at pages instead.
 
 ## Run
 
 ```
-go run main.go
+go run .
 ```
 
-Produces `out.pdf`.
+Writes `out.pdf`.
 
 ## Result
 
-![first page of out.pdf](firstpage.png)
+![first page of the PDF](firstpage.png)
