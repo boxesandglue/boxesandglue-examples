@@ -1,7 +1,7 @@
 local ts = require("glu.textshape")
 
 -- Load font and create shaper
-local font = ts.parse_font("../../fonts/crimsonpro/CrimsonPro-Regular.ttf")
+local font = ts.parse_font("../../../fonts/crimsonpro/CrimsonPro-Regular.ttf")
 local shaper = ts.new_shaper(font)
 
 -- Create buffer and add text
