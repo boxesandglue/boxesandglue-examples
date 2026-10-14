@@ -55,7 +55,6 @@ File | Source and license
 `ocean.pdf` | The image also used by `baseline/image/`
 `amiri-regular.ttf` | Amiri Regular (SIL Open Font License 1.1, see `amiri.license`)
 `amiri-slanted.ttf` | Amiri Slanted, the italic of the Amiri family
-`glu-xslfo.xpr` | Project file for Oxygen XML, not to be edited by hand
 
 ## What the walker translates
 

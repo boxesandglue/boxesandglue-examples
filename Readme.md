@@ -168,8 +168,8 @@ Example | Made with | Shows
 ## Running an example
 
 * **glu:** inside the example's directory, run glu on the source file,
-  for example `glu multi-column.html`. Where the directory holds a
-  `check.json`, its `cmd` is the exact command.
+  for example `glu multi-column.html -o out.pdf`. The Readme of each
+  example gives the exact command.
 * **bagme, Go API, baseline-pdf:** inside the example's directory, run
   `go run .`
 

@@ -37,12 +37,12 @@ Description | Preview
 
 ## Running an example
 
-Inside the example's directory, run the command from its `check.json`,
-or `glu <name>.md` for an example without one. glu writes the PDF and
-an aux file, `<name>-aux.json`, which keeps cross references, the table
-of contents and what Lua stores between runs. glu runs the document
-again until the aux file no longer changes, so page numbers in cross
-references are right after one call.
+Inside the example's directory, run glu on the Markdown file, as the
+example's Readme shows, for example `glu tab-stops.md -o out.pdf`. glu
+writes the PDF and an aux file named after it, here `out-aux.json`,
+which keeps cross references, the table of contents and what Lua stores
+between runs. glu runs the document again until the aux file no longer
+changes, so page numbers in cross references are right after one call.
 
 ## How a Markdown file is processed
 

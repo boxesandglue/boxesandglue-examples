@@ -45,9 +45,9 @@ at the text shaper.
 
 ## Running an example
 
-Inside the example's directory, run the command from its `check.json`,
-or `glu <name>.md` (or `.html`, `.lua`) where `<name>` is the name of
-the directory. The Readme of each input format has the details.
+Inside the example's directory, run glu on its source file, for
+example `glu multi-column.html -o out.pdf`. The Readme of each example
+gives the exact command, the Readme of each input format the details.
 
 ## Installing glu
 
