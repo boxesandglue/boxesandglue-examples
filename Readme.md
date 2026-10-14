@@ -102,6 +102,7 @@ Example | Made with | Shows
 [TeX math in Markdown](glu/markdown/tex-math) | glu, Markdown | Formulas in TeX dollar syntax, tagged for PDF/UA-2 ([how-to](https://boxesandglue.dev/glu/howto/tex-math/))
 [MathML](glu/html/mathml) | glu, HTML | Inline and display MathML with accessible formula tagging
 [MathML](bagme/basic/math) | bagme | The same from a Go program, as PDF/UA-2
+[Math engine](frontend/math-phase1) | Go API | Formulas built directly with the OpenType MATH engine, without MathML or TeX
 
 ### Text, fonts and languages
 
