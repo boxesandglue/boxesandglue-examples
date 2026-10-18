@@ -2,22 +2,22 @@ module zugferd
 
 go 1.25.0
 
-require github.com/boxesandglue/bagme v0.0.18
+require github.com/boxesandglue/bagme v0.0.19
 
 require (
 	github.com/PuerkitoBio/goquery v1.12.0 // indirect
 	github.com/andybalholm/cascadia v1.3.4 // indirect
 	github.com/boxesandglue/baseline-pdf v1.1.27 // indirect
-	github.com/boxesandglue/boxesandglue v0.2.89 // indirect
+	github.com/boxesandglue/boxesandglue v0.2.91 // indirect
 	github.com/boxesandglue/gofpdi v1.0.24 // indirect
-	github.com/boxesandglue/htmlbag v0.0.92 // indirect
+	github.com/boxesandglue/htmlbag v0.0.94 // indirect
 	github.com/boxesandglue/svgreader v0.0.6 // indirect
 	github.com/boxesandglue/textshape v0.0.18 // indirect
 	github.com/clipperhouse/uax29/v2 v2.7.0 // indirect
 	github.com/google/uuid v1.6.0 // indirect
 	github.com/speedata/barcode v1.1.1 // indirect
 	github.com/speedata/css v1.0.5 // indirect
-	github.com/speedata/hyphenation v1.0.3 // indirect
+	github.com/speedata/hyphenation v1.0.4 // indirect
 	github.com/speedata/pdfdisassembler v0.0.7 // indirect
 	golang.org/x/net v0.57.0 // indirect
 	golang.org/x/text v0.40.0 // indirect
