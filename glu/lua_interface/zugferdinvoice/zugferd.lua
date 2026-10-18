@@ -4,7 +4,7 @@ local M = {}
 
 -- attach_zugferd attaches ZUGFeRD XML to the document
 function M.attach_zugferd(doc, filename, conformancelevel, visiblename, description)
-    conformancelevel = conformancelevel or "COMFORT"
+    conformancelevel = conformancelevel or "EN 16931"
     visiblename = visiblename or "factur-x.xml"
     description = description or "ZUGFeRD invoice"
 
@@ -18,14 +18,14 @@ function M.attach_zugferd(doc, filename, conformancelevel, visiblename, descript
     })
 
     doc:add_xmp_extension({
-        schema = "ZUGFeRD PDFA Extension Schema",
-        namespace_uri = "urn:ferd:pdfa:CrossIndustryDocument:invoice:1p0#",
-        prefix = "zf",
+        schema = "Factur-X PDFA Extension Schema",
+        namespace_uri = "urn:factur-x:pdfa:CrossIndustryDocument:invoice:1p0#",
+        prefix = "fx",
         properties = {
-            { name = "DocumentFileName", value_type = "Text", category = "external", description = "name of the embedded XML invoice file" },
-            { name = "DocumentType",     value_type = "Text", category = "external", description = "INVOICE" },
-            { name = "Version",          value_type = "Text", category = "external", description = "The actual version of the ZUGFeRD data" },
-            { name = "ConformanceLevel", value_type = "Text", category = "external", description = "The conformance level of the ZUGFeRD data" },
+            { name = "DocumentFileName", value_type = "Text", category = "external", description = "The name of the embedded XML document" },
+            { name = "DocumentType",     value_type = "Text", category = "external", description = "The type of the hybrid document in capital letters, e.g. INVOICE or ORDER" },
+            { name = "Version",          value_type = "Text", category = "external", description = "The actual version of the standard applying to the embedded XML document" },
+            { name = "ConformanceLevel", value_type = "Text", category = "external", description = "The conformance level of the embedded XML document" },
         },
         values = {
             ConformanceLevel = conformancelevel,

@@ -9,7 +9,7 @@ The example uses the low-level Lua frontend bindings directly:
 |---|---|
 | `main.lua` | Sets up the document, color profile, font family, output file name |
 | `document.lua` | Renders the visible invoice layout (logo, address block, item table, totals) |
-| `zugferd.lua` | Reads the invoice data from `zugferd.xml`, attaches the file as `factur-x.xml` and adds the ZUGFeRD XMP metadata (conformance level `COMFORT`) |
+| `zugferd.lua` | Reads the invoice data from `zugferd.xml`, attaches the file as `factur-x.xml` and adds the Factur-X XMP metadata (conformance level `EN 16931`) |
 | `zugferd.xml` | Cross-Industry Invoice (CII) XML in the EN 16931 profile: the structured side of the invoice |
 | `AdobeRGB1998.icc` | Output intent for PDF/A-3 |
 | `img/logo.pdf` | Sample company logo |

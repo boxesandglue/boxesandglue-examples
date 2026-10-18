@@ -10,7 +10,7 @@ d, err := document.New("out.pdf",
 ```
 
 The two options add up. `WithZUGFeRD` sets PDF/A-3b, attaches
-`factur-x.xml` and adds the ZUGFeRD XMP extension schema; `WithPDFUA`
+`factur-x.xml` and adds the Factur-X XMP extension schema; `WithPDFUA`
 adds PDF/UA-1. The PDF declares both standards and is tagged. PDF/UA
 requires a title and a language, so `main.go` sets `d.Title` and
 `d.Language`. The visible invoice is a shorter version of the one in

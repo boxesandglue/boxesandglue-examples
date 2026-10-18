@@ -40,8 +40,8 @@ pdfdetach -list out.pdf
 # 1 embedded files
 # 1: factur-x.xml
 
-exiftool -XMP-pdfaid:Part -XMP-zf:ConformanceLevel \
-         -XMP-zf:DocumentFileName out.pdf
+exiftool -XMP-pdfaid:Part -XMP-fx:ConformanceLevel \
+         -XMP-fx:DocumentFileName out.pdf
 # Part                : 3
 # Conformance Level   : EN 16931
 # Document File Name  : factur-x.xml
