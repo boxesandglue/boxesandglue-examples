@@ -10,6 +10,7 @@ Description | Preview
 --- | ---
 [Multi-column layout](multi-column): an article in two columns from `column-count` and `column-gap` on the body, with a title across the columns (`column-span: all`), balanced columns on the last page, a side float and a footnote in a column | <a href="multi-column"><img src="multi-column/firstpage.png" width="200"></a>
 [Lines in register](line-grid): lines that stand level across two columns with `line-snap: baseline`, past headings, a table and a top float, with the grid drawn by `-bag-trace: linegrid`; page 2 repeats the text without it | <a href="line-grid"><img src="line-grid/firstpage.png" width="200"></a>
+[A PDF for the print shop](print-ready): an A6 flyer in PDF/X-4 from `<meta name="pdf-format">`, with `bleed`, `marks`, a spot color from `@-bag-color` and black text with `overprint: yes` | <a href="print-ready"><img src="print-ready/firstpage.png" width="200"></a>
 [Margin notes](margin-notes): notes in the outer margin with `float: outside`, on the right of right pages and the left of left pages, on a book layout whose wide margin swaps sides | <a href="margin-notes"><img src="margin-notes/firstpage.png" width="200"></a>
 [Text around images](image-runaround): `float: left` and `float: right` for a figure with caption, an image at the start of a paragraph and a box without a width that shrinks to its content; `-bag-float-gutter` and `clear` | <a href="image-runaround"><img src="image-runaround/firstpage.png" width="200"></a>
 [Floats next to each other](floats-side-by-side): two `float: left` figures in a row and a box of facts beside a picture on the right; the lines give way to the floats step by step as they end | <a href="floats-side-by-side"><img src="floats-side-by-side/firstpage.png" width="200"></a>
@@ -65,6 +66,7 @@ Feature | Example
 --- | ---
 CSS multi-column layout (`column-count`, `column-span`, balancing) | `multi-column`
 Baseline grid (`line-snap`, `-bag-line-grid`, `-bag-trace: linegrid`) | `line-grid`
+PDF/X, `bleed`, `marks`, spot colors, `overprint` | `print-ready`
 Floats left, right, inside and outside, `-bag-float-gutter`, `clear` | `image-runaround`, `floats-side-by-side`, `margin-notes`
 Top and bottom floats (`float: top`, `float: bottom`), footnotes | `floats/`
 `@page` backgrounds and running elements in margin boxes | `page-background-letterhead`, `running-footer`

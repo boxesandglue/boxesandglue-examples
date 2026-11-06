@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="pdf-format" content="PDF/X-4">
+<title>Open day at the press</title>
+<style>
+/* The inks of the job. Names in the rules below stay the same when the
+   print shop asks for another color. */
+@-bag-color blue  { model: spotcolor; colorname: "PANTONE 300 C"; c: 100; m: 44; y: 0; k: 0; }
+@-bag-color tint  { model: cmyk; c: 4; m: 4; y: 16; k: 0; }
+@-bag-color paper { model: cmyk; c: 0; m: 0; y: 0; k: 0; }
+@-bag-color ink   { model: cmyk; c: 0; m: 0; y: 0; k: 100; overprint: yes; }
+
+/* A6 is the trimmed size. The bleed and the crop marks come on top of it. */
+@page {
+    size: a6;
+    margin: 56mm 12mm 12mm 12mm;
+    bleed: 3mm;
+    marks: crop;
+    background-color: tint;
+}
+
+body {
+    color: ink;
+    font-size: 10pt;
+    line-height: 13pt;
+}
+
+/* Offsets count from the corner of the trimmed page, so -3mm reaches the
+   edge of the bleed. */
+.band {
+    position: absolute;
+    top: -3mm;
+    left: -3mm;
+    width: 111mm;
+    height: 47mm;
+    background-color: blue;
+}
+
+.title {
+    position: absolute;
+    top: 20mm;
+    left: 12mm;
+    width: 81mm;
+    color: paper;
+    font-size: 21pt;
+    line-height: 25pt;
+    font-weight: bold;
+}
+
+p { margin: 0 0 6pt 0; }
+.when { font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="band"></div>
+<div class="title">Open day at the press</div>
+<p class="when">Saturday, 12 June, from 10 to 16 h</p>
+<p>Set a line of type by hand, pull a proof on the old cylinder press and take your poster home.</p>
+<p>The workshop is on the ground floor of the old mill, and the coffee is on us.</p>
+</body>
+</html>

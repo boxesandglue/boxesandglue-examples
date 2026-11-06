@@ -74,6 +74,7 @@ Example | Made with | Shows
 --- | --- | ---
 [Multi-column layout](glu/html/multi-column) | glu, HTML | Two columns with a title across both and balanced columns on the last page
 [Lines in register](glu/html/line-grid) | glu, HTML | Lines that stand level across columns with `line-snap`, past headings, a table and a top float ([how-to](https://boxesandglue.dev/glu/howto/line-grid/))
+[A PDF for the print shop](glu/html/print-ready) | glu, HTML | PDF/X-4 with bleed, crop marks, a spot color and overprinting black text ([how-to](https://boxesandglue.dev/glu/howto/print-ready-pdf/))
 [Margin notes](glu/html/margin-notes) | glu, HTML | Notes in the outer margin with `float: outside`, on the right of right pages and the left of left pages ([how-to](https://boxesandglue.dev/glu/howto/margin-notes/))
 [Text around images](glu/html/image-runaround) | glu, HTML | Pictures and a box of facts floated left and right, with the text flowing around them ([how-to](https://boxesandglue.dev/glu/howto/image-runaround/))
 [Floats next to each other](glu/html/floats-side-by-side) | glu, HTML | Several floats on one side, standing next to each other
