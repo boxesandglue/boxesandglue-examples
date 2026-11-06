@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Lines in register across columns</title>
+<style>
+@page { size: 148mm 145mm; margin: 16mm 14mm; }
+body {
+  margin: 0;
+  font-family: serif;
+  font-size: 10pt;
+  line-height: 12pt;
+  column-count: 2;
+  column-gap: 6mm;
+  /* Every line stands on the grid of the page. */
+  line-snap: baseline;
+  /* Shows the grid and the rests. Remove it for the final document. */
+  -bag-trace: linegrid;
+}
+h1 {
+  column-span: all;
+  font-size: 18pt;
+  line-height: 22pt;
+  margin: 0 0 8pt 0;
+  line-snap: none;
+}
+h2 {
+  font-size: 12pt;
+  line-height: 15pt;
+  margin: 13pt 0 3pt 0;
+  line-snap: none;
+  break-after: avoid;
+}
+p { margin: 0; text-align: justify; }
+p + p { text-indent: 1em; }
+.figure {
+  float: top;
+  height: 40pt;
+  background-color: #dcdcdc;
+  font-size: 7.5pt;
+  line-height: 9pt;
+  line-snap: none;
+}
+table { margin: 7pt 0; width: 100%; border-collapse: collapse; font-size: 8pt; }
+th, td { border: 0.5pt solid #555; padding: 1.5pt 3pt; text-align: left; }
+/* The second page repeats the text as it would be without line-snap. */
+.free { line-snap: none; }
+.again { break-before: page; }
+</style>
+</head>
+<body>
+<h1>Lines in register across columns</h1>
+<p>A sheet of paper is never quite opaque. When the lines on the back of a leaf fall between the lines on the front, the grey of the far side shows through and the page looks restless. Printers call lines that meet from both sides <em>in register</em>.</p>
+<p>The same care pays off inside a single page. In two columns the eye moves sideways as well as down, and lines that almost, but not quite, stand level look like a mistake.</p>
+<h2>Where the error comes from</h2>
+<p>Running text with one line height keeps its rhythm by itself. A heading of another size breaks it, and so does any margin that is not a whole number of lines. The offset then stays to the foot of the column.</p>
+<div class="figure">Figure 1: a top float, here without a picture.</div>
+<p>The column beside it knows nothing of this and starts its own count, which is why the two drift apart.</p>
+<h2>What the grid does</h2>
+<p>With <code>line-snap</code> each line finds the nearest line of a grid that belongs to the page. What is left over goes into the margins around the heading, so it keeps its distance to the text below in proportion.</p>
+<table><tr><th>Line height</th><th>Grid</th></tr><tr><td>12pt</td><td>12pt</td></tr><tr><td>15pt</td><td>24pt</td></tr></table>
+<p>Tables stay as they are. The first line after one goes back to the grid, and the columns meet again.</p>
+<p>A figure at the top of a column moves the text below it by a whole number of lines, so nothing is lost there either.</p>
+<h1 class="again">The same text without line-snap</h1>
+<section class="free">
+<p>A sheet of paper is never quite opaque. When the lines on the back of a leaf fall between the lines on the front, the grey of the far side shows through and the page looks restless. Printers call lines that meet from both sides <em>in register</em>.</p>
+<p>The same care pays off inside a single page. In two columns the eye moves sideways as well as down, and lines that almost, but not quite, stand level look like a mistake.</p>
+<h2>Where the error comes from</h2>
+<p>Running text with one line height keeps its rhythm by itself. A heading of another size breaks it, and so does any margin that is not a whole number of lines. The offset then stays to the foot of the column.</p>
+<div class="figure">Figure 1: a top float, here without a picture.</div>
+<p>The column beside it knows nothing of this and starts its own count, which is why the two drift apart.</p>
+<h2>What the grid does</h2>
+<p>With <code>line-snap</code> each line finds the nearest line of a grid that belongs to the page. What is left over goes into the margins around the heading, so it keeps its distance to the text below in proportion.</p>
+<table><tr><th>Line height</th><th>Grid</th></tr><tr><td>12pt</td><td>12pt</td></tr><tr><td>15pt</td><td>24pt</td></tr></table>
+<p>Tables stay as they are. The first line after one goes back to the grid, and the columns meet again.</p>
+<p>A figure at the top of a column moves the text below it by a whole number of lines, so nothing is lost there either.</p>
+</section>
+</body>
+</html>
