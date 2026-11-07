@@ -10,7 +10,7 @@ origin.
 | Mechanism                          | What it means                                  |
 | ---------------------------------- | ---------------------------------------------- |
 | COLRv0 base glyph and layer lookup | Each emoji is looked up in the COLR table and expanded into its layers |
-| CPAL palette lookup                | Each layer gets its color from the first CPAL palette |
+| CPAL palette lookup                | Each layer gets its color and alpha from the first CPAL palette, a layer with the foreground index takes the color of the text |
 | Per-layer PDF output               | The layers are drawn on top of each other at the glyph origin |
 | Layer glyphs in the font subset    | The embedded subset keeps the outlines of all layers of the emoji used |
 
@@ -24,9 +24,6 @@ base emoji glyphs that expand into 33179 layer glyphs in total, about
 - **COLRv1** (paint trees with gradients, transforms, compositing) is
   detected but not rendered. Glyphs with only v1 data fall back to the
   plain `glyf` outline (monochrome).
-- **`ForegroundColorIndex` (0xFFFF)** layers, which mean "use the
-  current text color", are painted black. boxes and glue does not track
-  the text fill color per glyph yet.
 
 Bitmap emoji fonts (CBDT/CBLC and sbix) and SVG-in-OpenType fonts are
 supported as well. [`../color-emoji-cbdt`](../color-emoji-cbdt) shows
