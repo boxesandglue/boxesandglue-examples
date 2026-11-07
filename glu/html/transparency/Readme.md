@@ -8,8 +8,8 @@ art with real text.
 
 | Part | SVG | PDF |
 | ---- | --- | --- |
-| Fog, faded reflection | `stop-opacity` | A soft mask with a gray gradient |
-| Stars, glow of the sun | `fill-opacity` | A constant alpha |
+| Fog, faded reflection, glow of the sun | `stop-opacity` | A soft mask with a gray gradient |
+| Stars | `fill-opacity` | A constant alpha |
 | Reflection | `<g opacity>` | A transparency group |
 | Ripples | `stroke-opacity` | A constant alpha for strokes |
 | Glass panel | `fill-opacity` and `stroke-opacity` | Separate alphas for fill and stroke |
@@ -27,9 +27,7 @@ shapes:
 <g fill-opacity=".5"> <polygon .../> <polygon .../> </g>
 ```
 
-The reflection needs the first form, as the trees overlap. The glow of
-the sun uses the second on purpose: the circles add up to the rings
-around it.
+The reflection needs the first form, as the trees overlap.
 
 Stops that differ in opacity let a gradient fade out:
 
@@ -39,6 +37,9 @@ Stops that differ in opacity let a gradient fade out:
   <stop offset="1" stop-color="#ffd2b0" stop-opacity=".78"/>
 </linearGradient>
 ```
+
+The glow of the sun does the same with a `<radialGradient>`, which fades
+out on all sides.
 
 The order in the file does the rest. The title comes after the first
 ridge and before the second one, so the fog of the second ridge covers
