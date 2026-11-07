@@ -129,6 +129,7 @@ Example | Made with | Shows
 [Barcodes](glu/markdown/barcodes) | glu, Markdown | EAN-13, Code 128 and QR codes with the `<barcode>` element ([how-to](https://boxesandglue.dev/glu/howto/barcodes/))
 [Barcodes](bagme/basic/barcode) | bagme | The same barcodes from a Go program
 [Inline image alignment](glu/html/inline-image-align) | glu, HTML | An image in a line of text with `vertical-align`
+[Transparency in SVG](glu/html/transparency) | glu, HTML | A poster with fog from `stop-opacity`, a reflection in a transparency group and glass panels with alpha
 [Image with percentage width](glu/html/img-percentage) | glu, HTML | A raster image sized to its container
 [SVG with percentage width](glu/html/inline-svg-percentage) | glu, HTML | One SVG in three containers of different widths
 [Image in the flow](glu/xslfo/05-image) | glu, XSL-FO | A PDF placed as an image, kept as vectors

@@ -44,6 +44,7 @@ Small documents that show one feature in isolation.
 
 Description | Preview
 --- | ---
+[Transparency in SVG](transparency): a poster from one SVG file with fog from `stop-opacity`, a reflection in a `<g opacity>` group and glass with `fill-opacity` and `stroke-opacity` | <a href="transparency"><img src="transparency/firstpage.png" width="200"></a>
 [SVG with percentage width](inline-svg-percentage): the same `<svg width="100%">` in containers of different widths, and a `stroke-dasharray` line | <a href="inline-svg-percentage"><img src="inline-svg-percentage/firstpage.png" width="200"></a>
 [Image with percentage width](img-percentage): a raster `<img>` sized to its container, keeping its aspect ratio | <a href="img-percentage"><img src="img-percentage/firstpage.png" width="200"></a>
 [Inline image alignment](inline-image-align): an image in a line of text with `vertical-align: text-top` and `top` | <a href="inline-image-align"><img src="inline-image-align/firstpage.png" width="200"></a>
@@ -73,6 +74,7 @@ Top and bottom floats (`float: top`, `float: bottom`), footnotes | `floats/`
 CSS structural selectors, `<tfoot>` and its `TFoot` tag | `zebra-table`
 `::marker` (color, font, content) | `marker-pseudo`
 Hanging list markers, CSS counters | `numbered-sections`, `numbered-sections-counters`
+SVG transparency (`opacity`, `fill-opacity`, `stroke-opacity`, `stop-opacity`) | `transparency`
 Inline SVG and `<img>` with percentage width, also in table cells | `inline-svg-percentage`, `img-percentage`, `svg-in-table`
 `vertical-align` on inline images | `inline-image-align`
 Right-to-left text and bidi | `rtl-paragraphs`
