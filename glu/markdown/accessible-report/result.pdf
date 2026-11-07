@@ -721,8 +721,8 @@ endobj
  /NS (http://www.w3.org/1999/xhtml)
  /RoleMapNS <<
    /a [ /Link 1 0 R ]
-   /article [ /Art 1 0 R ]
-   /blockquote [ /BlockQuote 1 0 R ]
+   /article [ /Art 3 0 R ]
+   /blockquote [ /BlockQuote 3 0 R ]
    /caption [ /Caption 1 0 R ]
    /code [ /Code 3 0 R ]
    /div [ /Div 1 0 R ]
