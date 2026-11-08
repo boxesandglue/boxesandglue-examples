@@ -7,8 +7,9 @@
 
     1. baseline    (default) — image bottom on baseline; image overhangs
                                 upward, well above the text x-height.
-    2. text-top    — image top sits at the parent font's ascent line;
-                                lower part of the image dips below the
+    2. text-top    — image top sits at the parent font's ascent, the
+                                top of its content area; the lower
+                                part of the image dips below the
                                 baseline.
     3. top         — htmlbag aliases this to text-top (no first-class
                                 line-box model). Visually identical to
@@ -44,8 +45,8 @@
 
   <h2>vertical-align: text-top</h2>
   <p>Text before <img src="stripe.png" class="tall top"> text after —
-    image top now aligns with the parent font's ascent (cap height
-    line); the lower portion of the image dips below the text baseline.</p>
+    image top now aligns with the parent font's ascent, the top of its
+    content area; the lower portion of the image dips below the text baseline.</p>
 
   <h2>vertical-align: top (aliased)</h2>
   <p>Text before <img src="stripe.png" class="tall" style="vertical-align: top"> text after —
